@@ -1,0 +1,477 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>java_base_多线程_2 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="java_base_多线程_2">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-05 20:38" pubdate>
+        2021年4月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">java_base_多线程_2</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月12日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="多线程学习——-2"><a href="#多线程学习——-2" class="headerlink" title="多线程学习—— 2"></a>多线程学习—— 2</h1><p>简易的测试</p>
+<p>多线程操作同一对象</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//购买火车票的例子</span><br><br><span class="hljs-comment">//多个线程操作同一个资源的情况下线程不安全</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo2</span>  <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> num=<span class="hljs-number">10</span>;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;<br>            <span class="hljs-keyword">if</span>(num&lt;=<span class="hljs-number">0</span>)&#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-comment">//模拟延时</span><br>            <span class="hljs-keyword">try</span> &#123;<br>                Thread.sleep(<span class="hljs-number">20</span>);<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>            System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;拿到了&quot;</span>+num--+<span class="hljs-string">&quot;票&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Demo2 test=<span class="hljs-keyword">new</span> Demo2();<br>        <span class="hljs-keyword">new</span> Thread(test,<span class="hljs-string">&quot;学生&quot;</span>).start();<br>        <span class="hljs-keyword">new</span> Thread(test,<span class="hljs-string">&quot;黄牛&quot;</span>).start();<br>        <span class="hljs-keyword">new</span> Thread(test,<span class="hljs-string">&quot;教师&quot;</span>).start();<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+<p>模拟龟兔赛跑</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> ll.多线程;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Race</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String winner;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">100</span>;i++)&#123;<br>            <span class="hljs-comment">//模拟兔子休息</span><br>            <span class="hljs-keyword">if</span>(Thread.currentThread().getName().equals(<span class="hljs-string">&quot;兔子&quot;</span>)&amp;&amp;i%<span class="hljs-number">20</span>==<span class="hljs-number">19</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    Thread.sleep(<span class="hljs-number">1</span>);<br>                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>            System.out.println(Thread.currentThread().getName()+<span class="hljs-string">&quot;跑了&quot;</span>+i+<span class="hljs-string">&quot;m&quot;</span>);<br>            <span class="hljs-keyword">boolean</span> flag=gameOver(i);<br>            <span class="hljs-keyword">if</span>(flag)&#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//判断是否完成比赛</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">gameOver</span><span class="hljs-params">(<span class="hljs-keyword">int</span> steps)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(winner!=<span class="hljs-keyword">null</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (steps&gt;=<span class="hljs-number">99</span>)&#123;<br>                winner=Thread.currentThread().getName();<br>                System.out.println(winner+<span class="hljs-string">&quot;获胜&quot;</span>);<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>            &#125;<span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Race race=<span class="hljs-keyword">new</span> Race();<br>        <span class="hljs-keyword">new</span> Thread(race,<span class="hljs-string">&quot;兔子&quot;</span>).start();<br>        <span class="hljs-keyword">new</span> Thread(race,<span class="hljs-string">&quot;乌龟&quot;</span>).start();<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="实现Callable接口"><a href="#实现Callable接口" class="headerlink" title="实现Callable接口"></a>实现Callable接口</h2><ol>
+<li>实现Callable接口，需要返回值类型</li>
+<li>重写call方法，需要抛出异常</li>
+<li>创建目标对象</li>
+<li>创建执行服务: ExecutorService ser =Executors.newFixedThreadPool(1);</li>
+<li>提交执行: Future<Boolean> result1 = ser. submit(t1);</li>
+<li>获取结果: boolean r1 = result1.get()</li>
+<li>关闭服务: ser.shutdownNow();</li>
+</ol>
+<p>案例</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> ll.多线程;<br><br><span class="hljs-keyword">import</span> java.util.Random;<br><span class="hljs-keyword">import</span> java.util.concurrent.*;<br><br><span class="hljs-comment">//线程创建方式三 实现Callable接口</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo3</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span>&lt;<span class="hljs-title">Boolean</span>&gt; </span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Boolean <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        Random random=<span class="hljs-keyword">new</span> Random();<br><br>        <span class="hljs-keyword">if</span>(random.nextInt()%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br><br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ExecutionException, InterruptedException </span>&#123;<br>        Demo3 text_1=<span class="hljs-keyword">new</span> Demo3();<br>        Demo3 text_2=<span class="hljs-keyword">new</span> Demo3();<br>        Demo3 text_3=<span class="hljs-keyword">new</span> Demo3();<br>        <span class="hljs-comment">//创建执行服务</span><br>        ExecutorService ser= Executors.newFixedThreadPool(<span class="hljs-number">3</span>);<br><br>        <span class="hljs-comment">//提交执行:</span><br>        Future&lt;Boolean&gt; result1 = ser. submit(text_1);<br>        Future&lt;Boolean&gt; result2 = ser. submit(text_2);<br>        Future&lt;Boolean&gt; result3 = ser. submit(text_3);<br>        <span class="hljs-comment">//获取结果:</span><br>        <span class="hljs-keyword">boolean</span> r1 = result1.get();<br>        <span class="hljs-keyword">boolean</span> r2 = result2.get();<br>        <span class="hljs-keyword">boolean</span> r3 = result3.get();<br>        System.out.println(r1);<br>        System.out.println(r2);<br>        System.out.println(r3);<br>        <span class="hljs-comment">//关闭服务:</span><br>        ser.shutdownNow();<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+<p>好处：</p>
+<ol>
+<li>可以提交返回值</li>
+</ol>
+<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p>案例</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> ll.多线程;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StaticProxy</span> </span>&#123;<br><br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        WeddingCompang weddingCompang=<span class="hljs-keyword">new</span> WeddingCompang(<span class="hljs-keyword">new</span> You());<br>        weddingCompang.HappyMarry();<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Marry</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">HappyMarry</span><span class="hljs-params">()</span></span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">You</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Marry</span></span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">HappyMarry</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;结婚是喜事&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WeddingCompang</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Marry</span></span>&#123;<br>    <span class="hljs-keyword">private</span> Marry target;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">WeddingCompang</span><span class="hljs-params">(Marry target)</span></span>&#123;<br>        <span class="hljs-keyword">this</span>.target=target;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">HappyMarry</span><span class="hljs-params">()</span> </span>&#123;<br>        before();<br>        <span class="hljs-keyword">this</span>.target.HappyMarry();<br>        after();<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">before</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;帮助完成&quot;</span>);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">after</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;收取尾款&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>静态代理模式总结：</p>
+<ul>
+<li>真实对象和代理对象都要实现同一个接口</li>
+<li>代理对象要代理真实角色</li>
+</ul>
+<p>好处：</p>
+<ul>
+<li>代理对象可以做很多真实对象做不了的事情</li>
+<li>真实对象专注做自己的事情</li>
+</ul>
+<p>改良后的具有多线程</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">new</span> Thread(()-&gt; System.out.println(<span class="hljs-string">&quot;爱你&quot;</span>)).start();<br><br><span class="hljs-keyword">new</span> WeddingCompang(<span class="hljs-keyword">new</span> You()).HappyMarry();<br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Lamda-表达式"><a href="#Lamda-表达式" class="headerlink" title="Lamda 表达式"></a>Lamda 表达式</h2><ul>
+<li><p>λ希腊字母表中排序第十-位的字母，英语名称为Lambda</p>
+</li>
+<li><p>避免匿名内部类定义过多</p>
+</li>
+<li><p>其实质属于函数式编程的概念<br>(params) -&gt; expression [表达式]<br>(params) -&gt; statement [语句]<br>(params) -&gt; { statements }</p>
+<p>a-&gt; System. out.println(“i like lambda–&gt;”+a) ;<br>new Thread (()-&gt;System.out.println(“多线程学习。”)) .start();</p>
+</li>
+</ul>
+<p>函数式接口的定义:</p>
+<ul>
+<li>任何接口，如果只包含唯一一个抽象方法, 那么它就是一个函数式接口。<br>public interface Runnable {<div class="hljs code-wrapper"><pre><code>public abstract void run();
+</code></pre></div>
+}</li>
+<li>对于函数式接口，我们可以通过lambda表达式来创建该接口的对象。</li>
+</ul>
+<p>相关代码</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">lambda</span> </span>&#123;<br>    <span class="hljs-comment">//3.静态内部类</span><br>    <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ilike2</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Like</span></span>&#123;<br><br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">lambda</span><span class="hljs-params">()</span> </span>&#123;<br>            System.out.println(<span class="hljs-string">&quot;I Like JAVA2&quot;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Like like=<span class="hljs-keyword">new</span> Ilike();<br>        like.lambda();<br><br>        like=<span class="hljs-keyword">new</span> Ilike2();<br>        like.lambda();<br><br><br><br>        <span class="hljs-comment">//4.局部内部类</span><br>        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ilike3</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Like</span></span>&#123;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">lambda</span><span class="hljs-params">()</span> </span>&#123;<br>                System.out.println(<span class="hljs-string">&quot;I Like JAVA3&quot;</span>);<br>            &#125;<br>        &#125;<br><br>        like=<span class="hljs-keyword">new</span> Ilike3();<br>        like.lambda();<br>        <span class="hljs-comment">//5.匿名内部类 没有类名称，必须借助接口或者父类</span><br>        like=<span class="hljs-keyword">new</span> Like()&#123;<br><br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">lambda</span><span class="hljs-params">()</span> </span>&#123;<br>                System.out.println(<span class="hljs-string">&quot;I Like JAVA4&quot;</span>);<br>            &#125;<br>        &#125;;<br>        like.lambda();<br><br>        <span class="hljs-comment">//6.用lamda简化</span><br>        like=()-&gt;&#123;<br>            System.out.println(<span class="hljs-string">&quot;I Like JAVA5&quot;</span>);<br>        &#125;;<br>        like.lambda();<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//1.定义一个函数式接口</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Like</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">lambda</span><span class="hljs-params">()</span></span>;<br>&#125;<br><br><span class="hljs-comment">//2.实现类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ilike</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Like</span></span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">lambda</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;I Like JAVA&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>带参数的</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">lamda</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Test tmp = (<span class="hljs-keyword">int</span> n) -&gt; &#123;<br>            System.out.println(n);<br>        &#125;;<br>        tmp.tmp(<span class="hljs-number">234</span>);<br>        <span class="hljs-comment">//进一步简化</span><br>        tmp=(n)-&gt;&#123;<br>            System.out.println(n);<br>        &#125;;<br>        tmp.tmp(<span class="hljs-number">234</span>);<br>        <span class="hljs-comment">//进一步简化</span><br>        tmp=n -&gt; &#123;<br>            System.out.println(n);<br>        &#125;;<br>        tmp.tmp(<span class="hljs-number">234</span>);<br>        <span class="hljs-comment">//进一步简化</span><br>        tmp=n -&gt;System.out.println(n);<br>        <span class="hljs-comment">//总结：lamda表达式只能有一行代码的情况下才能简化为一行如果有多行，那么就用代码块包裹</span><br>        <span class="hljs-comment">//前提是接口为函数式接口</span><br>        <span class="hljs-comment">//多个参数也可以去掉参数类型，（必须全写或都不写参数类型）必须加上括号</span><br>        tmp.tmp(<span class="hljs-number">234</span>);<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Test</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tmp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Java-JavaBase/">Java JavaBase</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

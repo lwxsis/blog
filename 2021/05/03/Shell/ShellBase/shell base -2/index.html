@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>shell base -2 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="shell base -2">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-03 15:17" pubdate>
+        2021年5月3日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">shell base -2</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月12日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="Shell-传递参数"><a href="#Shell-传递参数" class="headerlink" title="Shell 传递参数"></a>Shell 传递参数</h2><p>我们可以在执行 Shell 脚本时，向脚本传递参数，脚本内获取参数的格式为：**$n<strong>。</strong>n** 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>以下实例我们向脚本传递三个参数，并分别输出，其中 <strong>$0</strong> 为执行的文件名（包含文件路径）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-meta">#!/bin/bash</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Shell 传递参数实例！&quot;</span>;<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;执行的文件名：<span class="hljs-variable">$0</span>&quot;</span>;<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第一个参数为：<span class="hljs-variable">$1</span>&quot;</span>;<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第二个参数为：<span class="hljs-variable">$2</span>&quot;</span>;<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第三个参数为：<span class="hljs-variable">$3</span>&quot;</span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>为脚本设置可执行权限，并执行脚本，输出结果如下所示：</p>
+<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata">$ chmod +x <span class="hljs-keyword">test</span>.<span class="hljs-keyword">sh</span> <br>$ ./<span class="hljs-keyword">test</span>.<span class="hljs-keyword">sh</span> 1 2 3<br><span class="hljs-keyword">Shell</span> 传递参数实例！<br>执行的文件名：./<span class="hljs-keyword">test</span>.<span class="hljs-keyword">sh</span><br>第一个参数为：1<br>第二个参数为：2<br>第三个参数为：3<br></code></pre></div></td></tr></table></figure>
+
+<p>另外，还有几个特殊字符用来处理参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数处理</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$#</td>
+<td>传递到脚本的参数个数</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>以一个单字符串显示所有向脚本传递的参数。  如”$*”用「”」括起来的情况、以”$1 $2 … $n”的形式输出所有参数。</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>脚本运行的当前进程ID号</td>
+</tr>
+<tr>
+<td>$!</td>
+<td>后台运行的最后一个进程的ID号</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>与$*相同，但是使用时加引号，并在引号中返回每个参数。  如”$@”用「”」括起来的情况、以”$1” “$2” … “$n” 的形式输出所有参数。</td>
+</tr>
+<tr>
+<td>$-</td>
+<td>显示Shell使用的当前选项，与<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-set.html">set命令</a>功能相同。</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。</td>
+</tr>
+</tbody></table>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Shell 传递参数实例！&quot;</span>;<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第一个参数为：<span class="hljs-variable">$1</span>&quot;</span>;<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;参数个数为：<span class="hljs-variable">$#</span>&quot;</span>;<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;传递的参数作为一个字符串显示：$*&quot;</span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>执行脚本，输出结果如下所示：</p>
+<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata">$ chmod +x <span class="hljs-keyword">test</span>.<span class="hljs-keyword">sh</span> <br>$ ./<span class="hljs-keyword">test</span>.<span class="hljs-keyword">sh</span> 1 2 3<br><span class="hljs-keyword">Shell</span> 传递参数实例！<br>第一个参数为：1<br>参数个数为：3<br>传递的参数作为一个字符串显示：1 2 3<br></code></pre></div></td></tr></table></figure>
+
+<p>$* 与 $@ 区别：</p>
+<ul>
+<li>相同点：都是引用所有参数。</li>
+<li>不同点：只有在双引号中体现出来。假设在脚本运行时写了三个参数 1、2、3，，则 “ * “ 等价于 “1 2 3”（传递了一个参数），而 “@” 等价于 “1” “2” “3”（传递了三个参数）。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><br>echo &quot;-- \$* 演示 ---&quot;<br>for i in &quot;$*&quot;; do<br>    echo $i<br>done<br><br>echo &quot;-- \$@ 演示 ---&quot;<br>for i in &quot;$@&quot;; do<br>    echo $i<br>done<br></code></pre></div></td></tr></table></figure>
+
+<p>执行脚本，输出结果如下所示：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs brainfuck"><span class="hljs-comment">$</span> <span class="hljs-comment">chmod</span> <span class="hljs-literal">+</span><span class="hljs-comment">x</span> <span class="hljs-comment">test</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span> <br><span class="hljs-comment">$</span> <span class="hljs-string">.</span><span class="hljs-comment">/test</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span> <span class="hljs-comment">1</span> <span class="hljs-comment">2</span> <span class="hljs-comment">3</span><br>-- <span class="hljs-comment">$*</span> <span class="hljs-comment">演示</span> --<span class="hljs-literal">-</span><br><span class="hljs-comment">1</span> <span class="hljs-comment">2</span> <span class="hljs-comment">3</span><br>-- <span class="hljs-comment">$@</span> <span class="hljs-comment">演示</span> --<span class="hljs-literal">-</span><br><span class="hljs-comment">1</span><br><span class="hljs-comment">2</span><br><span class="hljs-comment">3</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="Shell-数组"><a href="#Shell-数组" class="headerlink" title="Shell 数组"></a>Shell 数组</h2><p>数组中可以存放多个值。Bash Shell 只支持一维数组（不支持多维数组），初始化时不需要定义数组大小（与 PHP 类似）。</p>
+<p>与大部分编程语言类似，数组元素的下标由 0 开始。</p>
+<p>Shell 数组用括号来表示，元素用”空格”符号分割开，语法格式如下：</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">array_name</span>=(value<span class="hljs-number">1</span> value<span class="hljs-number">2</span> ... valuen)<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br>my_array=(A B &quot;C&quot; D)<br></code></pre></div></td></tr></table></figure>
+
+<p>我们也可以使用下标来定义数组:</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">array_name[0]=value0<br>array_name[1]=value1<br>array_name[2]=value2<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="读取数组"><a href="#读取数组" class="headerlink" title="读取数组"></a>读取数组</h3><p>读取数组元素值的一般格式是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash">&#123;array_name[index]&#125;</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><br>my_array=(A B &quot;C&quot; D)<br><br>echo &quot;第一个元素为: $&#123;my_array[0]&#125;&quot;<br>echo &quot;第二个元素为: $&#123;my_array[1]&#125;&quot;<br>echo &quot;第三个元素为: $&#123;my_array[2]&#125;&quot;<br>echo &quot;第四个元素为: $&#123;my_array[3]&#125;&quot;<br></code></pre></div></td></tr></table></figure>
+
+<p>执行脚本，输出结果如下所示：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs makefile">$ chmod +x test.sh <br>$ ./test.sh<br><span class="hljs-section">第一个元素为: A</span><br><span class="hljs-section">第二个元素为: B</span><br><span class="hljs-section">第三个元素为: C</span><br><span class="hljs-section">第四个元素为: D</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="获取数组中的所有元素"><a href="#获取数组中的所有元素" class="headerlink" title="获取数组中的所有元素"></a>获取数组中的所有元素</h3><p>使用@ 或 * 可以获取数组中的所有元素，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><br>my_array[0]=A<br>my_array[1]=B<br>my_array[2]=C<br>my_array[3]=D<br><br>echo &quot;数组的元素为: $&#123;my_array[*]&#125;&quot;<br>echo &quot;数组的元素为: $&#123;my_array[@]&#125;&quot;<br></code></pre></div></td></tr></table></figure>
+
+<p>执行脚本，输出结果如下所示：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mathematica"><span class="hljs-variable">$</span> <span class="hljs-variable">chmod</span> <span class="hljs-operator">+</span><span class="hljs-variable">x</span> <span class="hljs-variable">test</span><span class="hljs-operator">.</span><span class="hljs-variable">sh</span> <br><span class="hljs-variable">$</span> <span class="hljs-operator">./</span><span class="hljs-variable">test</span><span class="hljs-operator">.</span><span class="hljs-variable">sh</span><br>数组的元素为<span class="hljs-operator">:</span> <span class="hljs-variable">A</span> <span class="hljs-variable">B</span> <span class="hljs-built_in">C</span> <span class="hljs-built_in">D</span><br>数组的元素为<span class="hljs-operator">:</span> <span class="hljs-variable">A</span> <span class="hljs-variable">B</span> <span class="hljs-built_in">C</span> <span class="hljs-built_in">D</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="获取数组的长度"><a href="#获取数组的长度" class="headerlink" title="获取数组的长度"></a>获取数组的长度</h3><p>获取数组长度的方法与获取字符串长度的方法相同，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><br>my_array[0]=A<br>my_array[1]=B<br>my_array[2]=C<br>my_array[3]=D<br><br>echo &quot;数组元素个数为: $&#123;#my_array[*]&#125;&quot;<br>echo &quot;数组元素个数为: $&#123;#my_array[@]&#125;&quot;<br></code></pre></div></td></tr></table></figure>
+
+<p>执行脚本，输出结果如下所示：</p>
+<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata">$ chmod +x <span class="hljs-keyword">test</span>.<span class="hljs-keyword">sh</span> <br>$ ./<span class="hljs-keyword">test</span>.<span class="hljs-keyword">sh</span><br>数组元素个数为: 4<br>数组元素个数为: 4<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><br>val=`expr 2 + 2`<br>echo &quot;两数之和为 : $val&quot;<br></code></pre></div></td></tr></table></figure>
+
+<p>两点注意：</p>
+<ul>
+<li><p>表达式和运算符之间要有空格，例如 2+2 是不对的，必须写成 2 + 2，这与我们熟悉的大多数编程语言不一样。</p>
+</li>
+<li><p>完整的表达式要被 ` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。</p>
+</li>
+</ul>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>下表列出了常用的算术运算符，假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>加法</td>
+<td><code>expr $a + $b</code> 结果为 30。</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减法</td>
+<td><code>expr $a - $b</code> 结果为 -10。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘法</td>
+<td><code>expr $a \* $b</code> 结果为  200。</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除法</td>
+<td><code>expr $b / $a</code> 结果为 2。</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取余</td>
+<td><code>expr $b % $a</code> 结果为 0。</td>
+</tr>
+<tr>
+<td>=</td>
+<td>赋值</td>
+<td>a=$b 将把变量 b 的值赋给 a。</td>
+</tr>
+<tr>
+<td>==</td>
+<td>相等。用于比较两个数字，相同则返回 true。</td>
+<td>[ $a == $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不相等。用于比较两个数字，不相同则返回 true。</td>
+<td>[ $a != $b ] 返回 true。</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong>条件表达式要放在方括号之间，并且要有空格，例如: <strong>[$a==$b]</strong> 是错误的，必须写成 **[ $a == $b ]**。</p>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字。</p>
+<p>下表列出了常用的关系运算符，假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-eq</td>
+<td>检测两个数是否相等，相等返回 true。</td>
+<td>[ $a -eq $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>检测两个数是否不相等，不相等返回 true。</td>
+<td>[ $a -ne $b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>检测左边的数是否大于右边的，如果是，则返回 true。</td>
+<td>[ $a -gt $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>检测左边的数是否小于右边的，如果是，则返回 true。</td>
+<td>[ $a -lt $b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>检测左边的数是否大于等于右边的，如果是，则返回 true。</td>
+<td>[ $a -ge $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
+<td>[ $a -le $b ] 返回 true。</td>
+</tr>
+</tbody></table>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>以下介绍 Shell 的逻辑运算符，假定变量 a 为 10，变量 b 为 20:</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;&amp;</td>
+<td>逻辑的 AND</td>
+<td>[[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑的 OR</td>
+<td>[[ $a -lt 100 || $b -gt 100 ]] 返回 true</td>
+</tr>
+</tbody></table>
+<h3 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a>字符串运算符</h3><p>下表列出了常用的字符串运算符，假定变量 a 为 “abc”，变量 b 为 “efg”：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>检测两个字符串是否相等，相等返回 true。</td>
+<td>[ $a = $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>检测两个字符串是否不相等，不相等返回 true。</td>
+<td>[ $a != $b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>检测字符串长度是否为0，为0返回 true。</td>
+<td>[ -z $a ] 返回 false。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>检测字符串长度是否不为 0，不为 0 返回 true。</td>
+<td>[ -n “$a” ] 返回 true。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>检测字符串是否为空，不为空返回 true。</td>
+<td>[ $a ] 返回 true。</td>
+</tr>
+</tbody></table>
+<h3 id="文件测试运算符"><a href="#文件测试运算符" class="headerlink" title="文件测试运算符"></a>文件测试运算符</h3><p>文件测试运算符用于检测 Unix 文件的各种属性。</p>
+<p>属性检测描述如下：</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b file</td>
+<td>检测文件是否是块设备文件，如果是，则返回 true。</td>
+<td>[ -b $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-c file</td>
+<td>检测文件是否是字符设备文件，如果是，则返回 true。</td>
+<td>[ -c $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-d file</td>
+<td>检测文件是否是目录，如果是，则返回 true。</td>
+<td>[ -d $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-f file</td>
+<td>检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
+<td>[ -f $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-g file</td>
+<td>检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
+<td>[ -g $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-k file</td>
+<td>检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
+<td>[ -k $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-p file</td>
+<td>检测文件是否是有名管道，如果是，则返回 true。</td>
+<td>[ -p $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-u file</td>
+<td>检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
+<td>[ -u $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-r file</td>
+<td>检测文件是否可读，如果是，则返回 true。</td>
+<td>[ -r $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-w file</td>
+<td>检测文件是否可写，如果是，则返回 true。</td>
+<td>[ -w $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-x file</td>
+<td>检测文件是否可执行，如果是，则返回 true。</td>
+<td>[ -x $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-s file</td>
+<td>检测文件是否为空（文件大小是否大于0），不为空返回 true。</td>
+<td>[ -s $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-e file</td>
+<td>检测文件（包括目录）是否存在，如果是，则返回 true。</td>
+<td>[ -e $file ] 返回 true。</td>
+</tr>
+</tbody></table>
+<p>其他检查符：</p>
+<ul>
+<li><strong>-S</strong>: 判断某文件是否 socket。</li>
+<li><strong>-L</strong>: 检测文件是否存在并且是一个符号链接。</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Shell-Shell-Base/">Shell Shell Base</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Shell/">Shell</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

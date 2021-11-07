@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>Android Studio 数据库操作 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Android Studio 数据库操作">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-02 13:36" pubdate>
+        2021年4月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Android Studio 数据库操作</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月12日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="Android-Studio-数据库操作"><a href="#Android-Studio-数据库操作" class="headerlink" title="Android Studio 数据库操作"></a>Android Studio 数据库操作</h1><h2 id="相关描述"><a href="#相关描述" class="headerlink" title="相关描述"></a>相关描述</h2><p>我们可以对数据进行的操作有4种，即CRUD</p>
+<p>C代表添加(Create) ，R代表(Retrieve) ,U代表更新(Update) ,D代表删除(Delete)</p>
+<p>每一种操作又各自对应了一种SQL命令，如果你熟悉SQL语言的话，<br>一定知道添加数据时使用insert，查询数据时使用select，更新数据时使用update，删除数据时使用delete但是开发者的水平总是参差不齐的，未必每一个人都能非常熟悉的使用SQL语言，<br>因此Android也提供了一系列辅助性方法，使得在Android种即使不去编写SQL语句，也可以轻松完成</p>
+<p>前面我们已经知道，调用SQLiteOpenHelper的<br>getReadableDatabase ()或getWritableDatabase (),方法可以用于创建和升级数据库的<br>不仅如此，这两个方法还都会返回一个SQLiteDatabase的对象，借助这个对象就可以进行CRUD操作了SQLiteDatabase种提供了一个insert ()方法，这个方法就是专门用于添加数据的，<br>它接收3个参数，第一个参数是表名，我们希望向哪张表里添加数据，这里就传入该表的名字<br>第二个参数用于在未指定添加数据的情况下给某些可为空的列自动赋值NULL，一般我们用不到这个功能，直接传入null第三个参数是一个ContentValues对象，它提供了一系列的put()方法重载,<br>用于向ContentValues中添加数据<br>只需要将表中的每个列名以及相应的待添加数据传入即可</p>
+<h2 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h2><p>MainActivity.class</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.example.databasetest;<br><br><span class="hljs-keyword">import</span> androidx.appcompat.app.AppCompatActivity;<br><br><span class="hljs-keyword">import</span> android.content.ContentValues;<br><span class="hljs-keyword">import</span> android.content.Context;<br><span class="hljs-keyword">import</span> android.database.Cursor;<br><span class="hljs-keyword">import</span> android.database.sqlite.SQLiteDatabase;<br><span class="hljs-keyword">import</span> android.database.sqlite.SQLiteOpenHelper;<br><span class="hljs-keyword">import</span> android.os.Bundle;<br><span class="hljs-keyword">import</span> android.os.strictmode.SqliteObjectLeakedViolation;<br><span class="hljs-keyword">import</span> android.util.Log;<br><span class="hljs-keyword">import</span> android.view.View;<br><span class="hljs-keyword">import</span> android.widget.Button;<br><br><span class="hljs-keyword">import</span> java.sql.SQLDataException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>&#123;<br>    <span class="hljs-comment">//声明需要的按钮及相关类</span><br>    <span class="hljs-keyword">private</span> MyDatabaseHelper dbHelper;<br>    <span class="hljs-keyword">private</span> Button button=<span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">private</span> Button insert=<span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">private</span> Button updata=<span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">private</span> Button delete=<span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">private</span> Button select=<span class="hljs-keyword">null</span>;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);<br>        setContentView(R.layout.activity_main);<br>        <span class="hljs-comment">//第二个数据库名，第三个返回一个自定义的langs，四版本号</span><br>        dbHelper=<span class="hljs-keyword">new</span> MyDatabaseHelper(<span class="hljs-keyword">this</span>,<span class="hljs-string">&quot;BookStore.dp&quot;</span>,<span class="hljs-keyword">null</span>,<span class="hljs-number">1</span>);<br>        button=(Button)findViewById(R.id.button);<br>        button.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>&#123;<br>                <span class="hljs-comment">//SQLiteOpenHelper dpHelper = null;</span><br>                dbHelper.getWritableDatabase();<br>            &#125;<br>        &#125;);<br>        <span class="hljs-comment">//插入按钮获取</span><br>        insert=(Button)findViewById(R.id.button_insert);<br>        insert.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>&#123;<br>                SQLiteDatabase db=dbHelper.getWritableDatabase();<br>                ContentValues values=<span class="hljs-keyword">new</span> ContentValues();<br>                values.put(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;Android Studio&quot;</span>);<br>                values.put(<span class="hljs-string">&quot;author&quot;</span>,<span class="hljs-string">&quot;ll&quot;</span>);<br>                values.put(<span class="hljs-string">&quot;pages&quot;</span>,<span class="hljs-number">400</span>);<br>                values.put(<span class="hljs-string">&quot;price&quot;</span>,<span class="hljs-number">45</span>);<br>                <span class="hljs-comment">//插入的表 空的列表 内容</span><br>                db.insert(<span class="hljs-string">&quot;Book&quot;</span>,<span class="hljs-keyword">null</span>,values);<br>                values.clear();<br>                values.put(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;Android Studio DataBase&quot;</span>);<br>                values.put(<span class="hljs-string">&quot;author&quot;</span>,<span class="hljs-string">&quot;lwx&quot;</span>);<br>                values.put(<span class="hljs-string">&quot;pages&quot;</span>,<span class="hljs-number">40</span>);<br>                values.put(<span class="hljs-string">&quot;price&quot;</span>,<span class="hljs-number">5</span>);<br>                db.insert(<span class="hljs-string">&quot;Book&quot;</span>,<span class="hljs-keyword">null</span>,values);<br>            &#125;<br>        &#125;);<br>        <span class="hljs-comment">//修改数据</span><br>        updata=(Button)findViewById(R.id.button_updata);<br>        updata.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>&#123;<br>                SQLiteDatabase db=dbHelper.getWritableDatabase();<br>                ContentValues values=<span class="hljs-keyword">new</span> ContentValues();<br>                values.put(<span class="hljs-string">&quot;price&quot;</span>,<span class="hljs-number">10.3</span>);<br>                <span class="hljs-comment">//修改的表 修改的内容 修改的判断语句 语句的变量内容</span><br>                db.update(<span class="hljs-string">&quot;Book&quot;</span>,values,<span class="hljs-string">&quot;name=?&quot;</span>,<span class="hljs-keyword">new</span> String[]&#123;<span class="hljs-string">&quot;Android Studio&quot;</span>&#125;);<br>            &#125;<br>        &#125;);<br>        <span class="hljs-comment">//删除</span><br>        delete=(Button)findViewById(R.id.button_delete);<br>        delete.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>&#123;<br>                SQLiteDatabase db=dbHelper.getWritableDatabase();<br>                <span class="hljs-comment">//删除的表 删除的判断语句 判断的内容</span><br>                db.delete(<span class="hljs-string">&quot;Book&quot;</span>,<span class="hljs-string">&quot;pages&gt;?&quot;</span>,<span class="hljs-keyword">new</span> String[]&#123;<span class="hljs-string">&quot;50&quot;</span>&#125;);<br>            &#125;<br>        &#125;);<br>        <span class="hljs-comment">//查询</span><br>        select=(Button)findViewById(R.id.button_select);<br>        select.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>&#123;<br>                SQLiteDatabase db=dbHelper.getWritableDatabase();<br>                <span class="hljs-comment">//查询的表 查询列 三四查询某一（几）行 5：groupBy 6：Having 7:orderBy</span><br>                Cursor cursor=db.query(<span class="hljs-string">&quot;Book&quot;</span>,<span class="hljs-keyword">null</span>,<span class="hljs-keyword">null</span>,<span class="hljs-keyword">null</span>,<span class="hljs-keyword">null</span>,<span class="hljs-keyword">null</span>,<span class="hljs-keyword">null</span>);<br>                <span class="hljs-keyword">if</span>(cursor.moveToFirst())&#123;<br>                    <span class="hljs-keyword">do</span>&#123;<br>                        String name=cursor.getString(cursor.getColumnIndex(<span class="hljs-string">&quot;name&quot;</span>));<br>                        String author=cursor.getString(cursor.getColumnIndex(<span class="hljs-string">&quot;author&quot;</span>));<br>                        String pages=cursor.getString(cursor.getColumnIndex(<span class="hljs-string">&quot;pages&quot;</span>));<br>                        String price=cursor.getString(cursor.getColumnIndex(<span class="hljs-string">&quot;price&quot;</span>));<br>                        <span class="hljs-comment">//String name=cursor.getString(cursor.getColumnIndex(&quot;name&quot;));</span><br>                        Log.v(<span class="hljs-string">&quot;MainActivity&quot;</span>,<span class="hljs-string">&quot;book name is:&quot;</span>+name);<br>                        Log.v(<span class="hljs-string">&quot;MainActivity&quot;</span>,<span class="hljs-string">&quot;book author is:&quot;</span>+author);<br>                        Log.v(<span class="hljs-string">&quot;MainActivity&quot;</span>,<span class="hljs-string">&quot;book page is:&quot;</span>+pages);<br>                        Log.v(<span class="hljs-string">&quot;MainActivity&quot;</span>,<span class="hljs-string">&quot;book price is:&quot;</span>+price);<br>                    &#125;<span class="hljs-keyword">while</span> (cursor.moveToNext());<br>                &#125;<br>                cursor.close();<br>            &#125;<br>        &#125;);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>MyDatabaseHelper.class</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.example.databasetest;<br><br><span class="hljs-keyword">import</span> android.content.Context;<br><span class="hljs-keyword">import</span> android.database.ContentObservable;<br><span class="hljs-keyword">import</span> android.database.sqlite.SQLiteDatabase;<br><span class="hljs-keyword">import</span> android.database.sqlite.SQLiteOpenHelper;<br><span class="hljs-keyword">import</span> android.database.sqlite.SQLiteTransactionListener;<br><span class="hljs-keyword">import</span> android.widget.Toast;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyDatabaseHelper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SQLiteOpenHelper</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String CREAT_BOOK=<span class="hljs-string">&quot;Create table Book(&quot;</span><br>            +<span class="hljs-string">&quot;id integer primary key autoincrement,&quot;</span><br>            +<span class="hljs-string">&quot;author text,&quot;</span><br>            +<span class="hljs-string">&quot;price real,&quot;</span><br>            +<span class="hljs-string">&quot;pages integer,&quot;</span><br>            +<span class="hljs-string">&quot;name text)&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String CREATE_CATEGORY=<span class="hljs-string">&quot;create table Category(&quot;</span><br>            +<span class="hljs-string">&quot;id integer primary key autoincrement,&quot;</span><br>            +<span class="hljs-string">&quot;category_name text,&quot;</span><br>            +<span class="hljs-string">&quot;category_code integer)&quot;</span>;<br>    <span class="hljs-keyword">private</span> Context mContext;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyDatabaseHelper</span><span class="hljs-params">(Context context,String name,SQLiteDatabase.CursorFactory factory,<span class="hljs-keyword">int</span> version)</span></span>&#123;<br>        <span class="hljs-keyword">super</span>(context,name,factory,version);<br>        mContext=context;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(SQLiteDatabase db)</span> </span>&#123;<br>        db.execSQL(CREAT_BOOK);<br>        db.execSQL(CREATE_CATEGORY);<br>        Toast.makeText(mContext,<span class="hljs-string">&quot;Create succeeded&quot;</span>,Toast.LENGTH_SHORT).show();<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onUpgrade</span><span class="hljs-params">(SQLiteDatabase db, <span class="hljs-keyword">int</span> oldVersion, <span class="hljs-keyword">int</span> newVersion)</span> </span>&#123;<br>        db.execSQL(<span class="hljs-string">&quot;drop table if exists Book&quot;</span>);<br>        db.execSQL(<span class="hljs-string">&quot;drop table if exists Category&quot;</span>);<br>        onCreate(db);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+<p>activity_main.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">tools:context</span>=<span class="hljs-string">&quot;.MainActivity&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">EditText</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/editText&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:hint</span>=<span class="hljs-string">&quot;Hello World!&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintLeft_toLeftOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintRight_toRightOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintTop_toTopOf</span>=<span class="hljs-string">&quot;parent&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/button&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;创建数据库&quot;</span></span><br><span class="hljs-tag"></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toEndOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintHorizontal_bias</span>=<span class="hljs-string">&quot;0.0&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toStartOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintTop_toTopOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintVertical_bias</span>=<span class="hljs-string">&quot;0.0&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/button_insert&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;94dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;39dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;新增&quot;</span></span><br><span class="hljs-tag"></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toEndOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintHorizontal_bias</span>=<span class="hljs-string">&quot;0.5&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toStartOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintTop_toBottomOf</span>=<span class="hljs-string">&quot;@+id/editText&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintVertical_bias</span>=<span class="hljs-string">&quot;0.1&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/button_updata&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;更改&quot;</span></span><br><span class="hljs-tag"></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toEndOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintHorizontal_bias</span>=<span class="hljs-string">&quot;0.5&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toStartOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintTop_toBottomOf</span>=<span class="hljs-string">&quot;@+id/button_insert&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintVertical_bias</span>=<span class="hljs-string">&quot;0.1&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/button_delete&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;删除&quot;</span></span><br><span class="hljs-tag"></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toEndOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintHorizontal_bias</span>=<span class="hljs-string">&quot;0.5&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toStartOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintTop_toBottomOf</span>=<span class="hljs-string">&quot;@+id/button_updata&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintVertical_bias</span>=<span class="hljs-string">&quot;0.1&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/button_select&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;查询&quot;</span></span><br><span class="hljs-tag"></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toEndOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toStartOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintTop_toBottomOf</span>=<span class="hljs-string">&quot;@+id/button_delete&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Android-Studio/">Android Studio</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/AndroidStudio/">AndroidStudio</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

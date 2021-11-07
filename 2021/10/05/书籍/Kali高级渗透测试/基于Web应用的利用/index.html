@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>基于Web应用的利用 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="基于Web应用的利用">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-05 23:32" pubdate>
+        2021年10月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基于Web应用的利用</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月8日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="基于Web应用的利用"><a href="#基于Web应用的利用" class="headerlink" title="基于Web应用的利用"></a>基于Web应用的利用</h1><p>本章中学习的内容如下：</p>
+<ul>
+<li>Web应用程序攻击方法</li>
+<li>黑客攻击思维导图</li>
+<li>漏洞扫描</li>
+<li>特定应用程序的攻击</li>
+<li>利用密码漏洞和Web服务漏洞</li>
+<li>利用网络后门维持对目标系统的访问</li>
+</ul>
+<h1 id="1-Web应用程序攻击方法"><a href="#1-Web应用程序攻击方法" class="headerlink" title="1. Web应用程序攻击方法"></a>1. Web应用程序攻击方法</h1><p>Web应用程序入侵的方法</p>
+<p><img src="https://res.weread.qq.com/wrepub/epub_33211566_301" srcset="/img/loading.gif" lazyload alt="Web应用攻击方法"></p>
+<p>攻击方法分为六个阶段，具体解释如下：</p>
+<ol>
+<li>设定目标(set target)：设置正确的目标，关注特定的脆弱系统，根据杀链方法获得系统级访问</li>
+<li>爬虫与枚举(spider and enumerate)：攻击者确定了Web应用程序的列表，深入挖掘特定的漏洞。利用多种方法将爬虫应用于各种网页，并发现与之相关的东西以方便在下一阶段收益</li>
+<li>漏洞扫描(vulnerability scanning)：所有已知的漏洞都是从众所周知的漏洞数据库收集而来，这些数据库包含公开的漏洞或已知的常见安全错误配置</li>
+<li>利用(exploitation)：该阶段利用已知或伪装的漏洞，包括应用程序的业务逻辑等</li>
+<li>覆盖痕迹(cover track)：在这个阶段，攻击者尝试清除所有的攻击证据</li>
+<li>维持访问(maintain access)：攻击者可以植入一个后门程序，或利用系统执行特权升级，或将系统作为一个僵尸来执行更聚焦的内部攻击，如：在共享的驱动器上传播勒索软件，或对于大型机构，将受害系统都添加到一个域，控制整个企业</li>
+</ol>
+<h1 id="2-思维导图"><a href="#2-思维导图" class="headerlink" title="2. 思维导图"></a>2. 思维导图</h1><p>从攻击者的角度来看Web应用</p>
+<p><img src="https://res.weread.qq.com/wrepub/epub_33211566_302" srcset="/img/loading.gif" lazyload alt="Web应用黑客思维导图"></p>
+<p>思维导图被分为两类：服务端漏洞和客户端漏洞。</p>
+<p>这些漏洞通常由于以下原因产生：</p>
+<ul>
+<li>使用了旧的或未更新补丁的技术</li>
+<li>新技术的安全配置不充分</li>
+<li>代码编写未考虑安全性</li>
+<li>人为因素：缺少技术的员工</li>
+</ul>
+<p>对服务端，攻击者通常可以发起以下攻击：</p>
+<ul>
+<li>Web应用防火墙入侵</li>
+<li>注入攻击</li>
+<li>远程代码执行</li>
+<li>远程文件包含或本地文件包含</li>
+<li>目录路径遍历</li>
+<li>利用会话管理</li>
+<li>利用系统或应用的逻辑漏洞</li>
+<li>识别可以帮助攻击者执行专用攻击的其他相关信息</li>
+</ul>
+<p>客户端攻击倾向于利用客户端存在的漏洞，包括浏览器、应用程序或网络：</p>
+<ul>
+<li><p>Flash漏洞：Flash播放器漏洞(<a target="_blank" rel="noopener" href="https://www.cvedetails.com/vulnerability-list/vendor_id-53/product_id-6761/Adobe-Flash-Player.html">https://www.cvedetails.com/vulnerability-list/vendor_id-53/product_id-6761/Adobe-Flash-Player.html</a>)</p>
+</li>
+<li><p>JavaScript漏洞和Java漏洞</p>
+</li>
+<li><p>DNS的钉扎或重新绑定漏洞。DNS重新绑定是一种基于DNS将恶意代码嵌入Web页面的攻击</p>
+<p>  来自Web页面（JavaScript、Java和Flash）中的代码请求被绑定到它们源自的网站（参见同源策略）。DNS重新绑定攻击可以用来提高JavaScript恶意软件渗透私有网络的能力，并破坏浏览器的同源策略</p>
+</li>
+<li><p>非DNS的钉扎漏洞</p>
+</li>
+<li><p>脚本注入漏洞/跨站脚本攻击：反射、持久性（存储）和基于DNS的漏洞</p>
+</li>
+</ul>
+<h1 id="3-Web应用的侦察"><a href="#3-Web应用的侦察" class="headerlink" title="3. Web应用的侦察"></a>3. Web应用的侦察</h1><p>Web应用以及其提供的服务是特别复杂的。通常情况下，交付给最终用户的服务使用的是多层架构的应用服务器和Web服务器，服务器面向互联网的公众开放，同时与中间件服务、后端服务器和位于网络上的数据库进行通信</p>
+<p>测试过程中需要考虑引起复杂度上升的几个额外因素：</p>
+<ul>
+<li>网络架构，包括安全控制(防火墙、IDS/IPS和蜜罐)和配置(如负载均衡器)</li>
+<li>主机网络服务系统的平台架构(硬件、操作系统和附加应用程序)</li>
+<li>应用、中间件和终极数据库。可能采用不同的平台(UNIX或Windows)、供应商、编程语言，以及开源、商业和专用软件的组合、</li>
+<li>认证和授权过程，包括在应用程序中保持会话状态的过程</li>
+<li>管理应用程序和如何使用的基本业务逻辑</li>
+<li>客户端与网络服务的交互与通信</li>
+</ul>
+<p>目前最广泛接受的是<strong>开放Web应用安全项目</strong>(Open Web Application Security Project，OWASP)(<a target="_blank" rel="noopener" href="http://www.owasp.org),它列出了10大漏洞/">www.owasp.org),它列出了10大漏洞</a></p>
+<p>针对一些特定于Web应用侦察的活动，需要强调以下几点内容:</p>
+<ul>
+<li>确定目标Web应用，以及它是如何托管的</li>
+<li>枚举目标网站的目录结构和文件，包括确定是否在用一个内容管理系统(CMS)</li>
+<li>确定身份认证和授权机制，并确定在与网络服务的交易中，如何维护会话的状态。这通常包括利用代理工具对cookies的分析和使用</li>
+<li>枚举所有的表单，这些是用户输入数据以及与Web应用服务进行交互的主要手段</li>
+<li>确定接受输入的其他区域，如：允许文件上传的页面，以及可接受的文件类型的任何限制</li>
+<li>确定如何处理错误，以及由用户接受的实际错误信息</li>
+</ul>
+<p>尤其要确保识别托管的网站，然后使用DNS映射来确定由相同的服务器提供服务的主机位置。攻击最常见和最成功的方法之一，就是攻击位于目标服务器同一物理位置的非目标主机网站，利用服务器的弱点来获得root权限，然后使用特权升级攻击目标网站</p>
+<p>Web应用都托管在同一个软件即服务的模型上</p>
+<h2 id="3-1-Web应用防火墙和负载均衡器检测"><a href="#3-1-Web应用防火墙和负载均衡器检测" class="headerlink" title="3.1 Web应用防火墙和负载均衡器检测"></a>3.1 Web应用防火墙和负载均衡器检测</h2><p>确定存在的基于网络的防护设备，如：防火墙、IDS/IPS和蜜罐技术。以及越来越普遍的防护设备是Web应用防火墙(Web Application Firewall，WAF)</p>
+<p>WAF可能通过编码来绕过，WAF可通过手动检查cookie，或通过报头信息该改变来识别</p>
+<p>WAF检测可以通过nmap的脚本http-waf-detect.nse来实现</p>
+<p><code>nmap -p 80 --script http-waf-detect.nse URL/IP</code></p>
+<p>wafw00f脚本是一个自动化的工具，可以识别和提取基于网络的防火墙指纹，测试已证明它是用于此目的最准确的工具。</p>
+<p>使用命令<code>wafw00f URL/IP</code></p>
+<p><strong>负载均衡器</strong>(Load Balancing Detector，LBD)是一个bash shell脚本，确定给定的域是否使用了DNS或HTTP负载均衡。由于负载均衡器将请求转换到不同的服务器，所以是否使用是一个重要的元素</p>
+<p>lbd采用了多种检查来识别负载均衡的存在</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211008094732.png" srcset="/img/loading.gif" lazyload alt="lbd示例"></p>
+<h2 id="3-2-指纹识别Web应用和CMS"><a href="#3-2-指纹识别Web应用和CMS" class="headerlink" title="3.2 指纹识别Web应用和CMS"></a>3.2 指纹识别Web应用和CMS</h2><p>Web应用指纹识别是渗透测试人员了解运行的Web服务器、实现的Web技术版本和类型的第一项任务，这些会让攻击者确定已知的漏洞并适当利用</p>
+<p>使用连接远程主机的命令行工具，可以得到HTTP服务器响应，可能包含应用程序的Web服务器类型，server部分提供了应用构建技术的详细信息。获取信息后可以使用CVE Details(<a target="_blank" rel="noopener" href="https://www.cvedetails.com/vulnerabilit-list/vendor_id-74/product_id-128/PHP-PHP.html)%E7%AD%89%E8%B5%84%E6%BA%90%E7%A1%AE%E5%AE%9A%E5%B7%B2%E7%9F%A5%E7%9A%84%E6%BC%8F%E6%B4%9E">https://www.cvedetails.com/vulnerabilit-list/vendor_id-74/product_id-128/PHP-PHP.html)等资源确定已知的漏洞</a></p>
+<p>渗透测试的最终目标是获取敏感信息，网站应进行检查以确定用于构建和维护的CMS</p>
+<p>Kali中包括一个自动扫描器——BlindElephant，用于提取CMS指纹来确定版本信息</p>
+<p><code>BlindElephant.py &lt;URL/IP&gt; joomla</code></p>
+<p><img src="https://res.weread.qq.com/wrepub/epub_33211566_308" srcset="/img/loading.gif" lazyload alt="BlindElephant示例"></p>
+<p>BlindElephant检查CMS组件的指纹，然后为当前的版本提供一个最好的猜测。然而，与其他的应用一样，它可能无法检测CMS</p>
+<p>自动化网络爬虫，可用来验证已收集的信息，以及确定特定网站现有的目录和文件结构</p>
+<p>Kali支持多种网络爬虫包括Free Burp Suite、DirBuster、OWASP-ZAP、Vega、WebScarab和WebSlayer。最常用的工具是DirBuster</p>
+<p>DirBuster是图形用户界面驱动的，使用可能的目录和文件列表，对网站的结构进行暴力分析的应用程序。可以以表或树的格式查看响应，并且能准确地反映网站的结构，此处需要自己提供目录字典进行扫描</p>
+<h2 id="3-3-设置镜像网站"><a href="#3-3-设置镜像网站" class="headerlink" title="3.3 设置镜像网站"></a>3.3 设置镜像网站</h2><p>克隆或下载所有可用的本地网站信息，是基本的步骤</p>
+<p>Kali提供了一个内置的应用httrack，可将网站内容下载到本地系统<code>httrack URL/IP -O /root/chap7</code></p>
+<p>当httrack执行完成，测试人员就能够在本地加载应用程序并获取信息、识别实现缺陷</p>
+<h1 id="4-客户端代理"><a href="#4-客户端代理" class="headerlink" title="4. 客户端代理"></a>4. 客户端代理</h1><p>客户端代理截获HTTP和HTTPS流量，允许渗透测试人员检查用户与应用程序之间的通信。它允许测试人员复制数据或与发送到应用的请求进行交互</p>
+<p>Kali带有几个客户端代理，包括Burp Suite、OWASP ZAP、Paros、ProxyStrike、漏洞扫描器Vega和WebScarab。经过广泛的测试，我们已经开始依赖Burp代理，将ZAP作为一种备份工具，本章中将会介绍Burp使用<del>Brup的内容之前学习过的跳过</del></p>
+<h2 id="4-2-Web抓取和目录的暴力破解"><a href="#4-2-Web抓取和目录的暴力破解" class="headerlink" title="4.2 Web抓取和目录的暴力破解"></a>4.2 Web抓取和目录的暴力破解</h2><p>Web抓取是一种使用机器人或自动化脚本从网站获取特定信息的过程</p>
+<p>Kali为执行此活动提供了内置的应用程序</p>
+<p>攻击者可以利用WebSploit来执行Web扫描、抓取和分析。例如，为了在多个站点上识别phpmyadmin，攻击者可以通过在终端上运行WebSploit来配置WebSploit模块，输入use web/pma，使用set target victim来设置目标主机，运行后如图所示</p>
+<p><img src="https://res.weread.qq.com/wrepub/epub_33211566_317" srcset="/img/loading.gif" lazyload alt="示例"></p>
+<p>还可以使用OWASP、DirBuster和其他工具来执行相同的操作</p>
+<h2 id="4-3-网络服务专用漏洞扫描器"><a href="#4-3-网络服务专用漏洞扫描器" class="headerlink" title="4.3 网络服务专用漏洞扫描器"></a>4.3 网络服务专用漏洞扫描器</h2><p>漏洞扫描器是自动运行得到应用程序，抓取应用以确定已知漏洞的签名</p>
+<p>Kali附带了几个预安装的漏洞扫描器。渗透测试人员通常会使用两个或三个全面扫描器对同一目标扫描，以确保有效的结果</p>
+<p>常见重要的漏洞扫描器</p>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Arachnid</td>
+<td>开源的Ruby框架，分析扫描接收到的HTTP响应，验证响应并消除误报</td>
+</tr>
+<tr>
+<td>GoLismero</td>
+<td>映射Web应用程序，并且检测常见的漏洞。结果保存为TXT、CVS、HTML和RAW格式</td>
+</tr>
+<tr>
+<td>Nikto</td>
+<td>基于Perl的开源扫描器，允许IDS躲避以及用户改变扫描模块</td>
+</tr>
+<tr>
+<td>Skipfish</td>
+<td>递归抓取和基于字典的抓取以生成目标网站的交互站点网站，并使用附加的漏洞扫描</td>
+</tr>
+<tr>
+<td>Vega</td>
+<td>基于GUI的开源漏洞扫描器</td>
+</tr>
+<tr>
+<td>w3af</td>
+<td>映射目标网站，扫描漏洞</td>
+</tr>
+<tr>
+<td>Wapiti</td>
+<td>基于Python的开源漏洞扫描器</td>
+</tr>
+<tr>
+<td>Webscarab</td>
+<td>OWASP的基于Java框架，用于分析HTTP和HTTPS协议，可作为拦截代理、模糊器和简单的漏洞扫描器</td>
+</tr>
+<tr>
+<td>Webshag</td>
+<td>基于Python的网页爬虫和扫描器，可以利用复杂的IDS躲避</td>
+</tr>
+<tr>
+<td>WebSploit</td>
+<td>用于无线和蓝牙攻击的一个高级中间人框架</td>
+</tr>
+</tbody></table>
+<h1 id="5-针对特定应用的攻击"><a href="#5-针对特定应用的攻击" class="headerlink" title="5. 针对特定应用的攻击"></a>5. 针对特定应用的攻击</h1><h2 id="5-1-暴力破解访问证书"><a href="#5-1-暴力破解访问证书" class="headerlink" title="5.1 暴力破解访问证书"></a>5.1 暴力破解访问证书</h2><p>对网站或其服务最常见的初始攻击之一是针对访问认证的暴力破解攻击，猜测用户名和密码</p>
+<p>Kali配置了hydra（一个命令行工具）和hydra-gtk（它有一个GUI界面）</p>
+<p>这两种工具允许测试用户密码，并支持多种通信协议包括FTP、FTPS、HTTP、HTTPS、ICQ、IRC、LDAP、MySQL、Oracle、POP3、pcAnywhere、SNMP、SSH、VNC等</p>
+<h2 id="5-2-注入"><a href="#5-2-注入" class="headerlink" title="5.2 注入"></a>5.2 注入</h2><p>本节介绍常见的注入攻击</p>
+<ol>
+<li><p>使用commix的OS命令行注入</p>
+<p> 命令行注入开发（commix）是一种用Python编写的自动化工具，在Kali Linux中预编译，如果应用能够被命令注入，则它可以执行各种OS命令。它允许攻击者在应用的特定漏洞部分，甚至在HTTP头中进行注入</p>
+<p> 当对目标URL运行commix工具时，渗透测试人员能够看到在目标服务器上执行命令的进度，以及漏洞的参数。target_host是使用经典注入技术注入的漏洞</p>
+<p> <img src="https://res.weread.qq.com/wrepub/epub_33211566_322" srcset="/img/loading.gif" lazyload alt="commix注入-1"></p>
+<p> 一旦注入成功，攻击者就可以在服务器上运行命令，例如dir，列出所有的文件和文件夹</p>
+<p> <img src="https://res.weread.qq.com/wrepub/epub_33211566_323" srcset="/img/loading.gif" lazyload alt="commix示例-2"></p>
+</li>
+<li><p>SQL注入</p>
+<p> <del>重复内容略过</del></p>
+</li>
+<li><p>XML注入</p>
+<p> 大量的Web应用使用了可扩展标记语言（ExtensibleMarkup Language，XML），其定义了一系列编码规则，使得人和机器都容易理解。XML注入利用XML应用或服务的逻辑漏洞，向XML结构或内容中注入攻击信息</p>
+<p> 以下为示例攻击</p>
+<ol>
+<li><p>进入目标页面</p>
+<p> <img src="https://res.weread.qq.com/wrepub/epub_33211566_330" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>在表格中输入以下命令<code>&lt;!DOCTYPE foo [&lt;!ENTITY Variable &quot;hello&quot;&gt;]&gt;&lt;somexml&gt;&lt;message&gt;&amp;Variable;&lt;/message&gt;&lt;/somexml&gt;</code></p>
+<p> 之后如果返回hello即为成功</p>
+</li>
+<li><p>如果服务器没有响应错误信息，则意味着系统可能存在XML注入漏洞</p>
+</li>
+<li><p>创建一个负载，将SYSTEM加入变量，并调用一个本地文件<code>&lt;!DOCTYPE foo [&lt;!ENTITY Variable &quot;file:///c:/windows/win.ini&quot;&gt;]&gt;&lt;somexml&gt;&lt;message&gt;&amp;Variable;&lt;/message&gt;&lt;/somexml&gt;</code>即可查看文件内容，攻击者可能通过获取整个系统的直接访问权限来进行PowerShell攻击</p>
+</li>
+</ol>
+</li>
+<li><p>位翻转攻击</p>
+<p> 利用密码分块链（Cipher Block Chain，CBC）模式加密给定的明文</p>
+<p> 在CBC模式中，在加密一个分块前，通过创建一个分块逻辑链，明文会与上一个分组的加密输出结果进行异或（XOR）</p>
+<p> <img src="https://res.weread.qq.com/wrepub/epub_33211566_335" srcset="/img/loading.gif" lazyload alt="CBC模式"></p>
+<p> 这里潜在的攻击场景是第一个分块的异或输入是初始向量。</p>
+<p> 访问mutillidae导航到OWASP2017&gt;A1-Injection(Other)&gt;CBC bit flipping：</p>
+<p> <img src="https://res.weread.qq.com/wrepub/epub_33211566_337" srcset="/img/loading.gif" lazyload alt="CBC示例"></p>
+<p> 当前运行应用的用户的用户ID和组ID分别都是100。需要做的是成为组000中的用户000以变为高权限的root用户</p>
+<p> 我们唯一要做的就是修改初始向量值6bc24fc1ab650b25b4114e93a98f1eba。这是一个32个字符长度的十六进制数，即二进制长度为128位。然后，我们开始评估初始向量，通过依次访问将值分为两个字符一个分块，并改变URL中的值</p>
+<p> <a target="_blank" rel="noopener" href="http://192.168.0.101/mutillidae/index.php?page=view-user-privilege-level.php&amp;iv=00c24fc1ab650b25b4114e93a98f1eba:%E4%B8%8D%E6%94%B9%E5%8F%98%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%9A%84ID">http://192.168.0.101/mutillidae/index.php?page=view-user-privilege-level.php&amp;iv=00c24fc1ab650b25b4114e93a98f1eba:不改变用户和组的ID</a></p>
+<p> <a target="_blank" rel="noopener" href="http://192.168.0.101/mutillidae/index.php?page=view-user-privilege-level.php&amp;iv=6b004fc1ab650b25b4114e93a98f1eba:%E4%B8%8D%E6%94%B9%E5%8F%98%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%9A%84ID">http://192.168.0.101/mutillidae/index.php?page=view-user-privilege-level.php&amp;iv=6b004fc1ab650b25b4114e93a98f1eba:不改变用户和组的ID</a></p>
+<p> 在第5个分组6bc24fc100650b25b4114e93a98f1eba时，用户的ID发生了改变</p>
+<p> 尝试修改将异或的值尝试到000</p>
+<p> 为了变成root用户，用户ID和组ID都需要为000，所以我们在所有分块重复上面的过程，直到值发生改变。最后，在第8个分块6bc24fc1ab650b14b4114e93a98f1eba时，组ID发生了改变。然后进行类似于用户ID的处理</p>
+<p> 最后得到了如下结果：6bc24fc1aa650b24b4114e93a98f1eba。如图所示，利用新的值替换初始向量，就可以提升权限访问应用</p>
+<p> <img src="https://res.weread.qq.com/wrepub/epub_33211566_341" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>使用Web Shell维持访问</p>
+<p> 此处介绍流行的PHP Web Shell小程序Weevely，其他技术可以访问<a target="_blank" rel="noopener" href="http://webshell-archive.org/">http://webshell-archive.org/</a></p>
+<p> Weevely模拟一个远程会话，并允许测试人员或攻击者利用30多个模块进行后期开发利用，包括以下优势：</p>
+<ul>
+<li>浏览目标文件系统</li>
+<li>从受感染的系统进行文件传输</li>
+<li>对通用服务器错误配置执行审计</li>
+<li>通过目标系统暴力破解SQL账户</li>
+<li>产生逆向TCP外壳</li>
+<li>在已被侵入的远程系统上执行命令，即使已应用PHP的安全性限制</li>
+</ul>
+<p> Weevely隐藏HTTP cookie中的通信以逃避检测。要创建Weevely，在命令提示符输入以下命令：<code>weevely generate &lt;password&gt; &lt;path&gt;</code></p>
+<p> 这将在对应目录下生成对应密码的php文件</p>
+<p> 连接命令<code>weevely URL/IP &lt;password&gt;</code></p>
+<p> Web Shell也可以用来建立一个反向外壳，连接回测试者，使用netcat或Metasploit框架作为本地监听器。可以通过水平或垂直逐步提升特权来进一步攻击网络内部</p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,494 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>Web练习题1 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Web练习题1">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-20 21:10" pubdate>
+        2021年7月20日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Web练习题1</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月23日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="1-Robots"><a href="#1-Robots" class="headerlink" title="1. Robots"></a>1. Robots</h1><p>题目地址<a href="http://host:port/web/robots/index.php">http://host:port/web/robots/index.php</a></p>
+<p>访问地址后显示内容</p>
+<p><img src="https://pic.imgdb.cn/item/60f6ce575132923bf8150a4a.png" srcset="/img/loading.gif" lazyload></p>
+<p>需要找到admin界面，参考题目中的robots，访问robots.txt</p>
+<p>显示内容有/11111111目录，访问该目录</p>
+<p>显示内容</p>
+<blockquote>
+<p>you find me,but I am not the login page. keep search.</p>
+</blockquote>
+<p>此时根据显示的提示，访问该目录下的login.php</p>
+<p>得到flag：flag{4067152f7f9a6c51176b8fbf4ebf8d93}</p>
+<h1 id="2-RCE1"><a href="#2-RCE1" class="headerlink" title="2. RCE1"></a>2. RCE1</h1><p>访问<a href="http://host:port/web/rce1/index.php">http://host:port/web/rce1/index.php</a></p>
+<p>获得源码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>error_reporting(<span class="hljs-number">0</span>);<br><span class="hljs-keyword">include</span> <span class="hljs-string">&quot;flag.php&quot;</span>;<br><span class="hljs-variable">$a</span> = @<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;hello&#x27;</span>];<br><span class="hljs-keyword">eval</span>( <span class="hljs-string">&quot;var_dump(<span class="hljs-subst">$a</span>);&quot;</span>);<br>show_source(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-meta">?&gt;</span> <br></code></pre></div></td></tr></table></figure>
+
+<p>根据返回的内容，可以控制的参数是$a，尝试将var_dump闭合后输出自己需要的内容</p>
+<p>传入参数?hello=);echo(hello。发现输出内容hello。证明可以通过eval获取内容</p>
+<p>查询目录下的文件</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">?hello=);<span class="hljs-keyword">print</span>(`ls`<br><span class="hljs-comment"># 获得内容1.php flag.php index.php</span><br><span class="hljs-comment"># 读取flag.php内容后发现无回显，尝试其他的函数也无果</span><br>?hello=);<span class="hljs-keyword">print</span>(`cat flag.php`<br></code></pre></div></td></tr></table></figure>
+
+<p>最后注意到已经包含了flag.php文件</p>
+<p>尝试直接输出flag内容 ?hello=);print($flag</p>
+<p><img src="https://pic.imgdb.cn/item/60f6d3015132923bf82db1eb.png" srcset="/img/loading.gif" lazyload></p>
+<p>得到flag：flag{Ni_1s_vEry_Str0ng}</p>
+<h1 id="3-RCE2"><a href="#3-RCE2" class="headerlink" title="3. RCE2"></a>3. RCE2</h1><p>访问<a href="http://host:port/web/rce1/index.php">http://host:port/web/rce1/index.php</a></p>
+<p>源码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php+HTML">&lt;?php<br><br>$res = FALSE;<br><br>if (isset($_GET[&#x27;ip&#x27;]) &amp;&amp; $_GET[&#x27;ip&#x27;]) &#123;<br>    $ip = $_GET[&#x27;ip&#x27;];<br>    $m = [];<br>    if (!preg_match_all(&quot;/(\||&amp;|;| |\/|cat|flag)/&quot;, $ip, $m)) &#123;<br>        $cmd = &quot;ping -c 4 &#123;$ip&#125;&quot;;<br>        exec($cmd, $res);<br>    &#125; else &#123;<br>        $res = $m;<br>    &#125;<br>&#125;<br>?&gt;<br><br>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;RCE2&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br><br>&lt;h1&gt;RCE2&lt;/h1&gt;<br><br>&lt;form action=&quot;#&quot; method=&quot;GET&quot;&gt;<br>    &lt;label for=&quot;ip&quot;&gt;IP : &lt;/label&gt;&lt;br&gt;<br>    &lt;input type=&quot;text&quot; id=&quot;ip&quot; name=&quot;ip&quot;&gt;<br>    &lt;input type=&quot;submit&quot; value=&quot;Ping&quot;&gt;<br>&lt;/form&gt;<br><br>&lt;hr&gt;<br><br>&lt;pre&gt;<br>&lt;?php<br>if ($res) &#123;<br>    print_r($res);<br>&#125;<br>?&gt;<br>&lt;/pre&gt;<br><br>&lt;?php<br>show_source(__FILE__);<br>?&gt;<br><br>&lt;/body&gt;<br>&lt;/html&gt; <br></code></pre></div></td></tr></table></figure>
+
+<p>这里常用的<code>|</code>,<code>&amp;</code>,<code>;</code>都被限制了，经过查询，%0a可以进行绕过。利用ls尝试得到回显</p>
+<p><img src="https://pic.imgdb.cn/item/60f6d47b5132923bf834dbb5.png" srcset="/img/loading.gif" lazyload></p>
+<p>之后根据返回的内容准备切换到flag_is_here后获取目录，由于flag被限制了，所以尝试\绕过</p>
+<p>在尝试过程中始终没有正确的回显，尝试将空格换成${IFS}之后获得回显</p>
+<p><img src="https://pic.imgdb.cn/item/60f6d5b95132923bf83ac48d.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后读取文件中的内容即可，还是利用\绕过检查</p>
+<p>flag：flag{4593c1e6aa2f57ac2b76500f2c5cea5d99fa7c7b}</p>
+<h1 id="4-input"><a href="#4-input" class="headerlink" title="4. input"></a>4. input</h1><p>访问<a href="http://host:port/web/rce1/index.php">http://host:port/web/rce1/index.php</a></p>
+<p>由于直接使用BP访问的，所以直接就看到了隐藏的代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$user</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&quot;user&quot;</span>];    <br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$user</span>)&amp;&amp;(file_get_contents(<span class="hljs-variable">$user</span>,<span class="hljs-string">&#x27;r&#x27;</span>)===<span class="hljs-string">&quot;welcome to the Bili&#x27;s world&quot;</span>))&#123; <br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;hello Bili_friend!&lt;br&gt;&quot;</span>;  <br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;flag&#123;*******&#125;&quot;</span>;<br>&#125; <br></code></pre></div></td></tr></table></figure>
+
+<p>通过代码的阅读，想到了使用伪协议绕过</p>
+<p>通过查询</p>
+<p>构造?user=php://input在post部分添加welcome to the Bili’s world</p>
+<p>或者?user=data://test/plain,welcome+to+the+Bili’s+world</p>
+<p>得到flag：flag{Y0u_aRe_G0og!} </p>
+<h1 id="5-LX-web4"><a href="#5-LX-web4" class="headerlink" title="5.LX web4"></a>5.LX web4</h1><p>访问<a href="http://host:port/LX/web4/index.php">http://host:port/LX/web4/index.php</a></p>
+<p>得到如下回显</p>
+<p><img src="https://pic.imgdb.cn/item/60f6d8145132923bf8462a32.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过对源码的查看发现隐藏了一个ver，获取版本查看返回的报文即可，该版本是PHP/5.4.41</p>
+<p>尝试全部填写5.4.41无回显，尝试目录扫描后发现有index.php.bak文件，下载后，通过阅读代码，发现get可以上传ver的值。</p>
+<p>此时加上get的ver=5.4.41</p>
+<p>得到flag：flag{Y3ah,y0u_g3t_th3_flag}</p>
+<h1 id="6-ddctf"><a href="#6-ddctf" class="headerlink" title="6. ddctf"></a>6. ddctf</h1><p>访问<a href="http://host:port/web/ddctf/">http://host:port/web/ddctf/</a></p>
+<p>跳转界面，按照内容跳转。</p>
+<p>得到一个图片的界面，且有标题，对跳转的参数，尝试破解。</p>
+<p>进行两次base64解码后得到一串字母最大为e的，推断是16进制转字符。最后转换后得到flag.jpg。</p>
+<p>编写转换的工具</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> binascii<br><span class="hljs-keyword">import</span> base64<br><span class="hljs-comment"># 输入需要转化的内容并转换为16进制</span><br>nr=binascii.hexlify(<span class="hljs-string">b&#x27;index.php&#x27;</span>)<br><span class="hljs-comment"># 得到16进制</span><br>nr=<span class="hljs-built_in">str</span>(nr,encoding=<span class="hljs-string">&quot;utf-8&quot;</span>)<br><span class="hljs-comment">#进行两次base64编码</span><br>re=base64.b64encode(nr.encode())<br>re=base64.b64encode(re)<br><span class="hljs-built_in">print</span>(nr)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">str</span>(re,encoding=<span class="hljs-string">&quot;utf-8&quot;</span>))<br></code></pre></div></td></tr></table></figure>
+
+<p>得到index.php的编码</p>
+<blockquote>
+<p>TmprMlpUWTBOalUzT0RKbE56QTJPRGN3</p>
+</blockquote>
+<p>传入参数得到index.php的源码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * https://blog.csdn.net/FengBanLiuYun/article/details/80913909</span><br><span class="hljs-comment"> * Date: July 4,2018</span><br><span class="hljs-comment"> */</span><br>error_reporting(E_ALL || ~E_NOTICE);<br> <br> <br>header(<span class="hljs-string">&#x27;content-type:text/html;charset=utf-8&#x27;</span>);<br><span class="hljs-keyword">if</span>(! <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;jpg&#x27;</span>]))<br>    header(<span class="hljs-string">&#x27;Refresh:0;url=./index.php?jpg=TmpZMlF6WXhOamN5UlRaQk56QTJOdz09&#x27;</span>);<br><span class="hljs-variable">$file</span> = hex2bin(base64_decode(base64_decode(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;jpg&#x27;</span>])));<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;title&gt;&#x27;</span>.<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;jpg&#x27;</span>].<span class="hljs-string">&#x27;&lt;/title&gt;&#x27;</span>;<br><span class="hljs-variable">$file</span> = preg_replace(<span class="hljs-string">&quot;/[^a-zA-Z0-9.]+/&quot;</span>,<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-variable">$file</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$file</span>.<span class="hljs-string">&#x27;&lt;/br&gt;&#x27;</span>;<br><span class="hljs-variable">$file</span> = str_replace(<span class="hljs-string">&quot;config&quot;</span>,<span class="hljs-string">&quot;!&quot;</span>, <span class="hljs-variable">$file</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$file</span>.<span class="hljs-string">&#x27;&lt;/br&gt;&#x27;</span>;<br><span class="hljs-variable">$txt</span> = base64_encode(file_get_contents(<span class="hljs-variable">$file</span>));<br> <br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;img src=&#x27;data:image/gif;base64,&quot;</span>.<span class="hljs-variable">$txt</span>.<span class="hljs-string">&quot;&#x27;&gt;&lt;/img&gt;&quot;</span>;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * Can you find the flag file?</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> */</span><br> <br><span class="hljs-meta">?&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>根据代码，首先是内容必须是字母及数字</p>
+<p>其次config会被转化为!</p>
+<p>注意到第一行有链接，点进去后发现是备份文件。参数各种flag.swp等等无果后尝试文章中其中的**.practice.txt.swp**</p>
+<p>解码后得到f1ag!ddctf.php文件</p>
+<p>尝试继续读取其中的内容</p>
+<p>发现无回显，但是都能够访问了。此时注意到其中有一个感叹号，不满足要求。但是可以通过config转化为!</p>
+<p>对f1agconfigddctf.php编译后传入访问。对内容解码后</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">include</span>(<span class="hljs-string">&#x27;config.php&#x27;</span>);<br><span class="hljs-variable">$k</span> = <span class="hljs-string">&#x27;hello&#x27;</span>;<br>extract(<span class="hljs-variable">$_GET</span>);<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$uid</span>))<br>&#123;<br>    <span class="hljs-variable">$content</span>=trim(file_get_contents(<span class="hljs-variable">$k</span>));<br>    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$uid</span>==<span class="hljs-variable">$content</span>)<br>        &#123;<br>                <span class="hljs-keyword">echo</span> <span class="hljs-variable">$flag</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>                <span class="hljs-keyword">echo</span><span class="hljs-string">&#x27;hello&#x27;</span>;<br>        &#125;<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>此时有函数extract涉及到变量覆盖，通过查询使用参数后不带内容即可</p>
+<p>f1ag!ddctf.php?k=&amp;uid=</p>
+<p>最后得到flag：flag{DDCTF_Ex1mpl1!!!}</p>
+<p>在目录扫描时发现有文件config.php~和index.php~，其中可直接获取flag</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ctf/">ctf</a>
+                    
+                      <a class="hover-with-bg" href="/tags/rce/">rce</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">伪协议</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

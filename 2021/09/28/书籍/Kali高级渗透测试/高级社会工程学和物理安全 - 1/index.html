@@ -1,0 +1,603 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>高级社会工程学和物理安全 - 1 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="高级社会工程学和物理安全 - 1">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-28 11:06" pubdate>
+        2021年9月28日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">高级社会工程学和物理安全 - 1</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月4日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="高级社会工程学和物理安全-1"><a href="#高级社会工程学和物理安全-1" class="headerlink" title="高级社会工程学和物理安全 - 1"></a>高级社会工程学和物理安全 - 1</h1><p>社会工程学是从人出发提取信息的一门艺术。社会工程学攻击可有效用于欺骗用户从而获取目标系统的物理访问</p>
+<p>社会工程学攻击能够成功的关键因素有以下两个：</p>
+<ul>
+<li>在侦察阶段获取的信息，攻击者必须知道目标的名称和用户名。更重要的是，攻击者要弄清楚目标网络中用户所关注的东西</li>
+<li>弄清楚如何利用这些信息说服潜在目标，通过角色模仿，用电话与他们交谈，向他们发送请求，劝说可能的目标点击某个链接或者执行某个程序，从而进行攻击</li>
+</ul>
+<p>Kali Linux提供了一些工具和框架，在利用社会工程学去影响受害者，使其打开文件或执行某些操作时，这些工具和框架能够增加成功的机会。例如，Metasploit框架生成的基于文件的可执行文件，以及非可执行文件攻击技术（如利用Empire的PowerShell脚本）</p>
+<p>本章中主要介绍社会工程学工具包(Social-Engineering Tooljit, SEToolkit)和Gophish。</p>
+<p>在本章中将介绍：</p>
+<ul>
+<li>攻击者利用的不同社会工程学攻击方法</li>
+<li>在控制台执行物理攻击</li>
+<li>使用微控制器和USB创建流氓物理设备</li>
+<li>使用凭据收割机攻击窃取或者收集用户和密码</li>
+<li>进行标签钓鱼和Web劫持攻击</li>
+<li>使用多种Web混合攻击</li>
+<li>使用PowerShell的字母数字shellcode注入攻击</li>
+<li>在Kali Linux上设置Gophish</li>
+<li>启动电子邮件网络钓鱼攻击</li>
+<li>描述一般的应用实践：<ol>
+<li>隐藏恶意的可执行文件和伪装攻击者的URL</li>
+<li>使用DNS重定向来升级攻击</li>
+<li>通过USB获取系统和网络的访问权限</li>
+</ol>
+</li>
+</ul>
+<h1 id="1-方法论和攻击方法"><a href="#1-方法论和攻击方法" class="headerlink" title="1. 方法论和攻击方法"></a>1. 方法论和攻击方法</h1><p>作为一种支持杀链的攻击途径，社会工程学关注的是攻击的不同方面，具体来说就是利用人的信任关系或者内部人员的帮助，通过欺骗的手段入侵一个网络及其资源。攻击者获取信息的不同攻击方式如图</p>
+<p><img src="https://res.weread.qq.com/wrepub/epub_33211566_199" srcset="/img/loading.gif" lazyload alt="获取信息的不同攻击方式"></p>
+<p>从此将社会工程学攻击分成两大类：</p>
+<p>基于技术的攻击和基于人的攻击</p>
+<h2 id="1-1-基于技术的攻击"><a href="#1-1-基于技术的攻击" class="headerlink" title="1.1 基于技术的攻击"></a>1.1 基于技术的攻击</h2><p>本章分别探讨在Kali Linux上实施基于计算机的攻击和基于手机的攻击</p>
+<ol>
+<li><p>基于计算机的攻击</p>
+<p> 利用计算机实现社会工程学攻击的方法分为以下类型：</p>
+<ol>
+<li>电子邮箱钓鱼(Email phishing)：攻击者利用电子邮件获取信息，或利用受害者系统中已知软件漏洞的攻击</li>
+<li>引诱(Baiting)：一种用于嵌入已知漏洞并创建后门的技术，通过使用U盘和光盘实现目标。引诱更注重通过物理媒介来利用人类发好奇心。攻击者可以创建一个木马，通过自动运行功能，或当用户单击打开驱动器中的文件时，木马将为他们提供对系统的后门访问</li>
+<li>WiFi钓鱼(WiFi phishing)：渗透测试人员可以通过设置类似于目标企业的假WiFi获取用户名和木马。例如：如果攻击者的目标是XYZ公司，通过将WiFi中的SSID设置为该公司完全相同或相似，允许用户在没有任何秘密的情况下连接到假的无线路由器</li>
+</ol>
+</li>
+<li><p>基于手机的攻击</p>
+<ol>
+<li>短信钓鱼(SMSishing)：攻击者利用短信访问(Short Message Service, SMS)发送链接或者短信诱使目标点击或回复，从而实施钓鱼攻击。渗透测试人员还可以使用公开提供的服务，例如<a target="_blank" rel="noopener" href="https://www.spoofmytextmessage.com/free">https://www.spoofmytextmessage.com/free</a></li>
+<li>二维码(Quick Response Code, QR code)：在红队训练中，二维码是将攻击数据发送到孤立的目标区域最有效的方法。与垃圾邮箱类似，可以将二维码打印并粘贴到人流密集的地方</li>
+</ol>
+</li>
+</ol>
+<h2 id="1-2-基于人的攻击"><a href="#1-2-基于人的攻击" class="headerlink" title="1.2 基于人的攻击"></a>1.2 基于人的攻击</h2><p>基于人的攻击是最有效的，针对不同的人性弱点所实施的攻击的不同类型和策略</p>
+<ol>
+<li><p>物理攻击</p>
+<p> 物理攻击通常指涉及攻击者的物理存在所进行的社会工程学攻击。以下是可能执行的两种物理攻击：</p>
+<ol>
+<li>冒充(Impersonation)：这需要测试人员创建一个剧本，模仿一个重要的人物来收集目标公司一组员工的信息。</li>
+<li>控制台上的攻击(Attacks at the console)：设计物理访问相同的所有攻击，例如：更改管理员用户的秘密、植入键盘记录器、提取存储的浏览器密码或安装后门</li>
+</ol>
+</li>
+<li><p>基于语音的攻击</p>
+<p> 任何利用语音信息欺骗用户对计算机执行操作或泄露敏感信息的攻击都可称为基于语音的社会工程学攻击</p>
+<ul>
+<li>语音钓鱼(Vishing)是利用语音消息记录或单独与受害者通话从而提取受害者个人或群体的信息的艺术。通常，语音钓鱼涉及可信任的剧本</li>
+</ul>
+</li>
+</ol>
+<h1 id="2-控制台上的物理攻击"><a href="#2-控制台上的物理攻击" class="headerlink" title="2. 控制台上的物理攻击"></a>2. 控制台上的物理攻击</h1><h2 id="2-1-samdump2和chntpw"><a href="#2-1-samdump2和chntpw" class="headerlink" title="2.1 samdump2和chntpw"></a>2.1 samdump2和chntpw</h2><p>转储密码散列的最佳方法之一是使用samdump2。可以通过打开所获得的系统电源，然后利用Kali U盘在BIOS中进行必要的更改来完成</p>
+<ol>
+<li>系统通过Kali启动后，在默认情况下，本地硬盘驱动器必须安装为一个媒体驱动器(假设媒体驱动器没有使用PGP或类似的加密)</li>
+<li>如果驱动器无法安装，可以通过以下的步骤来安装驱动器，运行以下命令<code>mkdir /mnt/target1</code> <code>mount /dev/sda2 /mnt/target1</code></li>
+<li>系统安装完成后，找到安装文件夹(一般是/media/root/&lt;ID&gt;/Windows/System32/Config)，并运行samdump2SYSTEM SAM</li>
+</ol>
+<p>此处应该是用u盘在BIOS中进行操作，具体操作目前不清楚后期跟进</p>
+<h2 id="2-2-粘滞键"><a href="#2-2-粘滞键" class="headerlink" title="2.2 粘滞键"></a>2.2 粘滞键</h2><p>物理访问已解锁或没有密码的Windows计算机的控制台。攻击者可以利用Microsoft Windows粘滞键功能，在几秒钟之内建立一个后门。但是，需要一个管理员权限来替换可执行文件。一旦系统通过Kali Linux启动，攻击者就可以替换文件而不受任何限制。以下是攻击者用cmd.exe或powershell.exe替换Windows的实用程序的列表：</p>
+<ul>
+<li>sethc.exe</li>
+<li>utilman.exe</li>
+<li>osk.exe</li>
+<li>narrator.exe</li>
+<li>magnify.exe</li>
+<li>displayswitch.exe</li>
+</ul>
+<p>之后跟进具体操作</p>
+<h1 id="3-创建流氓物理设备"><a href="#3-创建流氓物理设备" class="headerlink" title="3. 创建流氓物理设备"></a>3. 创建流氓物理设备</h1><p>查看后发现有点无法进行实际操作，之后尝试具体操作</p>
+<h1 id="4-社会工程学工具包"><a href="#4-社会工程学工具包" class="headerlink" title="4. 社会工程学工具包"></a>4. 社会工程学工具包</h1><p>在命令行中输入<code>setoolkit</code>进入主界面</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211003191845.png" srcset="/img/loading.gif" lazyload alt="SEToolkit 主界面"></p>
+<blockquote>
+<p> Select from the menu:</p>
+<ol>
+<li><p>Social-Engineering Attacks</p>
+</li>
+<li><p>Penetration Testing (Fast-Track)</p>
+</li>
+<li><p>Third Party Modules</p>
+</li>
+<li><p>Update the Social-Engineer Toolkit</p>
+</li>
+<li><p>Update SET configuration</p>
+</li>
+<li><p>Help, Credits, and About</p>
+</li>
+</ol>
+<div class="hljs code-wrapper"><pre><code>Exit the Social-Engineer Toolkit
+</code></pre></div>
+<p>1)社会工程学攻击  </p>
+<p>2)渗透测试(快速通道)  </p>
+<p>3)第三方模块  </p>
+<p>4)更新社会工程师工具包  </p>
+<p>5)更新SET配置  </p>
+<p>6)帮助、信用和About </p>
+<p>退出社会工程师工具箱  </p>
+</blockquote>
+<p>之后选择1(社会工程学攻击)</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211003191704.png" srcset="/img/loading.gif" lazyload alt="SEToolkit 子菜单"></p>
+<p>下面对社会工程学攻击做简单介绍：</p>
+<ol>
+<li><strong>网络钓鱼攻击媒介</strong>(Spear-Phishing Attack Vector)：攻击者创建邮件信息，并使用附加漏洞将信息发送给目标受害者</li>
+<li><strong>网站攻击媒介</strong>(Website Attack Vectors)：使用多重基于Web的攻击，包括：<ol>
+<li>Java小程序攻击方法(Java applet attack method)：伪造一份Java证书，并且运行一个基于Metasploit的负载，可有效针对Windows、Linux和MacOS目标进行攻击</li>
+<li>Metasploit浏览器利用方法(Metasploit browser exploit method)：使用iFrame攻击，运行一个Metasploit负载</li>
+<li>凭据收割机攻击方法(Credential harvester attack method)：对网站进行复制，并且通过对POST参数进行重写，使得攻击者可以拦截并窃取用户的凭证。当窃取完成后，将受害者重定向回原来的网站</li>
+<li>标签钓鱼攻击方法(Tabnabbing attack method)：对一个非活动的浏览器标签页面进行复制，修改复制后的页面，使其与攻击者连接，最后使用该页面替换原有标签信息。当用户登录该页面时，用户的凭证将回发送给攻击者</li>
+<li>Web劫持攻击方法(Web jacking attack method)：使用iFrame替代，合法地将某些URL连接设置为高亮。当该链接被点击时弹出一个窗口，该窗口连接到一个恶意链接</li>
+<li>Web综合攻击方法(Multi-attack Web method)：允许一个攻击者选择若干，或者全部可以同时使用的攻击手段，包括：<ul>
+<li>Java小程序攻击方法</li>
+<li>Metasploit浏览器利用方法</li>
+<li>凭证收割机攻击方法</li>
+<li>标签钓鱼攻击方法</li>
+<li>中间人攻击方法</li>
+</ul>
+</li>
+<li>全屏攻击方法(full-screen attack method)：当系统处于全屏模式时，攻击者在幕后发动的简单攻击方法</li>
+<li>HTA(HTA attack method)：当一个攻击者提供一个假网站时，将自动下载.hta格式的HTML应用程序</li>
+</ol>
+</li>
+<li>介质感染攻击发生器(Infectious Media Generator)：生成一个antorun.inf和Metasploit负载，一旦受感染的USB设备或者物理介质(CD或DVD)插入目标系统，会自动运行(前提是开启autorun选项)并且感染目标系统</li>
+<li>创建负载和监听器(Create a Payload and Listener)：这个模块是创建一个Metasploit负载的快捷菜单驱动方法。攻击者必须使用单独的社会工程学攻击欺骗目标运行该模块</li>
+<li>大规模邮件攻击(Mass Mailer attack)：允许攻击者向某个又加了地址或者一组接收者发送多封自定义邮件</li>
+<li>基于Arduino的攻击媒介(Arduino-based attack vector)：通过对基于Arduino的设备写入程序实现，例如：Teensy。因为这些设备在物理连接Windows操作系统时，注册为USB接口的键盘设备，因此可以绕过基于禁用autorun或者其他终端保护的安全措施</li>
+<li>无线接入点攻击媒介(wireless access point attackvector)：可以在攻击者的操作系统中创建一个伪造的无线接入点和DHCP服务器，并且将DNS解析请求重定向到攻击者的系统。攻击者随后可以进行一系列攻击，例如Java小程序攻击或者凭证收割机攻击</li>
+<li>二维码生成攻击媒介(QRcode generator attack vector)：生成一个与攻击的URL有关的二维码</li>
+<li>Powershell攻击媒介(Powershell attack vectors)：支持攻击者进行依赖于PowerShell的攻击</li>
+<li>短信欺骗攻击媒介（SMS spoofing attack vector），可以让攻击者向某人的移动设备发送自定义的短信服务（ShortMessage Service）文本，并且对消息的来源进行伪造，这个模块最近被屏蔽了</li>
+<li>第三方模块(Third Party Modules)：支持攻击者使用远程管理工具汤米版(Remote Administration Tool TommyEdition，RATTE)作为Java小程序攻击的一部分，或者作为一个独立的负载。RATTE是一个文本目录驱动的远程访问工具</li>
+</ol>
+<p>其中SEToolkit也提供了快速跟踪渗透测试(fast-track penetration testing)的菜单项。</p>
+<p>快速跟踪渗透测试支持对一些特殊工具的快速访问，例如：支持暴力破解认证和SQL数据库密码破解，还有一些基于Python、SCCM攻击媒介、Dell computer DRAC/chassis攻击、用户枚举和PsExec PowerShell注入等客户端攻击</p>
+<p>快速跟踪渗透测试菜单项同时也提供对Metasploit框架、SEToolkit和SEToolkit配置的升级功能。由于Kali并不支持全部的额外选项，而且这些额外选项可能会造成依赖性干扰，因此要尽量避免使用</p>
+<h2 id="4-1-使用网站攻击媒介–凭据收割机攻击方法"><a href="#4-1-使用网站攻击媒介–凭据收割机攻击方法" class="headerlink" title="4.1 使用网站攻击媒介–凭据收割机攻击方法"></a>4.1 使用网站攻击媒介–凭据收割机攻击方法</h2><p>首先介绍凭证：通常为用户名和密码，是用户访问网络、计算机系统和数据的依据。攻击者可以间接或直接使用这种信息进行攻击</p>
+<p>SEToolkit的凭据收割机攻击，使用克隆的网站收集凭据</p>
+<p>发动攻击是中主菜单中选择Website Attack Vectors(网站攻击媒介)之后选择Credential Harvester Attack Method(凭据收割机攻击方法)，然后选择Site Cloner(网站克隆)^此处只能克隆简单的post发送表单的界面^</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211003213531.png" srcset="/img/loading.gif" lazyload alt="凭据收割示例"></p>
+<p>完成凭据收集后按<code>Ctrl+C</code>在/root/.set/reports/2021-10-03(今日日期)/目录中将生成XML和HTML两种格式的报告</p>
+<p>注意到URL栏的地址并不是Facebook的认证地址。如果注意到了这个地址，大部分用户会意识到有问题。如果要成功的利用，攻击者需要一个合适的借口或故事，使受害者接受不寻常的网址</p>
+<h2 id="4-2-使用网站攻击媒介–标签钓鱼攻击方法"><a href="#4-2-使用网站攻击媒介–标签钓鱼攻击方法" class="headerlink" title="4.2 使用网站攻击媒介–标签钓鱼攻击方法"></a>4.2 使用网站攻击媒介–标签钓鱼攻击方法</h2><p>标签钓鱼(tabnabbing)通过在一个浏览器打开的标签页中加载一个假网页来骗取用户的信任。通过冒充Gmail、Facebook或其他任何网站发布的需要提供数据(通常是用户名和密码)的网页。一个标签钓鱼攻击可以收集受害者的凭据</p>
+<p>发动攻击流程是选择1(Social-Engineering Attacks)，下一菜单选择2(Website Attack Vectors),最后选择标签钓鱼攻击4(Tabnabbing Attack Method)来启动</p>
+<blockquote>
+<p>使用克隆始终出现错误: Printing the error : urllib has no attribute urlopen</p>
+<p>Please help me how to solve this…</p>
+<p>在搜索后按照大佬修改</p>
+<p>The issue is in social-engineer-toolkit/src/webattack/tabnabbing/tabnabbing.py<br><a target="_blank" rel="noopener" href="https://github.com/trustedsec/social-engineer-toolkit/blob/5e057388e5b7ea521d4658f3e22c874d52bb4f43/src/webattack/tabnabbing/tabnabbing.py">https://github.com/trustedsec/social-engineer-toolkit/blob/5e057388e5b7ea521d4658f3e22c874d52bb4f43/src/webattack/tabnabbing/tabnabbing.py</a></p>
+<p>Line 65<br><code>favicon = urllib.urlopen(&quot;%s/favicon.ico&quot; % (URL))</code><br>Should be:<br><code>favicon = urllib.request.urlopen(&quot;%s/favicon.ico&quot; % (URL))</code></p>
+<p>Because python3 uses different urllib syntax.</p>
+<p>Go to ./usr/share/set/src/webattack/tabnabbing/tabnabbing.py<br>Adjust the python file, run again and it will work.</p>
+</blockquote>
+<p>调整后可以成功运行</p>
+<p>首先是显示加载的界面</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211004105759.png" srcset="/img/loading.gif" lazyload alt="页面加载中"></p>
+<p>之后成功显示gmail的界面</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211004105758.png" srcset="/img/loading.gif" lazyload alt="gmail登录页面"></p>
+<p>写入gmail之后无法进行下一步，卡在了当前页面。此时setoolkit显示内容如下</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211004105800.png" srcset="/img/loading.gif" lazyload alt="setoolkit显示"></p>
+<p>网站攻击媒介的”玛丽冰雹”攻击是综合攻击网页方法(Multi-attack Web method)，它允许攻击者一次执行几种他们所选的不同的攻击，默认情况下，所有攻击是被禁止的，需要选择一个进行执行</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211004110617.png" srcset="/img/loading.gif" lazyload alt="Multi-Attack 选择生效的攻击方法"></p>
+<h2 id="4-3-HTA攻击"><a href="#4-3-HTA攻击" class="headerlink" title="4.3 HTA攻击"></a>4.3 HTA攻击</h2><p>该类型攻击是一个简单的HTML应用程序，可为远程攻击者提供完全访问。HTA通常的文件扩展名为.hta。HTA文件运行类似.exe文件。当通过浏览器远程执行时，在HTA下载之前会询问一次用户是否保存并运行应用程序。如果保存，它可以简单地按需运行</p>
+<p>可以使用Web技术为Windows操作系统创建恶意应用程序：使用SEToolkit启动HTA攻击流程是：从主菜单选择1(Social-Engineering Attacks)之后选择子菜单的2(Website Attack Vectors)，然后选择7(HTA Attack Method)最后选择2Site Cloner克隆任何网站</p>
+<p>此处克隆<a target="_blank" rel="noopener" href="http://www.baidu.com访问对应ip地址后会尝试下载对应的hta文件./">www.baidu.com访问对应IP地址后会尝试下载对应的hta文件。</a></p>
+<p>之后运行hta文件会反向连接到Metasploit中</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211004113649.png" srcset="/img/loading.gif" lazyload alt="HTA示例"></p>
+<h2 id="4-4-使用PowerShell字母数字的shellcode注入攻击"><a href="#4-4-使用PowerShell字母数字的shellcode注入攻击" class="headerlink" title="4.4 使用PowerShell字母数字的shellcode注入攻击"></a>4.4 使用PowerShell字母数字的shellcode注入攻击</h2><p>基于PowerShell的更有效的攻击，适用于所有Windows Vista之后的微软操作系统。因为PowerShell的shell code可以很容易地注入目标的物理内存中，使用该载体的攻击不会触发病毒警报</p>
+<p>使用SEToolkit的PowerShell攻击流程如下：在主菜单选择1(Social-Engineering Attacks)，之后选择9(Powershell Attack Vectors)</p>
+<p>此时提供四种攻击选项：</p>
+<blockquote>
+<ol>
+<li>Powershell Alphanumeric Shellcode Injector</li>
+<li>Powershell Reverse Shell</li>
+<li>Powershell Bind Shell</li>
+<li>Powershell Dump SAM Database</li>
+</ol>
+</blockquote>
+<p>选择一个进行IP地址和端口的设置，此时将生成的内容发送给受害者，并诱使其执行(执行较为麻烦，直接复制粘贴无法成功？<del>怎么可以了。。。</del>)</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211004122849.png" srcset="/img/loading.gif" lazyload alt="powershell示例"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">kali高级渗透测试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

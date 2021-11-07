@@ -1,0 +1,712 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>代码审计-漏洞发现与防范-1 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="代码审计-漏洞发现与防范-1">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-13 10:20" pubdate>
+        2021年7月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">代码审计-漏洞发现与防范-1</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月27日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="漏洞发现与防范"><a href="#漏洞发现与防范" class="headerlink" title="漏洞发现与防范"></a>漏洞发现与防范</h1><h2 id="第三章-通用代码审计思路"><a href="#第三章-通用代码审计思路" class="headerlink" title="第三章 通用代码审计思路"></a>第三章 通用代码审计思路</h2><p><em><strong>常见代码审计思路</strong></em></p>
+<ol>
+<li>根据敏感关键字回溯参数传递过程</li>
+<li>查找可控变量，正向追踪变量传递过程</li>
+<li>寻找敏感功能点，通读功能点代码</li>
+<li>直接通读全文代码</li>
+</ol>
+<h3 id="3-1-敏感函数回溯参数过程"><a href="#3-1-敏感函数回溯参数过程" class="headerlink" title="3.1 敏感函数回溯参数过程"></a>3.1 敏感函数回溯参数过程</h3><p>根据敏感函数来逆向追踪参数的传递过程。如HTTP头中的HTTP_CLIENT_IP和HTTP_X_FORWORDFOR等获取到的IP地址，经常没有经过安全过滤就拼接到SQL语句中。</p>
+<p>此处介绍了一个espcms的注入挖掘案例</p>
+<p>大致流程为：</p>
+<ol>
+<li>自动审计，获取可能存在漏洞的代码列表。</li>
+<li>点击可能存在漏洞的代码，进行审计。</li>
+<li>追查变量的获取，再根据获取代码经过的函数构造对应的EXP</li>
+</ol>
+<h3 id="3-2-通读全文代码"><a href="#3-2-通读全文代码" class="headerlink" title="3.2 通读全文代码"></a>3.2 通读全文代码</h3><p>常用于在企业中做安全运营时。</p>
+<p>通读原文代码需要一点的技巧：首先看程序的大体代码结构，主目录文件，模块目录文件，插件目录文件，还需要注意文件大小，创建时间。</p>
+<p>在查看程序目录结构时，我们需要特别注意以下的文件：</p>
+<ol>
+<li><p>函数集文件，通常命名包含functions或者common等关键字，这些文件里面都是一些公共的函数，提供给其他文件统一调用。一般在index.php或者功能性文件的头部就能找到</p>
+</li>
+<li><p>配置文件，通常命名包括config关键字，文件中包括web程序运行必须的功能性配置选项以及数据库等配置信息。从中可以了解程序的小部分功能，另外如果参数值是双引号则可能存在代码执行漏洞。在如下的代码中，我们在修改配置时可以利用PHP可变变量的的特性(不清楚如何利用)</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-comment">/*配置信息*/</span><br>    <span class="hljs-variable">$siteURL</span>=<span class="hljs-string">&quot;http://*****&quot;</span>;<br><span class="hljs-meta">?&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>安全过滤文件，通常命名中有filter、safe、check等关键字，该类文件主要是对于参数进行过滤，比较常见的是针对SQL注入和XSS过滤，还有文件路径、执行的系统命令的参数。</p>
+</li>
+<li><p>index文件，index是一个程序的入口文件。通常来说我们只需要读一遍index文件就可以大致了解整个程序的架构、运行的流程、包含到的文件。其中核心文件有哪些。最好讲核心目录的index文件都简单的读一遍</p>
+</li>
+</ol>
+<p>此处的案例是骑士CMS。暂时大致看一遍，本书看完后尝试自主挖掘。</p>
+<h3 id="3-3-根据功能点定向审计"><a href="#3-3-根据功能点定向审计" class="headerlink" title="3.3 根据功能点定向审计"></a>3.3 根据功能点定向审计</h3><p>根据经验，在以下的几个功能点经常出现漏洞</p>
+<ol>
+<li><p>文件上传功能。如：文章编辑、资料编辑、头像上传、附件上传。该功能最常见的漏洞是任意文件上传。另外还有利用文件名进行SQL注入</p>
+</li>
+<li><p>文件管理功能。如果程序将文件名或者文件路径直接在参数中传递，可能存在任意文件操作的漏洞。利用方法是在路径中使用../或者..\跳转目录。另外还有可能存在XSS漏洞，输出文件名时可能出现</p>
+</li>
+<li><p>登录认证功能。</p>
+<p><strong>注</strong>：登录认证功能不是指一个登录过程，而是整个操作过程中的认证。</p>
+<p>目前的认证方式大多是基于Cookie、Session，大多数程序会将当前登录的用户认证信息放到Cookie。该处漏洞是基于用户信息能够构造对应的Cookie进行登录。</p>
+</li>
+<li><p>找回密码功能。常见利用是验证码的爆破。</p>
+</li>
+</ol>
+<p>案例：BugFree重装漏洞</p>
+<p>在读取是否存在install.lock及action参数是否审计完成和安装完成后，直接利用header跳转程序首页。</p>
+<p>没有使用exit(),die()退出程序，此时继续请求安装界面可以继续安装了。</p>
+<h2 id="第四章-漏洞挖掘与防范-基础篇"><a href="#第四章-漏洞挖掘与防范-基础篇" class="headerlink" title="第四章 漏洞挖掘与防范(基础篇)"></a>第四章 漏洞挖掘与防范(基础篇)</h2><h3 id="4-1-SQL注入漏洞"><a href="#4-1-SQL注入漏洞" class="headerlink" title="4.1 SQL注入漏洞"></a>4.1 SQL注入漏洞</h3><p><strong>原理</strong>：由于开发者在编写操作数据库代码时，直接将外部可控参数拼接到SQL语句中，没有进行过滤，就直接放入数据库引擎执行。</p>
+<p><strong>攻击方式</strong>：</p>
+<ol>
+<li>权限较大的情况下，可以直接写入webshell，或者直接执行系统命令</li>
+<li>权限较小的情况下，可以获取管理员密码等信息，或者修改数据库内容进行钓鱼或其他简介利用</li>
+</ol>
+<h4 id="4-1-1-挖掘经验"><a href="#4-1-1-挖掘经验" class="headerlink" title="4.1.1 挖掘经验"></a>4.1.1 挖掘经验</h4><p>SQL注入经常出现在登录界面，获取HTTP头，订单处理等地方。登录界面的注入大多发生在HTTP头中的client-ip和x-forward-for，一般用来记录登录的IP地址。在订单系统中，由于订单涉及购物车等多个交互，经常发生二次注入。应当关注这些地方。</p>
+<p>对于挖掘的注入类型有：</p>
+<ol>
+<li><p>普通注入。即int型或string型注入。是最容易利用的SQL注入漏洞。</p>
+</li>
+<li><p>编码注入。在SQL注入中常见的是MySQL宽字节以及urldecode/rawurldecode函数导致</p>
+<ol>
+<li><p>宽字节注入</p>
+<p>当MySQL设置<code>set character_set_client=gbk</code>时会导致编码转化的注入问题，存在宽字节注入时，注入参数增加<code>%df%27</code>就会把程序中过滤的<code>\(%5c)</code>吃掉。</p>
+<p>如：当对内容进行了过滤，提交?id=1’ and 1=1%23会变成select * from user where id=’1\‘ and 1=1#’显然这是没有注入成功的。但是提交?id=1%df’ and 1=1%23就会变成select * from user where id=’1*[^某个字]’ and 1=1 #’ 于是此时注入成功</p>
+</li>
+<li><p>二次urldecode注入</p>
+<p>当目标程序使用了urldecode或者rawurldecode,开启了GPC。我们提交?id=%2527,在WebServer会自动解码一次变成id=1%27,最后经过程序里面的urldecode或者rawurldecode函数得到了id=1’从而引发了注入。（%25对应的是%）</p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="4-1-2-漏洞防范"><a href="#4-1-2-漏洞防范" class="headerlink" title="4.1.2 漏洞防范"></a>4.1.2 漏洞防范</h4><p>过滤类防范：</p>
+<ol>
+<li><p>gpc/rutime魔法引导（具体内容参考第一章内容）</p>
+</li>
+<li><p>addslashes函数</p>
+<p>过滤范围为<code>&#39;</code>、<code>&quot;</code>、<code>\</code>以及空字符。</p>
+</li>
+<li><p>mysql_[real_]escape_string函数</p>
+<p>mysql_escape_string和mysql_real_escape_string函数都是对字符串进行过滤，在PHP4.0.3以上版本才存在。以下字符受影响【\x00】【\n】【\r】【’】【”】【\xla】。两个函数的不同是在于mysql_real_escape_string接受的是一个连接句柄并根据当前字符集转义字符串</p>
+</li>
+<li><p>intval等字符转换</p>
+<p>以上的方式在int类型注入时效果不好，可以通过报错或盲注进行绕过。此时intval等函数就起作用了，它的作用是将变量转换成int类型。</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$id</span>=intval(<span class="hljs-string">&quot;1 union select&quot;</span>);<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$id</span>;<br><span class="hljs-comment"># 输出为 1</span><br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<p>PDO prepare 预编译</p>
+<p>通过预编译的方式来处理数据库查询</p>
+<p>案例：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">dbh=<span class="hljs-keyword">new</span> PDO(<span class="hljs-string">&quot;mysql:host=127.0.0.1; dbname=demo&quot;</span>,<span class="hljs-string">&quot;user&quot;</span>,<span class="hljs-string">&quot;pass&quot;</span>);<br><span class="hljs-variable">$dbh</span>-&gt;exec(<span class="hljs-string">&quot;set name &#x27;gbk&#x27;&quot;</span>);<br><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;select * from test where name = ? and password = ?&quot;</span>;<br><span class="hljs-variable">$stmt</span>=<span class="hljs-variable">$dbh</span>-&gt;prepare(<span class="hljs-variable">$sql</span>);<br><span class="hljs-variable">$exeres</span>=<span class="hljs-variable">$stmt</span>-&gt;excute(<span class="hljs-keyword">array</span>(<span class="hljs-variable">$name</span>,<span class="hljs-variable">$pass</span>));<br></code></pre></div></td></tr></table></figure>
+
+<p>此处的代码显然使用了pdo的prepare方法来处理sql查询，但是在PHP版本&lt;5.3.6之前还是存在宽字节SQL注入漏洞，原因是这种方式是使用了PHP本地模拟prepare，再把完整的SQL语句发送给MySQL服务器</p>
+<p>正确的也发应该是使用ATTR_EMULATE_PREPARES来禁用PHP本地模拟prepare</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">dbh=<span class="hljs-keyword">new</span> PDO(<span class="hljs-string">&quot;mysql:host=127.0.0.1; dbname=demo&quot;</span>,<span class="hljs-string">&quot;user&quot;</span>,<span class="hljs-string">&quot;pass&quot;</span>);<br><span class="hljs-variable">$dbh</span>-&gt;setAttribute(PDO::ATTR_EMULATE_PREPARE,<span class="hljs-literal">false</span>);<br><span class="hljs-variable">$dbh</span>-&gt;exec(<span class="hljs-string">&quot;set name &#x27;utf-8&#x27;&quot;</span>);<br><span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;select * from test where name = ? and password = ?&quot;</span>;<br><span class="hljs-variable">$stmt</span>=<span class="hljs-variable">$dbh</span>-&gt;prepare(<span class="hljs-variable">$sql</span>);<br><span class="hljs-variable">$exeres</span>=<span class="hljs-variable">$stmt</span>-&gt;excute(<span class="hljs-keyword">array</span>(<span class="hljs-variable">$name</span>,<span class="hljs-variable">$pass</span>));<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-2-XSS漏洞"><a href="#4-2-XSS漏洞" class="headerlink" title="4.2 XSS漏洞"></a>4.2 XSS漏洞</h3><p>漏洞的危害是：前端页面能做的事它都能做。</p>
+<h4 id="4-2-1-挖掘经验"><a href="#4-2-1-挖掘经验" class="headerlink" title="4.2.1 挖掘经验"></a>4.2.1 挖掘经验</h4><p>挖掘XSS漏洞的关键在于寻找没有被过滤的参数，常见的输出函数列表：</p>
+<p>print,print_r,printf,sprintf,die,var_dump,var_export</p>
+<p>XSS漏洞经常出现在文章的发表，评论回复、留言及资料设置等地方。</p>
+<ol>
+<li><p>反射型XSS</p>
+<p>反射型XSS是直接通过外部输入然后再浏览器输出触发的类型。该类漏洞只需要将尖括号、单双引号等提交后，检查返回的HTML界面有没有保留原来的特殊字符即可判断。</p>
+</li>
+<li><p>存储型XSS</p>
+<p>挖掘存储型XSS也是需要寻找未过滤的输入点和未过滤的输出函数。</p>
+<p>案例是：骑士CMS存储型XSS</p>
+</li>
+</ol>
+<h4 id="4-2-2-漏洞防范"><a href="#4-2-2-漏洞防范" class="headerlink" title="4.2.2 漏洞防范"></a>4.2.2 漏洞防范</h4><ol>
+<li><p>特殊字符HTML实体转码</p>
+<p>一般的XSS漏洞都是因为没有过滤特殊字符，导致使用引号，尖括号等就可以被利用。</p>
+<p>防范这类的XSS漏洞过滤相关的特殊符号即可</p>
+<p><code>&#39;</code>,<code>&quot;</code>,<code>&lt;&gt;</code>,<code>\</code>,<code>:</code>,<code>&amp;</code>,<code>#</code></p>
+<p>最好在调用输出时进行HTML实体转码</p>
+</li>
+<li><p>标签事件属性黑白名单</p>
+</li>
+</ol>
+<h3 id="4-3-CSRF漏洞"><a href="#4-3-CSRF漏洞" class="headerlink" title="4.3 CSRF漏洞"></a>4.3 CSRF漏洞</h3><p>CSRF全称为Cross-site request forgery,跨站请求伪造。是劫持其他用户去进行一些请求</p>
+<h4 id="4-3-1-挖掘经验"><a href="#4-3-1-挖掘经验" class="headerlink" title="4.3.1 挖掘经验"></a>4.3.1 挖掘经验</h4><p>主要用于越权操作。在查找时可以先打开几个非静态界面，抓包查看有没有token，如果没有，再请求该界面，且不带referer。如果返回的数据还是一样，那就说明很有可能有CSRF漏洞。</p>
+<p>从白盒角度来说，只需要查看核心文件里面有没有验证token和referer相关的代码，如果没有，就去查看较为重要的功能点有没有验证。</p>
+<p>案例：Discuz CSRF备份拖库分析</p>
+<h4 id="4-3-2-漏洞防范"><a href="#4-3-2-漏洞防范" class="headerlink" title="4.3.2 漏洞防范"></a>4.3.2 漏洞防范</h4><p>防御该类漏洞主要是解决可信问题。所以重要有两点</p>
+<ol>
+<li><p>增加token/referer验证img标签请求的水抗攻击</p>
+<p>token简单来说就是再用户访问的界面添加不可预测的字符串，在用户请求时验证该token是否正确</p>
+</li>
+<li><p>增加验证码</p>
+<p>考虑用户体验，只建议在敏感操作的界面进行</p>
+</li>
+</ol>
+<h2 id="第五章-漏洞挖掘与防范-进阶篇"><a href="#第五章-漏洞挖掘与防范-进阶篇" class="headerlink" title="第五章 漏洞挖掘与防范(进阶篇)"></a>第五章 漏洞挖掘与防范(进阶篇)</h2><h3 id="5-1-文件操作漏洞"><a href="#5-1-文件操作漏洞" class="headerlink" title="5.1 文件操作漏洞"></a>5.1 文件操作漏洞</h3><p>文件操作包括文件包含，文件读取，文件删除，文件修改以及文件上传。这些方式都有类似的漏洞</p>
+<h4 id="5-1-1-文件包含漏洞"><a href="#5-1-1-文件包含漏洞" class="headerlink" title="5.1.1 文件包含漏洞"></a>5.1.1 文件包含漏洞</h4><p>文件包含包括本地文件包含和远程文件包含。</p>
+<p>常用的相关函数是include(),include_once(),require()和require_once()，它们之间的区别是include是在包含文件时遇到错误下面的代码也会执行，而require()这回直接报错退出程序</p>
+<ol>
+<li><p>挖掘经验 </p>
+<p>文件包含漏洞通常出现在模块加载，模板加载以及cache调用的地方。比如存入的模块名参数。</p>
+<p>所以在挖掘相关漏洞时可以先跟踪一些程序的运行流程，查看模块加载时包含的文件是否可控。也可以直接搜索相关的函数，进行回溯。</p>
+<p>一般这类都是本地文件包含，大多需要截断</p>
+<ol>
+<li><p>本地文件包含</p>
+<p>重要用于包含允许上传的格式的文件来执行代码，包含PHP上传的临时文件</p>
+</li>
+<li><p>远程文件包含</p>
+<p>需要allow_url_include=On</p>
+</li>
+<li><p>文件包含截断</p>
+<p>一般来说文件包含都是固定了后缀(前缀)所以经常需要截断</p>
+<ol>
+<li><p>使用%00进行截断</p>
+<p>开启GPC和&gt;PHP5.3均不可用了</p>
+</li>
+<li><p>利用多个<code>.</code>和<code>\</code></p>
+<p>该方法不受限于GPC但是同样在PHP5.3之后被修复，且需要的数量较多</p>
+</li>
+<li><p>远程文件包含时利用问号(?)来伪截断</p>
+<p>在HTTP协议中访问<a target="_blank" rel="noopener" href="http://example/1.txt%E5%92%8C%E8%AE%BF%E9%97%AEhttp://example/1.txt?.php%E6%98%AF%E7%9B%B8%E5%90%8C%E7%9A%84%E8%BF%94%E5%9B%9E%E3%80%82%E5%9B%A0%E4%B8%BA%E6%AD%A4%E6%97%B6WebServer%E6%8A%8A?%E4%B9%8B%E5%90%8E%E7%9A%84%E5%86%85%E5%AE%B9%E5%BD%93%E6%88%90%E6%98%AF%E8%AF%B7%E6%B1%82%E7%9A%84%E5%8F%82%E6%95%B0%E8%80%8Ctxt%E4%B8%8D%E5%9C%A8WebServer%E9%87%8C%E9%9D%A2%E8%A7%A3%E6%9E%90%E3%80%82%E6%89%80%E4%BB%A5%E5%AE%9E%E7%8E%B0%E4%BA%86%E4%BC%AA%E6%88%AA%E6%96%AD">http://example/1.txt和访问http://example/1.txt?.php是相同的返回。因为此时WebServer把?之后的内容当成是请求的参数而txt不在WebServer里面解析。所以实现了伪截断</a></p>
+<p>例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">include</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;a&#x27;</span>].<span class="hljs-string">&#x27;.php&#x27;</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>请求/1.php?a=<a target="_blank" rel="noopener" href="http://example/2.txt?2.txt%E4%BC%9A%E6%89%A7%E8%A1%8C%E5%AF%B9%E5%BA%94%E4%BB%A3%E7%A0%81">http://example/2.txt?2.txt会执行对应代码</a></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="5-1-2-文件读取-下载-漏洞"><a href="#5-1-2-文件读取-下载-漏洞" class="headerlink" title="5.1.2 文件读取(下载)漏洞"></a>5.1.2 文件读取(下载)漏洞</h4><p>部分程序在下载文件或读取显示文件时，读取文件的参数直接在请求中传递，后台程序获取到这个文件路径之后直接读取返回。而该参数一般都是可控的，所以造成漏洞利用。</p>
+<ol>
+<li><p>挖掘经验</p>
+<p>可以先在黑盒情况下，去查看功能点对应的文件，再去读文件。另外是直接搜索相关的文件读取函数，再回溯查看能否控制参数</p>
+<p>相关的函数列表：file_get_contents(),highlight_file(),fopen(),readfile(),fread(),fgets(),parse_ini_file(),show_source(),file()。除了这些函数还有一些其他功能函数一样可以用来读取文件，比如include，和PHP输入输出流php://filter/来读取问文件</p>
+</li>
+</ol>
+<h4 id="5-1-3-文件上传漏洞"><a href="#5-1-3-文件上传漏洞" class="headerlink" title="5.1.3 文件上传漏洞"></a>5.1.3 文件上传漏洞</h4><ol>
+<li><p>挖掘经验 </p>
+<p>上传的点基本都是调用一个上传类，上传的函数只有move_uploaded_file()，所以直接搜索该函数。再查看上传文件的代码是否存在限制上传格式和可否绕过。再看是否有改名的情况，如果不改名，还可以利用Apache向前寻找解析和IIS6的分号解析bug来执行代码</p>
+</li>
+</ol>
+<p><strong>过滤类型</strong></p>
+<ol>
+<li><p>未过滤或本地过滤</p>
+<p>共同点是在服务端没有进行过滤，此时可以抓包直接上传。</p>
+</li>
+<li><p>黑名单拓展名过滤</p>
+<p>绕过方法主要是利用限制的扩展名不全，</p>
+<p>还可以通过在后面添加空格的方法和截断</p>
+</li>
+<li><p>文件头，content-type验证</p>
+<p>该方法极其容易绕过</p>
+</li>
+</ol>
+<h4 id="5-1-4-文件删除漏洞"><a href="#5-1-4-文件删除漏洞" class="headerlink" title="5.1.4 文件删除漏洞"></a>5.1.4 文件删除漏洞</h4><p>该漏洞与文件读取漏洞显示，多是由于可以使用../跳转</p>
+<ol>
+<li><p>挖掘经验 </p>
+<p>想到对应的功能点尝试使用../去绕过删除，如果不行再根据删除的函数unlik()和老版本的session_destroy()函数去搜索查看代码</p>
+</li>
+</ol>
+<h4 id="5-1-5-文件操作漏洞防范"><a href="#5-1-5-文件操作漏洞防范" class="headerlink" title="5.1.5 文件操作漏洞防范"></a>5.1.5 文件操作漏洞防范</h4><p>文件操作漏洞的共同点和解决方法是:</p>
+<ol>
+<li><p>由越权操作引起可以操作未授权操作的文件</p>
+<p>对权限合理的管理,如a用户上传的文件，其他平行用户不能再未获取授权的情况下进行操作，并且特殊的文件只能特定用户操作</p>
+</li>
+<li><p>要操作更多的文件需要跳转目录</p>
+<p>将用户的信息与文件绑定，只有确认之后才能操作</p>
+</li>
+<li><p>大多都是直接在请求中传入文件名</p>
+<p>禁止参数中有<code>..</code>和<code>\</code>,<code>/</code>来跳转目录，检查时遇到相关的字符停止程序</p>
+</li>
+</ol>
+<p>文件上传漏洞主要有两种利用方式</p>
+<ol>
+<li>上传的文件类型验证不严谨</li>
+<li>写入文件不规范</li>
+</ol>
+<p>防范方案如下:</p>
+<ol>
+<li>白名单方式过滤文件扩展名，使用in_array或三等于(===)来对比扩展名</li>
+<li>保存上传的文件时重命名文件，文件名命名规则采用时间戳的拼接随机数的MD5方式”md5(time()+rand(1,10000))”</li>
+</ol>
+<h3 id="5-2-代码执行漏洞"><a href="#5-2-代码执行漏洞" class="headerlink" title="5.2 代码执行漏洞"></a>5.2 代码执行漏洞</h3><p>代码执行漏洞是指：应用程序本身过滤不严，用户可以通过请求将代码注入到应用执行。</p>
+<p>相关的函数列表有：eval(),assert(),preg_replace(),call_user_func(),call_user_func_array(),array_map()等</p>
+<p>此外PHP的动态函数($a($b))也是出现比较多</p>
+<h4 id="5-2-1-挖掘经验"><a href="#5-2-1-挖掘经验" class="headerlink" title="5.2.1 挖掘经验"></a>5.2.1 挖掘经验</h4><ol>
+<li><p>eval(),assert()</p>
+<p>作用：函数能够直接执行php代码</p>
+<p>载入缓存，模板以及对变量过滤不严格后的代码执行。</p>
+</li>
+<li><p>preg_replace()</p>
+<p>作用：是对字符串进行正则处理</p>
+<p>代码执行需要存在/e参数，多出现在对字符的的处理，如URL，HTML，文章内容等过滤</p>
+<p>例：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">preg_replace(<span class="hljs-string">&quot;/\[(.*)\]/e&quot;</span>,<span class="hljs-string">&quot;\\1&quot;</span>,<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;str&#x27;</span>]);<br></code></pre></div></td></tr></table></figure>
+
+<p>正则的意思是将获取的变量里搜索中括号[]中间的内容作为第一组结果。</p>
+<p>preg_replace()函数第二个函数为’\\1’代表这里用第一组结果填充。所以请求?str=[phpinfo()]时可以显示该代码</p>
+</li>
+<li><p>调用函数过滤不严</p>
+<p>call_user_func(),array_map()等函数有调用其他函数的功能，其中的一个参数作为要调用的函数名，那如果这个传入函数名可控，那就可以调用意外的函数来执行代码</p>
+<p>例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$b</span>=<span class="hljs-string">&quot;phpinfo()&quot;</span>;<br>call_user_func(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;a&#x27;</span>],<span class="hljs-variable">$b</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>请求?a=assert时，调用了对应的函数</p>
+</li>
+<li><p>动态函数执行</p>
+<p>  由于PHP的特性原因，PHP的函数可以直接有字符串拼接。所以很多程序使用了动态函数的写法，但是一旦过滤不严格就会造成代码执行漏洞</p>
+<p>  例子：</p>
+  <figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;a&#x27;</span>](<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;b&#x27;</span>]);<br></code></pre></div></td></tr></table></figure>
+<p>  代码意思是接受GET请求的a参数，作为函数，b参数作为函数的参数。</p>
+<p>  请求为url：?a=assert&amp;b=phpinfo()，成功显示PHPINFO界面</p>
+</li>
+</ol>
+<h4 id="5-2-2-漏洞防范"><a href="#5-2-2-漏洞防范" class="headerlink" title="5.2.2 漏洞防范"></a>5.2.2 漏洞防范</h4><p>采用白名单过滤，在预测满足正常业务的参数情况下，是非常实用的防范。</p>
+<h3 id="5-3-命令执行漏洞"><a href="#5-3-命令执行漏洞" class="headerlink" title="5.3 命令执行漏洞"></a>5.3 命令执行漏洞</h3><p>代码执行漏洞指可执行的PHP代码脚本，而命令执行漏洞是指可执行系统或者应用程序的漏洞。</p>
+<p>PHP命令执行漏洞主要是一些函数的参数过滤不严谨，可执行的函数有system(),exec(),shell_exec(),passthru(),pcntl_exec(),popen(),proc_open()共七个函数，另外(`)也可以执行命令,不过该方法实际上是调用shell_exec()函数。</p>
+<p>PHP代码执行是继承的WebServer用户的权限。</p>
+<h4 id="5-3-1-挖掘经验"><a href="#5-3-1-挖掘经验" class="headerlink" title="5.3.1 挖掘经验"></a>5.3.1 挖掘经验</h4><p>命令执行漏洞最多出现在包含环境包的应用中，在该类应用中直接搜索相关函数。另外在调用外部程序的地方也会出现命令执行漏洞。</p>
+<p>具体执行方式：</p>
+<ol>
+<li><p>system(),exec(),shell_exec(),passthru()以及反引号`可以直接传入命令并直接返回结果不需要echo打印。</p>
+<p>测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">system(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;a&#x27;</span>]);<br></code></pre></div></td></tr></table></figure>
+
+<p>测试结果如图：</p>
+<p><img src="https://pic.imgdb.cn/item/60ee3add5132923bf8af6b2b.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>pcntl是PHP的多线程处理扩展，在处理大量任务时会使用到。</p>
+<p>函数说明：void pcntl_exec(string $path [, array $args [, array $envs]])</p>
+<p>其中$path为可执行程序的路径，$args表示传递给$path程序的参数，$envs表示执行该程序的环境变量。</p>
+</li>
+<li><p>popen()、proc_open()函数不会返回执行结果，只是返回文件指针，但是命令已经执行了。</p>
+<p>这里举例popen() 函数需要两个参数，一个执行命令，一个是指针文件的连接模式，有r和w两种模式</p>
+<p>测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">popen(<span class="hljs-string">&quot;whoami &gt;&gt; D:/2.txt&quot;</span>,<span class="hljs-string">&#x27;r&#x27;</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>此时在D:/2.txt中就记录了对应命令的输出</p>
+</li>
+<li><p>反引号命令执行</p>
+<p>代码实质是调用shell_exec()，参考代码如下</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">echo</span> `whoami`;<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h4 id="5-3-2-漏洞防范"><a href="#5-3-2-漏洞防范" class="headerlink" title="5.3.2 漏洞防范"></a>5.3.2 漏洞防范</h4><p>关于命令执行漏洞防范大致有两种方法：</p>
+<ol>
+<li><p>使用PHP自带的命令防注入函数，如escapeshellcmd()和escapeshellarg()。其中escapeshellcmd()是过滤整条命令，参数也是整条命令，而escapeshellarg()则是用来保证传入命令执行的参数是以字符串参数形式存在。</p>
+<ol>
+<li><p>escapeshellcmd()</p>
+<p>输入一个string类型的参数，即要过滤的命令，返回过滤后的string类型命令。过滤的字符为<code>&amp;</code>,<code>;</code>,<code>(`)</code>,<code>|</code>,<code>*</code>,<code>?</code>,<code>~</code>,<code>&lt;&gt;</code>,<code>^</code>,<code>()</code>,<code>[]</code>,<code>&#123;&#125;</code>,<code>$</code>,<code>\</code>,<code>\x0A</code>,<code>\xFF</code>,<code>%</code>而<code>&#39;</code>,<code>&quot;</code>仅在不对称的时候被转移</p>
+<p>参考如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">echo</span>(escapeshellcmd(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;cmd&#x27;</span>]));<br></code></pre></div></td></tr></table></figure>
+
+<p>结果如图：</p>
+<p><img src="https://pic.imgdb.cn/item/60ee41545132923bf8dab4c2.png" srcset="/img/loading.gif" lazyload></p>
+<p>过滤方法是在Windows情况下在对应字符前添加<code>^</code>，而在linux下是在字符前添加<code>\</code></p>
+</li>
+<li><p>escapeshellarg()</p>
+<p>函数的功能是过滤参数，将参数限制在一对双引号中，确保参数为一个字符串。隐藏它会把双引号替换为空格</p>
+<p>测试如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">echo</span> (escapeshellarg(<span class="hljs-string">&#x27;ls a&quot;&#x27;</span>));<br><span class="hljs-comment"># 输出为 &quot;ls a &quot;</span><br></code></pre></div></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>白名单限制</p>
+<p>在代码或配置文件中限制某些参数。在使用时参数不在白名单时，不予执行即可</p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BA%A7Web%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/">书籍 代码审计：企业级Web代码安全架构</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,570 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>渗透测试实战指南-信息收集 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="渗透测试实战指南-信息收集">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-27 14:49" pubdate>
+        2021年7月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">渗透测试实战指南-信息收集</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月28日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h1 id="1-收集域名信息"><a href="#1-收集域名信息" class="headerlink" title="1. 收集域名信息"></a>1. 收集域名信息</h1><p>在信息收集中，最主要的就是收集服务器的配置信息和网站的敏感信息，其中包括域名及子域名信息、目标网站系统.CMS指纹、目标网站真实IP、开放的端口等。换句话说，只要是与目标网站相关的信息，我们都应该去尽量搜集</p>
+<h2 id="1-1-收集域名信息"><a href="#1-1-收集域名信息" class="headerlink" title="1.1 收集域名信息"></a>1.1 收集域名信息</h2><p>获得目标的域名之后，我们要做的第一件事就是获取域名的注册信息，包括该域名的DNS服务器信息和注册人的联系信息等</p>
+<p>常用方法有</p>
+<h3 id="1-1-1-Whois-查询"><a href="#1-1-1-Whois-查询" class="headerlink" title="1.1.1 Whois 查询"></a>1.1.1 Whois 查询</h3><p>Whois是一个标准的互联网协议，可用于收集网络注册信息，注册的域名、IP地址等信息。Whois就是一个用于查询域名是否已被注册以及注册域名的详细信息的数据库（如域名所有人、域名注册商)</p>
+<p>在kali中搜索即可获取</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">whois baidu.com<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210727165047.png" srcset="/img/loading.gif" lazyload></p>
+<p>常用的查询网站</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://whois.aizhan.com/">爱站工具网</a></li>
+<li><a target="_blank" rel="noopener" href="http://whois.chinaz.com/">站长之家</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.virustotal.com/">VirusTotal</a></li>
+</ul>
+<h3 id="1-1-2-备案信息查询"><a href="#1-1-2-备案信息查询" class="headerlink" title="1.1.2 备案信息查询"></a>1.1.2 备案信息查询</h3><p>常用查询网站</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://beianbeian.com/">ICP备案查询</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.tianyancha.com/">天眼查</a></li>
+</ul>
+<h1 id="2-收集敏感信息"><a href="#2-收集敏感信息" class="headerlink" title="2. 收集敏感信息"></a>2. 收集敏感信息</h1><p>谷歌引擎搜索</p>
+<p>对应语法</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>site</td>
+<td>指定域名</td>
+</tr>
+<tr>
+<td>inurl</td>
+<td>URL中存在关键字的网页</td>
+</tr>
+<tr>
+<td>intext</td>
+<td>网页正文中的关键字</td>
+</tr>
+<tr>
+<td>filetype</td>
+<td>指定文件类型</td>
+</tr>
+<tr>
+<td>intitle</td>
+<td>网页标题中的关键字</td>
+</tr>
+<tr>
+<td>link</td>
+<td>link:baidu.com即表示返回所有和baidu.com做了链接的URL</td>
+</tr>
+<tr>
+<td>info</td>
+<td>查找指定站点的一些基本信息</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>搜索Google你关于某些内容的缓存</td>
+</tr>
+</tbody></table>
+<p>举例：<code>site:edu.cn intext:后台管理</code>含义是搜索网页正文还有“后台管理”并域名后缀是edu.cn的网站</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210727170124.png" srcset="/img/loading.gif" lazyload></p>
+<p>类似语句在百度和搜狗等搜索引擎上均可</p>
+<p>此外通过网页返回的头部同样可以获取部分服务器方面的信息</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210727170511.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="3-收集子域名信息"><a href="#3-收集子域名信息" class="headerlink" title="3. 收集子域名信息"></a>3. 收集子域名信息</h1><p>子域名也就是二级域名。当对于主域无法入手时可以从子域名入手</p>
+<h2 id="3-1-子域名检查工具"><a href="#3-1-子域名检查工具" class="headerlink" title="3.1 子域名检查工具"></a>3.1 子域名检查工具</h2><h3 id="3-1-1-子域名检测工具"><a href="#3-1-1-子域名检测工具" class="headerlink" title="3.1.1 子域名检测工具"></a>3.1.1 子域名检测工具</h3><ol>
+<li>Layer子域名挖掘机</li>
+<li>K8</li>
+<li>wydomain</li>
+<li>Sublist3r</li>
+<li>dnsmaper</li>
+<li>subDomainsBrute</li>
+<li>Maltego CE</li>
+</ol>
+<h3 id="3-1-2-搜索引擎枚举"><a href="#3-1-2-搜索引擎枚举" class="headerlink" title="3.1.2 搜索引擎枚举"></a>3.1.2 搜索引擎枚举</h3><p>使用<code>site:baidu.com</code>的语法就能够获得百度的子域名</p>
+<h3 id="3-1-3-第三方聚合应用枚举"><a href="#3-1-3-第三方聚合应用枚举" class="headerlink" title="3.1.3 第三方聚合应用枚举"></a>3.1.3 第三方聚合应用枚举</h3><p>利用网站</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://dnsdumpster.com/">DNSdumpster</a></li>
+<li>在线DNS侦查和搜索的工具</li>
+</ol>
+<h3 id="3-1-4-证书透明度公开日志枚举"><a href="#3-1-4-证书透明度公开日志枚举" class="headerlink" title="3.1.4 证书透明度公开日志枚举"></a>3.1.4 证书透明度公开日志枚举</h3><p>证书透明度(Certificate Transparency，CT)是证书授权机构(CA)的一个项目，证书授权机构会将每个SSL/TLS证书发布到公共日志中。一个SSL/TLS证书通常包含域名、子域名和邮件地址</p>
+<p>网站有</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://crt.sh/">https://crt.sh</a></li>
+<li><a target="_blank" rel="noopener" href="https://censys.io/">https://censys.io</a></li>
+</ul>
+<p>此外还有一些在线网站查询子域名如</p>
+<p><a target="_blank" rel="noopener" href="https://phpinfo.me/domain">子域名爆破网站</a></p>
+<p><a target="_blank" rel="noopener" href="http://dns.aizhan.com/">IP反查绑定域名网站</a></p>
+<h1 id="4-收集常用端口信息"><a href="#4-收集常用端口信息" class="headerlink" title="4. 收集常用端口信息"></a>4. 收集常用端口信息</h1><p>常见的扫描工具</p>
+<ol>
+<li>Nmap</li>
+<li>无状态端口扫描工具Masscan、ZMap</li>
+<li>御剑高速TCP端口扫描工具</li>
+</ol>
+<p>扫描常见端口</p>
+<h1 id="5-指纹识别"><a href="#5-指纹识别" class="headerlink" title="5. 指纹识别"></a>5. 指纹识别</h1><p>本节所讲的指纹是指网站CMS指纹识别、计算机操作系统及Web日期的指纹识别等</p>
+<p>应用程序一般在html、js、css等文件中包含一些特征码</p>
+<p>工具有：</p>
+<ul>
+<li>御剑Web指纹识别、</li>
+<li>WhatWeb</li>
+<li>WebRobo</li>
+<li>椰树</li>
+<li>轻量WEB指纹识别等</li>
+</ul>
+<p>在线网站有：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://whatweb.bugscaner.com/look/">BugScaner</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.yunsee.cn/finger.html">云悉指纹</a></li>
+<li><a target="_blank" rel="noopener" href="https://whatweb.net/">WhatWeb</a></li>
+</ul>
+<h1 id="6-查找真实IP"><a href="#6-查找真实IP" class="headerlink" title="6. 查找真实IP"></a>6. 查找真实IP</h1><p>如果目标服务器不存在CDN，可以直接通过<a target="_blank" rel="noopener" href="http://www.ip138.com获取目标的一些ip及域名信息,这里主要讲解在以下这几种情况下,如何绕过cdn寻找目标服务器的真实ip/">www.ip138.com获取目标的一些IP及域名信息，这里主要讲解在以下这几种情况下，如何绕过CDN寻找目标服务器的真实IP</a></p>
+<h2 id="6-1-目标服务器存在CDN"><a href="#6-1-目标服务器存在CDN" class="headerlink" title="6.1 目标服务器存在CDN"></a>6.1 目标服务器存在CDN</h2><p>直接ping目标的域名得到的是离我们最近的一台目标节点的CDN服务器，导致无法获得目标的真实IP</p>
+<h2 id="6-2-判断目标是否使用了CDN"><a href="#6-2-判断目标是否使用了CDN" class="headerlink" title="6.2 判断目标是否使用了CDN"></a>6.2 判断目标是否使用了CDN</h2><p>通过多地ping对比获取的IP地址是否一致如果一致则大概率不存在CDN</p>
+<p><a target="_blank" rel="noopener" href="https://www.17ce.com/">多地ping</a></p>
+<h2 id="6-3-绕过CDN寻找真实IP"><a href="#6-3-绕过CDN寻找真实IP" class="headerlink" title="6.3 绕过CDN寻找真实IP"></a>6.3 绕过CDN寻找真实IP</h2><p>一些常规的方法</p>
+<ol>
+<li><p>内部邮箱源</p>
+<p>一般的邮件系统都在内部，没有经过CDN的解析，通过目标网站用户注册或者RSS订阅功能，查看邮件、寻找邮件头中的邮件服务器域名IP，ping这个邮件服务器的域名，就可以获得目标的真实IP</p>
+</li>
+<li><p>扫描网站测试文件</p>
+<p>如phpinfo，test等等，从而找到真实IP</p>
+</li>
+<li><p>分站域名</p>
+</li>
+<li><p>国外访问</p>
+</li>
+<li><p>查询域名的解析记录</p>
+<p>如果之前没有使用CDN可用通过<a target="_blank" rel="noopener" href="https://www.netcraft.com/">NETCRAFT</a>来观察域名的IP你是记录</p>
+</li>
+<li><p>通过网站对应的APP，抓包APP的请求获取真实IP</p>
+</li>
+<li><p>绕过CloudFlare CDN查找真实IP</p>
+<p>很多网站都是使用CloudFlare通过的CDN访问，可以尝试通过在线网站<a target="_blank" rel="noopener" href="http://www.crimeflare.us/cfs.html">CloudFlareWatch</a>对CloudFlare客户网进行真实IP查询</p>
+</li>
+</ol>
+<h2 id="6-4-验证获取的IP"><a href="#6-4-验证获取的IP" class="headerlink" title="6.4 验证获取的IP"></a>6.4 验证获取的IP</h2><p>如果是Web，最简单的验证方法是直接尝试用IP访问，看看响应的页面是不是和访问域名返回的一样;</p>
+<p>或者在目标段比较大的情况下，借助类似Masscan的工具批扫描对应IP段中所有开了80、443、8080端口的IP，然后逐个尝试IP访问,观察响应结果是否为目标站点</p>
+<h1 id="7-收集敏感目录文件"><a href="#7-收集敏感目录文件" class="headerlink" title="7. 收集敏感目录文件"></a>7. 收集敏感目录文件</h1><p>针对网站的目录扫描</p>
+<p>工具：</p>
+<ol>
+<li>DirBuster</li>
+<li>御剑后台扫描珍藏版</li>
+<li>wwwscan</li>
+<li>Spinder.py(轻量级快速单文件目录后台扫描)</li>
+<li>Sensitivefilescan(轻量级快速单文件目录后台扫描)</li>
+<li>Weakfilescan(轻量级快速单文件目录后台扫描)</li>
+</ol>
+<p>在线网站</p>
+<p><a target="_blank" rel="noopener" href="http://www.webscan.cc/">WebScan</a></p>
+<h1 id="8-社会工程学"><a href="#8-社会工程学" class="headerlink" title="8. 社会工程学"></a>8. 社会工程学</h1><p>可以利用收集到的这家公司的某位销售人员的电子邮箱。首先，给这位销售人员发送邮件，假装对某个产品很感兴趣，显然销售人员会回复邮件。这样攻击者就可以通过分析邮件头来收集这家公司的真实IP地址及内部电子邮件服务器的相关信息</p>
+<p>通过进一步地应用社会工程学，假设现在已经收集了目标人物的邮箱、QQ、电话号码、姓名，以及域名服务商，也通过爆破或者撞库的方法获取邮箱的密码，这时就可以冒充目标人物要求客服人员协助重置域管理密码，甚至技术人员会帮着重置密码，从而使攻击者拿下域管理控制台，然后做域劫持</p>
+<p>除此以外，还可以利用“社工库”查询想要得到的信息，社工库是用社会工程学进行攻击时积索的各方数据的结构化数据库。这个数据库里有大量信息，甚至可以找到每个人的各种行为记录。利用收集到的邮箱，可以在社工库中找到已经泄露的密码，其实还可以通过搜索引擎搜索到社交账号等信息，然后通过利用社交和社会工程学得到的信息构造密码字典，对目标用户的邮箱和OA账号进行爆破或者撞库</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/">书籍 Web安全攻防-渗透测试实战指南</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

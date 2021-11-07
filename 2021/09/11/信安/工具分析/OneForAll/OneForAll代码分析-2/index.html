@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>OneForAll代码分析-2 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="OneForAll代码分析-2">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-11 19:36" pubdate>
+        2021年9月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">OneForAll代码分析-2</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年9月16日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="OneForAll代码分析-2"><a href="#OneForAll代码分析-2" class="headerlink" title="OneForAll代码分析-2"></a>OneForAll代码分析-2</h1><p>承接上文，对于oneforall.py文件分析了其他的函数部分还有main函数没有进行分析，此处分析main函数</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>(<span class="hljs-params">self</span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    OneForAll main process</span><br><span class="hljs-string"></span><br><span class="hljs-string">    :return: subdomain results</span><br><span class="hljs-string">    :rtype: list</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 对数据库进行建立</span><br>    utils.init_table(self.domain)<br>    <br>    <span class="hljs-comment"># 如果网络无法连接，不使用子域集合模块</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.access_internet:<br>        logger.log(<span class="hljs-string">&#x27;ALERT&#x27;</span>, <span class="hljs-string">&#x27;Because it cannot access the Internet, &#x27;</span><br>                            <span class="hljs-string">&#x27;OneForAll will not execute the subdomain collection module!&#x27;</span>)<br>    <span class="hljs-comment"># 网络可以连接 </span><br>    <span class="hljs-keyword">if</span> self.access_internet:<br>        <span class="hljs-comment"># 最后返回的是bool类型，表示是否是wildcard类型 (泛域名，即不管访问sss.***.com还是sfsdfsdf.***.com都会解析到同一个IP地址:即前缀无效。。。)</span><br>        self.enable_wildcard = wildcard.detect_wildcard(self.domain)<br>        <span class="hljs-comment"># 调用子域模块进行收集</span><br>        collect = Collect(self.domain)<br>        collect.run()<br><br>    <br>    <span class="hljs-comment"># 跟进函数 利用常见的SRV进行收集</span><br>    srv = BruteSRV(self.domain)<br>    srv.run()<br><br>    <span class="hljs-comment"># 判断是否设置爆破默认设置为True</span><br>    <span class="hljs-keyword">if</span> self.brute:<br>        <span class="hljs-comment"># Due to there will be a large number of dns resolution requests,</span><br>        <span class="hljs-comment"># may cause other network tasks to be error</span><br>        <span class="hljs-comment"># 由于将有大量dns解析请求,可能导致其他网络任务出错</span><br>        <br>        <span class="hljs-comment"># 跟进函数 </span><br>        brute = Brute(self.domain, word=<span class="hljs-literal">True</span>, export=<span class="hljs-literal">False</span>)<br>        brute.enable_wildcard = self.enable_wildcard<br>        brute.in_china = self.in_china<br>        brute.quite = <span class="hljs-literal">True</span><br>        brute.run()<br>        <br>    <span class="hljs-comment"># 删除对应的数据</span><br>    utils.deal_data(self.domain)<br>    <span class="hljs-comment"># Export results without resolve</span><br>    <span class="hljs-comment"># 导出结果而不解析 </span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.dns:<br>        self.data = self.export_data()<br>        self.datas.extend(self.data)<br>        <span class="hljs-keyword">return</span> self.data<br><br>    <span class="hljs-comment"># 获得数据库中的数据为dict格式返回</span><br>    self.data = utils.get_data(self.domain)<br><br>    <span class="hljs-comment"># Resolve subdomains</span><br>    <span class="hljs-comment"># 解析子域</span><br>    <span class="hljs-comment"># 清除数据库中对应的表</span><br>    utils.clear_data(self.domain)<br>    <span class="hljs-comment"># </span><br>    self.data = resolve.run_resolve(self.domain, self.data)<br>    <span class="hljs-comment"># Save resolve results</span><br>    <span class="hljs-comment"># 保存解析结果</span><br>    resolve.save_db(self.domain, self.data)<br><br>    <span class="hljs-comment"># Export results without HTTP request</span><br>    <span class="hljs-comment"># 不使用HTTP请求导出结果</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.req:<br>        self.data = self.export_data()<br>        self.datas.extend(self.data)<br>        <span class="hljs-keyword">return</span> self.data<br><br>    <span class="hljs-keyword">if</span> self.enable_wildcard:<br>        <span class="hljs-comment"># deal wildcard</span><br>        <span class="hljs-comment"># 处理泛域名</span><br>        self.data = wildcard.deal_wildcard(self.data)<br><br>    <span class="hljs-comment"># HTTP request</span><br>    utils.clear_data(self.domain)<br>    request.run_request(self.domain, self.data, self.port)<br><br>    <span class="hljs-comment"># Finder module</span><br>    <span class="hljs-comment"># 查找模块</span><br>    <span class="hljs-keyword">if</span> settings.enable_finder_module:<br>        finder = Finder()<br>        finder.run(self.domain, self.data, self.port)<br><br>    <span class="hljs-comment"># altdns module</span><br>    <span class="hljs-comment"># altdns 模块</span><br>    <span class="hljs-keyword">if</span> settings.enable_altdns_module:<br>        altdns = Altdns(self.domain)<br>        altdns.run(self.data, self.port)<br><br>    <span class="hljs-comment"># Information enrichment module</span><br>    <span class="hljs-comment"># 信息充实模块</span><br>    <span class="hljs-keyword">if</span> settings.enable_enrich_module:<br>        enrich = Enrich(self.domain)<br>        enrich.run()<br><br>    self.data = self.export_data()<br>    self.datas.extend(self.data)<br><br>    <span class="hljs-comment"># Scan subdomain takeover</span><br>    <span class="hljs-comment"># 扫描子域验收</span><br>    <span class="hljs-keyword">if</span> self.takeover:<br>        subdomains = utils.get_subdomains(self.data)<br>        takeover = Takeover(targets=subdomains)<br>        takeover.run()<br>    <span class="hljs-keyword">return</span> self.data<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="1-init-table函数"><a href="#1-init-table函数" class="headerlink" title="1. init_table函数"></a>1. init_table函数</h1><p> 从run函数可以得到，传入了self参数到main中，逐步分析</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 首先是init_table函数</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">init_table</span>(<span class="hljs-params">domain</span>):</span><br>    <span class="hljs-comment"># 对Database对象中的相关函数进行分析</span><br>    db = Database()<br>    db.drop_table(domain)<br>    db.create_table(domain)<br>    db.close()<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="1-1-Database对象"><a href="#1-1-Database对象" class="headerlink" title="1.1 Database对象"></a>1.1 Database对象</h2><p>此处摘取在init_table中被使用的相关内容</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Database</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-comment"># 初始化连接</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, db_path=<span class="hljs-literal">None</span></span>):</span><br>        <span class="hljs-comment"># 根据传入的路径进行连接</span><br>        self.conn = self.get_conn(db_path)<br>    <br>    <span class="hljs-comment"># 创建连接</span><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_conn</span>(<span class="hljs-params">db_path</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Get database connection</span><br><span class="hljs-string"></span><br><span class="hljs-string">        :param   db_path: Database path</span><br><span class="hljs-string">        :return: db_conn: SQLite database connection</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        logger.log(<span class="hljs-string">&#x27;TRACE&#x27;</span>, <span class="hljs-string">f&#x27;Establishing database connection&#x27;</span>)<br>        <span class="hljs-comment"># 判断db_path是否是一个连接类型</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(db_path, Connection):<br>            <span class="hljs-keyword">return</span> db_path<br>        protocol = <span class="hljs-string">&#x27;sqlite:///&#x27;</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> db_path:  <span class="hljs-comment"># 数据库路径为空连接默认数据库</span><br>            db_path = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;protocol&#125;</span><span class="hljs-subst">&#123;settings.result_save_dir&#125;</span>/result.sqlite3&#x27;</span><br>        <span class="hljs-keyword">else</span>:<br>            db_path = <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;protocol&#125;</span><span class="hljs-subst">&#123;db_path&#125;</span>&#x27;</span><br>        <span class="hljs-comment"># 不存在数据库时会新建一个数据库</span><br>        db = records.Database(db_path) <br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">Database对象的初始化</span><br><span class="hljs-string">    def __init__(self, db_url=None, **kwargs):</span><br><span class="hljs-string">        # If no db_url was provided, fallback to $DATABASE_URL.</span><br><span class="hljs-string">        # 确定db地址</span><br><span class="hljs-string">        self.db_url = db_url or DATABASE_URL</span><br><span class="hljs-string"></span><br><span class="hljs-string">        if not self.db_url:</span><br><span class="hljs-string">            raise ValueError(&#x27;You must provide a db_url.&#x27;)</span><br><span class="hljs-string"></span><br><span class="hljs-string">        # Create an engine. kwargs为空。。。</span><br><span class="hljs-string">        self._engine = create_engine(self.db_url, **kwargs)</span><br><span class="hljs-string">        self.open = True</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br>        logger.log(<span class="hljs-string">&#x27;TRACE&#x27;</span>, <span class="hljs-string">f&#x27;Use the database: <span class="hljs-subst">&#123;db_path&#125;</span>&#x27;</span>)<br>    	<span class="hljs-comment"># 返回连接数据库的connection</span><br>        <span class="hljs-keyword">return</span> db.get_connection()<br>    <br>    <span class="hljs-comment"># 创建表</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create_table</span>(<span class="hljs-params">self, table_name</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Create table</span><br><span class="hljs-string"></span><br><span class="hljs-string">        :param str table_name: table name</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-comment"># 替换名称内容</span><br>        table_name = table_name.replace(<span class="hljs-string">&#x27;.&#x27;</span>, <span class="hljs-string">&#x27;_&#x27;</span>)<br>        <span class="hljs-comment"># 如果还存在该表则返回空</span><br>        <span class="hljs-keyword">if</span> self.exist_table(table_name):<br>            logger.log(<span class="hljs-string">&#x27;TRACE&#x27;</span>, <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;table_name&#125;</span> table already exists&#x27;</span>)<br>            <span class="hljs-keyword">return</span><br>        logger.log(<span class="hljs-string">&#x27;TRACE&#x27;</span>, <span class="hljs-string">f&#x27;Creating <span class="hljs-subst">&#123;table_name&#125;</span> table&#x27;</span>)<br>        <span class="hljs-comment"># 创建表的sql语句</span><br>        self.query(<span class="hljs-string">f&#x27;create table &quot;<span class="hljs-subst">&#123;table_name&#125;</span>&quot; (&#x27;</span><br>                   <span class="hljs-string">f&#x27;id integer primary key,&#x27;</span><br>                   <span class="hljs-string">f&#x27;alive int,&#x27;</span><br>                   <span class="hljs-string">f&#x27;request int,&#x27;</span><br>                   <span class="hljs-string">f&#x27;resolve int,&#x27;</span><br>                   <span class="hljs-string">f&#x27;url text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;subdomain text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;port int,&#x27;</span><br>                   <span class="hljs-string">f&#x27;level int,&#x27;</span><br>                   <span class="hljs-string">f&#x27;cname text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;ip text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;public int,&#x27;</span><br>                   <span class="hljs-string">f&#x27;cdn int,&#x27;</span><br>                   <span class="hljs-string">f&#x27;status int,&#x27;</span><br>                   <span class="hljs-string">f&#x27;reason text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;title text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;banner text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;header text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;history text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;response text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;ip_times text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;cname_times text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;ttl text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;cidr text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;asn text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;org text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;addr text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;isp text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;resolver text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;module text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;source text,&#x27;</span><br>                   <span class="hljs-string">f&#x27;elapse float,&#x27;</span><br>                   <span class="hljs-string">f&#x27;find int)&#x27;</span>)<br>    <br>    <span class="hljs-comment"># 删除表</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">drop_table</span>(<span class="hljs-params">self, table_name</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Delete table</span><br><span class="hljs-string"></span><br><span class="hljs-string">        :param str table_name: table name</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        table_name = table_name.replace(<span class="hljs-string">&#x27;.&#x27;</span>, <span class="hljs-string">&#x27;_&#x27;</span>)<br>        logger.log(<span class="hljs-string">&#x27;TRACE&#x27;</span>, <span class="hljs-string">f&#x27;Deleting <span class="hljs-subst">&#123;table_name&#125;</span> table&#x27;</span>)<br>        <span class="hljs-comment"># 删除的sql语句</span><br>        self.query(<span class="hljs-string">f&#x27;drop table if exists &quot;<span class="hljs-subst">&#123;table_name&#125;</span>&quot;&#x27;</span>)<br>    <br>    <span class="hljs-comment"># 关闭连接</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Close the database connection</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        self.conn.close()<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="2-wildcard和Collect"><a href="#2-wildcard和Collect" class="headerlink" title="2. wildcard和Collect"></a>2. wildcard和Collect</h1><p>在main函数中分析之后的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 如果没有成功联网 OneForAll将不执行子域收集模块！ </span><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self.access_internet:<br>    logger.log(<span class="hljs-string">&#x27;ALERT&#x27;</span>, <span class="hljs-string">&#x27;Because it cannot access the Internet, &#x27;</span><br>                        <span class="hljs-string">&#x27;OneForAll will not execute the subdomain collection module!&#x27;</span>)<br><span class="hljs-comment"># 如果联网成功 </span><br><span class="hljs-keyword">if</span> self.access_internet:<br>    <span class="hljs-comment"># 跟进函数进行分析 最后返回的是bool类型，表示是否是wildcard类型 (泛域名，即不管访问sss.***.com还是sfsdfsdf.***.com都会解析到同一个IP地址:即前缀无效。。。)</span><br>    self.enable_wildcard = wildcard.detect_wildcard(self.domain)<br>    <span class="hljs-comment"># 跟进函数进行分析 此处调用了大量获取子域名的函数。。。</span><br>    collect = Collect(self.domain)<br>    collect.run()<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="2-1-wildcard"><a href="#2-1-wildcard" class="headerlink" title="2.1 wildcard"></a>2.1 wildcard</h2><p>根据之前的代码<code>self.enable_wildcard = wildcard.detect_wildcard(self.domain)</code>分析<code>detect_wildcard</code>函数</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># def detect_wildcard(domain):</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">detect_wildcard</span>(<span class="hljs-params">domain</span>):</span><br>    <span class="hljs-comment"># 跟进函数分析 </span><br>    is_enable = to_detect_wildcard(domain)<br>    <span class="hljs-keyword">if</span> is_enable:<br>        logger.log(<span class="hljs-string">&#x27;ALERT&#x27;</span>, <span class="hljs-string">f&#x27;The domain <span class="hljs-subst">&#123;domain&#125;</span> enables wildcard&#x27;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        logger.log(<span class="hljs-string">&#x27;ALERT&#x27;</span>, <span class="hljs-string">f&#x27;The domain <span class="hljs-subst">&#123;domain&#125;</span> disables wildcard&#x27;</span>)<br>    <span class="hljs-keyword">return</span> is_enable<br><br><span class="hljs-comment"># def to_detect_wildcard(domain):</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">to_detect_wildcard</span>(<span class="hljs-params">domain</span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    检测是否使用通配符dns记录</span><br><span class="hljs-string">    Detect use wildcard dns record or not</span><br><span class="hljs-string"></span><br><span class="hljs-string">    :param  str  domain:  domain</span><br><span class="hljs-string">    :return bool use wildcard dns record or not</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    logger.log(<span class="hljs-string">&#x27;INFOR&#x27;</span>, <span class="hljs-string">f&#x27;Detecting <span class="hljs-subst">&#123;domain&#125;</span> use wildcard dns record or not&#x27;</span>)<br>    <span class="hljs-comment"># 跟进函数 最后返回三个子域名，前缀为随机8位字符的子域名</span><br>    random_subdomains = gen_random_subdomains(domain, <span class="hljs-number">3</span>)<br>    <span class="hljs-comment"># 跟进函数 判断是否子域都解析成功返回bool类型</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> all_resolve_success(random_subdomains):<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <span class="hljs-comment"># 跟进分析 判断是否所有子域都请求成功返回是否请求成功和具体的返回页面信息</span><br>    is_all_success, all_request_resp = all_request_success(random_subdomains)<br>    <span class="hljs-comment"># 如果没有请求成功，返回True</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> is_all_success:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-comment"># 跟进分析 返回是否有HTML界面结构相似</span><br>    <span class="hljs-keyword">return</span> any_similar_html(all_request_resp)<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-1-1-gen-random-subdomains"><a href="#2-1-1-gen-random-subdomains" class="headerlink" title="2.1.1 gen_random_subdomains"></a>2.1.1 gen_random_subdomains</h3><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># def gen_random_subdomains</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gen_random_subdomains</span>(<span class="hljs-params">domain, count</span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    生成指定数量的随机子域域名列表</span><br><span class="hljs-string"></span><br><span class="hljs-string">    :param domain: 主域</span><br><span class="hljs-string">    :param count: 数量</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    subdomains = <span class="hljs-built_in">set</span>()<br>    <span class="hljs-comment"># 如果指定数量小于1 直接返回空</span><br>    <span class="hljs-keyword">if</span> count &lt; <span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">return</span> subdomains<br>    <span class="hljs-comment"># 重复对应次数</span><br>    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(count):<br>        <span class="hljs-comment"># token_hex(x): binascii.hexlify(token_bytes(x)).decode(&#x27;ascii&#x27;)</span><br>        <span class="hljs-comment"># 其中token_bytes(x): </span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">if nbytes is None:</span><br><span class="hljs-string">    nbytes = DEFAULT_ENTROPY</span><br><span class="hljs-string">return os.urandom(nbytes)</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br>        <span class="hljs-comment"># 此处是生成随机8字符</span><br>        token = secrets.token_hex(<span class="hljs-number">4</span>)<br>        <span class="hljs-comment"># 添加到subdomains中eg:&#x27;9e79025d.qq.com&#x27; 不清楚这种乱码子域名干啥的。。</span><br>        subdomains.add(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;token&#125;</span>.<span class="hljs-subst">&#123;domain&#125;</span>&#x27;</span>)<br>    <span class="hljs-keyword">return</span> subdomains<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-1-2-all-resolve-success"><a href="#2-1-2-all-resolve-success" class="headerlink" title="2.1.2 all_resolve_success"></a>2.1.2 all_resolve_success</h3><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># def all_resolve_success</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">all_resolve_success</span>(<span class="hljs-params">subdomains</span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    判断是否所有子域都解析成功</span><br><span class="hljs-string"></span><br><span class="hljs-string">    :param subdomains: 子域列表</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># 此处返回创建的Resolver对象，其中包含了默认的DNS解析地址列表，解析超时时间，解析闯祸时间</span><br>    resolver = utils.dns_resolver()<br>    resolver.cache = <span class="hljs-literal">None</span>  <span class="hljs-comment"># 不使用DNS缓存</span><br>    status = <span class="hljs-built_in">set</span>()<br>    <span class="hljs-keyword">for</span> subdomain <span class="hljs-keyword">in</span> subdomains:<br>        <span class="hljs-comment"># 跟进分析 对每个子域名进行dns解析之后返回bool类型</span><br>        status.add(query_a_record(subdomain, resolver))<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">all</span>(status)<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-1-3-any-similar-html"><a href="#2-1-3-any-similar-html" class="headerlink" title="2.1.3 any_similar_html"></a>2.1.3 any_similar_html</h3><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">any_similar_html</span>(<span class="hljs-params">resp_list</span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    判断是否有一组HTML页面结构相似</span><br><span class="hljs-string"></span><br><span class="hljs-string">    :param resp_list: 响应HTML页面</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    html_doc1, html_doc2, html_doc3 = resp_list<br>    <span class="hljs-keyword">if</span> similarity.is_similar(html_doc1, html_doc2):<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">if</span> similarity.is_similar(html_doc1, html_doc3):<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">if</span> similarity.is_similar(html_doc2, html_doc3):<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-1-4-query-a-record"><a href="#2-1-4-query-a-record" class="headerlink" title="2.1.4 query_a_record"></a>2.1.4 query_a_record</h3><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># def query_a_record</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">query_a_record</span>(<span class="hljs-params">subdomain, resolver</span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    查询子域A记录</span><br><span class="hljs-string"></span><br><span class="hljs-string">    :param subdomain: 子域</span><br><span class="hljs-string">    :param resolver: DNS解析器</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-comment"># 查询对应的DNS解析信息</span><br>        answer = resolver.query(subdomain, <span class="hljs-string">&#x27;A&#x27;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        logger.log(<span class="hljs-string">&#x27;DEBUG&#x27;</span>, <span class="hljs-string">f&#x27;Query <span class="hljs-subst">&#123;subdomain&#125;</span> wildcard dns record error&#x27;</span>)<br>        logger.log(<span class="hljs-string">&#x27;DEBUG&#x27;</span>, e.args)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <span class="hljs-comment"># 如果返回空 返回false</span><br>    <span class="hljs-keyword">if</span> answer.rrset <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <span class="hljs-comment"># 获取ttl，name以及ip地址信息并返回true</span><br>    ttl = answer.ttl<br>    name = answer.name<br>    ips = &#123;item.address <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> answer&#125;<br>    logger.log(<span class="hljs-string">&#x27;ALERT&#x27;</span>, <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;subdomain&#125;</span> resolve to: <span class="hljs-subst">&#123;name&#125;</span> &#x27;</span><br>                        <span class="hljs-string">f&#x27;IP: <span class="hljs-subst">&#123;ips&#125;</span> TTL: <span class="hljs-subst">&#123;ttl&#125;</span>&#x27;</span>)<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="2-2-Collect-对象"><a href="#2-2-Collect-对象" class="headerlink" title="2.2 Collect 对象"></a>2.2 Collect 对象</h2><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Collect class</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Collect</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-comment"># 初始化内容</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, domain</span>):</span><br>        self.domain = domain<br>        self.modules = []<br>        self.collect_funcs = []<br>        <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_mod</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Get modules</span><br><span class="hljs-string">        获取模块</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-comment"># 如果启用全部模块开启 默认True</span><br>        <span class="hljs-keyword">if</span> settings.enable_all_module:<br>            <span class="hljs-comment"># The crawl module has some problems</span><br>            <span class="hljs-comment"># 爬取模块有些问题？？？</span><br>            <span class="hljs-comment"># 具体模块</span><br>            modules = [<span class="hljs-string">&#x27;certificates&#x27;</span>, <span class="hljs-string">&#x27;check&#x27;</span>, <span class="hljs-string">&#x27;datasets&#x27;</span>,<br>                       <span class="hljs-string">&#x27;dnsquery&#x27;</span>, <span class="hljs-string">&#x27;intelligence&#x27;</span>, <span class="hljs-string">&#x27;search&#x27;</span>]<br>            <span class="hljs-keyword">for</span> module <span class="hljs-keyword">in</span> modules:<br>                <span class="hljs-comment"># 显示模块的具体路径</span><br>                module_path = settings.module_dir.joinpath(module)<br>                <span class="hljs-comment"># 遍历当前目录下的所有.py结尾的文件</span><br>                <span class="hljs-keyword">for</span> path <span class="hljs-keyword">in</span> module_path.rglob(<span class="hljs-string">&#x27;*.py&#x27;</span>):<br>                    <span class="hljs-comment"># 设置模块内容 具体输出参考import_module=&#x27;modules.check.文件名&#x27;注意文件名不包含.py</span><br>                    import_module = <span class="hljs-string">f&#x27;modules.<span class="hljs-subst">&#123;module&#125;</span>.<span class="hljs-subst">&#123;path.stem&#125;</span>&#x27;</span><br>                    <span class="hljs-comment"># 将模块模块添加进modules中</span><br>                    self.modules.append(import_module)<br>        <span class="hljs-comment"># 没有按照默认则只导入用户设置的部分收集模块</span><br>        <span class="hljs-keyword">else</span>:<br>            self.modules = settings.enable_partial_module<br>            <br>    <span class="hljs-comment"># 导入模块</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">import_func</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Import do function</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-keyword">for</span> module <span class="hljs-keyword">in</span> self.modules:<br>            <span class="hljs-comment"># name为最后一个.之后的内容即具体的文件</span><br>            name = module.split(<span class="hljs-string">&#x27;.&#x27;</span>)[-<span class="hljs-number">1</span>]<br>            <span class="hljs-comment"># 导入具体的文件</span><br>            import_object = importlib.import_module(module)<br>            <span class="hljs-comment"># 将各个模块的内容存储在self中(暂时的理解)</span><br>            func = <span class="hljs-built_in">getattr</span>(import_object, <span class="hljs-string">&#x27;run&#x27;</span>)<br>            self.collect_funcs.append([func, name])<br>            <br><br>    <span class="hljs-comment"># 主要运行的部分</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Class entrance</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        logger.log(<span class="hljs-string">&#x27;INFOR&#x27;</span>, <span class="hljs-string">f&#x27;Start collecting subdomains of <span class="hljs-subst">&#123;self.domain&#125;</span>&#x27;</span>)<br>        <span class="hljs-comment"># 跟进函数 初始化需要的模块</span><br>        self.get_mod()<br>        <span class="hljs-comment"># 跟进函数 导入函数</span><br>        self.import_func()<br><br>        threads = []<br>        <span class="hljs-comment"># Create subdomain collection threads</span><br>        <span class="hljs-comment"># 创建子域集合线程</span><br>        <span class="hljs-keyword">for</span> func_obj, func_name <span class="hljs-keyword">in</span> self.collect_funcs:<br>            thread = threading.Thread(target=func_obj, name=func_name,<br>                                      args=(self.domain,), daemon=<span class="hljs-literal">True</span>)<br>            threads.append(thread)<br>        <span class="hljs-comment"># Start all threads</span><br>        <span class="hljs-comment"># 开始所有线程</span><br>        <span class="hljs-keyword">for</span> thread <span class="hljs-keyword">in</span> threads:<br>            thread.start()<br>        <span class="hljs-comment"># Wait for all threads to finish</span><br>        <span class="hljs-comment"># 等待所有线程</span><br>        <span class="hljs-keyword">for</span> thread <span class="hljs-keyword">in</span> threads:<br>            <span class="hljs-comment"># 挨个线程判断超时 最坏情况主线程阻塞时间=线程数*module_thread_timeout</span><br>            <span class="hljs-comment"># 超时线程将脱离主线程 由于创建线程时已添加守护属于 所有超时线程会随着主线程结束</span><br>            thread.join(settings.module_thread_timeout)<br>        <span class="hljs-comment"># 逐个判断是否有线程超时并输出对应信息</span><br>        <span class="hljs-keyword">for</span> thread <span class="hljs-keyword">in</span> threads:<br>            <span class="hljs-keyword">if</span> thread.is_alive():<br>                logger.log(<span class="hljs-string">&#x27;ALERT&#x27;</span>, <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;thread.name&#125;</span> module thread timed out&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
+
+<p>具体模块内容参考之后的OneForAll代码分析-3</p>
+<h1 id="3-BruteSRV"><a href="#3-BruteSRV" class="headerlink" title="3. BruteSRV"></a>3. BruteSRV</h1><p>通过枚举域名常见的SRV记录做查询来发现子域</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BruteSRV</span>(<span class="hljs-params">Module</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, domain</span>):</span><br>        Module.__init__(self)<br>        self.domain = domain<br>        self.module = <span class="hljs-string">&#x27;BruteSRV&#x27;</span><br>        self.source = <span class="hljs-string">&quot;BruteSRV&quot;</span><br>        self.qtype = <span class="hljs-string">&#x27;SRV&#x27;</span><br>        self.thread_num = <span class="hljs-number">20</span><br>        <span class="hljs-comment"># 获得队列对象</span><br>        self.names_queue = queue.Queue()<br>        self.answers_queue = queue.Queue()<br>        <br>    <span class="hljs-comment"># 生成对应子域名队列</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fill_queue</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-comment"># 获得默认的srv_prefixes.json文件路径</span><br>        path = data_storage_dir.joinpath(<span class="hljs-string">&#x27;srv_prefixes.json&#x27;</span>)<br>        <span class="hljs-comment"># 加载为json返回内容差不多是一个列表形式</span><br>        prefixes = utils.load_json(path)<br>        <span class="hljs-keyword">for</span> prefix <span class="hljs-keyword">in</span> prefixes:<br>            <span class="hljs-comment"># 将生成的子域名放入队列中</span><br>            self.names_queue.put(prefix + self.domain)<br>    <br>    <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">do_brute</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(self.thread_num):<br>            <span class="hljs-comment"># 多线程操作查询对应信息</span><br>            thread = BruteThread(self.names_queue, self.answers_queue)<br>            thread.name = <span class="hljs-string">f&#x27;BruteThread-<span class="hljs-subst">&#123;num&#125;</span>&#x27;</span><br>            thread.daemon = <span class="hljs-literal">True</span><br>            <span class="hljs-comment"># 开启子线程</span><br>            thread.start()<br>        <span class="hljs-comment"># 等到队列为空，再执行别的操作</span><br>        self.names_queue.join()<br>        <br>        <br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deal_answers</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-comment"># 当回应不为空</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> self.answers_queue.empty():<br>            <span class="hljs-comment"># 获取回应队列的内容</span><br>            answer = self.answers_queue.get()<br>            <span class="hljs-keyword">if</span> answer <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> answer:<br>                record = <span class="hljs-built_in">str</span>(item)<br>                <span class="hljs-comment"># 匹配内容增加子域名</span><br>                subdomains = self.match_subdomains(record)<br>                self.subdomains.update(subdomains)<br>        <br>        <br>    <span class="hljs-comment"># 入口函数</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        self.begin()<br>        <span class="hljs-comment"># 之后的内容基本都是在该类中，分析在前面部分</span><br>        self.fill_queue()<br>        self.do_brute()<br>        self.deal_answers()<br>        <br>        self.finish()<br>        self.save_json()<br>        self.gen_result()<br>        self.save_db()<br>        <br>        <br>        <br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BruteThread</span>(<span class="hljs-params">threading.Thread</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, names_queue, answers_queue</span>):</span><br>        threading.Thread.__init__(self)<br>        self.names_queue = names_queue<br>        self.answers_queue = answers_queue<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            <span class="hljs-comment"># 读取数列</span><br>            name = self.names_queue.get()<br>            <span class="hljs-comment"># 查询对应域名dns中的SRV信息</span><br>            answer = utils.dns_query(name, <span class="hljs-string">&#x27;SRV&#x27;</span>)<br>            <span class="hljs-comment"># 写入队列</span><br>            self.answers_queue.put(answer)<br>            <span class="hljs-comment"># 向任务完成的队列发送信号，主要是给join用的，每次get后需要调用task_done，直到所有任务都task_done。join才取消阻塞</span><br>            self.names_queue.task_done()<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="4-Brute"><a href="#4-Brute" class="headerlink" title="4.Brute"></a>4.Brute</h1><p>该部分内容较多，放置OneForAll代码分析-4中进行分析</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BF%A1%E5%AE%89-%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90-OneForAll/">信安 工具分析 OneForAll</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90/">工具分析</a>
+                    
+                      <a class="hover-with-bg" href="/tags/OneForAll/">OneForAll</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

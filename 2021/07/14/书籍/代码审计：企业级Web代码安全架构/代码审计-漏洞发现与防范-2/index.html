@@ -1,0 +1,894 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>代码审计-漏洞发现与防范-2 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="代码审计-漏洞发现与防范-2">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-14 09:49" pubdate>
+        2021年7月14日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.3k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">代码审计-漏洞发现与防范-2</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月27日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="漏洞发现与防范"><a href="#漏洞发现与防范" class="headerlink" title="漏洞发现与防范"></a>漏洞发现与防范</h1><h2 id="第六章-漏洞挖掘与防范-深入篇"><a href="#第六章-漏洞挖掘与防范-深入篇" class="headerlink" title="第六章 漏洞挖掘与防范(深入篇)"></a>第六章 漏洞挖掘与防范(深入篇)</h2><h3 id="6-1-变量覆盖漏洞"><a href="#6-1-变量覆盖漏洞" class="headerlink" title="6.1 变量覆盖漏洞"></a>6.1 变量覆盖漏洞</h3><p>变量覆盖指的是用我们自定义的参数值替换程序原有的变量。通常配合程序的其他功能来实现完整的功能。如：在文件上传处，若可以将任意扩展名覆盖原来的白名单列表，就可以上传php的shell</p>
+<p>常见的函数有extract(),parse_str(),import_request_variables()。</p>
+<p>其中import_request_variables()是在没有开启全局变量注册时，调用该函数相当于开启了全局变量注册，在&gt;PHP5.4之后函数被取消。</p>
+<p>此外$$方式注册变量没有验证导致覆盖也时有发生。</p>
+<h4 id="6-1-1-挖掘经验"><a href="#6-1-1-挖掘经验" class="headerlink" title="6.1.1 挖掘经验"></a>6.1.1 挖掘经验</h4><p>由于该漏洞经常要结合应用的其他功能进行攻击，所以挖掘时不仅仅要考虑能否实现变量覆盖，还要考虑后面的代码能不能让代漏洞利用起来。</p>
+<p>由函数导致的变量覆盖较为好挖掘，只需要寻找带有变量的相关函数，之后回溯查看变量是否可控extract还需要考虑它的第二个参数。import_request_variables()函数相当于开启全局变量的注册与替换，不过只在PHP4~4.1和5~5.4可用</p>
+<p>而$$导致的变量覆盖，一样可以通过搜索$$进行挖掘，不过建议挖掘之前最好将核心文件通读。</p>
+<ol>
+<li><p>函数使用不当</p>
+<ol>
+<li><p>extract函数</p>
+<p>extract()函数覆盖变量需要一定的条件，函数结构如下</p>
+<p>int extract(array &amp;$var_array [,int $extract_type=EXTR_OVERWRITE [, string &amp;prefix=NULL]])</p>
+<p>相关参数作用如下</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>var_array</td>
+<td>必需。规定要使用的输出</td>
+</tr>
+<tr>
+<td>extract_type</td>
+<td>可选。extract()函数将检查每个键名是否为合法的变量名，同时也检查符号表中的变量名是否冲突。</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>可选，仅在extract_type的值是EXTR_PREFIX_SAME,EXTR_PREFIX_ALL,EXTR_PREFIX_INVALID,EXTR_PREFIX_EXISTS时需要，如果附加了前缀后的结果不是合法的变量名，将不会导入符号表中。前缀和数组键名之间会自动加上一个下划线</td>
+</tr>
+</tbody></table>
+<p>测试代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$b</span>=<span class="hljs-number">1</span>;<br><span class="hljs-variable">$a</span>=<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;b&#x27;</span>=&gt;<span class="hljs-string">&#x27;2&#x27;</span>);<br>extract(<span class="hljs-variable">$a</span>);<br>print_r(<span class="hljs-variable">$b</span>);<br><span class="hljs-comment"># 2</span><br></code></pre></div></td></tr></table></figure>
+
+<p>经过处理后输出为2</p>
+</li>
+<li><p>parse_str函数</p>
+<p>函数作用是解析字符串并注册成变量，会直接覆盖已有的变量</p>
+<p>函数说明如下：</p>
+<p>void parse_str(string $str [, array &amp;$arr])</p>
+<p>测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$b</span>=<span class="hljs-number">1</span>;<br>parse_str(<span class="hljs-string">&#x27;b=2&#x27;</span>);<br>print_r(<span class="hljs-variable">$b</span>);<br><span class="hljs-comment"># 2</span><br></code></pre></div></td></tr></table></figure>
+
+<p>原变量的值被覆盖。</p>
+</li>
+<li><p>import_request_variables函数</p>
+<p>函数作用是将GET,POST,COOKIE的参数注册成变量，用在register_globals被禁止时，需要PHP4.1~5.4</p>
+<p>函数说明如下：</p>
+<p>bool import_request_variables(string $types [, string $prefix])</p>
+<p>其中$types代表要注册的变量，分别用对应（GET,POST,COOKIE）的首字母表示。$prefix为要注册变量的前缀</p>
+<p>测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$b</span>=<span class="hljs-number">1</span>;<br>import_request_variables(<span class="hljs-string">&quot;GP&quot;</span>);<br><span class="hljs-keyword">print</span>(<span class="hljs-variable">$b</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>测试结果如图：</p>
+<p><img src="https://pic.imgdb.cn/item/60ee4e665132923bf8339492.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>$$变量覆盖</p>
+<p>一段经典的$$注册变量覆盖代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">foreach</span>(<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;_COOKIE&#x27;</span>,<span class="hljs-string">&#x27;_POST&#x27;</span>,<span class="hljs-string">&#x27;_GET&#x27;</span>) <span class="hljs-keyword">as</span> <span class="hljs-variable">$_request</span>)&#123;<br>    <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$$_request</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$_key</span> =&gt; <span class="hljs-variable">$_value</span>)&#123;<br>        <span class="hljs-variable">$$_key</span>=addslashes(<span class="hljs-variable">$_value</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>代码理解是$_key是传入参数的名称，如?a=1则$_key是a此时核心代码就是$a=addslashes($_value)若之前有参数$a则被覆盖为1</p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="6-1-2-漏洞防范"><a href="#6-1-2-漏洞防范" class="headerlink" title="6.1.2 漏洞防范"></a>6.1.2 漏洞防范</h4><p>主要有以下方法进行防范:</p>
+<ol>
+<li><p>使用原始变量</p>
+</li>
+<li><p>验证变量存在</p>
+<p>可以在注册变量之前先判断变量是否存在。如使用extract()函数配置第二个参数为EXTR_SKIP,或parse_str()使用前先进行代码的判断</p>
+</li>
+</ol>
+<h3 id="6-2-逻辑处理漏洞"><a href="#6-2-逻辑处理漏洞" class="headerlink" title="6.2 逻辑处理漏洞"></a>6.2 逻辑处理漏洞</h3><p>这里的逻辑漏洞是指程序在业务逻辑上面的漏洞，常见的漏洞在支付,找回密码,程序安装等</p>
+<h4 id="6-2-1-挖掘经验"><a href="#6-2-1-挖掘经验" class="headerlink" title="6.2.1 挖掘经验"></a>6.2.1 挖掘经验</h4><p>通常该类漏洞的挖掘技巧是通读功能点源码，熟悉业务流程后才可能挖掘的比较顺畅，值得关注点有程序是否可重复安装，修改密码越权，找回密码验证能否暴力破解，cookie能否被预测和绕过等</p>
+<ol>
+<li><p>等于与存在判断绕过</p>
+<p>常见有漏洞的判断函数</p>
+<ol>
+<li><p>in_array函数</p>
+<p>函数用来判断值是否在某个数组列表中，通常方式是</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">in_array(<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>));<br></code></pre></div></td></tr></table></figure>
+
+<p>如上是没问题的，再看下面的代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">if</span>(in_array(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;typeid&#x27;</span>],<span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>)))&#123;<br>    <span class="hljs-variable">$sql</span>=<span class="hljs-string">&quot;select **** where typeid=&#x27;&quot;</span>.<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;typeid&#x27;</span>].<span class="hljs-string">&quot;&#x27;&quot;</span>;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$sql</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>代码很好理解，是判断参数值是否是1,2,3,4中的一个，是就进行下一步拼接。但是in_array函数比较时会进行类型转换，所以我们请求?typeid=1’ union selec…</p>
+<p>输出为：select **** where typeid=1’ union select …</p>
+<p>直接被绕过了，但是判断变成字符形式就不能轻易绕过了</p>
+</li>
+<li><p>is_numeric函数</p>
+<p>函数判断变量是否是数字</p>
+<p>代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">if</span>(is_numeric(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;var&#x27;</span>]))&#123;<br>    <span class="hljs-comment"># 拼接到sql</span><br>    <span class="hljs-keyword">echo</span> <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;var&#x27;</span>];<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>简写了拼接过程，但是逻辑清楚，如果是数字就能进行下一步。但是该函数存在问题，当传入参数是hex时会直接通过返回true，而mysql可以直接使用hex编码代替字符串明文的。此时就可能存在二次注入和XSS等漏洞了</p>
+<p>比如写入&lt;script&gt;alert(1)&lt;/script&gt;的hex编码”0x3C7363726970743E616C6572742831293C2F7363726970743E”</p>
+<p>就会存储在数据库中，可能形成xss漏洞</p>
+</li>
+<li><p>双等于和三等于</p>
+<p>双等于在判断前会做变量类型转换，所以在双等于判断时可能穿在安全隐患</p>
+<p>测试代码:</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">var_dump(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;var&#x27;</span>]==<span class="hljs-number">2</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>请求?var=2ssss时同样输出true</p>
+<p>而三等于则不会有该漏洞</p>
+</li>
+</ol>
+</li>
+<li><p>越权漏洞</p>
+<p>越权漏洞分为水平越权和垂直越权，水平越权指相同等级权限的用户，可以获取相同权限的其他用户的信息。垂直越权实在权限等级不同的用户，也能查看获取不属于直接等级的信息。</p>
+<p>该类漏洞基本是账户体系上在判断权限时不严格导致穿在绕过漏洞，经常发生在cookie验证不严，简单判断用户的提交。最基础的例子是，访问个人信息时url为?uid=1此时访问?uid=2可能就能够访问id为2的用户信息</p>
+</li>
+<li><p>未exit或return引发的安全问题</p>
+<p>在如下代码中:</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">if</span>(file_exists(<span class="hljs-string">&#x27;install.lock&#x27;</span>))&#123;<br>    header(<span class="hljs-string">&quot;Location: ../&quot;</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>仅仅是使用了header()函数进行跳转但是php程序并没有退出，使用如下代码进行测试</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;var&#x27;</span>]==<span class="hljs-number">1</span>)&#123;<br>    header(<span class="hljs-string">&quot;Location: https://www.baidu.com/&quot;</span>);<br>&#125;<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;var&#x27;</span>];<br></code></pre></div></td></tr></table></figure>
+
+<p>使用bp抓包数据</p>
+<p><img src="https://pic.imgdb.cn/item/60ee59985132923bf87e1a0e.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到输出了1说明程序依然在执行，所以正确的做法应当是增加die()或exit()结束</p>
+</li>
+<li><p>常见支付漏洞</p>
+<p>首先是提交时能够直接修改购买的信息，且服务端未进行严格的校验</p>
+<p>其次是以重复发包来利用时间差，以少量的钱多次购买，原理如图：</p>
+<p><img src="https://pic.imgdb.cn/item/60ee5a9a5132923bf8847ae2.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h4 id="6-2-2-漏洞防范"><a href="#6-2-2-漏洞防范" class="headerlink" title="6.2.2 漏洞防范"></a>6.2.2 漏洞防范</h4><p>需要注意的有：</p>
+<ol>
+<li>了解业务逻辑</li>
+<li>熟悉函数的功能和差异</li>
+</ol>
+<h3 id="6-3-会话认证漏洞"><a href="#6-3-会话认证漏洞" class="headerlink" title="6.3 会话认证漏洞"></a>6.3 会话认证漏洞</h3><p>会话认证问题较多出现在cookie上，cookie是Web服务器返回给客户端的一段常用来标识用户身份或者认证情况的字符串，保存在客户端，浏览器请求会自动带上该标识，由于该标识可以被客户端修改所以存在安全风险。</p>
+<h4 id="6-3-1-挖掘经验"><a href="#6-3-1-挖掘经验" class="headerlink" title="6.3.1 挖掘经验"></a>6.3.1 挖掘经验</h4><p>认证漏洞较多出现在cookie验证上，通常是没有使用session来认证，而是直接将用户信息保存在cookie中。程序使用时直接调用，该过程一般都由一个统一的函数去取数据调用，容易导致SQL注入和越权等漏洞。</p>
+<p>在挖掘相关漏洞时，可以先查看程序登录功能的代码，关注登录的业务逻辑，和有没有可控的session值或绕过密码验证的漏洞。另外需要有验证cookie的代码。</p>
+<ol>
+<li><p>cookie认证安全</p>
+<p>cookie一般保存登录账户的标识信息，出现问题较多的是cookie的SQL注入等常见漏洞，以及伪造用户的id。</p>
+<p>一般cookie验证的代码大致如下</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">session_start();<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">login</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">if</span>(账户密码正确)&#123;<br>        setcookie(<span class="hljs-string">&#x27;username&#x27;</span>,<span class="hljs-string">&#x27;admin&#x27;</span>);<br>        <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;username&#x27;</span>]=<span class="hljs-string">&#x27;admin&#x27;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 判断cookie里面的用户名是否和session里的用户名一致</span><br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_COOKIW</span>[<span class="hljs-string">&#x27;username&#x27;</span>]===<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;username&#x27;</span>])&#123;<br>    <span class="hljs-comment">// 操作$_SESSION[&#x27;username&#x27;]用户的数据</span><br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    login();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>这样的写法一般不会出现验证上的安全问题。</p>
+<p>案例是Espcms任意用户登录分析</p>
+<h4 id="6-3-2-漏洞防范"><a href="#6-3-2-漏洞防范" class="headerlink" title="6.3.2 漏洞防范"></a>6.3.2 漏洞防范</h4><p>首先应该了解认证的业务逻辑，限制输入的异常字符以及避免使用客户端提交上来的内容去直接操作。应当把cookie和session结合起来使用，不能从cookie中获取参数值然后操作。在设置session时，需要保证客户端不能操作敏感session参数</p>
+<p>其次是不能把敏感信息存到cookie中</p>
+</li>
+</ol>
+<h2 id="第七章-二次漏洞审计"><a href="#第七章-二次漏洞审计" class="headerlink" title="第七章 二次漏洞审计"></a>第七章 二次漏洞审计</h2><h3 id="7-1-什么是二次漏洞"><a href="#7-1-什么是二次漏洞" class="headerlink" title="7.1 什么是二次漏洞"></a>7.1 什么是二次漏洞</h3><p>需要先构造好利用代码写入网站保存，在第二次或多次请求后调用攻击代码触发或修改配置触发的漏洞叫做二次漏洞。</p>
+<p>特别经典的SQL注入案例是，攻击者在网站评论的地方发表了带有注入语句的评论，该注入语句被完整的保存到数据库中，但是评论引用刚提交带有注入语句的评论，提交后server端从数据库取材第一次的评论，由于第一次评论中带有单引号可闭合第二次的语句，从而触发了注入漏洞</p>
+<p>出现的原因是开发者在可信数据的逻辑上考虑不全面。</p>
+<h3 id="7-2-二次漏洞审计技巧"><a href="#7-2-二次漏洞审计技巧" class="headerlink" title="7.2 二次漏洞审计技巧"></a>7.2 二次漏洞审计技巧</h3><p>虽然二次漏洞写入payload和触发payload很可能不在同一个地方。但是还是可以通过相关关键字进行定位。但是精度较低了。</p>
+<p>多数的二次漏洞来进行比一般的漏洞强，所以最好是通读全部代码。</p>
+<p>该漏洞经常出现在业务逻辑复杂的地方，如购物车，订单等或和数据库交互的地方。其中可重点关注SQL注入，XSS</p>
+<h2 id="第八章-代码审计小技巧"><a href="#第八章-代码审计小技巧" class="headerlink" title="第八章 代码审计小技巧"></a>第八章 代码审计小技巧</h2><h3 id="8-1-钻GPC等转义的空子"><a href="#8-1-钻GPC等转义的空子" class="headerlink" title="8.1 钻GPC等转义的空子"></a>8.1 钻GPC等转义的空子</h3><p>GPC会自动将我们提交上去的敏感字符转义。但是GPC并不是把所有变量功能，其中$_SERVER变量没有被过滤，且在编码转换中，部分情况下我们能够干掉GPC的转义符号。</p>
+<ol>
+<li><p>不受GPC保护的$_SERVER变量</p>
+<p>在PHP5之后$_SERVER取到的header字段不受GPC影响、$_FILES变量一样不受保护</p>
+<p>测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;GPC&#x27;</span>.get_magic_quotes_gpc();<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;client-ip=&#x27;</span>.<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&quot;HTTP_CLIENT_IP&quot;</span>];<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;$_GET[a]=&#x27;</span>.<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;a&#x27;</span>];<br></code></pre></div></td></tr></table></figure>
+
+<p>结果如图：</p>
+<p><img src="https://pic.imgdb.cn/item/60ee8f015132923bf8437195.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>编码转换问题</p>
+<p>在之前介绍的宽字节注入，就是经典的编码转换问题导致绕过GPC的方式。是PHP与MySQL交互过程中发生编码转换导致的问题。</p>
+<p>在PHP自带的编码转换函数上也会存在整个问题，比如mb_convert_encoding()函数</p>
+<p>测试代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php+HTML">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;<br>&lt;?php<br>$sql=&quot;where id=&#x27;&quot;.urldecode(&quot;-1%df%5c&#x27; -- &quot;).&quot;&#x27;&quot;;<br>print(mb_convert_encoding($sql,&quot;UTF-8&quot;,&quot;GBK&quot;));<br>?&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><em>注意</em>：网页和文件编码都应是UTF-8，这段代码是将UTF-8转换成GBK</p>
+<p>输出结果为：</p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=utf-8&quot;</span>/&gt;</span><br>where id=&#x27;-1運&#x27; -- &#x27;<br></code></pre></div></td></tr></table></figure>
+
+<p>成功闭合了前面的单引号</p>
+</li>
+</ol>
+<h3 id="8-2-神奇的字符串"><a href="#8-2-神奇的字符串" class="headerlink" title="8.2 神奇的字符串"></a>8.2 神奇的字符串</h3><p>由于中文的博大精深，所以可能在语言编码转换时导致各种异常。</p>
+<ol>
+<li><p>字符处理函数报错信息邪路</p>
+<p>页面报错信息通常能泄露文件绝对路径，代码，变量以及函数等信息。对于PHP的报错信息可以进行设置。设置display_errors=on或在代码中加入error_reporting()函数，error_reporting()函数有几个选项来配置显示错误等级</p>
+<p>列表如下：</p>
+<ul>
+<li>E_WARNING</li>
+<li>E_PARSE</li>
+<li>E_NOTICE</li>
+<li>E_CORE_ERROR</li>
+<li>E_CORE_WARNING</li>
+<li>E_USER_ERROR</li>
+<li>E_USER_WARNING</li>
+<li>E_USER_NOTICE</li>
+<li>E_STRICT</li>
+<li>E_RECOVERABLE_ERROR</li>
+<li>EALL</li>
+</ul>
+<p>最常见的是E_ALL、E_WARNING、E_NOTICE。其中E_ALL代表提示所有问题，而E_WARNING代表显示错误信息，E_NOTICE则表示显示基础提示信息</p>
+<p>渗透过程中常常需要绝对路径，所以通过报错界面获取是不错的选择。</p>
+<ol>
+<li>多数程序会使用trim()函数去除首尾空格，此时传入数组则会报错。类似函数还有很多</li>
+</ol>
+</li>
+<li><p>字符串截断</p>
+<ol>
+<li><p>%00空字符截断</p>
+<p>%00即NULL会被GPC和addslashes()函数过滤，且在&gt;PHP5.3之后就被全面修复</p>
+<p>%00在URL解码后为\0，由于PHP基于C语言开发，\0在C语言中是字符串结束符，所以不在读取之后的字符串，所以产生截断</p>
+<p>测试代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">include</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;file&#x27;</span>].<span class="hljs-string">&#x27;.php&#x27;</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>同目录下创建文件1.txt，内容是phpinfo()所以请求：?file=1.txt%00就实际上包含了1.txt文件，从而执行了phpinfo代码</p>
+</li>
+<li><p>iconv函数字符编码转换截断</p>
+<p>iconv()函数用来做字符编码转换，但是由于字符集编码存在一定的差异性，所以导致部分编码不能被成功转换。而在iconv()函数转码是，遇到不能处理之后则后续字符串不被处理</p>
+<p>测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$a</span>=<span class="hljs-string">&#x27;1&#x27;</span>.chr(<span class="hljs-number">130</span>).<span class="hljs-string">&#x27;2&#x27;</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$a</span>.<span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>;<br><span class="hljs-keyword">echo</span> iconv(<span class="hljs-string">&quot;UTF-8&quot;</span>,<span class="hljs-string">&quot;gbk&quot;</span>,<span class="hljs-variable">$a</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>后面的输出只输出了1</p>
+<p>从chr(130)之后的字符串都没有输出。</p>
+<p>书籍作者fuzz测试后，当文件名有chr(128~255)都可以截断字符</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="8-3-php-输入输出流"><a href="#8-3-php-输入输出流" class="headerlink" title="8.3 php://输入输出流"></a>8.3 php://输入输出流</h3><p>PHP提供了php://协议允许访问PHP的输入输出流，标准输入输出和错误描述符。内存中、磁盘备份的临时文件流以及可以操作其他读取写入文件资源的过滤器。主要通过如下访问方式来使用这些封装器：</p>
+<ul>
+<li>php://stdin</li>
+<li>php://stdout</li>
+<li>php://stderr</li>
+<li>php://input</li>
+<li>php://output</li>
+<li>php://fd</li>
+<li>php://memory</li>
+<li>php://temp</li>
+<li>php://filter</li>
+</ul>
+<p>使用最多的是php://input，php://output，php://filter</p>
+<ol>
+<li><p>php://input</p>
+<p>可以访问请求的原始数据的只读流。即可直接读取到POST上没有经过解析的原始数据。但是php://input不能再获取“multipart/form-data”方式提交的数据</p>
+<p>测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">echo</span> file_get_contents(<span class="hljs-string">&quot;php://input&quot;</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>当我们用POST请求提交a=aaa时，a=aaa被直接打印</p>
+</li>
+<li><p>php://output</p>
+<p>是一个只写的数据流，php://output是将流数据输出</p>
+</li>
+<li><p>php://filter</p>
+<p>是一个文件操作的协议，可以对磁盘中的文件进行操作。类似于readfile(),file(),和file_get_contents()。</p>
+<p>有多个参数可以进行相应的操作</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>resource=&lt;要过滤的数据流&gt;</td>
+<td>必须，指定了要过滤的数据流</td>
+</tr>
+<tr>
+<td>read=&lt;读链的筛选列表&gt;</td>
+<td>可选，可以设定一个或多个过滤器名称，以管道符`</td>
+</tr>
+<tr>
+<td>write=&lt;读链的筛选列表&gt;</td>
+<td>可选，可以设定一个或多个过滤器名称，以管道符`</td>
+</tr>
+<tr>
+<td>&lt;;两个链的筛选列表&gt;</td>
+<td>任何没有以read=或write=作前缀的筛选器列表会视情况应用于读或写链</td>
+</tr>
+</tbody></table>
+<p>测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">file_put_contents(<span class="hljs-string">&quot;php://filter/write=string.rot13/resource=example.txt&quot;</span>,<span class="hljs-string">&quot;Hello World&quot;</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p>执行代码后会在同一目录下生成example.txt，并写入rot13编码后的”Hello World”,而php://filter还可以用来读取文件，如果有远程保护文件漏洞，类似如下代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">include</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;file&#x27;</span>]);<br></code></pre></div></td></tr></table></figure>
+
+<p>我们此时想读取文件则使用如下请求即可</p>
+<p>?file=php://filter/convert.base64-encode/resource=1.php</p>
+</li>
+</ol>
+<h3 id="8-4-PHP代码解析标签"><a href="#8-4-PHP代码解析标签" class="headerlink" title="8.4 PHP代码解析标签"></a>8.4 PHP代码解析标签</h3><p>PHP的解析标签有如下几种：</p>
+<ol>
+<li>标准：&lt;?php  ?&gt;</li>
+<li>脚本标签：&lt;script language=”php”&gt; &lt;/script&gt;</li>
+<li>短标签：&lt;? …. ?&gt; 使用短标签前需要在php.ini中设置short_open_taf=on,默认是on状态</li>
+<li>asp标签：&lt;% … %&gt;在PHP3.0.4之后可用，需要在php.ini中设置asp_tags=on,默认是off状态</li>
+</ol>
+<p>主要是为了如果禁止&lt;?php?&gt;的情况</p>
+<h3 id="8-5-fuzz漏洞发现"><a href="#8-5-fuzz漏洞发现" class="headerlink" title="8.5 fuzz漏洞发现"></a>8.5 fuzz漏洞发现</h3><p>fuzz是指对特定目标的模糊测试。例子：使用Office Word打开doc文档时，Word软件会按照指定的格式读取文件的内容，如果文件格式出现异常字符，Word无法解析，而又没有提前捕捉到这种类型的错误就有可能引发Word程序崩溃。</p>
+<p>此时我们就可能通过根据生成大量带有异常格式或字符的doc文档，参数用Word调用从而尝试发现更多的bug。</p>
+<h3 id="8-6-不严谨的正则表达式"><a href="#8-6-不严谨的正则表达式" class="headerlink" title="8.6 不严谨的正则表达式"></a>8.6 不严谨的正则表达式</h3><p>如果正则表达式写的不严谨会导致安全问题产生。</p>
+<p>常见问题有：</p>
+<ol>
+<li><p>没有使用^和$限定匹配开始结束的位置</p>
+<p>举例来说，通过HTTP_CLIENT_IP来获取用户的IP，通过正则查看地址是否合法，不严格的正则表达式写成”\d+\.\d+\.\d+\.\d+”的形式，但是此时最后添加字符串同样也能通过检查</p>
+<p>严谨一点是如下：”\d+\.\d+\.\d+\.\d+$”</p>
+</li>
+<li><p>特殊字符未转义</p>
+<p>例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$filename</span>=urldecode(<span class="hljs-string">&quot;xxx.php%00jpg&quot;</span>);<br><span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/.(jpg|png|gif|bmp)$/i&#x27;</span>,<span class="hljs-variable">$filename</span>))&#123;<br>    file_put_contents(<span class="hljs-variable">$filename</span>,<span class="hljs-string">&quot;aa&quot;</span>);<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;不允许的文件扩展名&#x27;</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>代码显然是没有考虑到特殊的字符转义，没有将<code>.</code>转义，导致此时提交的内容能够成功绕过，形成一个PHP脚本文件。</p>
+</li>
+</ol>
+<h3 id="8-7-十余种MySQL报错注入"><a href="#8-7-十余种MySQL报错注入" class="headerlink" title="8.7 十余种MySQL报错注入"></a>8.7 十余种MySQL报错注入</h3><p>数据库报错注入，通常在没有正常数据回显的SQL注入漏洞中。下面介绍十种报错注入的函数。注意：部分函数不在所有版本通用</p>
+<p>假定查询的sql语句为：</p>
+<p>select * from user where id=?</p>
+<ol>
+<li><p>floor()</p>
+<p>注入语句：</p>
+<p>id=1 and (select 1 from (select count(*),concat(user(),floor (rand(0)*2)) x from information_schema.tables group by x)a)</p>
+</li>
+<li><p>extractvalue()</p>
+<p>注入语句：</p>
+<p>id=1 and (extractvalue(1,concat(0x5c,(select user()))))</p>
+</li>
+<li><p>updatexml()</p>
+<p>注入语句：</p>
+<p>id= 1 and (updatexml(1,concat(0x5e24,(select user()),0x5e24),1))</p>
+</li>
+<li><p>GeometryCollection()</p>
+<p>注入语句：</p>
+<p>id= 1 and GeometryCollection((select * from(select * from(select user())a)b))</p>
+</li>
+<li><p>polygon()</p>
+<p>注入语句：</p>
+<p>id= 1 and polygon((select * from(select * from (select user())a)b))</p>
+</li>
+<li><p>multipoint()</p>
+<p>注入语句：</p>
+<p>id=1 and multipoint((select * from(select * form(select user())a)b))</p>
+</li>
+<li><p>multilinestring()</p>
+<p>注入语句：</p>
+<p>id=1 and multilinestring((select * from(select * from(select user())a)b))</p>
+</li>
+<li><p>multipolygon()</p>
+<p>注入语句：</p>
+<p>id=1 and multipolygon((select * from(select * from(select user())a)b))</p>
+</li>
+<li><p>linestring()</p>
+<p>注入语句：</p>
+<p>id=1 and linestring((select * from(select * from(select user())a)b))</p>
+</li>
+<li><p>exp()</p>
+<p>注入语句：</p>
+<p>id=1 and exp(~(select*from(select user())a))</p>
+</li>
+</ol>
+<h3 id="8-8-Windows-FindFirstFile-利用"><a href="#8-8-Windows-FindFirstFile-利用" class="headerlink" title="8.8 Windows FindFirstFile 利用"></a>8.8 Windows FindFirstFile 利用</h3><p>目前大多数程序都会对上传的文件名加入时间戳等字符再进行MD5，然后下载文件的时候通过保存再数据库里的文件ID读取文件路径。</p>
+<p>这样我们就无法得到我们上传的webshell文件路径。但是再Windows下，我们只需要找到文件所在的目录，然后利用Windows的特性就可以访问到文件。</p>
+<p>因为Windows在搜索文件时使用了FindFirstFile整个winapi函数</p>
+<p>利用方法是将文件名不可知部分之后的部分用<code>&lt;</code>或<code>&gt;</code>代替即可，注意一个表示代替一个字符，使用两个时可以代替多个字符了</p>
+<p>测试代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">include</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;file&#x27;</span>]);<br></code></pre></div></td></tr></table></figure>
+
+<p>假定同目录下有1111.txt文件有PHP代码</p>
+<p>使用效果如图</p>
+<p><img src="https://pic.imgdb.cn/item/60eea9d35132923bf8096ded.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过实践，<code>&lt;&lt;</code>可以使用但是<code>&gt;&gt;</code>报错</p>
+<p>这个特性在多个函数可用，下面列出函数表</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>include()</td>
+<td>包含文件</td>
+</tr>
+<tr>
+<td>include_once()</td>
+<td>包含文件</td>
+</tr>
+<tr>
+<td>require()</td>
+<td>包含文件</td>
+</tr>
+<tr>
+<td>require_once()</td>
+<td>包含文件</td>
+</tr>
+<tr>
+<td>fopen()</td>
+<td>打开文件</td>
+</tr>
+<tr>
+<td>zipparchive::open()</td>
+<td>打开文件</td>
+</tr>
+<tr>
+<td>copy()</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>file_get_contents()</td>
+<td>读取文件</td>
+</tr>
+<tr>
+<td>parse_ini_file()</td>
+<td>读取文件</td>
+</tr>
+<tr>
+<td>readfile()</td>
+<td>读取文件</td>
+</tr>
+<tr>
+<td>file_put_contents</td>
+<td>写入文件</td>
+</tr>
+<tr>
+<td>mkdir()</td>
+<td>创建文件夹</td>
+</tr>
+<tr>
+<td>tempnam()</td>
+<td>创建文件</td>
+</tr>
+<tr>
+<td>touch()</td>
+<td>创建文件</td>
+</tr>
+<tr>
+<td>move_uploaded_file()</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td>opendir()</td>
+<td>文件夹操作</td>
+</tr>
+<tr>
+<td>readdir()</td>
+<td>文件夹操作</td>
+</tr>
+<tr>
+<td>rewinddir()</td>
+<td>文件夹操作</td>
+</tr>
+<tr>
+<td>closedir()</td>
+<td>文件夹操作</td>
+</tr>
+</tbody></table>
+<h3 id="8-9-PHP可变变量"><a href="#8-9-PHP可变变量" class="headerlink" title="8.9 PHP可变变量"></a>8.9 PHP可变变量</h3><p>PHP可变变量是PHP语言的特性使操作更加灵活。</p>
+<p>案例代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-comment"># 一</span><br><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;one&quot;</span>;<br><span class="hljs-variable">$$a</span>=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$one</span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>输出为1</p>
+<p>PHP的双引号会解析中间变量</p>
+<p>案例代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;$&#123;@phpinfo()&#125;&quot;</span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>此时phpinfo()执行成功，其中<code>@</code>是必须存在的，但是除了<code>@</code>还有其他的写法</p>
+<ol>
+<li><p>花括号中第一个字符为空格</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;$&#123; phpinfo()&#125;&quot;</span>;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>花括号中第一个字符为TAB</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;$&#123;	phpinfo()&#125;&quot;</span>;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>花括号中第一个字符为注释符</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;$&#123;/**/phpinfo()&#125;&quot;</span>;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>花括号中第一个字符为回车换行符</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;$&#123;</span><br><span class="hljs-string">phpinfo()&#125;&quot;</span>;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>花括号中第一个字符为加号<code>+</code></p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;$&#123;+phpinfo()&#125;&quot;</span>;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>花括号中第一个字符为减号<code>-</code></p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;$&#123;-phpinfo()&#125;&quot;</span>;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>花括号中第一个字符为感叹号<code>!</code></p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$a</span>=<span class="hljs-string">&quot;$&#123;!phpinfo()&#125;&quot;</span>;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>除此之外还有一些如~,\等</p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BA%A7Web%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/">书籍 代码审计：企业级Web代码安全架构</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

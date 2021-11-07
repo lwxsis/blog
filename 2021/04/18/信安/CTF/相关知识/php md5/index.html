@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>php md5 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="php md5">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-18 20:47" pubdate>
+        2021年4月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">php md5</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月15日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="PHP-MD5"><a href="#PHP-MD5" class="headerlink" title="PHP MD5"></a>PHP MD5</h1><h1 id="CTF中常见php-MD5-函数漏洞"><a href="#CTF中常见php-MD5-函数漏洞" class="headerlink" title="CTF中常见php-MD5()函数漏洞"></a>CTF中常见php-MD5()函数漏洞</h1><h3 id="1-数字与字符串之间的比较"><a href="#1-数字与字符串之间的比较" class="headerlink" title="1.数字与字符串之间的比较"></a>1.数字与字符串之间的比较</h3><figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">var_dump( <span class="hljs-number">0</span> == <span class="hljs-string">&quot;a&quot;</span> );<br>var_dump( <span class="hljs-string">&quot;0&quot;</span> == <span class="hljs-string">&quot;a&quot;</span> );<br></code></pre></div></td></tr></table></figure>
+
+<p>第一个返回的是 true ，第二个返回的是 false<br>因为php把字母开头的转化为整型时，转化为0， 前面数字后面字母的话就只取到第一个字母出现的位置之前（如intval(’’123abd45gf)结果为123）</p>
+<h3 id="2-MD5函数漏洞"><a href="#2-MD5函数漏洞" class="headerlink" title="2.MD5函数漏洞"></a>2.MD5函数漏洞</h3><figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;name&#x27;</span>] != <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;password&#x27;</span>]<br>MD5(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;name&#x27;</span>]) == MD5(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;password&#x27;</span>])<br></code></pre></div></td></tr></table></figure>
+
+<p>要求满足上述条件则<br>那么要求name和password数值不同但是MD5相同，在这里可以利用绕过。<br>PHP在处理哈希字符串时，它把每一个以“0E”开头的哈希值都解释为0，所以如果两个不同的密码经过哈希以后，其哈希值都是以“0E”开头的，那么PHP将会认为他们相同，都是0。</p>
+<p><strong>以下值在md5加密后以0E开头：</strong></p>
+<ul>
+<li>QNKCDZO</li>
+<li>240610708</li>
+<li>s878926199a</li>
+<li>s155964671a</li>
+<li>s214587387a</li>
+<li>s214587387a</li>
+<li>0e000000000000000000000329568726</li>
+</ul>
+<p><strong>以下MD5加密后0E开头且再次加密也是0E开头</strong>：</p>
+<ul>
+<li>V5VDSHva7fjyJoJ33IQl</li>
+<li>CbDLytmyGm2xQyaLNhWn</li>
+</ul>
+<p><strong>以下值在sha1加密后以0E开头：</strong></p>
+<ul>
+<li>sha1(‘aaroZmOk’)</li>
+<li>sha1(‘aaK1STfY’)</li>
+<li>sha1(‘aaO8zKZF’)</li>
+<li>sha1(‘aa3OFF9m’)</li>
+</ul>
+<p>GET传入<code>a=QNKCDZO&amp;b=240610708</code>就能绕过了</p>
+<h3 id="3-php特性"><a href="#3-php特性" class="headerlink" title="3.php特性"></a>3.php特性</h3><figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;param1&#x27;</span>]!==<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;param2&#x27;</span>] &amp;&amp; md5(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;param1&#x27;</span>])===md5(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;param2&#x27;</span>]))&#123;<br>        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;success!&quot;</span>);<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>在php中===为完全等于运算，不仅比较<strong>值</strong>，而且还比较值的<strong>类型</strong>，只有<strong>两者一致</strong>才为真。再次使用a=QNKCDZO&amp;b=240610708就不行了，因为a和b类型不同。</p>
+<p><strong>PHP中md5的函数特性</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">md5([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]) == md5([<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]) == <span class="hljs-literal">NULL</span><br></code></pre></div></td></tr></table></figure>
+
+<p>[1] !== [2] &amp;&amp; md5([1]) === md5([2])<br>所以GET传入<code>a[]=1&amp;b[]=2</code>就能够绕过了。</p>
+<h3 id="4-MD5碰撞"><a href="#4-MD5碰撞" class="headerlink" title="4.MD5碰撞"></a>4.MD5碰撞</h3><figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">if</span>((<span class="hljs-keyword">string</span>)<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;param1&#x27;</span>]!==(<span class="hljs-keyword">string</span>)<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;param2&#x27;</span>] &amp;&amp; md5(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;param1&#x27;</span>])===md5(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;param2&#x27;</span>]))&#123;<br>        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;success!);</span><br><span class="hljs-string">&#125;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>要求构造param1和param2不同，但是MD5相同，也就是说要求传入两个MD5相同的不同字符串。</p>
+<figure class="highlight gcode"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gcode">Para<span class="hljs-name">m1</span>=<span class="hljs-meta">%</span><span class="hljs-number">4</span>d<span class="hljs-meta">%</span>c<span class="hljs-number">9</span><span class="hljs-meta">%</span><span class="hljs-number">68</span><span class="hljs-meta">%</span>ff<span class="hljs-meta">%</span><span class="hljs-number">0</span>e<span class="hljs-meta">%</span>e<span class="hljs-number">3</span><span class="hljs-meta">%</span><span class="hljs-number">5</span>c<span class="hljs-meta">%</span><span class="hljs-number">20</span><span class="hljs-meta">%</span><span class="hljs-number">95</span><span class="hljs-meta">%</span><span class="hljs-number">72</span><span class="hljs-meta">%</span>d<span class="hljs-number">4</span><span class="hljs-meta">%</span><span class="hljs-number">77</span><span class="hljs-meta">%</span><span class="hljs-number">7</span>b<span class="hljs-meta">%</span><span class="hljs-number">72</span><span class="hljs-meta">%</span><span class="hljs-number">15</span><span class="hljs-meta">%</span><span class="hljs-number">87</span><span class="hljs-meta">%</span>d<span class="hljs-number">3</span><span class="hljs-meta">%</span><span class="hljs-number">6</span>f<span class="hljs-meta">%</span>a<span class="hljs-number">7</span><span class="hljs-meta">%</span>b<span class="hljs-number">2</span><span class="hljs-meta">%</span><span class="hljs-number">1</span>b<span class="hljs-meta">%</span>dc<span class="hljs-meta">%</span><span class="hljs-number">56</span><span class="hljs-meta">%</span>b<span class="hljs-number">7</span><span class="hljs-meta">%</span><span class="hljs-number">4</span>a<span class="hljs-meta">%</span><span class="hljs-number">3</span>d<span class="hljs-meta">%</span>c<span class="hljs-number">0</span><span class="hljs-meta">%</span><span class="hljs-number">78</span><span class="hljs-meta">%</span><span class="hljs-number">3</span>e<span class="hljs-meta">%</span><span class="hljs-number">7</span>b<span class="hljs-meta">%</span><span class="hljs-number">95</span><span class="hljs-meta">%</span><span class="hljs-number">18</span><span class="hljs-meta">%</span>af<span class="hljs-meta">%</span>bf<span class="hljs-meta">%</span>a<span class="hljs-number">2</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span>a<span class="hljs-number">8</span><span class="hljs-meta">%</span><span class="hljs-number">28</span><span class="hljs-meta">%</span><span class="hljs-number">4</span>b<span class="hljs-meta">%</span>f<span class="hljs-number">3</span><span class="hljs-meta">%</span><span class="hljs-number">6</span>e<span class="hljs-meta">%</span><span class="hljs-number">8</span>e<span class="hljs-meta">%</span><span class="hljs-number">4</span>b<span class="hljs-meta">%</span><span class="hljs-number">55</span><span class="hljs-meta">%</span>b<span class="hljs-number">3</span><span class="hljs-meta">%</span><span class="hljs-number">5</span>f<span class="hljs-meta">%</span><span class="hljs-number">42</span><span class="hljs-meta">%</span><span class="hljs-number">75</span><span class="hljs-meta">%</span><span class="hljs-number">93</span><span class="hljs-meta">%</span>d<span class="hljs-number">8</span><span class="hljs-meta">%</span><span class="hljs-number">49</span><span class="hljs-meta">%</span><span class="hljs-number">67</span><span class="hljs-meta">%</span><span class="hljs-number">6</span>d<span class="hljs-meta">%</span>a<span class="hljs-number">0</span><span class="hljs-meta">%</span>d<span class="hljs-number">1</span><span class="hljs-meta">%</span><span class="hljs-number">55</span><span class="hljs-meta">%</span><span class="hljs-number">5</span>d<span class="hljs-meta">%</span><span class="hljs-number">83</span><span class="hljs-meta">%</span><span class="hljs-number">60</span><span class="hljs-meta">%</span>fb<span class="hljs-meta">%</span><span class="hljs-number">5</span>f<span class="hljs-meta">%</span><span class="hljs-number">07</span><span class="hljs-meta">%</span>fe<span class="hljs-meta">%</span>a<span class="hljs-number">2</span><br>Para<span class="hljs-name">m2</span>=<span class="hljs-meta">%</span><span class="hljs-number">4</span>d<span class="hljs-meta">%</span>c<span class="hljs-number">9</span><span class="hljs-meta">%</span><span class="hljs-number">68</span><span class="hljs-meta">%</span>ff<span class="hljs-meta">%</span><span class="hljs-number">0</span>e<span class="hljs-meta">%</span>e<span class="hljs-number">3</span><span class="hljs-meta">%</span><span class="hljs-number">5</span>c<span class="hljs-meta">%</span><span class="hljs-number">20</span><span class="hljs-meta">%</span><span class="hljs-number">95</span><span class="hljs-meta">%</span><span class="hljs-number">72</span><span class="hljs-meta">%</span>d<span class="hljs-number">4</span><span class="hljs-meta">%</span><span class="hljs-number">77</span><span class="hljs-meta">%</span><span class="hljs-number">7</span>b<span class="hljs-meta">%</span><span class="hljs-number">72</span><span class="hljs-meta">%</span><span class="hljs-number">15</span><span class="hljs-meta">%</span><span class="hljs-number">87</span><span class="hljs-meta">%</span>d<span class="hljs-number">3</span><span class="hljs-meta">%</span><span class="hljs-number">6</span>f<span class="hljs-meta">%</span>a<span class="hljs-number">7</span><span class="hljs-meta">%</span>b<span class="hljs-number">2</span><span class="hljs-meta">%</span><span class="hljs-number">1</span>b<span class="hljs-meta">%</span>dc<span class="hljs-meta">%</span><span class="hljs-number">56</span><span class="hljs-meta">%</span>b<span class="hljs-number">7</span><span class="hljs-meta">%</span><span class="hljs-number">4</span>a<span class="hljs-meta">%</span><span class="hljs-number">3</span>d<span class="hljs-meta">%</span>c<span class="hljs-number">0</span><span class="hljs-meta">%</span><span class="hljs-number">78</span><span class="hljs-meta">%</span><span class="hljs-number">3</span>e<span class="hljs-meta">%</span><span class="hljs-number">7</span>b<span class="hljs-meta">%</span><span class="hljs-number">95</span><span class="hljs-meta">%</span><span class="hljs-number">18</span><span class="hljs-meta">%</span>af<span class="hljs-meta">%</span>bf<span class="hljs-meta">%</span>a<span class="hljs-number">2</span><span class="hljs-meta">%</span><span class="hljs-number">02</span><span class="hljs-meta">%</span>a<span class="hljs-number">8</span><span class="hljs-meta">%</span><span class="hljs-number">28</span><span class="hljs-meta">%</span><span class="hljs-number">4</span>b<span class="hljs-meta">%</span>f<span class="hljs-number">3</span><span class="hljs-meta">%</span><span class="hljs-number">6</span>e<span class="hljs-meta">%</span><span class="hljs-number">8</span>e<span class="hljs-meta">%</span><span class="hljs-number">4</span>b<span class="hljs-meta">%</span><span class="hljs-number">55</span><span class="hljs-meta">%</span>b<span class="hljs-number">3</span><span class="hljs-meta">%</span><span class="hljs-number">5</span>f<span class="hljs-meta">%</span><span class="hljs-number">42</span><span class="hljs-meta">%</span><span class="hljs-number">75</span><span class="hljs-meta">%</span><span class="hljs-number">93</span><span class="hljs-meta">%</span>d<span class="hljs-number">8</span><span class="hljs-meta">%</span><span class="hljs-number">49</span><span class="hljs-meta">%</span><span class="hljs-number">67</span><span class="hljs-meta">%</span><span class="hljs-number">6</span>d<span class="hljs-meta">%</span>a<span class="hljs-number">0</span><span class="hljs-meta">%</span>d<span class="hljs-number">1</span><span class="hljs-meta">%</span>d<span class="hljs-number">5</span><span class="hljs-meta">%</span><span class="hljs-number">5</span>d<span class="hljs-meta">%</span><span class="hljs-number">83</span><span class="hljs-meta">%</span><span class="hljs-number">60</span><span class="hljs-meta">%</span>fb<span class="hljs-meta">%</span><span class="hljs-number">5</span>f<span class="hljs-meta">%</span><span class="hljs-number">07</span><span class="hljs-meta">%</span>fe<span class="hljs-meta">%</span>a<span class="hljs-number">2</span><br></code></pre></div></td></tr></table></figure>
+
+<p>MD5值相同使用谷歌可以搜到相当多被巧妙构造出的二进制文件，其MD5相同，注意一点，post时一定要urlencode！！！</p>
+<figure class="highlight perl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs perl">$s1 = <span class="hljs-string">&quot;%af%13%76%70%82%a0%a6%58%cb%3e%23%38%c4%c6%db%8b%60%2c%bb%90%68%a0%2d%e9%47%aa%78%49%6e%0a%c0%c0%31%d3%fb%cb%82%25%92%0d%cf%61%67%64%e8%cd%7d%47%ba%0e%5d%1b%9c%1c%5c%cd%07%2d%f7%a8%2d%1d%bc%5e%2c%06%46%3a%0f%2d%4b%e9%20%1d%29%66%a4%e1%8b%7d%0c%f5%ef%97%b6%ee%48%dd%0e%09%aa%e5%4d%6a%5d%6d%75%77%72%cf%47%16%a2%06%72%71%c9%a1%8f%00%f6%9d%ee%54%27%71%be%c8%c3%8f%93%e3%52%73%73%53%a0%5f%69%ef%c3%3b%ea%ee%70%71%ae%2a%21%c8%44%d7%22%87%9f%be%79%6d%c4%61%a4%08%57%02%82%2a%ef%36%95%da%ee%13%bc%fb%7e%a3%59%45%ef%25%67%3c%e0%27%69%2b%95%77%b8%cd%dc%4f%de%73%24%e8%ab%66%74%d2%8c%68%06%80%0c%dd%74%ae%31%05%d1%15%7d%c4%5e%bc%0b%0f%21%23%a4%96%7c%17%12%d1%2b%b3%10%b7%37%60%68%d7%cb%35%5a%54%97%08%0d%54%78%49%d0%93%c3%b3%fd%1f%0b%35%11%9d%96%1d%ba%64%e0%86%ad%ef%52%98%2d%84%12%77%bb%ab%e8%64%da%a3%65%55%5d%d5%76%55%57%46%6c%89%c9%df%b2%3c%85%97%1e%f6%38%66%c9%17%22%e7%ea%c9%f5%d2%e0%14%d8%35%4f%0a%5c%34%d3%73%a5%98%f7%66%72%aa%43%e3%bd%a2%cd%62%fd%69%1d%34%30%57%52%ab%41%b1%91%65%f2%30%7f%cf%c6%a1%8c%fb%dc%c4%8f%61%a5%93%40%1a%13%d1%09%c5%e0%f7%87%5f%48%e7%d7%b3%62%04%a7%c4%cb%fd%f4%ff%cf%3b%74%28%1c%96%8e%09%73%3a%9b%a6%2f%ed%b7%99%d5%b9%05%39%95%ab&quot;</span>;<br>$s2 = <span class="hljs-string">&quot;%af%13%76%70%82%a0%a6%58%cb%3e%23%38%c4%c6%db%8b%60%2c%bb%90%68%a0%2d%e9%47%aa%78%49%6e%0a%c0%c0%31%d3%fb%cb%82%25%92%0d%cf%61%67%64%e8%cd%7d%47%ba%0e%5d%1b%9c%1c%5c%cd%07%2d%f7%a8%2d%1d%bc%5e%2c%06%46%3a%0f%2d%4b%e9%20%1d%29%66%a4%e1%8b%7d%0c%f5%ef%97%b6%ee%48%dd%0e%09%aa%e5%4d%6a%5d%6d%75%77%72%cf%47%16%a2%06%72%71%c9%a1%8f%00%f6%9d%ee%54%27%71%be%c8%c3%8f%93%e3%52%73%73%53%a0%5f%69%ef%c3%3b%ea%ee%70%71%ae%2a%21%c8%44%d7%22%87%9f%be%79%6d%c4%61%a4%08%57%02%82%2a%ef%36%95%da%ee%13%bc%fb%7e%a3%59%45%ef%25%67%3c%e0%27%69%2b%95%77%b8%cd%dc%4f%de%73%24%e8%ab%66%74%d2%8c%68%06%80%0c%dd%74%ae%31%05%d1%15%7d%c4%5e%bc%0b%0f%21%23%a4%96%7c%17%12%d1%2b%b3%10%b7%37%60%68%d7%cb%35%5a%54%97%08%0d%54%78%49%d0%93%c3%b3%fd%1f%0b%35%11%9d%96%1d%ba%64%e0%86%ad%ef%52%98%2d%84%12%77%bb%ab%e8%64%da%a3%65%55%5d%d5%76%55%57%46%6c%89%c9%5f%b2%3c%85%97%1e%f6%38%66%c9%17%22%e7%ea%c9%f5%d2%e0%14%d8%35%4f%0a%5c%34%d3%f3%a5%98%f7%66%72%aa%43%e3%bd%a2%cd%62%fd%e9%1d%34%30%57%52%ab%41%b1%91%65%f2%30%7f%cf%c6%a1%8c%fb%dc%c4%8f%61%a5%13%40%1a%13%d1%09%c5%e0%f7%87%5f%48%e7%d7%b3%62%04%a7%c4%cb%fd%f4%ff%cf%3b%74%a8%1b%96%8e%09%73%3a%9b%a6%2f%ed%b7%99%d5%39%05%39%95%ab&quot;</span>;<br>$s3 = <span class="hljs-string">&quot;%af%13%76%70%82%a0%a6%58%cb%3e%23%38%c4%c6%db%8b%60%2c%bb%90%68%a0%2d%e9%47%aa%78%49%6e%0a%c0%c0%31%d3%fb%cb%82%25%92%0d%cf%61%67%64%e8%cd%7d%47%ba%0e%5d%1b%9c%1c%5c%cd%07%2d%f7%a8%2d%1d%bc%5e%2c%06%46%3a%0f%2d%4b%e9%20%1d%29%66%a4%e1%8b%7d%0c%f5%ef%97%b6%ee%48%dd%0e%09%aa%e5%4d%6a%5d%6d%75%77%72%cf%47%16%a2%06%72%71%c9%a1%8f%00%f6%9d%ee%54%27%71%be%c8%c3%8f%93%e3%52%73%73%53%a0%5f%69%ef%c3%3b%ea%ee%70%71%ae%2a%21%c8%44%d7%22%87%9f%be%79%ed%c4%61%a4%08%57%02%82%2a%ef%36%95%da%ee%13%bc%fb%7e%a3%59%45%ef%25%67%3c%e0%a7%69%2b%95%77%b8%cd%dc%4f%de%73%24%e8%ab%e6%74%d2%8c%68%06%80%0c%dd%74%ae%31%05%d1%15%7d%c4%5e%bc%0b%0f%21%23%a4%16%7c%17%12%d1%2b%b3%10%b7%37%60%68%d7%cb%35%5a%54%97%08%0d%54%78%49%d0%93%c3%33%fd%1f%0b%35%11%9d%96%1d%ba%64%e0%86%ad%6f%52%98%2d%84%12%77%bb%ab%e8%64%da%a3%65%55%5d%d5%76%55%57%46%6c%89%c9%df%b2%3c%85%97%1e%f6%38%66%c9%17%22%e7%ea%c9%f5%d2%e0%14%d8%35%4f%0a%5c%34%d3%73%a5%98%f7%66%72%aa%43%e3%bd%a2%cd%62%fd%69%1d%34%30%57%52%ab%41%b1%91%65%f2%30%7f%cf%c6%a1%8c%fb%dc%c4%8f%61%a5%93%40%1a%13%d1%09%c5%e0%f7%87%5f%48%e7%d7%b3%62%04%a7%c4%cb%fd%f4%ff%cf%3b%74%28%1c%96%8e%09%73%3a%9b%a6%2f%ed%b7%99%d5%b9%05%39%95%ab&quot;</span>;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="md5-password-true-的SQL注入问题"><a href="#md5-password-true-的SQL注入问题" class="headerlink" title="md5($password,true)的SQL注入问题"></a>md5($password,true)的SQL注入问题</h2><p>这里需要注意一下MYSQL中的一些数值比较的特征。</p>
+<p>1.当数字和字符串比较时，若字符串的数字部分（需要从头开始）和数字是相同的，那么则返回的是true。</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">select <span class="hljs-keyword">if</span>(<span class="hljs-number">1</span>=<span class="hljs-string">&quot;1a&quot;</span>,<span class="hljs-string">&quot;相等&quot;</span>,<span class="hljs-string">&quot;不相等&quot;</span>) <span class="hljs-keyword">as</span> test<br></code></pre></div></td></tr></table></figure>
+
+<p>if（exp1,stat1,stat2）:类似于高级语言中三元运算符。当exp1为true的是否返回stat1，为false返回stat2</p>
+<p><img src="https://img-blog.csdnimg.cn/20200512173718683.JPG" srcset="/img/loading.gif" lazyload></p>
+<p>2.以数字开头的字符串，若开头的字符不是0，那么在做逻辑运算的时候返回的是1，也就是true。</p>
+<p>比如以下语句就是一个万能密码的例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">where</span> password <span class="hljs-operator">=</span><span class="hljs-string">&#x27;&#x27;</span><span class="hljs-keyword">or</span><span class="hljs-string">&#x27;1234a&#x27;</span>;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<p>解释一下：’1234a’会被当做true对待。而任何数和true做逻辑或运算返回的值都是true.</p>
+<p>看这个md5($password,true)的漏洞</p>
+<figure class="highlight sql"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> usera <span class="hljs-keyword">where</span> username <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;admin&#x27;</span> <span class="hljs-keyword">and</span> password <span class="hljs-operator">=</span> md5($pass,<span class="hljs-literal">true</span>)<br></code></pre></div></td></tr></table></figure>
+
+
+<p>若我们可找到字符串，在对该字符串进行md5后能够得到 ‘or’加上一个非0的字符就可以绕过。这里我们可以用到的字符串为：ffifdyop。</p>
+<p>它的md5结果是：276f722736c95d99e921722cf9ed621c 。</p>
+<p>通过这个结果我们可以发现得到16字节的二进制被解析为字符的结果是:’or’6后面接乱码 (27是单引号的16进制编码，67是字母o的16进制…)这样后构造的sql语句就为</p>
+<figure class="highlight sql"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">where</span> password<span class="hljs-operator">=</span><span class="hljs-string">&#x27; &#x27;</span><span class="hljs-keyword">or</span><span class="hljs-string">&#x27;6xxx&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>和上面分析的万能密码是一致的。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ctf/">ctf</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

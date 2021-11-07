@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>页面国际化 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="页面国际化">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-12 13:05" pubdate>
+        2021年4月12日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">页面国际化</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月12日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>有的时候，我们的网站会去涉及中英文甚至多语言的切换，这时候我们就需要学习国际化了！</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>先在IDEA中统一设置properties的编码问题！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETgrgicvxqgYPVvcBGBcyId5qbK4pZ6iaFW6DU8DaTibNOqwybhxvvBiapZg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>编写国际化配置文件，抽取页面需要显示的国际化页面消息。我们可以去登录页面查看一下，哪些内容我们需要编写国际化的配置！</p>
+<h2 id="配置文件编写"><a href="#配置文件编写" class="headerlink" title="配置文件编写"></a>配置文件编写</h2><p>1、我们在resources资源文件下新建一个i18n目录，存放国际化配置文件</p>
+<p>2、建立一个login.properties文件，还有一个login_zh_CN.properties；发现IDEA自动识别了我们要做国际化操作；文件夹变了！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETBiaXib28mib2iaUyqOTW1VXCLK6b55N9Jy2AbA96KRSyQjCkgCibhDaWung/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>3、我们可以在这上面去新建一个文件；</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETozDglSZ32ZAdIRzuqn8NicymJyZQUMXIq0icYPwzNstBJdO3dXL1CbRA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>弹出如下页面：我们再添加一个英文的；</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETv0bcvSfWDIdiaTYIoPL7BhLRb8wb0vAbNmMCpxrkAibibAwVtAJV55tEQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>这样就快捷多了！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETMSkXZicouLDxJiaUbyWRTB3Vib2UBxJWEIqxL5reXbkXT8iaYNQOn2M9Bg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><strong>4、接下来，我们就来编写配置，我们可以看到idea下面有另外一个视图；</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETp6raySXNEHanXLFuq4OsCJOQ0DBKibQyohPUDen5OUYsfYIPD9tFjBQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>这个视图我们点击 + 号就可以直接添加属性了；我们新建一个login.tip，可以看到边上有三个文件框可以输入</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETru2CdF5btNFhLdCCkusK5VkJRIfnBic8iaScfKkkKfFcBQ90pexU05Gw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>我们添加一下首页的内容！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETRPAF4T1brBr2pBydUuNjlkkUtThqlJCKN4lQ2rCN0BXrn957u3CdlA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>然后依次添加其他页面内容即可！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETA91ZDRtZ4hBZ1dtn7CLZ9xzlwfDpUhqT8sTQmCncsLYEH5r0fIFF9w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>然后去查看我们的配置文件；</p>
+<p>login.properties ：默认</p>
+<figure class="highlight properties"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs properties"><span class="hljs-meta">login.btn</span>=<span class="hljs-string">登录</span><br><span class="hljs-meta">login.password</span>=<span class="hljs-string">密码</span><br><span class="hljs-meta">login.remember</span>=<span class="hljs-string">记住我</span><br><span class="hljs-meta">login.tip</span>=<span class="hljs-string">请登录</span><br><span class="hljs-meta">login.username</span>=<span class="hljs-string">用户名</span><br></code></pre></div></td></tr></table></figure>
+
+<p>英文：</p>
+<figure class="highlight properties"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs properties"><span class="hljs-meta">login.btn</span>=<span class="hljs-string">Sign in</span><br><span class="hljs-meta">login.password</span>=<span class="hljs-string">Password</span><br><span class="hljs-meta">login.remember</span>=<span class="hljs-string">Remember me</span><br><span class="hljs-meta">login.tip</span>=<span class="hljs-string">Please sign in</span><br><span class="hljs-meta">login.username</span>=<span class="hljs-string">Username</span><br></code></pre></div></td></tr></table></figure>
+
+<p>中文：</p>
+<figure class="highlight properties"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs properties"><span class="hljs-meta">login.btn</span>=<span class="hljs-string">登录</span><br><span class="hljs-meta">login.password</span>=<span class="hljs-string">密码</span><br><span class="hljs-meta">login.remember</span>=<span class="hljs-string">记住我</span><br><span class="hljs-meta">login.tip</span>=<span class="hljs-string">请登录</span><br><span class="hljs-meta">login.username</span>=<span class="hljs-string">用户名</span><br></code></pre></div></td></tr></table></figure>
+
+<p>OK，配置文件步骤搞定！</p>
+<h2 id="配置文件生效探究"><a href="#配置文件生效探究" class="headerlink" title="配置文件生效探究"></a>配置文件生效探究</h2><p>我们去看一下SpringBoot对国际化的自动配置！这里又涉及到一个类：MessageSourceAutoConfiguration</p>
+<p>里面有一个方法，这里发现SpringBoot已经自动配置好了管理我们国际化资源文件的组件 ResourceBundleMessageSource；</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// 获取 properties 传递过来的值进行判断</span><br><span class="hljs-meta">@Beanpublic</span><br><span class="hljs-function">MessageSource <span class="hljs-title">messageSource</span><span class="hljs-params">(MessageSourceProperties properties)</span> </span>&#123;   <br>    ResourceBundleMessageSource messageSource = <span class="hljs-keyword">new</span> ResourceBundleMessageSource();   <br>    <span class="hljs-keyword">if</span> (StringUtils.hasText(properties.getBasename())) &#123;      <br>        <span class="hljs-comment">// 设置国际化文件的基础名（去掉语言国家代码的）      </span><br>        messageSource.setBasenames(       <br>            StringUtils.commaDelimitedListToStringArray(     <br>                StringUtils.trimAllWhitespace(properties.getBasename()))<br>        );   <br>    &#125; <br>    <span class="hljs-keyword">if</span> (properties.getEncoding() != <span class="hljs-keyword">null</span>) &#123;   <br>        messageSource.setDefaultEncoding(properties.getEncoding().name()); <br>    &#125;   <br>    messageSource.setFallbackToSystemLocale(properties.isFallbackToSystemLocale()); <br>    Duration cacheDuration = properties.getCacheDuration(); <br>    <span class="hljs-keyword">if</span> (cacheDuration != <span class="hljs-keyword">null</span>) &#123;    <br>        messageSource.setCacheMillis(cacheDuration.toMillis());  <br>    &#125; <br>    messageSource.setAlwaysUseMessageFormat(properties.isAlwaysUseMessageFormat());   <br>    messageSource.setUseCodeAsDefaultMessage(properties.isUseCodeAsDefaultMessage());<br>    <span class="hljs-keyword">return</span> messageSource;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>我们真实 的情况是放在了i18n目录下，所以我们要去配置这个messages的路径；</p>
+<figure class="highlight properties"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs properties"><span class="hljs-meta">spring.messages.basename</span>=<span class="hljs-string">i18n.login</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="配置页面国际化值"><a href="#配置页面国际化值" class="headerlink" title="配置页面国际化值"></a>配置页面国际化值</h2><p>去页面获取国际化的值，查看Thymeleaf的文档，找到message取值操作为：#{…}。我们去页面测试下：</p>
+<p>IDEA还有提示，非常智能的！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETbj7aBK25N5G2NGibmb9LmHGySYic9myjX0pZ7EOcBfYC03c1yBFEBxfQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>我们可以去启动项目，访问一下，发现已经自动识别为中文的了！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IliczmpA1zCRu0ia5micU55ETN9iagOo88CAiaDf4d09lGGBsEhzdpsz2libgVuHdeBdWPc6QUMZficxFJA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><strong>但是我们想要更好！可以根据按钮自动切换中文英文！</strong></p>
+<h2 id="配置国际化解析"><a href="#配置国际化解析" class="headerlink" title="配置国际化解析"></a>配置国际化解析</h2><p>在Spring中有一个国际化的Locale （区域信息对象）；里面有一个叫做LocaleResolver （获取区域信息对象）的解析器！</p>
+<p>我们去我们webmvc自动配置文件，寻找一下！看到SpringBoot默认配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Bean</span><br><span class="hljs-meta">@ConditionalOnMissingBean</span><br><span class="hljs-meta">@ConditionalOnProperty(prefix = &quot;spring.mvc&quot;, name = &quot;locale&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> LocaleResolver <span class="hljs-title">localeResolver</span><span class="hljs-params">()</span> </span>&#123;   <br>    <span class="hljs-comment">// 容器中没有就自己配，有的话就用用户配置的   </span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.mvcProperties.getLocaleResolver() == WebMvcProperties.LocaleResolver.FIXED) &#123;    <br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> FixedLocaleResolver(<span class="hljs-keyword">this</span>.mvcProperties.getLocale());<br>    &#125;    <br>    <span class="hljs-comment">// 接收头国际化分解   </span><br>    AcceptHeaderLocaleResolver localeResolver = <span class="hljs-keyword">new</span> AcceptHeaderLocaleResolver();   <br>    localeResolver.setDefaultLocale(<span class="hljs-keyword">this</span>.mvcProperties.getLocale()); <br>    <span class="hljs-keyword">return</span> localeResolver;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>AcceptHeaderLocaleResolver 这个类中有一个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> Locale <span class="hljs-title">resolveLocale</span><span class="hljs-params">(HttpServletRequest request)</span> </span>&#123;  <br>    Locale defaultLocale = <span class="hljs-keyword">this</span>.getDefaultLocale();  <br>    <span class="hljs-comment">// 默认的就是根据请求头带来的区域信息获取Locale进行国际化 </span><br>    <span class="hljs-keyword">if</span> (defaultLocale != <span class="hljs-keyword">null</span> &amp;&amp; request.getHeader(<span class="hljs-string">&quot;Accept-Language&quot;</span>) == <span class="hljs-keyword">null</span>) &#123;    <br>        <span class="hljs-keyword">return</span> defaultLocale;  <br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;   <br>        Locale requestLocale = request.getLocale();      <br>        List&lt;Locale&gt; supportedLocales = <span class="hljs-keyword">this</span>.getSupportedLocales();     <br>        <span class="hljs-keyword">if</span> (!supportedLocales.isEmpty() &amp;&amp; !supportedLocales.contains(requestLocale)) &#123;    <br>            Locale supportedLocale = <span class="hljs-keyword">this</span>.findSupportedLocale(request, supportedLocales);     <br>            <span class="hljs-keyword">if</span> (supportedLocale != <span class="hljs-keyword">null</span>) &#123;       <br>                <span class="hljs-keyword">return</span> supportedLocale;      <br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;      <br>                <span class="hljs-keyword">return</span> defaultLocale != <span class="hljs-keyword">null</span> ? defaultLocale : requestLocale;     <br>            &#125;      <br>        &#125; <br>        <span class="hljs-keyword">else</span> &#123;    <br>            <span class="hljs-keyword">return</span> requestLocale;      <br>        &#125;    <br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>那假如我们现在想点击链接让我们的国际化资源生效，就需要让我们自己的Locale生效！</p>
+<p>我们去自己写一个自己的LocaleResolver，可以在链接上携带区域信息！</p>
+<p>修改一下前端页面的跳转连接：</p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 这里传入参数不需要使用 ？使用 （key=value）--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-sm&quot;</span> <span class="hljs-attr">th:href</span>=<span class="hljs-string">&quot;@&#123;/index.html(l=&#x27;zh_CN&#x27;)&#125;&quot;</span>&gt;</span>中文<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-sm&quot;</span> <span class="hljs-attr">th:href</span>=<span class="hljs-string">&quot;@&#123;/index.html(l=&#x27;en_US&#x27;)&#125;&quot;</span>&gt;</span>English<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>我们去写一个处理的组件类！</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.kuang.component;<br><span class="hljs-keyword">import</span> org.springframework.util.StringUtils;<br><span class="hljs-keyword">import</span> org.springframework.web.servlet.LocaleResolver;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.util.Locale;<br><span class="hljs-comment">//可以在链接上携带区域信息</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyLocaleResolver</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">LocaleResolver</span> </span>&#123;<br>    <span class="hljs-comment">//解析请求 </span><br>    <span class="hljs-meta">@Override</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Locale <span class="hljs-title">resolveLocale</span><span class="hljs-params">(HttpServletRequest request)</span> </span>&#123;<br>        String language = request.getParameter(<span class="hljs-string">&quot;l&quot;</span>);     <br>        Locale locale = Locale.getDefault(); <br>        <span class="hljs-comment">// 如果没有获取到就使用系统默认的     </span><br>        <span class="hljs-comment">//如果请求链接不为空     </span><br>        <span class="hljs-keyword">if</span> (!StringUtils.isEmpty(language))&#123;       <br>            <span class="hljs-comment">//分割请求参数     </span><br>            String[] split = language.split(<span class="hljs-string">&quot;_&quot;</span>);    <br>            <span class="hljs-comment">//国家，地区     </span><br>            locale = <span class="hljs-keyword">new</span> Locale(split[<span class="hljs-number">0</span>],split[<span class="hljs-number">1</span>]);     <br>        &#125;    <br>        <span class="hljs-keyword">return</span> locale;   <br>    &#125;<br>    <span class="hljs-meta">@Override</span>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setLocale</span><span class="hljs-params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Locale locale)</span> </span>&#123;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>为了让我们的区域化信息能够生效，我们需要再配置一下这个组件！在我们自己的MvcConofig下添加bean；</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Beanpublic</span> <br><span class="hljs-function">LocaleResolver <span class="hljs-title">localeResolver</span><span class="hljs-params">()</span></span>&#123;  <br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyLocaleResolver();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>我们重启项目，来访问一下，发现点击按钮可以实现成功切换！搞定收工！</strong></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Spring-Boot/">Spring Boot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Springboot/">Springboot</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

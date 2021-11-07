@@ -1,0 +1,959 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>信息收集-主动侦察 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="信息收集-主动侦察">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-27 16:12" pubdate>
+        2021年8月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">信息收集-主动侦察</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月3日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="信息收集-主动侦察"><a href="#信息收集-主动侦察" class="headerlink" title="信息收集-主动侦察"></a>信息收集-主动侦察</h1><h1 id="1-外网与内网的主动侦察"><a href="#1-外网与内网的主动侦察" class="headerlink" title="1. 外网与内网的主动侦察"></a>1. 外网与内网的主动侦察</h1><p>主动侦察会产生更多更有用的信息，但是，由于与目标系统的交互可能会被记录，并且可能会通过防火墙、入侵检测系统（IDS）、入侵阻止系统（IPS）等防护设施触发报警。当对攻击者有用的数据增加时，被检测到的风险同样增加</p>
+<p>为了提高提供详细的主动侦察信息的有效性，我们的重点是使用隐形的、不易察觉的技术</p>
+<p>在本章中，将学习：</p>
+<ul>
+<li>秘密扫描策略</li>
+<li>外部和内部设施、主机发现和枚举</li>
+<li>应用程序的综合侦察，特别是recon-ng</li>
+<li>使用DHCP枚举内部主机</li>
+<li>渗透测试时有用的Microsoft Windows命令</li>
+<li>利用默认配置的优势</li>
+<li>利用SNMP、SMB和rpcclient枚举用户</li>
+</ul>
+<p><img src="https://res.weread.qq.com/wrepub/epub_33211566_85" srcset="/img/loading.gif" lazyload alt="威胁情报与风险关系图"></p>
+<h2 id="1-1-秘密扫描策略"><a href="#1-1-秘密扫描策略" class="headerlink" title="1.1 秘密扫描策略"></a>1.1 秘密扫描策略</h2><p>被目标发现是主动侦察的最大风险。使用测试人员的时间、数据戳、源IP地址及其他附加信息，目标可能识别出侵入侦察的来源。因此，采用隐形技术，可以将被发现的概率降到最低</p>
+<p>使用隐形技术侦察，需要做到以下几点：</p>
+<ul>
+<li>伪装工具签名来逃避检查和触发警报</li>
+<li>将攻击隐藏于合法流量中</li>
+<li>修改攻击，隐藏其流量的来源和类型</li>
+<li>使用非标准的流量类型或加密来使攻击隐形</li>
+</ul>
+<p>私密扫描技术包括以下方面：</p>
+<ul>
+<li>调整源IP栈和工具识别设置</li>
+<li>修改数据包参数</li>
+<li>使用匿名网络代理</li>
+</ul>
+<h3 id="1-1-1-调整源IP栈和工具识别设置"><a href="#1-1-1-调整源IP栈和工具识别设置" class="headerlink" title="1.1.1 调整源IP栈和工具识别设置"></a>1.1.1 调整源IP栈和工具识别设置</h3><p>在测试开始前，需要禁用或关闭所有kali不必要的服务</p>
+<p>如运行的不是必需的本地DHCP守护进程，DHCP可能与目标系统进行交互，且交互可能被记录</p>
+<p>一些商业和开源工具(例如Metasploit框架)用一个标识序列标记它们的数据包。这可能对测试后的分析系统的事件日志有用，但是也可能触发某些入侵检测系统</p>
+<p>识别标签最简单的方法是，使用工具在虚拟目录系统上创建新的应用，然后查看系统日志中与工具名称相关的记录，此外，使用Wireshark捕获攻击者和目标虚拟机之间的信息流，之后搜索抓包(packet capture,pcap)文件，寻找由测试工具产生的那些关键字（工具的名称、供应商、证书序列号等），也是一种有效的方法</p>
+<p>Metasploit框架中的用户代理（useragent）可以通过修改http_form_field选项改变。在msfconsole提示下，选择使用auxiliary/fuzzers/http/http_form_field选项，然后设置一个新的useragent头</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">use use auxiliary/fuzzers/http/http_form_field <br><span class="hljs-built_in">set</span> useragent<br><span class="hljs-built_in">set</span> useragent Googlebot-Image/1.0<br></code></pre></div></td></tr></table></figure>
+
+<p>useragent被设定为Google的索引爬虫——Googlebot-Image。这是一种常用的自动化应用程序，用于访问和索引网站，很少引起网站所有者的注意</p>
+<p>识别合法的useragent头，参考示例：<a target="_blank" rel="noopener" href="http://www.useragentstring.com/">http://www.useragentstring.com</a></p>
+<h3 id="1-1-2-修改数据包参数"><a href="#1-1-2-修改数据包参数" class="headerlink" title="1.1.2 修改数据包参数"></a>1.1.2 修改数据包参数</h3><p>主动侦察最常见的方式是对目标发动扫描–发送定义的数据包到目标，然后利用返回的数据包来获取学习。这种类型最常见的工具是<strong>网络映射器</strong>(Network Mapper,nmap)</p>
+<p>用一些秘密技术来避免检测及随后的报警，包括以下内容：</p>
+<ul>
+<li>测试之前确定扫描的目标，发送需要确定目标的最小数量的数据包</li>
+<li>避免可能与目标系统连接的扫描，避免可能泄露数据的扫描。不要ping目标，或者使用同步(SYN)和非常规数据包扫描，如确认(ACK)、完成(FIN)和复位(RST)数据包</li>
+<li>随机化或掩饰包设置，如源IP和端口地址，以及MAC地址</li>
+<li>调节定时以减缓目标站点包的到来</li>
+<li>通过包的分解或附加随机数据来改变数据包大小，以及混淆设备对数据包的检测</li>
+</ul>
+<p>参考：秘密扫描并且最小化被检测到的可能的nmap命令</p>
+<p><code>nmap --spoof-mac Cisco --data-length 24 -T paranoid --max-hostgroup 1 --max-parallelism 10 -Pn -f -D 10.1.20.5,RND:5,ME -v -n -sS -sV -oA /desktop/pentest/nmap/out -p T:1-1024 --randomize-host 10.1.1.10 10.1.1.15</code></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–spoof-mac Cisco</td>
+<td>伪造MAC地址匹配思科(Cisco)产品。用0更换Cisco将创建一个完全随机的MAC地址</td>
+</tr>
+<tr>
+<td>–data-length 24</td>
+<td>向大多数正在发送的包附加24字节的随机数据</td>
+</tr>
+<tr>
+<td>-T paranoid</td>
+<td>设置时间到最慢，paranoid</td>
+</tr>
+<tr>
+<td>–max-hostgroup</td>
+<td>限制一次扫描的主机数</td>
+</tr>
+<tr>
+<td>–max-parallelism</td>
+<td>限制发送有效探针的数量。也可以使用–scan-delay选项，设置两个探针之间的停顿。此选项与–max-parallelism选项不兼容</td>
+</tr>
+<tr>
+<td>-Pn</td>
+<td>不用ping确定活动系统(这可能泄露数据)</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>分割数据包，经常欺骗低端和配置不正确的ID</td>
+</tr>
+<tr>
+<td>-D 10.1.20.5,RND:5,ME</td>
+<td>创建诱饵扫描，与攻击者的扫描同时运行，隐藏实际攻击</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>没有DNS解析：内部或外部DNS服务器不响应通过nmap提交的DNS信息查询。这样的查询经常被记录，所以查询功能应该被禁用</td>
+</tr>
+<tr>
+<td>-sS</td>
+<td>进行秘密的TCP SYN扫描，并不需要完整的TCP握手。其他扫描类型(例如空扫描)也可以使用，但是，大多数行为都会触发设备检测</td>
+</tr>
+<tr>
+<td>-sV</td>
+<td>启动版本检测</td>
+</tr>
+<tr>
+<td>-oA  /desktop/pentest/nmap</td>
+<td>将结果输出为各种格式(正常，greppable和XML)</td>
+</tr>
+<tr>
+<td>-p T:1-1024</td>
+<td>指定要扫描的TCP端口</td>
+</tr>
+<tr>
+<td>–random-hosts</td>
+<td>随机化目标主机的次序</td>
+</tr>
+</tbody></table>
+<p>这些选项将创建一个非常缓慢的扫描，隐藏扫描源的真实身份。然而，如果数据包太不常用、修改太多，也可能引起目标的注意。因此，许多测试者和攻击者利用匿名网络，尽量最小化被检测到的可能</p>
+<h3 id="1-1-3-使用匿名网络代理"><a href="#1-1-3-使用匿名网络代理" class="headerlink" title="1.1.3 使用匿名网络代理"></a>1.1.3 使用匿名网络代理</h3><p>网络上保持匿名性所使用的两个重要工具——Tor和Privoxy</p>
+<p><a href="www.torproject.org">Tor</a>是第三代洋葱路由开源软件，提供免费接入的匿名网络代理。洋葱路由加密用户流量使网络匿名，然后通过一系列的洋葱路由器发送匿名流量。在每个路由器上，删除一层加密，得到路由信息，然后再将该消息发送到下一个节点。它被比喻为逐步剥洋葱，故以此命名。它通过保护用户的IP流的源地址和目的地址，抵御流量分析的攻击</p>
+<p>在本例中Tor会与Privoxy一起使用，这是一个非高速缓存的Web代理，位于与互联网通信的应用程序的中间，利用先进的过滤技术，保护用户隐私、移除广告，并将潜在的恶意数据发送给测试者</p>
+<p>安装Tor，需要执行以下步骤</p>
+<ol>
+<li><p>首先执行更新命令<code>apt-get update</code>和<code>apt-get upgrade</code>之后安装Tor命令<code>apt-get install tor</code></p>
+</li>
+<li><p>安装Tor之后，编辑位于/etc目录下的proxychains.conf文件。该文件规定了测试系统在使用Tor网络系统时使用代理服务器的数量和顺序。代理服务器可能停止工作，或者可能遇到重负载（导致缓慢或潜连接）。如果发生这种情况，一个清晰的或严密的ProxyChain将失效，因为预期链路丢失。因此，禁用strict_chain，并且启用dynamic_chain，这就保证了连接将被路由</p>
+</li>
+<li><p>编辑<strong>ProxyList</strong>部分(同上文件中)，以确保socks5代理存在(实际操作中，socks5使用失败(time out)，设置为http后成功了，不清楚原因？？？)</p>
+<p> <img src="https://res.weread.qq.com/wrepub/epub_33211566_92" srcset="/img/loading.gif" lazyload alt="ProxyList编辑"></p>
+</li>
+<li><p>从终端窗口启动Tor服务 <code>service tor start</code></p>
+</li>
+<li><p>验证Tor是否启动 <code>service tor status</code></p>
+</li>
+<li><p>确认自己的源IP地址 <code>firefox www.whatismyip.com</code></p>
+</li>
+<li><p>注意IP地址，然后使用proxychains命令调用Tor路由 <code>proxychains firefox www.whatismyip.com</code></p>
+</li>
+</ol>
+<p>通过访问<a target="_blank" rel="noopener" href="https://check.torproject.org,可以验证tor的功能是否正常(此处验证始终失败,暂时无法解决)/">https://check.torproject.org，可以验证Tor的功能是否正常(此处验证始终失败，暂时无法解决)</a></p>
+<p><strong>注意</strong>：通信现在已经通过使用Tor网络得到保护，但当你的系统使DNS请求提供你的身份到ISP时，DNS可能发生泄漏。你可以检查DNS泄漏，地址为：<a target="_blank" rel="noopener" href="http://www.dnsleaktest.com/">www.dnsleaktest.com</a></p>
+<p>此时大多数命令行可以在使用proxychains访问Tor网络的控制台上运行</p>
+<p>使用Tor时，需要牢记以下注意事项：</p>
+<ul>
+<li>Tor提供匿名访问，但是不能保证隐私。出口节点的所有者能够发觉流量，也可能会访问用户的凭证</li>
+<li>在Tor浏览器套件中的漏洞，被称为执法部门用于探测系统并获取用户信息</li>
+<li>ProxyChains不处理UDP流量</li>
+<li>某些应用程序和服务无法在这样的环境下运行，实际上，Metasploit与nmap可能不能运行。nmap的隐式SYN扫描被ProxyChain终止，且连接扫描被调用。这可能会泄露信息</li>
+<li>某些应用程序和服务无法在这样的环境下运行，实际上，Metasploit与nmap可能不能运行。nmap的隐式SYN扫描被ProxyChain终止，且连接扫描被调用。这可能会泄露信息</li>
+<li>攻击者也可以使用随机链接。使用此选项，ProxyChain将从列表中随机选择IP地址（本地以太网IP，例如127.0.0.1，192.168.x.x或172.16.x.x），并用它们来创建ProxyChain。这意味着每次使用ProxyChain时，代理链将看起来与目标不同，从而更难从源头跟踪流量</li>
+<li>为此，以类似的方式编辑/etc/proxychains.conf文件，将dynamic chains改为注释，取消random_chain注释，因为我们一次只能使用一个选项</li>
+<li>此外，攻击者可以使用chain_len取消注释行，然后在创建一个随机代理链时确定链中的IP地址数</li>
+</ul>
+<p>Tor-Buddy脚本允许控制Tor IP地址的刷新频率，但是自动识别用户的信息非常困难（<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/linuxscripts/files/Tor-Buddy/%EF%BC%89">http://sourceforge.net/projects/linuxscripts/files/Tor-Buddy/）</a></p>
+<h2 id="1-2-DNS侦察和路由映射"><a href="#1-2-DNS侦察和路由映射" class="headerlink" title="1.2 DNS侦察和路由映射"></a>1.2 DNS侦察和路由映射</h2><p>识别目标的IP地址和路由</p>
+<p>DNS侦察关心的是：识别谁拥有一个特定域或一系列IP地址（这些信息可以通过whois获取，尽管该行为被欧盟颁布的《通用数据保护条例》禁止），定义实际域名的DNS信息和标识目标的IP地址，以及在渗透测试人员或攻击者与最终目标之间的路由</p>
+<p>收集该类信息是半主动的，一些信息是免费开源的(例如DNSstuff.com)，另一些信息则来自第三方实体(例如DNS注册机构)</p>
+<p>由于所需要的信息能被确定的系统性方法查询到，因此可以自动收集这些信息</p>
+<p>注意：DNS信息可能包括旧的或者不正确的单元。可以通过查询不同源服务器以及不同的工具来交叉验证结果</p>
+<p>Whois命令(后GDPR时代)</p>
+<p>whois命令一直是用于识别IP地址的第一步，直到《通用数据保护条例》实施</p>
+<p>对whois请求的响应将会提供名字、物理地址、电话号码和电子邮件地址（可用于社会工程学攻击），也包括IP地址和DNS服务器名</p>
+<p>示例如下：</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210829213520.png" srcset="/img/loading.gif" lazyload alt="whois示例"></p>
+<h2 id="1-3-利用综合侦察应用测序"><a href="#1-3-利用综合侦察应用测序" class="headerlink" title="1.3 利用综合侦察应用测序"></a>1.3 利用综合侦察应用测序</h2><p>虽然Kali包含多个工具以促进侦察，但是许多工具包含相同的功能，此处介绍最初综合侦探工具中常用DMitry（Deep Magic Information Gathering Tool，DMitry）工具</p>
+<p><code>dmitry -winsepo out.txt www.cyberhia.com</code></p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210829232625.png" srcset="/img/loading.gif" lazyload alt="dmitry示例"></p>
+<p>接下来详细介绍recon-ng框架</p>
+<h3 id="1-3-1-recon-ng框架"><a href="#1-3-1-recon-ng框架" class="headerlink" title="1.3.1 recon-ng框架"></a>1.3.1 recon-ng框架</h3><p>recon-ng框架是进行(主动和被动)侦察的开源框架。与Metasploit框架和社会工程学工具包(Social Engineer Toolkit,SEToolkit)类似。recon-ng采用模块化的框架</p>
+<p>recon-ng框架及其模块是用Python编写的，允许渗透测试人员轻松地构建或改变模块以方便测试，可以自己设置useragent字符串或代理请求</p>
+<p>kali中已经默认安装，启动命令<code>recon-ng</code>查看帮助<code>help</code>(现在新版的recon-ng需要科学上网后下载模块后使用<code>marketplace install all</code>安装全部插件，或者<code>marketplace install recon/domains-hosts/hackertarget</code>进行单个下载)</p>
+<p>之后类似Metasploit框架的内容，搜索模块(市场搜索<code>marketplace search **</code>)<code>modules search **</code>加载模块(示例<code>modules load **</code>)查看模块的详细信息<code>info</code>列出模块选项参数<code>options list</code>设置模块参数<code>options set ** **</code>最后<code>run</code>！</p>
+<p>总的来说，测试人员依靠recon-ng可以完成以下几点：</p>
+<ul>
+<li>使用Whois来获得连接，包括Jigsaw、Linkedin和Twitter</li>
+<li>识别主机</li>
+<li>使用hostop、ipinfodb、maxmind、uniapple和wigle识别主机及个人的地理位置</li>
+<li>使用netcraft及相关模块识别主机信息</li>
+<li>识别以前被攻击入侵过并在互联网上泄露过的账户及其密码信息（pwnedlist模块、wascompanyhacked、xssed和punkspider）</li>
+</ul>
+<p><strong>IPV4</strong></p>
+<p>IP（互联网协议）地址是识别连接到私有网或者公共网的设备的唯一号码。当今的互联网大部分是基于IPv4的。Kali包含几个工具用来方便DNS侦察</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dnsenum、dnsmap和dnsrecon</td>
+<td>这些是综合的DNS扫描器——DNS记录枚举（A、MX、TXT、SOA、通配符等）、子域暴力破解、Google查找、反向查找、区域转换、以及区域移动。dnsrecon通常是第一选择——结果容易理解，数据可直接输入到Metasploit框架</td>
+</tr>
+<tr>
+<td>dnstracer</td>
+<td>决定了从哪里得到一个给定的DNS的信息，并伴随着DNS服务器链，回到拥有数据的服务器</td>
+</tr>
+<tr>
+<td>dnswalk</td>
+<td>DNS调试器，为具体的域检查其内部的一致性和准确性</td>
+</tr>
+<tr>
+<td>fierce</td>
+<td>针对具体的域，试着通过区域转换和暴力破解得到DNS信息，定位非连接的IP空间和主机名</td>
+</tr>
+</tbody></table>
+<p>测试期间，常运行fierce来确认已经识别的所有可能的目标，然后运行至少两个综合性的工具（例如dnsenum和dnsrecon）来生成最多的数据，并提供一个交叉验证等级</p>
+<p>使用dnsrecon生成一个标准的DNS记录搜索，并且该搜索是特定于SRV记录的</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210830233416.png" srcset="/img/loading.gif" lazyload alt="dnsrecon搜索"></p>
+<p>dnsrecon允许渗透测试人员获得SOA记录、<strong>名称服务器</strong>（Name Server，NS）、<strong>邮件交换</strong>（Mail Exchanger，MX）主机、使用<strong>发送者政策框架</strong>（Sender PolicyFramework，SPF）发送电子邮件的服务器，以及使用的IP地址范围</p>
+<p><strong>IPV6</strong></p>
+<p>目前IPv6的正在逐渐普及，所以在测试中必须考虑IPv6，原因如下：</p>
+<ul>
+<li>测试工具对IPv6功能的支持不是普遍的，所以必须确定每一个工具在IPv4、IPv6、混合网络中的性能和准确性</li>
+<li>由于IPv6是一个相当新的协议，目标网络可能包含泄露重要数据的错误配置，测试人员必须准备好识别并利用这个信息</li>
+<li>早先的网络协议（防火墙、IDS和IPS）可能不会测出IPv6。在这些情况下，渗透测试人员可以利用IPv6信道保持与网络的隐蔽通信，并泄露出未检测到的数据</li>
+</ul>
+<h3 id="1-3-2-IPv6专用工具"><a href="#1-3-2-IPv6专用工具" class="headerlink" title="1.3.2 IPv6专用工具"></a>1.3.2 IPv6专用工具</h3><p>kali包含的支持IPv6的工具</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dnsdict6</td>
+<td>使用基于具备字典文件或者它自己的互联网列表的暴力搜索来列举子域名，从而获得已存在的IPv4和IPv6地址</td>
+</tr>
+<tr>
+<td>dnsrevenum6</td>
+<td>给定一个IPv6地址，执行反DNS枚举</td>
+</tr>
+<tr>
+<td>covert_send6</td>
+<td>把文件内容隐蔽地发送到目标</td>
+</tr>
+<tr>
+<td>covert_send6d</td>
+<td>把收到的内容隐蔽地写入文件</td>
+</tr>
+<tr>
+<td>denial6</td>
+<td>对目标执行各种拒绝服务攻击</td>
+</tr>
+<tr>
+<td>detect-new-ip6</td>
+<td>此工具可以检测加入本地网络的新IPv6地址</td>
+</tr>
+<tr>
+<td>detect_sniffer6</td>
+<td>测试本地LAN上的系统是否正在嗅探</td>
+</tr>
+<tr>
+<td>exploit6</td>
+<td>在目的地上执行各种CVE已知的IPv6漏洞利用</td>
+</tr>
+<tr>
+<td>fake_dhcps6</td>
+<td>虚假DHCPv6服务器</td>
+</tr>
+</tbody></table>
+<p>Metasploit也可以用于IPv6主机发现。auxiliary/scanner/discovery/ipv6_multicast_ping模块将发现具有物理（MAC）地址的所有启用IPv6的计算机(测试失败)</p>
+<p>atk6-alive6将发现同一段中活跃的地址命令<code>atk6-alive6</code></p>
+<h3 id="1-3-3-映射路由到目标"><a href="#1-3-3-映射路由到目标" class="headerlink" title="1.3.3 映射路由到目标"></a>1.3.3 映射路由到目标</h3><p>路由映射最开始是一个路由诊断工具，用于查看IP数据包从一个主机到另一个主机的路由连接。通过使用IP数据包中的存活时间TTL（Time To Live）变量，每一跳（hop）在从一点到下一点时，从接收路由器引出一个ICMPTIME_EXCEEDED消息，同时TTL字段的值减1。数据包会计算跳以及使用的路由器的数量</p>
+<p>从攻击者的角度来看，traceroute数据有以下重要信息：</p>
+<ul>
+<li>攻击者与目标之间的准确路径</li>
+<li>关于网络外部拓扑结构的提示</li>
+<li>识别可能过滤攻击流的访问控制设备(防火墙和包过滤路由器)</li>
+<li>如果网络配置错误，可能会识别内部地址</li>
+</ul>
+<p>在kali中traceroute是命令行程序，在windows系统中，该程序是tracert</p>
+<p>kali启动traceroute <code>traceroute 域名/IP</code>，和windows执行tracert <code>traceroute 域名/IP</code>效果如下</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210903113442.png" srcset="/img/loading.gif" lazyload alt="kali traceroute"></p>
+<p>Kali中测试结果基本为* * *</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210903113632.png" srcset="/img/loading.gif" lazyload alt="windows tracer"></p>
+<p>windows中有相对更加详细的信息</p>
+<p>使用命令后我们能够得到相对完整的路径，还可能发现相同的域名被解析为不同的IP地址，这表明负载均衡器在起作用（此时可以使用Kali的lbd脚本来确认其是否起作用，该活动可能被目标站点记录）</p>
+<p>在kali中提供以下路由跟踪工具</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hping3</td>
+<td>TCP/IP数据包的汇编器和分析器。支持TCP、UDP、ICMP以及raw-IP，并使用一个类似ping的界面</td>
+</tr>
+<tr>
+<td>intrace</td>
+<td>通过利用现有的TCP连接，包括从本地系统或者网络或本地主机，该程序使用户能计算IP跳数。这对绕过外部过滤器(防火墙等)是很有用的。intrace用来代替无可信保障的0trace程序</td>
+</tr>
+<tr>
+<td>trace6</td>
+<td>使用ICMP6的traceroute工具</td>
+</tr>
+</tbody></table>
+<p>hping3是最常用的工具</p>
+<p>参考命令<code>hping3 -S www.tencent.com -p 80 -c 5</code></p>
+<ul>
+<li>使用有SYN标识集（-S）的TCP向目标发送一个类ping命令</li>
+<li>把数据包直接发送到80端口，该类型的请求是很少被阻塞的（-p 80）</li>
+<li>为发送给目标的五三个数据包设置计数（-c 5）</li>
+</ul>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210903124250.png" srcset="/img/loading.gif" lazyload alt="hping3 示例"></p>
+<h2 id="1-4-识别外部网络基础设施"><a href="#1-4-识别外部网络基础设施" class="headerlink" title="1.4 识别外部网络基础设施"></a>1.4 识别外部网络基础设施</h2><p>确定网络上的互联网可接入部分的设备。</p>
+<p>利用这些信息做到以下几点：</p>
+<ul>
+<li>确定可能混淆(负载均衡器)或消除(防火墙和数据包检查设备)测试结果的设备</li>
+<li>识别已知漏洞的设备</li>
+<li>识别继续实施秘密扫描的需求</li>
+<li>获得目标对安全体系和一般安全性的关注的理解</li>
+</ul>
+<p>traceroute提供关于包过滤能力的基本信息，kali中的一些其他应用如下</p>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>lbd</td>
+<td>使用基于DNS和HTTP的技术来检测放在均衡器</td>
+</tr>
+<tr>
+<td>miranda.py</td>
+<td>确定通用的即插即用和UPNP设备</td>
+</tr>
+<tr>
+<td>nmap</td>
+<td>检查设备并确定操作系统及其版本</td>
+</tr>
+<tr>
+<td>Shodan</td>
+<td>基于Web的搜索引擎，识别连接到互联网的设备，包括那些默认密码，已知错误配置和漏洞等等</td>
+</tr>
+<tr>
+<td>censys.io</td>
+<td>类似Shodan搜索，同样具有证书详细信息，技术信息，错误配置和已知漏洞</td>
+</tr>
+</tbody></table>
+<p>显示的是在运行lbd脚本获得的结果。可以看到，的网站上使用了DNS–Loadbalancing而没有使用HTTP–Loadbalancing。负载均衡器作为一个特定的工具，将活动从一个服务器转移到了另一个服务器</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210903151158.png" srcset="/img/loading.gif" lazyload alt="lbd示例"></p>
+<h2 id="1-5-防火墙外映射"><a href="#1-5-防火墙外映射" class="headerlink" title="1.5 防火墙外映射"></a>1.5 防火墙外映射</h2><p>尝试多次traceroute之后如果有特定的IP无法绕过，则可能为一个过滤设备，之后需要深入的了解该IP上的内容</p>
+<h2 id="1-6-IDS-IPS识别"><a href="#1-6-IDS-IPS识别" class="headerlink" title="1.6 IDS/IPS识别"></a>1.6 IDS/IPS识别</h2><p>利用fragroute和Wafw00f来识别特定位置是否存在任何检测或预防机制，例如入侵检测系统（Intrusion Detection System，IDS）/入侵防御系统（Intrusion Prevention System，IPS）/Web应用防火墙（Web ApplicationFirewall，WAF）</p>
+<p>Kali中通常使用fragroute以及wafw00f来识别，判断。</p>
+<p>其中fragroute，在自己安装的最新的kali中没有，并且apt-get install fragroute一样没有具体的包(暂时无法进行操作)，网上查看资料后安装fragrouter</p>
+<p>wafw00f是用于识别Web应用程序防火墙,其中<code>wafw00f -l</code>为列出提供的WAF列表</p>
+<p><code>wafw00f url/ip</code>检测命令</p>
+<h2 id="1-7-枚举主机"><a href="#1-7-枚举主机" class="headerlink" title="1.7 枚举主机"></a>1.7 枚举主机</h2><p>仅仅知道服务器或无线接入点存在是不够的，还需要确定开放端口，基本操作系统，运行的各种访问、支撑的各种应用等等</p>
+<p>发现活跃主机的方法通常使用的工具有</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alive6和detect-new-ip6</td>
+<td>IPv6主机检测，detect-new-ip6运行在基本脚本上，确定新IPv6设备加入</td>
+</tr>
+<tr>
+<td>Dnmap和nmap</td>
+<td>nmap是标准的网络枚举工具。而Dnmap是nmap扫描器的一种分布式客户端-服务器实现<br>PBNJ将nmap结果存储在数据库中，并构造历史分析用于识别新主机</td>
+</tr>
+<tr>
+<td>fping、hping2、hping3和nping</td>
+<td>发包工具，用各种方式响应目标以确定活跃主机</td>
+</tr>
+</tbody></table>
+<p>具体举例如何使用在下一节中</p>
+<h2 id="1-8-识别端口、操作系统和服务"><a href="#1-8-识别端口、操作系统和服务" class="headerlink" title="1.8 识别端口、操作系统和服务"></a>1.8 识别端口、操作系统和服务</h2><p>识别远程主机上的开放端口、操作系统和安装的服务。这些功能大多可以使用nmap完成</p>
+<p>端口扫描是连接到TCP和UDP端口，从而确定何种服务，何种应用程序在目标设备上运行的过程。</p>
+<p>通用端口映射工具nmap依靠活动栈指纹。特质的数据包发送到目标系统，nmap以操作系统对这些数据包的响应来识别这些操作系统。nmap正常工作需要有一个监听端口开发，而操作系统必须是已知和有指纹的</p>
+<p>将nmap用于端口发现有很大的噪声，将被网络安全设备检测并记录</p>
+<ul>
+<li>侧重于隐形技术的攻击者和渗透测试人员只测试那些影响他们所追踪的特定目标的杀链的端口。如果他们已在发起了对Web服务器的漏洞的攻击，他们通过可访问的80端口或8080端口搜索目标</li>
+<li>大多数端口扫描器都有一个默认扫描端口列表，确保你知道什么在列表上，什么被省略。同时考虑TCP端口和UDP端口</li>
+<li>成功的扫描需要TCP/IP及相关协议、网络和一些特殊工具工作原理的深度知识。例如，SCTP是网络上一个越来越普遍的协议，但它很少在企业网络上测试</li>
+<li>即使慢慢来，端口扫描也会影响网络。对一些较旧的网络设备，以及供应商的一些特定设备，在接收或传输端口扫描时会锁定，从而把扫描转换为一个拒绝服务攻击</li>
+<li>用来扫描一个端口的工具，尤其是nmap，正在扩展常规的功能。它们也可以用来检测漏洞，甚至利用简单的安全漏洞</li>
+</ul>
+<h2 id="1-9-使用netcat编写自己的端口扫描器"><a href="#1-9-使用netcat编写自己的端口扫描器" class="headerlink" title="1.9 使用netcat编写自己的端口扫描器"></a>1.9 使用netcat编写自己的端口扫描器</h2><p>通过netcat使用以下命令行，在渗透测试中识别开放端口列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 对列表中的IP地址进行TCP全端口的扫描</span><br><span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> r; <span class="hljs-keyword">do</span> nc -v -z <span class="hljs-variable">$r</span> 1-65535; <span class="hljs-keyword">done</span> &lt; iplist<br><span class="hljs-comment"># 通过实际测试，代码含义是逐行读取iplist文件中的内容，并扫描端口1-65535</span><br><span class="hljs-comment"># 此时有小问题，及nc自己的虚拟机时不管端口是否开启都十分迅速，而真实机器时速度十分慢</span><br><span class="hljs-comment"># 对指定IP的进行部分选择端口的扫描</span><br><span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> r; <span class="hljs-keyword">do</span> nc -v -z IP <span class="hljs-variable">$r</span>;<span class="hljs-keyword">done</span> &lt; ports<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210905191117.png" srcset="/img/loading.gif" lazyload alt="自定义nc扫描IP"></p>
+<p>此处为了节省时间只进行了少部分端口的扫描</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210905191349.png" srcset="/img/loading.gif" lazyload alt="自定义扫描IP端口"></p>
+<p>注意使用自定义端口扫描器扫描入侵检测系统时，产生警报的概率很高</p>
+<h3 id="1-9-1-指纹识别操作系统"><a href="#1-9-1-指纹识别操作系统" class="headerlink" title="1.9.1 指纹识别操作系统"></a>1.9.1 指纹识别操作系统</h3><p>确定远程系统的操作系统，使用以下两种类型扫描</p>
+<ul>
+<li>主动指纹识别(active fingerprinting): 攻击者通过发送正常的和异常的数据包到目标系统，记录它们对应的反应模式，称其为指纹(fingerprint)。将指纹与本地数据库比较，操作系统可被确定</li>
+<li>被动指纹识别(passive fingerprinting): 攻击者嗅探或记录和分析数据包流，以确定该分组的特性</li>
+</ul>
+<p>主动指纹扫描比被动指纹更快、更准确。在kali中，两个只要的主动工具是nmap和xprobe2</p>
+<p>nmap工具注入数据包到目标网络，并分析它收到的响应。命令<code>nmap -sS -O target.com</code>，-O标志命令nmap确定操作系统</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210905194256.png" srcset="/img/loading.gif" lazyload alt="namp示例"></p>
+<p>xprobe2使用不同的TCP、UDP和ICMP数据包绕过防火墙，避免被IDS/IPS系统测试。xprobe2还使用模糊模式匹配：操作系统不会被确定为一种类型</p>
+<p>命令<code>xprobe2 IP/url</code></p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210905195054.png" srcset="/img/loading.gif" lazyload alt="xprobe2"></p>
+<p>具体xprobe2命令<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40633669/article/details/84656228">参考</a>（感觉不太好用）</p>
+<p><strong>注意</strong>：目标系统很容易隐藏真实的操作系统。因为指纹软件依赖于分组包设置，如生存时间或初始窗口大小，改变这些值或其他用户可配置的设置，可以改变工具的结果。有些组织积极改变这些值，使侦察的最后阶段更加困难</p>
+<h3 id="1-9-2-确定主动服务"><a href="#1-9-2-确定主动服务" class="headerlink" title="1.9.2 确定主动服务"></a>1.9.2 确定主动服务</h3><p>侦察枚举部分的最终目标是确定运行在目标系统上的服务和应用。可能的话，具体到服务类型、供应商和版本，以确定具体的漏洞</p>
+<p>用于确定主动服务的几种技术：</p>
+<ul>
+<li><p>确定默认的端口和服务：绕过远程系统被识别为微软操作系统且80端口(WWW服务)为打开状态，攻击者可能会认为默认安装的是微软IIS服务器，并进一步的测试来验证这种假设(nmap)</p>
+</li>
+<li><p>标志提取：使用amap、netcat、nmap和远程登录等工具完成该任务</p>
+</li>
+<li><p>审计默认网页：一些应用程序安装使用默认的管理、错误或其他页面。服务这些网页可能会提供安装应用程序的指导，这可能是攻击的漏洞</p>
+</li>
+<li><p>审查源代码：配置不当的基于Web的应用程序可能应答某些HTTP请求，如头部（HEAD）或选项（OPTIONS），回应包括Web服务器软件版本，或基础操作系统，或使用的脚本环境。此处书中举例为</p>
+<p>  <img src="https://res.weread.qq.com/wrepub/epub_33211566_131" srcset="/img/loading.gif" lazyload></p>
+<p>  图中暴露了具体的web服务器具体版本Apache/2.4.37，应用服务器为PHP/5.6.39</p>
+</li>
+</ul>
+<h2 id="1-10-大规模扫描"><a href="#1-10-大规模扫描" class="headerlink" title="1.10 大规模扫描"></a>1.10 大规模扫描</h2><p>此处介绍了Masscan，该工具能快速分析目标网络中的活跃主机，大优势是随机分配主机、端口、速度、灵活性和兼容性。</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210905200344.png" srcset="/img/loading.gif" lazyload alt="Masscan示例"></p>
+<h3 id="1-10-1-DHCP信息"><a href="#1-10-1-DHCP信息" class="headerlink" title="1.10.1 DHCP信息"></a>1.10.1 DHCP信息</h3><p>动态主机配置协议(Dynamic Host Configuration Protocol,DHCP)是为网络上的主机动态分配IP地址的服务，协议运行在TCP/IP协议栈的数据链路层的MAC子层上运行。具体的操作流程为：客户端将向DHCP服务器发送广播查询，当从DHCP服务器接收到响应时，客户端再向DHCP服务器发送广播查询请求所需信息。服务器现在将为其分配配置参数（如子网掩码、DNS和默认网关）及一个IP地址</p>
+<p>连接到网络，嗅探(Sniffing)就是被动收集信息的最好的方法。如下图能够看到很多广播流量</p>
+<p><img src="https://res.weread.qq.com/wrepub/epub_33211566_133" srcset="/img/loading.gif" lazyload></p>
+<p>图中有DNS、NBNS、BROWSER和其他协议的流量，这些协议可能会泄露主机名、VLAN信息、域，以及活动子网</p>
+<h3 id="1-10-2-内部网络主机的识别与枚举"><a href="#1-10-2-内部网络主机的识别与枚举" class="headerlink" title="1.10.2 内部网络主机的识别与枚举"></a>1.10.2 内部网络主机的识别与枚举</h3><p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210906123355.png" srcset="/img/loading.gif" lazyload alt="ifconfig示例"></p>
+<p>使用ifconfig可以获取以下信息：</p>
+<ul>
+<li>inet：DHCP服务器获取的IP信息应当给我们提供至少一个活跃的子网，我们可以使用它通过不同的扫描技术来识别实时系统和服务的列表</li>
+<li>netmask：此信息可用于计算子网范围，图中显示的是255.255.255.0，这意味着CIDR是/24，我们可能期望子网上有255台主机</li>
+<li>默认网关：网关的IP信息将提供ping其他类似网关IP的机会。例如，如果默认网关IP为192.168.1.1，则使用ping扫描攻击者可能能够枚举出其他类似的IP，如192.168.2.1、192.168.3.1等</li>
+<li>其他IP地址：可通过访问/etc/resolv.conf文件获取DNS信息。该文件中的IP地址通常在所有子网中进行寻址，域信息也将在同一文件中自动可用</li>
+</ul>
+<h3 id="1-10-3-本地MS-Windows命令"><a href="#1-10-3-本地MS-Windows命令" class="headerlink" title="1.10.3 本地MS Windows命令"></a>1.10.3 本地MS Windows命令</h3><p>下列表中提供了渗透测试练习中部分常用的命令列表</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>举例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>net use</td>
+<td>net use \\[targetIP] [password] /user:[user]<br>net use \\[targetIP]\[sharename] [password] /user:[user]</td>
+<td>连接到同一网络上的任何系统。它也可以用于检索网络连接列表</td>
+</tr>
+<tr>
+<td>net user</td>
+<td>net user [UserName [Password | *] [options]] [/domain]<br>net user [UserName] {Password | *} /add [option] [/domain]]<br>net user [UserName [/delete] [/domain]]</td>
+<td>显示有关用户的信息，并执行与用户账户相关的活动</td>
+</tr>
+<tr>
+<td>arp</td>
+<td>arp /a<br>arp /a /n 10.0.0.99<br>arp /s 10.0.0.80 00-AA-00-4F-2A-9C</td>
+<td>显示并修改ARP缓存中的任何条目</td>
+</tr>
+<tr>
+<td>route</td>
+<td>route print<br>route print 10.* <br>route add 0.0.0.0 mask 0.0.0.0 192.168.1.1<br>route delete 10.*</td>
+<td>与ARP类似，可以利用route来了解本地IP路由，并修改此信息</td>
+</tr>
+<tr>
+<td>netstat</td>
+<td>netstat -n -o</td>
+<td>显示本地系统上的所有活动TCP连接和端口，即监听以太网和IP路由表(IPv4和IPv6)以及统计信息</td>
+</tr>
+<tr>
+<td>nbtstat</td>
+<td>nbtstat /R<br>nbtstat /S 5<br>nbtstat /a Ip</td>
+<td>显示通常用于识别IP的特定MAC地址的NETBIOS信息，其用于MAC欺骗攻击</td>
+</tr>
+<tr>
+<td>wmic</td>
+<td>wmic process get caption,executablepath,commandline<br>wmic netshwlan profile=”profilename” key=clear</td>
+<td>wmic用于攻击者可以执行的有电信诊断，例如在单个命令中提取系统WIFI密码</td>
+</tr>
+<tr>
+<td>reg</td>
+<td>reg save HKLM\Security sec.hive<br>reg save HKLM\System sys.hive<br>reg save HKLM\SAM sam.hive<br>reg add [\\TargetIPaddr\] [RegDomain] [\Key]<br>reg export [RegDomain]\[Key] [FileName]<br>reg import [FileName]<br>reg query [\\TargetIPaddr\] [RegDomain]\[Key] /v [Valuename!]</td>
+<td>使用reg命令来保存注册表配置党员，以执行脱机密码攻击</td>
+</tr>
+<tr>
+<td>for</td>
+<td>for /L %i in (1,1,10) do echo %ii &amp;&amp; ping -n 5 IP<br>for /F %i in (password.lst) do @echo %i&amp; @net use \\[targetIP] %t /u:[Usernam] 2&gt;nul&amp;&amp; pause &amp;&amp; echo [Username] :%i&gt;&gt;done.txt</td>
+<td>for循环可以在windows中用于创建端口扫描器或枚举账户</td>
+</tr>
+</tbody></table>
+<h3 id="1-10-4-ARP广播"><a href="#1-10-4-ARP广播" class="headerlink" title="1.10.4 ARP广播"></a>1.10.4 ARP广播</h3><p>在内部网络主动侦察期间，可以使用nmap（nmap-v-sn IPrange）扫描整个本地网络，以嗅探ARP广播。此外，Kali可使用arp-scan（arp-scan IP range）来标识在同一网络上活跃的主机列表</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210906154153.png" srcset="/img/loading.gif" lazyload alt="arp-scan示例"></p>
+<h3 id="1-10-5-ping扫描"><a href="#1-10-5-ping扫描" class="headerlink" title="1.10.5 ping扫描"></a>1.10.5 ping扫描</h3><p>ping扫描是ping整个网络IP地址，以获取它们活跃与响应的过程。可利用以下方式进行</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">fping -g IPrange<br>nmap -sP IPrange<br><span class="hljs-comment"># 自己编写</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> (1..254);<span class="hljs-keyword">do</span> ping -c 1 10.10.0.<span class="hljs-variable">$i</span> | grep <span class="hljs-string">&#x27;from&#x27;</span>;<span class="hljs-keyword">done</span><br></code></pre></div></td></tr></table></figure>
+
+<p>经常遇到防火墙阻止了ICMP流量，所以可以尝试指定端口来进行识别</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">nmap -sP -PT 80 IPrange<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="1-10-6-使用脚本组合masscan和nmap扫描"><a href="#1-10-6-使用脚本组合masscan和nmap扫描" class="headerlink" title="1.10.6 使用脚本组合masscan和nmap扫描"></a>1.10.6 使用脚本组合masscan和nmap扫描</h3><p>在实际的渗透测试中将masscan的速度和nmap的枚举能力相结合，很有效果。文中参考的脚本如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br>function helptext&#123;<br>	echo &quot;enter the massnmap with the file input with list of IP address ranges&quot;<br>&#125;<br>if [&quot;$#&quot; -ne 1]; then<br>	echo &quot;Sorry cannot understand the command&quot;<br><span class="hljs-meta">	helptext&gt;</span><span class="bash">&amp;2</span><br>	exit 1<br>elif [! -s $1]; then<br>	echo &quot;ooops it is empty&quot;<br><span class="hljs-meta">	helptext&gt;</span><span class="bash">&amp;2</span><br>	exit 1<br>fi<br>if [&quot;$(id -u)&quot;!=&quot;0&quot;]; then<br>	echo &quot;I assume you are running as root&quot;<br><span class="hljs-meta">	helptext&gt;</span><span class="bash">&amp;2</span><br>	exit 1<br>fi<br>for range in $(cat $1); do<br>	store=$(echo $range | sed -e &#x27;/\//_/g&#x27;)<br>	echo &quot;I am trying to create a store to dump now hangon&quot;<br>	mkdir -p pwd/$store;<br>	iptables -A INPUT -p tcp --dport 6000 -j DROP;<br>	echo -e &quot;\n alright lets fire masscan ****&quot;<br>	masscan --open --banners --source-port 6000 -p0-65535 --max-rate 150000Bpwd/$store/masscan.bin $range;masscan --read$<br>	if [! -s ./results/$store/masscan-output.txt]; then<br>		echo &quot;Thank you for wasting time&quot;<br></code></pre></div></td></tr></table></figure>
+
+<p>启动命令<code>文件名 ./需要扫描的地址文件.txt</code></p>
+<h3 id="1-10-7-利用SNMP"><a href="#1-10-7-利用SNMP" class="headerlink" title="1.10.7 利用SNMP"></a>1.10.7 利用SNMP</h3><p>SNMP代表简单网络管理协议。传统上它用于收集有关网络设备配置的信息，如打印机、集线器、交换机、互联网协议的路由器、服务器</p>
+<p>在所有版本的SNMP中都有两种类型的社区字符串：</p>
+<ul>
+<li>Public：用于只读访问的社区字符串</li>
+<li>Private：用于读写访问的社区字符串</li>
+</ul>
+<p>kali中提供snmpwalk进行枚举，命令<code>snmpwalk -c public IP</code> </p>
+<p>尝试了自己的主机虚拟机和云服务器均无反应</p>
+<h3 id="1-10-8-通过服务器消息块会话获取Windows账户信息"><a href="#1-10-8-通过服务器消息块会话获取Windows账户信息" class="headerlink" title="1.10.8 通过服务器消息块会话获取Windows账户信息"></a>1.10.8 通过服务器消息块会话获取Windows账户信息</h3><p>在内部网络扫描期间，攻击者很有可能利用最常用的内部SMB会话。而在外部，攻击者可以使用nmap来执行枚举，但这种情况非常少见。以下nmap命令将枚举Windows机器上的所有远程用户。此信息通常会创建许多入口点，非常像后期的强制攻击和密码猜测攻击</p>
+<p>nmap命令<code>nmap --script smb-enum-users.nse -p445 &lt;host&gt;</code></p>
+<p>还可以使用Metasploit模块-auxiliary/scanner/smb/smb_enumusers执行活动</p>
+<p><img src="https://res.weread.qq.com/wrepub/epub_33211566_149" srcset="/img/loading.gif" lazyload alt="使用参考"></p>
+<h3 id="1-10-9-定位网络共享"><a href="#1-10-9-定位网络共享" class="headerlink" title="1.10.9 定位网络共享"></a>1.10.9 定位网络共享</h3><p>最早使用的攻击之一有NETBIOS空会话攻击，该攻击可以枚举出所有的网络共享</p>
+<p><code>smbclient -I TargetIP -L administrator -N -U &quot;&quot;</code></p>
+<p>可以利用enum4linux进行枚举来自Windows和Samba系统的信息：</p>
+<p><code>enum4linux [options] targetip</code></p>
+<p>选项如下：</p>
+<ul>
+<li><p>-U：获取用户列表</p>
+</li>
+<li><p>-M：获取机器列表</p>
+</li>
+<li><p>-S：获取共享列表</p>
+</li>
+<li><p>-P：获取密码策略列表</p>
+</li>
+<li><p>-G：获取组和成员列表</p>
+</li>
+<li><p>-d：详细说明，适用与-U和-S</p>
+</li>
+<li><p>-u user：指定要使用的用户名（默认为””）</p>
+</li>
+<li><p>-p pass：指定要使用的密码（默认为””）</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210923104112.png" srcset="/img/loading.gif" lazyload alt="enum4linux 示例"></p>
+<h3 id="1-10-10-主动侦察目录域服务器"><a href="#1-10-10-主动侦察目录域服务器" class="headerlink" title="1.10.10 主动侦察目录域服务器"></a>1.10.10 主动侦察目录域服务器</h3><p>通常在内部渗透测试活动期间，渗透测试人员会获得用户名和密码。一般攻击方案是通过正常的用户访问来提升权限，从而达到攻破企业域的目的</p>
+<p>Kali中的rpcclient可用于在活动目录环境中执行更主动的侦察，该工具提供多个选项来提取关于域和其他网络访问的所有细节，在第十章中进行讨论</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210923105917.png" srcset="/img/loading.gif" lazyload alt="rpcclient 示例"></p>
+<h3 id="1-10-11-使用综合工具"><a href="#1-10-11-使用综合工具" class="headerlink" title="1.10.11 使用综合工具"></a>1.10.11 使用综合工具</h3><p>Kali中的SPARTA(自己尝试查找后发现已经被legion替换)结合了多种工具，如nmap、nikto。并且还允许进行配置。配置SPARTA需要编辑位于/etc/Sparta/中的sparta.conf文件</p>
+<p>在配置中可使用以下选项：</p>
+<ul>
+<li>工具(Tool)：命令行工具的唯一标识符，如nmap</li>
+<li>标签(Label)：显示在上下文菜单上的文本</li>
+<li>命令(Command)：通常是非交互模式和使用工具运行的完整命令</li>
+<li>服务(Services)：这些是在主动运行期间需要运行的服务列表，例如：如果用户配置为运行nmap并自动识别80端口，请运行nikto</li>
+<li>协议(Protocol)：TCP或UDP是工具应该运行于其上的服务</li>
+</ul>
+<h3 id="1-10-12-SPARTA配置实例"><a href="#1-10-12-SPARTA配置实例" class="headerlink" title="1.10.12 SPARTA配置实例"></a>1.10.12 SPARTA配置实例</h3><p>将nikto工具配置为端口操作。将以下命令添加到sparta.conf中的[PortActions]部分:</p>
+<p><code>nikto=Run nikto, nikto -o [OUTPUT].txt -p [PORT] -h [IP],&quot;http,https&quot;</code></p>
+<p>legion的参考<a target="_blank" rel="noopener" href="https://github.com/GoVanguard/legion">链接</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">kali高级渗透测试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

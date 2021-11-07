@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>代码审计-代码审计前的准备 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="代码审计-代码审计前的准备">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-12 13:01" pubdate>
+        2021年7月12日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">代码审计-代码审计前的准备</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年8月3日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="代码审计前的准备"><a href="#代码审计前的准备" class="headerlink" title="代码审计前的准备"></a>代码审计前的准备</h1><h2 id="第一章-代码审计环境搭建"><a href="#第一章-代码审计环境搭建" class="headerlink" title="第一章 代码审计环境搭建"></a>第一章 代码审计环境搭建</h2><h3 id="1-1-1-2-wamp-lamp-搭建"><a href="#1-1-1-2-wamp-lamp-搭建" class="headerlink" title="1.1-1.2 wamp\lamp 搭建"></a>1.1-1.2 wamp\lamp 搭建</h3><p>建议 wamp\lamp搭建全部使用集成环境<a target="_blank" rel="noopener" href="https://www.xp.cn/">phpStudy</a>进行安装</p>
+<h3 id="1-3-php核心配置详解"><a href="#1-3-php核心配置详解" class="headerlink" title="1.3 php核心配置详解"></a>1.3 php核心配置详解</h3><ol>
+<li><p><strong>PHP_INI_* 常量的定义</strong></p>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PHP_INI_USER</td>
+<td>该配置选项可在用户的PHP脚本或Windows注册表中设置</td>
+</tr>
+<tr>
+<td>PHP_INI_PERDIR</td>
+<td>该配置选项可在php.ini. .htaccess或httpd.conf中设置</td>
+</tr>
+<tr>
+<td>PHP_INI_SYSTEM</td>
+<td>该配置选项可在php.ini或httpd.conf中设置</td>
+</tr>
+<tr>
+<td>PHP_INI_ALL</td>
+<td>该配置选项可在任何地方设置</td>
+</tr>
+<tr>
+<td>php.ini only</td>
+<td>该配置选项可仅可在php.ini中配置</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>影响PHP脚本安全的配置和选项</p>
+<ol>
+<li><p>register_globals(全局变量注册开关)</p>
+<p>当设置为on时，会将用户使用GET，POST等方式提交的参数注册成全局变量并初始化值为参数对应的值。导致提交的参数可以直接在脚本中使用。</p>
+<p>例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">if</span>(<span class="hljs-variable">$user</span>==<span class="hljs-string">&#x27;admin&#x27;</span>)&#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;success&#x27;</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>提交url为：<a href="http://host:port/test.php?user=admin">http://host:port/test.php?user=admin</a></p>
+<p>版本低于5.4.0且设置为on时，会输出success</p>
+<p><strong>版本</strong>：PHP&lt;5.4.0。5.3.0起被废除，不推荐使用，5.4.0移除该选项</p>
+</li>
+<li><p>allow_url_include(是否允许包含远程文件)</p>
+<p>设置为on时，可以直接包含远程文件，在include($var)中若$var可控，可以执行PHP代码。</p>
+<p>类似配置有allow_url_fopen</p>
+<p>例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-keyword">include</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;a&#x27;</span>]);<br></code></pre></div></td></tr></table></figure>
+
+<p>此时可以直接远程执行代码</p>
+<p><strong>版本</strong>：在PHP5.2.0之后默认设置为off</p>
+</li>
+<li><p>magic_quotes_gpc(魔法引号自动过滤)</p>
+<p>被开启之后，在不存在编码或者其他特殊绕过的情况下，可以使得很多漏洞无法被利用。</p>
+<p>在选项设置为on时，会自动在GET、POST、COOKIE变量中的<code>&#39;</code>,<code>&quot;</code>,<code>\</code>,<code>null</code>的前面加上反斜杠<code>\</code>,在PHP5中不会过滤$_SERVER变量</p>
+<p><strong>版本</strong>：PHP&lt;4.2.3时，配置范围是PHP_INI_ALL,PHP&lt;5.3配置范围是PHP_INI_PERDIR,PHP&gt;=5.4之后被废除。</p>
+</li>
+<li><p>magic_quotes_runtime(魔术引号自动过滤)</p>
+<p>具体作用与gpc相同，区别是，magic_quotes_runtime只对从数据库或者文件中获取的数据进行过滤。</p>
+<p>例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php">ini_set(<span class="hljs-string">&quot;magic_quotes_runtime&quot;</span>,<span class="hljs-string">&quot;1&quot;</span>);<br><span class="hljs-keyword">echo</span> file_get_contents(<span class="hljs-string">&quot;1.txt&quot;</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>版本</strong>：PHP5.4&gt;=被废除，配置范围是PHP_INI_ALL</p>
+</li>
+<li><p>magic_quotes_sybase(魔术引号自动过滤)</p>
+<p>当设置为on时，会覆盖gpc的配置，但是仅仅转义了空字符和把单引号变成了双引号。</p>
+<p><strong>版本</strong>：PHP5.4&gt;=被废除，配置范围是PHP_INI_ALL</p>
+</li>
+<li><p>safe_mode(安全模式)</p>
+<p>设置为on时，会出现下面限制</p>
+<ol>
+<li><p>所有文件操作函数会受到限制，可以使用safe_mode_include_dir指令来配置可以包含的路径</p>
+</li>
+<li><p>函数指令命令或程序会提示错误。可以将这些脚本集中放置一个目录，然后使用safe_mode_exec_dir指令指向脚本的目录</p>
+</li>
+<li><p>受影响的函数列表：</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>限制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dbmopen()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>dbase_open()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>filepro()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>filepro_rowcount()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>filepro_retrieve()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>ifx_*</td>
+<td><a target="_blank" rel="noopener" href="https://edu.aliyun.com/jiaocheng/1043">sql</a>_safe_mode 限制, (!= safe mode)</td>
+</tr>
+<tr>
+<td>ingres_*</td>
+<td>sql_safe_mode 限制, (!= safe mode)</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://edu.aliyun.com/jiaocheng/1107">mysql</a>_*</td>
+<td>sql_safe_mode 限制, (!= safe mode)</td>
+</tr>
+<tr>
+<td>pg_loimport()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>posix_mkfifo()</td>
+<td>检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>putenv()</td>
+<td>遵循 ini 设置的 safe_mode_protected_env_vars 和 safe_mode_allowed_env_vars 选项。请参考 putenv() 函数的有关<a target="_blank" rel="noopener" href="https://yq.aliyun.com/wenji">文档</a>。</td>
+</tr>
+<tr>
+<td>move_uploaded_file()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>chdir()</td>
+<td>检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>dl()</td>
+<td>本函数在安全模式下被禁用。</td>
+</tr>
+<tr>
+<td>backtick operator</td>
+<td>本函数在安全模式下被禁用。</td>
+</tr>
+<tr>
+<td>shell_exec()（在功能上和 backticks 函数相同）</td>
+<td>本函数在安全模式下被禁用。</td>
+</tr>
+<tr>
+<td>exec()</td>
+<td>只能在 safe_mode_exec_dir 设置的目录下进行执行操作。基于某些原因，目前不能在可执行对象的路径中使用 ..。escapeshellcmd() 将被作用于此函数的参数上。</td>
+</tr>
+<tr>
+<td>system()</td>
+<td>只能在 safe_mode_exec_dir 设置的目录下进行执行操作。基于某些原因，目前不能在可执行对象的路径中使用 ..。escapeshellcmd() 将被作用于此函数的参数上。</td>
+</tr>
+<tr>
+<td>passthru()</td>
+<td>只能在 safe_mode_exec_dir 设置的目录下进行执行操作。基于某些原因，目前不能在可执行对象的路径中使用 ..。escapeshellcmd() 将被作用于此函数的参数上。</td>
+</tr>
+<tr>
+<td>popen()</td>
+<td>只能在 safe_mode_exec_dir 设置的目录下进行执行操作。基于某些原因，目前不能在可执行对象的路径中使用 ..。escapeshellcmd() 将被作用于此函数的参数上。</td>
+</tr>
+<tr>
+<td>fopen()</td>
+<td>检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>mkdir()</td>
+<td>检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>rmdir()</td>
+<td>检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>rename()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。 检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>unlink()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。 检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>copy()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。 检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。 (on <code>source</code> and <code>target</code>)</td>
+</tr>
+<tr>
+<td>chgrp()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>chown()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>chmod()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。 另外，不能设置 SUID、SGID 和 sticky bits</td>
+</tr>
+<tr>
+<td>touch()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。 检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。</td>
+</tr>
+<tr>
+<td>symlink()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。 检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。 （注意：仅测试 target）</td>
+</tr>
+<tr>
+<td>link()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。 检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。 （注意：仅测试 target）</td>
+</tr>
+<tr>
+<td>apache_request_headers()</td>
+<td>在安全模式下，以“authorization”（区分大小写）开头的标头将不会被返回。</td>
+</tr>
+<tr>
+<td>header()</td>
+<td>在安全模式下，如果设置了 WWW-Authenticate，当前脚本的 uid 将被添加到该标头的 realm 部分。</td>
+</tr>
+<tr>
+<td>PHP_AUTH 变量</td>
+<td>在安全模式下，变量 <code>PHP_AUTH_USER</code>、<code>PHP_AUTH_PW</code> 和 <code>PHP_AUTH_TYPE</code> 在 <code>$_SERVER</code> 中不可用。但无论如何，您仍然可以使用 <code>REMOTE_USER</code> 来获取用户名称（USER）。（注意：仅 PHP 4.3.0 以后有效）</td>
+</tr>
+<tr>
+<td>highlight_file(), show_source()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。 检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。 （注意，仅在 4.2.1 版本后有效）</td>
+</tr>
+<tr>
+<td>parse_ini_file()</td>
+<td>检查被操作的文件或目录是否与正在执行的脚本有相同的 UID（所有者）。 检查被操作的目录是否与正在执行的脚本有相同的 UID（所有者）。 （注意，仅在 4.2.1 版本后有效）</td>
+</tr>
+<tr>
+<td>set_time_limit()</td>
+<td>在安全模式下不起作用。</td>
+</tr>
+<tr>
+<td>max_execution_time</td>
+<td>在安全模式下不起作用。</td>
+</tr>
+<tr>
+<td>mail()</td>
+<td>在安全模式下，第五个参数被屏蔽。（注意，仅自 PHP 4.2.3 起受影响）</td>
+</tr>
+</tbody></table>
+<p>以及部分PHP扩展中的函数</p>
+<p><strong>版本</strong>：PHP5.4&gt;=被废除，配置范围是PHP_INI_SYSTEM</p>
+</li>
+</ol>
+</li>
+<li><p>open_basedir PHP可访问目录</p>
+<p>用来限制PHP只能访问哪些目录。注意：其限制是前缀，如：open_basedir=/www/a 那么目录 /www/ab 可以访问。使用 open_basedir=/www/a/ 时只能访问该目录了</p>
+<p><strong>版本</strong>：&lt;PHP5.2.3时配置范围：PHP_INI_SYSTEM。&gt;=PHP5.2.3配置范围是PHP_INI_ALL</p>
+</li>
+<li><p>disable_functions(禁用函数)</p>
+<p>禁止一些敏感函数的使用，切记把dl()函数也加到禁止列表，因为dl()函数可以加载自定义的PHP扩展以突破disable_functions指令的限制。</p>
+<p><strong>版本</strong>：配置范围为php.ini only</p>
+</li>
+<li><p>display_errors和error_reporting错误显示</p>
+<p>display_errors表明是否显示PHP脚本内部错误的选项，当开启之后再开启error_reporting可以配置错误显示的级别</p>
+<p><strong>版本</strong>：配置范围为PHP_INI_ALL</p>
+</li>
+<li><p>其他创建指令及说明</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>可配置范围</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>safe_mode_gid</td>
+<td>PHP_INI_SYSTEM</td>
+<td align="left">以安全模式打开文件时默认使用UID来比对；设置本指令为on时使用GID做宽松的对比</td>
+</tr>
+<tr>
+<td>expose_php</td>
+<td>php.ini only</td>
+<td align="left">是否在服务器返回信息HTTP头显示PHP版本</td>
+</tr>
+<tr>
+<td>max_execution_time</td>
+<td>PHP_INI_ALL</td>
+<td align="left">每个脚本最多执行秒数</td>
+</tr>
+<tr>
+<td>memory_limit</td>
+<td>PHP_INI_ALL</td>
+<td align="left">每个脚本能够使用的最大内存数量</td>
+</tr>
+<tr>
+<td>log_errors</td>
+<td>PHP_INI_ALL</td>
+<td align="left">将错误输入到日志文件</td>
+</tr>
+<tr>
+<td>log_errors_max_len</td>
+<td>PHP_INI_ALL</td>
+<td align="left">设定log_errors的最大长度</td>
+</tr>
+<tr>
+<td>variables_order</td>
+<td>PHP_INI_PERDIR</td>
+<td align="left">此指令描述了PHP注册GET、POST、Cookie、环境和内置变量的顺序，注册使用从左往右的顺序，新的值会覆盖就的值</td>
+</tr>
+<tr>
+<td>post_max_size</td>
+<td>PHP_INI_PERDIR</td>
+<td align="left">PHP可以接受的最大的POST数据大小</td>
+</tr>
+<tr>
+<td>auto_prepend_file</td>
+<td>PHP_INI_PERDIR</td>
+<td align="left">在任何PHP文档之前自动包含的文件</td>
+</tr>
+<tr>
+<td>auto_append_file</td>
+<td>PHP_INI_PERDIR</td>
+<td align="left">在任何PHP文档之后自动包含的文件</td>
+</tr>
+<tr>
+<td>extension_dir</td>
+<td>PHP_INI_SYSTEM</td>
+<td align="left">可加载的扩展(模块)的目录位置</td>
+</tr>
+<tr>
+<td>file_uploads</td>
+<td>PHP_INI_SYSTEM</td>
+<td align="left">是否允许HTTP文件上传</td>
+</tr>
+<tr>
+<td>upload_tmp_dir</td>
+<td>PHP_INI_SYSTEM</td>
+<td align="left">对于HTTP上传文件的临时文件目录</td>
+</tr>
+<tr>
+<td>upload_max_filesize</td>
+<td>PHP_INI_SYSTEM</td>
+<td align="left">允许上传的最大文件大小</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="第二章-审计辅助与漏洞验证工具"><a href="#第二章-审计辅助与漏洞验证工具" class="headerlink" title="第二章 审计辅助与漏洞验证工具"></a>第二章 审计辅助与漏洞验证工具</h2><h3 id="2-1-代码编辑器"><a href="#2-1-代码编辑器" class="headerlink" title="2.1 代码编辑器"></a>2.1 代码编辑器</h3><ol>
+<li>Notepad++ <a target="_blank" rel="noopener" href="https://notepad-plus.en.softonic.com/">下载地址</a></li>
+<li>UltraEdit(收费)</li>
+<li>Zend Studio</li>
+</ol>
+<h3 id="2-2-代码审计工具"><a href="#2-2-代码审计工具" class="headerlink" title="2.2 代码审计工具"></a>2.2 代码审计工具</h3><ol>
+<li>Seay源代码审计系统<a target="_blank" rel="noopener" href="https://github.com/f1tz/cnseay">下载地址</a></li>
+<li>Fortify SCA(商业软件)</li>
+<li>RIPS</li>
+</ol>
+<h3 id="2-3-漏洞验证辅助"><a href="#2-3-漏洞验证辅助" class="headerlink" title="2.3 漏洞验证辅助"></a>2.3 漏洞验证辅助</h3><ol>
+<li><p>Burp Suite</p>
+</li>
+<li><p>浏览器扩展</p>
+<p>此处作者推荐了以下插件</p>
+<ol>
+<li>HackBar 可对URL、POST及Referer的参数设置</li>
+<li>firebug(目前没有了)</li>
+<li>Modify 同样是修改Request中的HTTP Header的字段，但是它是做的全局修改</li>
+</ol>
+</li>
+<li><p>加密解密转换工具</p>
+<p>超级加解密转化工具 <a target="_blank" rel="noopener" href="http://www.xitongzhijia.net/soft/5343.html">下载地址</a></p>
+</li>
+<li><p>正则调试工具</p>
+<p>灵者正则调试 <a target="_blank" rel="noopener" href="https://www.jb51.net/softs/553350.html">下载地址</a></p>
+</li>
+<li><p>SQL执行监控工具</p>
+<p>Seay源代码审计系统中带有</p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BA%A7Web%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/">书籍 代码审计：企业级Web代码安全架构</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

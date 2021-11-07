@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>整合和整理IDEA ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="整合和整理IDEA">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-12 10:49" pubdate>
+        2021年4月12日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">整合和整理IDEA</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月12日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="SpringData简介"><a href="#SpringData简介" class="headerlink" title="SpringData简介"></a>SpringData简介</h1><h2 id="启动依赖"><a href="#启动依赖" class="headerlink" title="启动依赖"></a>启动依赖</h2><p>对于数据访问层，无论是 SQL(关系型数据库) 还是 NOSQL(非关系型数据库)，Spring Boot 底层都是采用 Spring Data 的方式进行统一处理。</p>
+<p>Spring Boot 底层都是采用 Spring Data 的方式进行统一处理各种数据库，Spring Data 也是 Spring 中与 Spring Boot、Spring Cloud 等齐名的知名项目。</p>
+<p>Sping Data 官网：<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-data">https://spring.io/projects/spring-data</a></p>
+<p>数据库相关的启动器 ：可以参考官方文档：</p>
+<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#using-boot-starter">https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#using-boot-starter</a></p>
+<p>整合JDBC</p>
+<h2 id="创建测试项目测试数据源"><a href="#创建测试项目测试数据源" class="headerlink" title="创建测试项目测试数据源"></a>创建测试项目测试数据源</h2><p>1、我去新建一个项目测试：springboot-data-jdbc ; 引入相应的模块！基础模块</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7LYLicOHVGnwu7ibGvbwXibYeuW0A5wz8gu4q4AMoBCoYic2Juyiate9VBZe4S0sgkCZVFV2lD6quLKVZw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p>2、项目建好之后，发现自动帮我们导入了如下的启动器：</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span> <br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>   <br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>    <br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>   <br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>runtime<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>3、编写yaml配置文件连接数据库；</p>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span>  <br>    <span class="hljs-attr">datasource:</span>   <br>    <span class="hljs-attr">username:</span> <span class="hljs-string">root</span>    <br>    <span class="hljs-attr">password:</span> <span class="hljs-number">123456</span>    <br>    <span class="hljs-comment">#?serverTimezone=UTC解决时区的报错    </span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql://localhost:3306/springboot?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8</span>    <br>    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span><br></code></pre></div></td></tr></table></figure>
+
+<p>4、配置完这一些东西后，我们就可以直接去使用了，因为SpringBoot已经默认帮我们进行了自动配置；去测试类测试一下</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootTestclass</span> SpringbootDataJdbcApplicationTests &#123;<br>    <span class="hljs-comment">//DI注入数据源    </span><br>    <span class="hljs-meta">@Autowired</span>    <br>    DataSource dataSource;<br>    <span class="hljs-meta">@Test</span>   <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">contextLoads</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> SQLException </span>&#123;    <br>        <span class="hljs-comment">//看一下默认数据源      </span><br>        System.out.println(dataSource.getClass());     <br>        <span class="hljs-comment">//获得连接     </span><br>        Connection connection =   dataSource.getConnection();      <br>        System.out.println(connection);        <br>        <span class="hljs-comment">//关闭连接        </span><br>        connection.close();    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>结果：我们可以看到他默认给我们配置的数据源为 : class com.zaxxer.hikari.HikariDataSource ， 我们并没有手动配置</p>
+<p>我们来全局搜索一下，找到数据源的所有自动配置都在 ：DataSourceAutoConfiguration文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Import(    &#123;Hikari.class, Tomcat.class, Dbcp2.class, Generic.class, DataSourceJmxConfiguration.class&#125;)</span><br><span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PooledDataSourceConfiguration</span> </span>&#123;    <br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-title">PooledDataSourceConfiguration</span><span class="hljs-params">()</span> </span>&#123; <br>    <br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>这里导入的类都在 DataSourceConfiguration 配置类下，可以看出 Spring Boot 2.2.5 默认使用HikariDataSource 数据源，而以前版本，如 Spring Boot 1.5 默认使用 org.apache.tomcat.jdbc.pool.DataSource 作为数据源；</p>
+<p><strong>HikariDataSource 号称 Java WEB 当前速度最快的数据源，相比于传统的 C3P0 、DBCP、Tomcat jdbc 等连接池更加优秀；</strong></p>
+<p><strong>可以使用 spring.datasource.type 指定自定义的数据源类型，值为 要使用的连接池实现的完全限定名。</strong></p>
+<p>关于数据源我们并不做介绍，有了数据库连接，显然就可以 CRUD 操作数据库了。但是我们需要先了解一个对象 JdbcTemplate</p>
+<h2 id="JDBCTemplate"><a href="#JDBCTemplate" class="headerlink" title="JDBCTemplate"></a>JDBCTemplate</h2><p>1、有了数据源(com.zaxxer.hikari.HikariDataSource)，然后可以拿到数据库连接(java.sql.Connection)，有了连接，就可以使用原生的 JDBC 语句来操作数据库；</p>
+<p>2、即使不使用第三方第数据库操作框架，如 MyBatis等，Spring 本身也对原生的JDBC 做了轻量级的封装，即JdbcTemplate。</p>
+<p>3、数据库操作的所有 CRUD 方法都在 JdbcTemplate 中。</p>
+<p>4、Spring Boot 不仅提供了默认的数据源，同时默认已经配置好了 JdbcTemplate 放在了容器中，程序员只需自己注入即可使用</p>
+<p>5、JdbcTemplate 的自动配置是依赖 org.springframework.boot.autoconfigure.jdbc 包下的 JdbcTemplateConfiguration 类</p>
+<p><strong>JdbcTemplate主要提供以下几类方法：</strong></p>
+<ul>
+<li>execute方法：可以用于执行任何SQL语句，一般用于执行DDL语句；</li>
+<li>update方法及batchUpdate方法：update方法用于执行新增、修改、删除等语句；batchUpdate方法用于执行批处理相关语句；</li>
+<li>query方法及queryForXXX方法：用于执行查询相关语句；</li>
+<li>call方法：用于执行存储过程、函数相关语句。</li>
+</ul>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>编写一个Controller，注入 jdbcTemplate，编写测试方法进行访问测试；</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.kuang.controller;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.GetMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.PathVariable;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;<br><span class="hljs-keyword">import</span> java.util.Date;<br><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-keyword">import</span> java.util.Map;<br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/jdbc&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JdbcController</span> </span>&#123;<br>    <span class="hljs-comment">/**    </span><br><span class="hljs-comment">    * Spring Boot 默认提供了数据源，默认提供了 org.springframework.jdbc.core.JdbcTemplate   </span><br><span class="hljs-comment">    * JdbcTemplate 中会自己注入数据源，用于简化 JDBC操作    </span><br><span class="hljs-comment">    * 还能避免一些常见的错误,使用起来也不用再自己来关闭数据库连接    </span><br><span class="hljs-comment">    */</span>    <br>    <span class="hljs-meta">@Autowired</span>    <br>    JdbcTemplate jdbcTemplate;<br>    <span class="hljs-comment">//查询employee表中所有数据   </span><br>    <span class="hljs-comment">//List 中的1个 Map 对应数据库的 1行数据  </span><br>    <span class="hljs-comment">//Map 中的 key 对应数据库的字段名，value 对应数据库的字段值  </span><br>    <span class="hljs-meta">@GetMapping(&quot;/list&quot;)</span>    <br>    <span class="hljs-keyword">public</span> List&lt;Map&lt;String, Object&gt;&gt; userList()&#123;     <br>        String sql = <span class="hljs-string">&quot;select * from employee&quot;</span>;     <br>        List&lt;Map&lt;String, Object&gt;&gt; maps = jdbcTemplate.queryForList(sql);     <br>        <span class="hljs-keyword">return</span> maps; <br>    &#125;        <br>    <span class="hljs-comment">//新增一个用户    </span><br>    <span class="hljs-meta">@GetMapping(&quot;/add&quot;)</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">addUser</span><span class="hljs-params">()</span></span>&#123;    <br>        <span class="hljs-comment">//插入语句，注意时间问题 </span><br>        String sql = <span class="hljs-string">&quot;insert into employee(last_name, email,gender,department,birth)&quot;</span> +                <span class="hljs-string">&quot; values (&#x27;狂神说&#x27;,&#x27;24736743@qq.com&#x27;,1,101,&#x27;&quot;</span>+ <span class="hljs-keyword">new</span> Date().toLocaleString() +<span class="hljs-string">&quot;&#x27;)&quot;</span>;   <br>        jdbcTemplate.update(sql);       <br>        <span class="hljs-comment">//查询       </span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;addOk&quot;</span>; <br>    &#125;<br>    <span class="hljs-comment">//修改用户信息  </span><br>    <span class="hljs-meta">@GetMapping(&quot;/update/&#123;id&#125;&quot;)</span>   <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">updateUser</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> <span class="hljs-keyword">int</span> id)</span></span>&#123;      <br>        <span class="hljs-comment">//插入语句       </span><br>        String sql = <span class="hljs-string">&quot;update employee set last_name=?,email=? where id=&quot;</span>+id;    <br>        <span class="hljs-comment">//数据     </span><br>        Object[] objects = <span class="hljs-keyword">new</span> Object[<span class="hljs-number">2</span>];       <br>        objects[<span class="hljs-number">0</span>] = <span class="hljs-string">&quot;秦疆&quot;</span>;    <br>        objects[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;24736743@sina.com&quot;</span>;     <br>        jdbcTemplate.update(sql,objects);      <br>        <span class="hljs-comment">//查询       </span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;updateOk&quot;</span>;  <br>    &#125;<br>    <span class="hljs-comment">//删除用户</span><br>    <span class="hljs-meta">@GetMapping(&quot;/delete/&#123;id&#125;&quot;)</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">delUser</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> <span class="hljs-keyword">int</span> id)</span></span>&#123;  <br>        <span class="hljs-comment">//插入语句     </span><br>        String sql = <span class="hljs-string">&quot;delete from employee where id=?&quot;</span>;        <br>        jdbcTemplate.update(sql,id);     <br>        <span class="hljs-comment">//查询      </span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;deleteOk&quot;</span>;  <br>    &#125;   <br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>测试请求，结果正常；</p>
+<p>到此，CURD的基本操作，使用 JDBC 就搞定了。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Spring-Boot/">Spring Boot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Springboot/">Springboot</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

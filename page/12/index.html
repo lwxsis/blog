@@ -1,0 +1,916 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg2.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="热爱生活的一切！">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/19/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202018%5DFakebook%201/" target="_self">
+          网鼎杯 2018_Fakebook 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/19/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202018%5DFakebook%201/" target="_self">
+          
+          
+            
+          
+          [网鼎杯 2018]Fakebook 1进入界面后首先查看源代码及网络
+之后进行注册 再登录后发现sql注入，进行注入后发现屏蔽了union select用union/**/select 进行绕过
+最后得到O:8:”UserInfo”:3:{s:4:”name”;s:3:”123”;s:3:”age”;i:11;s:4:”blog”;s:5:”1.com”;}
+再访问robots.txt
+得到部分
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-19 10:29" pubdate>
+              2021-04-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/sqli/">sqli</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BZJCTF%202019%5DNiZhuanSiWei%20/" target="_self">
+          ZJCTF 2019_NiZhuanSiWei
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BZJCTF%202019%5DNiZhuanSiWei%20/" target="_self">
+          
+          
+            
+          
+          [ZJCTF 2019]NiZhuanSiWei相关知识点
+data伪协议写入文件
+
+php://
+12php://filter用于读取源码php://input用于执行php代码
+反序列化
+
+
+这里需要我们传入一个文件且其内容为welcome to the  zjctf，这样的话往后面看没有其他可以利用的点，我们就无法写入文件再读取，就剩下了一个data伪协议。data协议通常是用来执行PHP代
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 21:20" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BBJDCTF2020%5DEasy%20MD5%201/" target="_self">
+          BJDCTF2020_Easy MD5 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BBJDCTF2020%5DEasy%20MD5%201/" target="_self">
+          
+          
+            
+          
+          [BJDCTF2020]Easy MD5进入界面后查看源码有效的代码如下
+12345678910&lt;/div&gt;&lt;!-- /header end --&gt;&lt;div class=&quot;main&quot;&gt;    &lt;section&gt;        &lt;form class=&quot;upload&quot; action=&quot;leveld
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 21:14" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/md5/">md5</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/php%20md5/" target="_self">
+          php md5
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/php%20md5/" target="_self">
+          
+          
+            
+          
+          PHP MD5CTF中常见php-MD5()函数漏洞1.数字与字符串之间的比较12var_dump( 0 == &quot;a&quot; );var_dump( &quot;0&quot; == &quot;a&quot; );
+
+第一个返回的是 true ，第二个返回的是 false因为php把字母开头的转化为整型时，转化为0， 前面数字后面字母的话就只取到第一个字母出现的位置之前（如intv
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 20:47" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DBuyFlag%201/" target="_self">
+          极客大挑战 2019_BuyFlag 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DBuyFlag%201/" target="_self">
+          
+          
+            
+          
+          [极客大挑战 2019]BuyFlag 1点击menu进到payflag页面:
+
+抓包:
+
+显而易见，把user改成1试一下:
+
+post参数password进去:
+
+要付钱。结合网页页面：
+
+盲猜变量是money，传个money进去：
+12password=404&amp;money=100000000
+
+数值太长了。。。试一下科学记数法：
+
+拿到flag，不过看别人的wp，好像还有一个利用st
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 20:47" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BHCTF%202018%5Dadmin%201/" target="_self">
+          HCTF 2018_admin 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BHCTF%202018%5Dadmin%201/" target="_self">
+          
+          
+            
+          
+          [HCTF 2018]admin 1前言总结一下3个做法：
+
+法1：伪造session
+法2：unicode欺骗
+法3：条件竞争
+
+信息搜集f12查看源代码
+1&lt;!-- you are not admin --&gt;
+
+发现提示要成为admin
+随便注册个账号，登入后，在
+1view-source:http://admin.2018.hctf.io/change
+
+发现提示
+1&lt;!-
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 20:02" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/sql%E5%9F%BA%E6%9C%AC%E6%B3%A8%E5%85%A5/" target="_self">
+          sql基本注入
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/sql%E5%9F%BA%E6%9C%AC%E6%B3%A8%E5%85%A5/" target="_self">
+          
+          
+            
+          
+          sql基本注入绕过123456/*select绕过*/1&#x27;;handler FlagHere open;handler FlagHere read first;handler FlagHere close;#/*union绕过*/利用/*!union*/可以绕过对union的过滤/*空格绕过*/%09 %0a %0b %0c %0d /**/ /*!*/括号
+
+基本注入流程
+123456
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 16:15" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/sqli/">sqli</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/dirsearch/" target="_self">
+          dirsearch
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/dirsearch/" target="_self">
+          
+          
+            
+          
+          目录扫描器git地址
+使用方法
+相关题目[极客大挑战 2019]PHP1.网站的备份文件：www.zip 2.Php 反序列化漏洞：当反序列化字符串时，如果表示属性个数的值大于真实属性个数，就会跳过_wakeup函数的执行
+下载www.zip文件之后阅读原代码
+集中在class.php文件中
+class.php
+1234567891011121314151617181920212223242526
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 14:42" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/http%E5%9F%BA%E7%A1%80/" target="_self">
+          http基础
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/http%E5%9F%BA%E7%A1%80/" target="_self">
+          
+          
+            
+          
+          HTTP消息头1. 关于HTTP消息头HTTP消息头是在，客户端请求（Request）或服务器响应（Response）时传递的，位请求或响应的第一行，HTTP消息体（请求或响应的内容）是其后传输。HTTP消息头，以明文的字符串格式传送，是以冒号分隔的键/值对，如：Accept-Charset: utf-8，每一个消息头最后以回车符(CR)和换行符(LF)结尾。HTTP消息头结束后，会用一个空白的字
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 13:53" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/php%E5%9F%BA%E6%9C%AC/" target="_self">
+          php基本
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/php%E5%9F%BA%E6%9C%AC/" target="_self">
+          
+          
+            
+          
+          php常见绕过123&lt;?&lt;script language=&quot;php&quot;&gt;&lt;/script&gt;
+
+
+
+PHP读取文件scandir()
+file_get_contents()
+将string转换为chr使用函数ord()
+123456789&lt;?php$tmp=$_GET[&#x27;tmp&#x27;];for($i=0;$i&lt;strlen(
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 13:32" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/11/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#board">10</a><a class="page-number" href="/page/11/#board">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/#board">13</a><a class="page-number" href="/page/14/#board">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="extend next" rel="next" href="/page/13/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

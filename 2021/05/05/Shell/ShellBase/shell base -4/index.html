@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>shell base -4 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="shell base -4">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-05 18:56" pubdate>
+        2021年5月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">shell base -4</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年9月15日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="Shell-函数"><a href="#Shell-函数" class="headerlink" title="Shell 函数"></a>Shell 函数</h2><p>linux shell 可以用户定义函数，然后在shell脚本中可以随便调用。</p>
+<p>shell中函数的定义格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">[ function ] funname [()]<br><br>&#123;<br><br>    action;<br><br>    [return int;]<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>1、可以带function fun()  定义，也可以直接fun() 定义,不带任何参数。</li>
+<li>2、参数返回，可以显示加：return 返回，如果不加，将以最后一条命令运行结果，作为返回值。 return后跟数值n(0-255)</li>
+</ul>
+<p>下面的例子定义了一个函数并进行调用：</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><br>demoFun()&#123;<br>    echo &quot;这是我的第一个 shell 函数!&quot;<br>&#125;<br>echo &quot;-----函数开始执行-----&quot;<br>demoFun<br>echo &quot;-----函数执行完毕-----&quot;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<p>输出结果：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs brainfuck">--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">函数开始执行</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><br><span class="hljs-comment">这是我的第一个</span> <span class="hljs-comment">shell</span> <span class="hljs-comment">函数!</span><br>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">函数执行完毕</span>--<span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-literal">-</span><br></code></pre></div></td></tr></table></figure>
+
+<p>下面定义一个带有return语句的函数：</p>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><br>funWithReturn()&#123;<br>    echo &quot;这个函数会对输入的两个数字进行相加运算...&quot;<br>    echo &quot;输入第一个数字: &quot;<br>    read aNum<br>    echo &quot;输入第二个数字: &quot;<br>    read anotherNum<br>    echo &quot;两个数字分别为 $aNum 和 $anotherNum !&quot;<br>    return $(($aNum+$anotherNum))<br>&#125;<br>funWithReturn<br>echo &quot;输入的两个数字之和为 $? !&quot;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<p>输出类似下面：</p>
+<figure class="highlight tap"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tap">这个函数会对输入的两个数字进行相加运算...<br>输入第一个数字: <br>1<br>输入第二个数字: <br>2<br>两个数字分别为<span class="hljs-number"> 1 </span>和<span class="hljs-number"> 2 </span>!<br>输入的两个数字之和为<span class="hljs-number"> 3 </span>!<br></code></pre></div></td></tr></table></figure>
+
+<p>函数返回值在调用该函数后通过 $? 来获得。</p>
+<p>注意：</p>
+<ol>
+<li>所有函数在使用前必须定义。这意味着必须将函数放在脚本开始部分，直至shell解释器首次发现它时，才可以使用。调用函数仅使用其函数名即可。</li>
+<li>返回值仅为整型。</li>
+</ol>
+<hr>
+<h3 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h3><p>在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数…</p>
+<p>带参数的函数示例：</p>
+<h4 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><br>funWithParam()&#123;<br>    echo &quot;第一个参数为 $1 !&quot;<br>    echo &quot;第二个参数为 $2 !&quot;<br>    echo &quot;第十个参数为 $10 !&quot;<br>    echo &quot;第十个参数为 $&#123;10&#125; !&quot;<br>    echo &quot;第十一个参数为 $&#123;11&#125; !&quot;<br>    echo &quot;参数总数有 $# 个!&quot;<br>    echo &quot;作为一个字符串输出所有参数 $* !&quot;<br>&#125;<br>funWithParam 1 2 3 4 5 6 7 8 9 34 73<br></code></pre></div></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight tap"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tap">第一个参数为<span class="hljs-number"> 1 </span>!<br>第二个参数为<span class="hljs-number"> 2 </span>!<br>第十个参数为<span class="hljs-number"> 10 </span>!<br>第十个参数为<span class="hljs-number"> 34 </span>!<br>第十一个参数为<span class="hljs-number"> 73 </span>!<br>参数总数有<span class="hljs-number"> 11 </span>个!<br>作为一个字符串输出所有参数<span class="hljs-number"> 1 </span>2<span class="hljs-number"> 3 </span>4<span class="hljs-number"> 5 </span>6<span class="hljs-number"> 7 </span>8<span class="hljs-number"> 9 </span>34<span class="hljs-number"> 73 </span>!<br></code></pre></div></td></tr></table></figure>
+
+<p>注意，$10 不能获取第十个参数，获取第十个参数需要${10}。当n&gt;=10时，需要使用${n}来获取参数。</p>
+<p>另外，还有几个特殊字符用来处理参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数处理</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$#</td>
+<td>传递到脚本或函数的参数个数</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>以一个单字符串显示所有向脚本传递的参数</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>脚本运行的当前进程ID号</td>
+</tr>
+<tr>
+<td>$!</td>
+<td>后台运行的最后一个进程的ID号</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>与$*相同，但是使用时加引号，并在引号中返回每个参数。</td>
+</tr>
+<tr>
+<td>$-</td>
+<td>显示Shell使用的当前选项，与set命令功能相同。</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。</td>
+</tr>
+</tbody></table>
+<h2 id="Shell-输入-输出重定向"><a href="#Shell-输入-输出重定向" class="headerlink" title="Shell 输入/输出重定向"></a>Shell 输入/输出重定向</h2><p>大多数 UNIX 系统命令从你的终端接受输入并将所产生的输出发送回到您的终端。一个命令通常从一个叫标准输入的地方读取输入，默认情况下，这恰好是你的终端。同样，一个命令通常将其输出写入到标准输出，默认情况下，这也是你的终端。</p>
+<p>重定向命令列表如下：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>command &gt; file</td>
+<td>将输出重定向到 file。</td>
+</tr>
+<tr>
+<td>command &lt; file</td>
+<td>将输入重定向到 file。</td>
+</tr>
+<tr>
+<td>command &gt;&gt; file</td>
+<td>将输出以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt; file</td>
+<td>将文件描述符为 n 的文件重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt;&gt; file</td>
+<td>将文件描述符为 n 的文件以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt;&amp; m</td>
+<td>将输出文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td>n &lt;&amp; m</td>
+<td>将输入文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td>&lt;&lt; tag</td>
+<td>将开始标记 tag 和结束标记 tag 之间的内容作为输入。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>需要注意的是文件描述符 0 通常是标准输入（STDIN），1 是标准输出（STDOUT），2 是标准错误输出（STDERR）。</p>
+</blockquote>
+<hr>
+<h3 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h3><p>重定向一般通过在命令间插入特定的符号来实现。特别的，这些符号的语法如下所示:</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">command1</span> &gt; file<span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<p>上面这个命令执行command1然后将输出的内容存入file1。</p>
+<p>注意任何file1内的已经存在的内容将被新内容替代。如果要将新内容添加在文件末尾，请使用&gt;&gt;操作符。</p>
+<h4 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h4><p>执行下面的 who 命令，它将命令的完整的输出重定向在用户文件中(users):</p>
+<figure class="highlight elixir"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>who &gt; users<br></code></pre></div></td></tr></table></figure>
+
+<p>执行后，并没有在终端输出信息，这是因为输出已被从默认的标准输出设备（终端）重定向到指定的文件。</p>
+<p>你可以使用 cat 命令查看文件内容：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">$ cat<span class="hljs-built_in"> users</span><br><span class="hljs-built_in"></span>_mbsetupuser<span class="hljs-built_in"> console </span> Oct 31 17:35 <br>tianqixin   <span class="hljs-built_in"> console </span> Oct 31 17:35 <br>tianqixin    ttys000  Dec  1 11:33 <br></code></pre></div></td></tr></table></figure>
+
+<p>输出重定向会覆盖文件内容，请看下面的例子：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;练习&quot;</span> &gt; users<br><span class="hljs-variable">$</span> <span class="hljs-built_in">cat</span> users<br>练习<br><span class="hljs-variable">$</span><br></code></pre></div></td></tr></table></figure>
+
+<p>如果不希望文件内容被覆盖，可以使用 &gt;&gt; 追加到文件末尾，例如：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;练习2&quot;</span> &gt;&gt; users<br><span class="hljs-variable">$</span> <span class="hljs-built_in">cat</span> users<br>练习<br>练习<span class="hljs-number">2</span><br><span class="hljs-variable">$</span><br></code></pre></div></td></tr></table></figure>
+
+<hr>
+<h3 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h3><p>和输出重定向一样，Unix 命令也可以从文件获取输入，语法为：</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">command1</span> &lt; file<span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<p>这样，本来需要从键盘获取输入的命令会转移到文件读取内容。</p>
+<p>注意：输出重定向是大于号(&gt;)，输入重定向是小于号(&lt;)。</p>
+<h4 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h4><p>接着以上实例，我们需要统计 users 文件的行数,执行以下命令：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>wc -l users<br>       <span class="hljs-number">2</span> users<br></code></pre></div></td></tr></table></figure>
+
+<p>也可以将输入重定向到 users 文件：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span> wc -l &lt; users<br>       <span class="hljs-number">2</span> <br></code></pre></div></td></tr></table></figure>
+
+<p>注意：上面两个例子的结果不同：第一个例子，会输出文件名；第二个不会，因为它仅仅知道从标准输入读取内容。</p>
+<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata">command1 &lt; <span class="hljs-keyword">infile</span> &gt; <span class="hljs-keyword">outfile</span><br></code></pre></div></td></tr></table></figure>
+
+<p>同时替换输入和输出，执行command1，从文件infile读取内容，然后将输出写入到outfile中。</p>
+<h3 id="重定向深入讲解"><a href="#重定向深入讲解" class="headerlink" title="重定向深入讲解"></a>重定向深入讲解</h3><p>一般情况下，每个 Unix/Linux 命令运行时都会打开三个文件：</p>
+<ul>
+<li>标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。</li>
+<li>标准输出文件(stdout)：stdout 的文件描述符为1，Unix程序默认向stdout输出数据。</li>
+<li>标准错误文件(stderr)：stderr的文件描述符为2，Unix程序会向stderr流中写入错误信息。</li>
+</ul>
+<p>默认情况下，command &gt; file 将 stdout 重定向到 file，command &lt; file 将stdin 重定向到 file。</p>
+<p>如果希望 stderr 重定向到 file，可以这样写：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cmake">$ <span class="hljs-keyword">command</span> <span class="hljs-number">2</span>&gt;<span class="hljs-keyword">file</span><br></code></pre></div></td></tr></table></figure>
+
+<p>如果希望 stderr 追加到 file 文件末尾，可以这样写：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cmake">$ <span class="hljs-keyword">command</span> <span class="hljs-number">2</span>&gt;&gt;<span class="hljs-keyword">file</span><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>2</strong> 表示标准错误文件(stderr)。</p>
+<p>如果希望将 stdout 和 stderr 合并后重定向到 file，可以这样写：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cmake">$ <span class="hljs-keyword">command</span> &gt; <span class="hljs-keyword">file</span> <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span><br><br>或者<br><br>$ <span class="hljs-keyword">command</span> &gt;&gt; <span class="hljs-keyword">file</span> <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<p>如果希望对 stdin 和 stdout 都重定向，可以这样写：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">command</span> &lt; file1 &gt;file2</span><br></code></pre></div></td></tr></table></figure>
+
+<p>command 命令将 stdin 重定向到 file1，将 stdout 重定向到 file2。 </p>
+<hr>
+<h3 id="Here-Document"><a href="#Here-Document" class="headerlink" title="Here Document"></a>Here Document</h3><p>Here Document 是 Shell 中的一种特殊的重定向方式，用来将输入重定向到一个交互式 Shell 脚本或程序。 </p>
+<p>它的基本的形式如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-built_in">command</span> &lt;&lt; <span class="hljs-string">delimiter</span><br><span class="hljs-string">    document</span><br><span class="hljs-string">delimiter</span><br></code></pre></div></td></tr></table></figure>
+
+<p>它的作用是将两个 delimiter 之间的内容(document) 作为输入传递给 command。</p>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>​        结尾的delimiter 一定要顶格写，前面不能有任何字符，后面也不能有任何字符，包括空格和 tab 缩进。</li>
+<li>​        开始的delimiter前后的空格会被忽略掉。</li>
+</ul>
+</blockquote>
+<h4 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h4><p>在命令行中通过 wc -l 命令计算 Here Document 的行数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">$ wc -l &lt;&lt; <span class="hljs-string">EOF</span><br><span class="hljs-string">    欢迎来到</span><br><span class="hljs-string">EOF</span><br>1          <span class="hljs-comment"># 输出结果为 1 行</span><br>$<br></code></pre></div></td></tr></table></figure>
+
+<p>我们也可以将 Here Document 用在脚本中，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><br>cat &lt;&lt; <span class="hljs-string">EOF</span><br><span class="hljs-string">欢迎来到</span><br><span class="hljs-string">EOF</span><br></code></pre></div></td></tr></table></figure>
+
+<p>执行以上脚本，输出结果：</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs">欢迎来到<br></code></pre></div></td></tr></table></figure>
+
+<hr>
+<h3 id="dev-null-文件"><a href="#dev-null-文件" class="headerlink" title="/dev/null 文件"></a>/dev/null 文件</h3><p>如果希望执行某个命令，但又不希望在屏幕上显示输出结果，那么可以将输出重定向到 /dev/null：</p>
+<figure class="highlight arcade"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arcade">$ command &gt; <span class="hljs-regexp">/dev/</span><span class="hljs-literal">null</span><br></code></pre></div></td></tr></table></figure>
+
+<p>/dev/null 是一个特殊的文件，写入到它的内容都会被丢弃；如果尝试从该文件读取内容，那么什么也读不到。但是 /dev/null 文件非常有用，将命令的输出重定向到它，会起到”禁止输出”的效果。</p>
+<p>如果希望屏蔽 stdout 和 stderr，可以这样写：</p>
+<figure class="highlight arcade"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arcade">$ command &gt; <span class="hljs-regexp">/dev/</span><span class="hljs-literal">null</span> <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意：</strong>0 是标准输入（STDIN），1 是标准输出（STDOUT），2 是标准错误输出（STDERR）。</p>
+<p>这里的 <strong>2</strong> 和 <strong>&gt;</strong> 之间不可以有空格，<strong>2&gt;</strong> 是一体的时候才表示错误输出。</p>
+</blockquote>
+<h2 id="Shell-文件包含"><a href="#Shell-文件包含" class="headerlink" title="Shell 文件包含"></a>Shell 文件包含</h2><p>和其他语言一样，Shell 也可以包含外部脚本。这样可以很方便的封装一些公用的代码作为一个独立的文件。</p>
+<p>Shell 文件包含的语法格式如下：</p>
+<figure class="highlight tcl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tcl">. <span class="hljs-keyword">filename</span>   # 注意点号(.)和文件名中间有一空格<br><br>或<br><br><span class="hljs-keyword">source</span> <span class="hljs-keyword">filename</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="实例-6"><a href="#实例-6" class="headerlink" title="实例"></a>实例</h3><p>创建两个 shell 脚本文件。</p>
+<p>test1.sh 代码如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><br>url=&quot;http://www.baidu.com&quot;<br></code></pre></div></td></tr></table></figure>
+
+<p>test2.sh 代码如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">使用 . 号来引用test1.sh 文件</span><br>. ./test1.sh<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 或者使用以下包含文件代码</span><br><span class="hljs-meta">#</span><span class="bash"> <span class="hljs-built_in">source</span> ./test1.sh</span><br><br>echo &quot;百度官网地址：$url&quot;<br></code></pre></div></td></tr></table></figure>
+
+<p>接下来，我们为 test2.sh 添加可执行权限并执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> chmod +x test2.sh</span> <br><span class="hljs-meta">$</span><span class="bash"> ./test2.sh</span> <br>百度官网地址：http://www.baidu.com<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注</strong>：被包含的文件 test1.sh 不需要可执行权限。</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Shell-Shell-Base/">Shell Shell Base</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Shell/">Shell</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

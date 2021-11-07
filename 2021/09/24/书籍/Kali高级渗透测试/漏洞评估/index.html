@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>漏洞评估 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="漏洞评估">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-24 11:06" pubdate>
+        2021年9月24日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">漏洞评估</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年9月28日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="漏洞评估"><a href="#漏洞评估" class="headerlink" title="漏洞评估"></a>漏洞评估</h1><p>漏洞评估的目的是找出最有可能攻击的安全漏洞。在杀链的利用阶段，漏洞评估的重点是创建访问以实现漏洞的目标映射，以排列漏洞和保持对目标的持续访问</p>
+<h1 id="1-漏洞命名"><a href="#1-漏洞命名" class="headerlink" title="1. 漏洞命名"></a>1. 漏洞命名</h1><p>漏洞的扫描采用自动化过程和自动化程序。漏洞扫描会被检测到，隐形几乎不可能的。而且还会收到以下限制：</p>
+<ul>
+<li>通常情况下，漏洞扫描器是基于签名的，它只能检测已知的漏洞，仅当有一个已经存在的识别标志才能应用于目标</li>
+<li>扫描器产生的大量输出中通常包含错误结果</li>
+<li>扫描器可能对网络有负面影响，可能造成网络延迟或某些设备失效</li>
+<li>在某些地区，扫描被认为是黑客行为，可能构成违法</li>
+</ul>
+<h1 id="2-本地和在线漏洞数据库"><a href="#2-本地和在线漏洞数据库" class="headerlink" title="2 本地和在线漏洞数据库"></a>2 本地和在线漏洞数据库</h1><p>漏洞的搜索可以从供应商的网站开始。同事在发布补丁和升级时，大多数的硬件和应用程序供应商都会提供和安全漏洞相关的信息</p>
+<p>收集、分析和共享有关漏洞的网站信息如下：</p>
+<ul>
+<li>国家漏洞数据库，整合了所有由美国政府发布的公开漏洞数据：<a target="_blank" rel="noopener" href="http://web.nvd.nist.gov/view/vuln/search">http://web.nvd.nist.gov/view/vuln/search</a></li>
+<li>安全监控网站Secunia：<a target="_blank" rel="noopener" href="http://secunia.com/community/">http://secunia.com/community/</a></li>
+<li>数据包风暴安全网址：<a target="_blank" rel="noopener" href="http://packetstormsecurity.com/">http://packetstormsecurity.com/</a></li>
+<li>安全焦点网址：<a target="_blank" rel="noopener" href="http://www.securityfocus.com/vulnerabilities">http://www.securityfocus.com/vulnerabilities</a></li>
+<li>由Offensive Security维护的可以利用的漏洞数据库网址：<a target="_blank" rel="noopener" href="http://www.exploit-db.com/">http://www.exploit-db.com</a></li>
+<li>渗透测试人员可以浏览一下<a target="_blank" rel="noopener" href="https://0day.today/%E8%8E%B7%E5%8F%96%E9%9B%B6%E6%97%A5%E6%BC%8F%E6%B4%9E%E4%BF%A1%E6%81%AF">https://0day.today/获取零日漏洞信息</a></li>
+</ul>
+<p>漏洞数据库也被复制到本地Kali中，并且可以在/usr/share/exploitdb目录中找到</p>
+<p>搜索漏洞数据库的本地副本，需要使用如下命令<code>searchsploit 关键词</code>。这将调用一个脚本搜索所有漏洞列表的数据库文件(.csv)，返回已知漏洞的描述，以及和该漏洞相关的路径</p>
+<p>搜索脚本从左至右扫描数据库CSV文件中的每一行，因此搜索项的顺序很重要，如：搜索Oracle10g将返回多个漏洞，但10g Oracle本身不会返回任何漏洞、搜索“vsFTPd”不会返回任何结果，而“vs FTPd”（“vs”和“FTPd”中间有空格）则会返回很多结果</p>
+<p>漏洞利用以脚本的形式呈现，例如：Perl、Ruby和PHP等，都是相对容易实现的脚本</p>
+<p>但是还有不易编译的脚本，且可能存在危险的漏洞利用：</p>
+<ul>
+<li>蓄意的错误或不完整的源代码，因此有经验的开发人员尽量让漏洞远离没有经验的用户</li>
+<li>漏洞利用并不总是有详尽的文档解释</li>
+<li>由于环境变化导致行为不一致（新的补丁应用到目标系统、目标应用程序中的语言变化）可能需要对源代码进行重大调整，这需要一个有经验的开发人员</li>
+<li>免费提供的、包含恶意的代码，总是存在风险。渗透测试人员可能会认为它是在进行概念验证（POC）练习，并不知道该代码同时为该应用程序建了一个后门，可以供开发者使用</li>
+</ul>
+<h1 id="3-用nmap进行漏洞扫描"><a href="#3-用nmap进行漏洞扫描" class="headerlink" title="3. 用nmap进行漏洞扫描"></a>3. 用nmap进行漏洞扫描</h1><p>nmap还可以用于执行漏洞评估，可以利用nmap的功能编写自己的脚本，并使其自动化以方便利用，开发NSE的主要原因如下：</p>
+<ul>
+<li>网络发现：攻击者利用nmap的主要目的是网络发现</li>
+<li>服务的分类版本检测：共计数千种服务。把多个版本的详细信息集中到同一个服务上显得更加复杂</li>
+<li>漏洞检测：在广泛的网络范围内自动识别漏洞，然而，nmap本身不完全是漏洞扫描程序</li>
+<li>后台检测：一些脚本被编写用来识别后台模式，如果网络上有任何蠕虫感染，一些脚本将被写入以识别该模式，这样使得攻击者的工作变得更集中，能专注于远程接管机器</li>
+</ul>
+<p>nmap更新脚本数据库命令<code>nmap --script-updatedb</code></p>
+<p>针对目标主机运行脚本<code>nmap -T4 -A -sV -v3 -d -oA Target output --script all --script-args vulns.showall target.com</code></p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210927102116.png" srcset="/img/loading.gif" lazyload alt="nmap脚本尝试"></p>
+<h2 id="3-1-Lua脚本介绍"><a href="#3-1-Lua脚本介绍" class="headerlink" title="3.1 Lua脚本介绍"></a>3.1 Lua脚本介绍</h2><p>Lua是一种建立在C语言之上的轻量级嵌入式脚本语言，于1993年在巴西创立，至今仍然在积极发展中。它是一种强大而快速的编程语言，主要用于游戏应用和图像处理。Lua开发的安全工具有nmap、Wireshark和Snort 3.0等</p>
+<p>选择Lua作为信息安全的脚本语言的原因之一是其紧凑性，没有缓冲区溢出和格式化字符串漏洞，并且可解析</p>
+<p>Lua可以通过终端命令<code>apt-get insatall lua5.4</code>(最后加上具体版本)直接安装到Kali Linux。以下代码为示例，用于读取文件并打印第一行：</p>
+<figure class="highlight lua"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs lua">#!/usr/bin/lua<br><span class="hljs-keyword">local</span> file=<span class="hljs-built_in">io</span>.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;/etc/shadow&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>)<br>contents=file:<span class="hljs-built_in">read</span>()<br>file:<span class="hljs-built_in">close</span>()<br><span class="hljs-built_in">print</span>(contents)<br></code></pre></div></td></tr></table></figure>
+
+<p>运行lua类似shell的运行首先赋予编译权限<code>chmod +x ./文件</code> 之后输入文件即可</p>
+<h2 id="3-2-自定义NSE脚本"><a href="#3-2-自定义NSE脚本" class="headerlink" title="3.2 自定义NSE脚本"></a>3.2 自定义NSE脚本</h2><p>Lua NSE脚本示例，使用nmap标识在整个子网上搜索的特定文件位置：</p>
+<figure class="highlight lua"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> http= <span class="hljs-built_in">require</span> <span class="hljs-string">&#x27;http&#x27;</span><br>description= <span class="hljs-string">[[ This is my custom discovery on the network ]]</span><br>categories= &#123;<span class="hljs-string">&quot;safe&quot;</span>,<span class="hljs-string">&quot;discovery&quot;</span>&#125;<br><span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;http&quot;</span>)<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">portrule</span><span class="hljs-params">(host, port)</span></span><br>    <span class="hljs-keyword">return</span> port.number == <span class="hljs-number">80</span><br><span class="hljs-keyword">end</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">action</span><span class="hljs-params">(host, port)</span></span><br>    <span class="hljs-keyword">local</span> response<br>    response = http.get(host,port,<span class="hljs-string">&quot;/config.php&quot;</span>)<br>    <span class="hljs-keyword">if</span> response.<span class="hljs-built_in">status</span> <span class="hljs-keyword">and</span> response.<span class="hljs-built_in">status</span> ~= <span class="hljs-number">404</span><br>        <span class="hljs-keyword">then</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;successful&quot;</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></div></td></tr></table></figure>
+
+<p>将文件保存到/usr/share/nmap/scripts/文件中，最后进行脚本测试</p>
+<p><code>nmap -vv -sV -Pn -p 80 --open --script=testscript.nse 192.168.66.1</code></p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210927110818.png" srcset="/img/loading.gif" lazyload alt="nmap 脚本结果"></p>
+<p>对以上的NSE脚本解释：</p>
+<ul>
+<li>local http：require ‘http’：从Lua调用正确的库，该行调用HTTP脚本并将其作为本地请求</li>
+<li>description：测试者/研究人员可以输入脚本的解释</li>
+<li>categories：这通常有两个变量，其中一个声明是安全还是侵入</li>
+</ul>
+<h1 id="4-Web应用漏洞扫描器"><a href="#4-Web应用漏洞扫描器" class="headerlink" title="4. Web应用漏洞扫描器"></a>4. Web应用漏洞扫描器</h1><p>漏洞扫描器具有所有扫描器沟通的缺点(只能检测已知漏洞的签名，且误报率较高)</p>
+<p>Kali针对Web服务器配有大量漏洞扫描器，并为安装新的扫描器和扩展其能力提供了稳定的平台。测试人员可以通过选择扫描工具来提高测试的有效性：</p>
+<ul>
+<li>最大限制的完整性和测试精度</li>
+<li>尽量减少获得可用的结果所需的时间</li>
+<li>尽量减少对被检测网络服务的负面影响</li>
+</ul>
+<p>Kali提供几种不同的漏洞扫描器，主要如下：</p>
+<ul>
+<li>扩展了传统漏洞扫描程序的功能，包括网站和关联服务(例如：Metasploit框架和Websploit)的扫描器</li>
+<li>拓展了非传统的应用功能，如Web浏览器，支持Web服务漏洞扫描(OWASP Mantra)的扫描器</li>
+<li>专门开发用于支持对网站和网页服务的侦察和利用检测(Arachnid、Nikto、Skipfish、Vega、w3af等)的扫描器</li>
+</ul>
+<h2 id="4-1-Nikto和Vega简介"><a href="#4-1-Nikto和Vega简介" class="headerlink" title="4.1 Nikto和Vega简介"></a>4.1 Nikto和Vega简介</h2><p>Nikto是一个简单的扫描器，通常提供准确但有限的结果</p>
+<p>使用命令<code>nikto -h IP/URL -p Port</code></p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210927141404.png" srcset="/img/loading.gif" lazyload alt="nikto 示例"></p>
+<p>基于验证发现漏洞数量的、最有效的扫描器之一是Subgraph Vega，它会扫描目标，并将漏洞分级为高、中、低和信息性的。为了得到特定的结果，该测试器能够点击确定结果为“drill down”（深入）。该测试器还可以修改搜索模块，这是用Java编写的，专注于特定的漏洞或找出新的安全漏洞</p>
+<p>现在Kali没有预备安装了，需要到<a target="_blank" rel="noopener" href="https://github.com/subgraph/Vega%E8%BF%9B%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85">https://github.com/subgraph/Vega进行下载安装</a></p>
+<p>解压后命令<code>./Vega</code>即可运行</p>
+<p>使用教程<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zixuanfy/p/5988716.html">参考</a></p>
+<h1 id="5-移动应用漏洞扫描器"><a href="#5-移动应用漏洞扫描器" class="headerlink" title="5. 移动应用漏洞扫描器"></a>5. 移动应用漏洞扫描器</h1><p>本节中介绍设置移动应用程序扫描器，以及如何将移动应用程序扫描器的结果组合在一起，并利用信息来识别更多的漏洞，以实现渗透测试的目标</p>
+<p><strong>移动安全框架</strong>(Mobile Security Framework, MobSF)是针对所有移动平台(包括Android、IOS和Windows)的开源自动渗透测试框架。框架是用Djiango Python框架编写的</p>
+<p>框架下载地址：<a target="_blank" rel="noopener" href="https://github.com/MobSF/Mobile-Security-Framework-MobSF">https://github.com/MobSF/Mobile-Security-Framework-MobSF</a></p>
+<p>解压后进入对应的文件夹下，输入以下命令<code>python3 -m pip install -r requirements.txt</code></p>
+<p>一切准备就绪后，使用命令<code>python3 manage.py test</code>来测试配置</p>
+<p>转移应用程序安装<code>python manage.py migrate</code></p>
+<p>漏洞扫描命令<code>python3 manage.py runserver 192.168.66.1:8000</code></p>
+<p>在浏览器中访问<a href="http://yourIPaddress:Portnumber，将侦察期间发现的任何移动应用程序上传到扫描器，用于识别入口点。">http://yourIPaddress:Portnumber，将侦察期间发现的任何移动应用程序上传到扫描器，用于识别入口点。</a></p>
+<p>一旦文件上传，渗透测试人员可以识别扫描器的配置文件以及所有其他重要信息!</p>
+<p>扫描结果可以提供所有的移动应用配置信息，例如活动、服务、接收者、提供者等。这些配置信息有时还包括可用于其他鉴别服务和漏洞的硬编码凭据或云API密钥。在渗透测试练习时，我们在目标移动应用的一个Java文件的注释中发现了一个开发者账号和base64密码，有了这些信息就可以访问该机构的外部VPN了。移动安全框架的核心部分在URL、恶意软件和字符串中。</p>
+<p><strong>（安装过程中始终出现问题无法成功安装。暂时跳过）</strong></p>
+<h1 id="6-网络漏洞扫描器OpenVAS"><a href="#6-网络漏洞扫描器OpenVAS" class="headerlink" title="6. 网络漏洞扫描器OpenVAS"></a>6. 网络漏洞扫描器OpenVAS</h1><p><strong>开放漏洞评估系统</strong>(Open Vulnerability AssessmentSystem，OpenVAS)是一个开源的漏洞评估扫描器，也是攻击者通常用来大规模扫描网络的漏洞管理工具，其中大约包括有47 000个漏洞的数据库</p>
+<p>安装命令<code>apt-get install openvas</code></p>
+<p>安装完成后，运行<code>openvas-setup</code>(现在OpenVAS更名为了GVM（Greenbone Vulnerability Management）命令同样更新为<code>gvm-setup</code>)命令安装依赖OpenVAS。为了确保安装可行，可以运行<code>openvas-check-setup</code>(更新为<code>gvm-check-setup</code>)命令，它会列出有效运行OpenVAS所需的前10个项目</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210928122614.png" srcset="/img/loading.gif" lazyload alt="gvm-check-set"></p>
+<p>来设置管理员用户密码信息会在<code>gvm-setup</code>命令的末尾显示</p>
+<p><code>gvm-feed-update</code>更新数据库</p>
+<p>并通过<code>openvar-start</code>(<code>gvm-start</code>)命令启动。启动后访问<a href="https://localhost:9392端口即可看到服务命令`gvm-stop`停止服务">https://localhost:9392端口即可看到服务命令`gvm-stop`停止服务</a></p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210928150618.png" srcset="/img/loading.gif" lazyload alt="openvas"></p>
+<p>登录信息是刚才设置的内容</p>
+<p>如果想不通过localhost来进行访问参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42344757/article/details/109648600">链接</a></p>
+<p>实际操作流程如下即可</p>
+<blockquote>
+<p>vi /lib/systemd/system/greenbone-security-assistant.service</p>
+<p>将其中127.0.0.1的部分修改为0.0.0.0，然后保存</p>
+<p>systemctl daemon-reload<br> 启动服务</p>
+<p>gvm-start</p>
+</blockquote>
+<p>与其他扫描器不同的是，OpenVAS还可以自定义扫描配置，它允许测试人员添加凭证，禁用特定的插件，并设置可以进行的最大和最小连接数等</p>
+<h1 id="7-商业漏洞扫描器"><a href="#7-商业漏洞扫描器" class="headerlink" title="7. 商业漏洞扫描器"></a>7. 商业漏洞扫描器</h1><p>商业漏洞扫描器此处主要介绍Nessus和Nexpose</p>
+<p>此处仅简单介绍安装流程，具体内容请参考对应的综合文档</p>
+<h2 id="7-1-Nessus"><a href="#7-1-Nessus" class="headerlink" title="7.1 Nessus"></a>7.1 Nessus</h2><p>在Kali上的安装步骤为：</p>
+<ol>
+<li>访问<a target="_blank" rel="noopener" href="https://www.tenable.com/try%E7%BD%91%E7%AB%99%E5%B9%B6%E6%B3%A8%E5%86%8C%E4%B8%BA%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%EF%BC%8C%E7%84%B6%E5%90%8E%E9%80%89%E6%8B%A9Try">https://www.tenable.com/try网站并注册为普通用户，然后选择Try</a> Nessus Professional Free（免费试用Nessus专业版）</li>
+<li>从<a target="_blank" rel="noopener" href="https://www.tenable.com/downloads/%E7%BD%91%E7%AB%99%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84Nessus%E7%89%88%E6%9C%AC">https://www.tenable.com/downloads/网站下载对应的Nessus版本</a></li>
+<li>下载完成后，通过以下命令进行安装：<code>dpkg -i Nessus-8.1.2-debian6_amd64.deb</code></li>
+<li>接着通过运行service nessusd start开启nessus服务，然后Nessus就在系统中启动了</li>
+<li>默认情况下，Nessus扫描器的运行端口是SSL的8834号端口</li>
+<li>添加一个新用户并激活注册码。扫描器将根据注册码下载所有相关插件</li>
+<li>最后，将看到Nessus的运行界面，此时可以对目标系统或网络实施扫描了</li>
+</ol>
+<h2 id="7-2-Nexpose"><a href="#7-2-Nexpose" class="headerlink" title="7.2 Nexpose"></a>7.2 Nexpose</h2><p>在Kali上的安装步骤为：</p>
+<ol>
+<li>注册Rapid 7账号（<a target="_blank" rel="noopener" href="https://www.rapid7.com/products/nexpose/request/%EF%BC%89%EF%BC%8C%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E6%9C%89%E6%95%88%E7%9A%84%E5%95%86%E4%B8%9A%E7%94%B5%E5%AD%90%E9%82%AE%E7%AE%B1%E6%9D%A5%E6%8E%A5%E6%94%B6%E6%BF%80%E6%B4%BB%E7%A0%81">https://www.rapid7.com/products/nexpose/request/），需要一个有效的商业电子邮箱来接收激活码</a></li>
+<li>运行以下代码，从官网下载安装包<code>wget http://download2.rapid7.com/download/InsightVM/Rapid7Setup-Linux64.bin</code>之后赋予编译文件权限，根据扫描器要求输入信息即可</li>
+<li>默认情况下，Nexpose运行端口为SSL的3780号端口。所以能通过<a target="_blank" rel="noopener" href="https://localhost:3780/%E8%AE%BF%E9%97%AENexpose">https://localhost:3780/访问Nexpose</a></li>
+<li>同样，Nexpose也会根据注册码下载所有插件，随后可以登录Nexpose漏洞扫描器了</li>
+</ol>
+<h1 id="8-专业扫描器"><a href="#8-专业扫描器" class="headerlink" title="8. 专业扫描器"></a>8. 专业扫描器</h1><p>杀链的利用阶段是最危险的，渗透测试人员直接与目标网络或系统交互，他们的活动很可能被记录，且身份大概率被发现。因此使用秘密技术来减少测试人员暴露的风险是有必要的。虽然没有具体的方法或工具可以确定未被检测，但是改变配置以及利用特别的工具是应该做的</p>
+<p>此处介绍另一个值得使用的扫描器Web应用程序攻击和审计框架（Web Application Attack and Audit Framework，w3af）</p>
+<p>在安装过程中卡在了<code>./w3af_console</code>一直提示We recommend you install pip before continuing.但是已经安装了pip。疑惑！！</p>
+<h1 id="9-威胁建模"><a href="#9-威胁建模" class="headerlink" title="9. 威胁建模"></a>9. 威胁建模</h1><p>威胁建模：最初是由网络规划者发展起来的，制定针对攻击的防御对策的过程</p>
+<p>渗透测试人员需要不断寻找防御威胁建模方法来提高攻击的成功率。攻击威胁建模是制定攻击策略的一个较为常见的手段，它将侦察和研究的结果相结合。攻击者必须充分考虑现有的目标，并确定目标是以下何种类型：</p>
+<ul>
+<li>首要目标：这些是任何组织的入口点目标。当这些目标被击垮时，它们将直接帮助攻击者达到目的</li>
+<li>次要目标：这些目标可以提供信息（安全控制、密码、登录政策、以及本地和域管理员的用户名和密码）以支持对首要目标进行攻击或访问</li>
+<li>第三目标：这些目标可能与测试或攻击对象无关，但是相对容易攻击，有可能为实际攻击提供信息或者其他思路</li>
+</ul>
+<p>一般情况下攻击者创建威胁模型时，遵循下图所示的攻击树方法</p>
+<p><img src="https://res.weread.qq.com/wrepub/epub_33211566_198" srcset="/img/loading.gif" lazyload alt="威胁模型攻击树"></p>
+<p>攻击树方法为测试者查看可用的攻击选项提供了便利，如果一个攻击方案没有成功，也可以快速找到替代方案</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">kali高级渗透测试</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%BC%8F%E6%B4%9E%E6%8E%A2%E6%B5%8B/">漏洞探测</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

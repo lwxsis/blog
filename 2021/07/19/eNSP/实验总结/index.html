@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>实验总结 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="实验总结">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-19 15:30" pubdate>
+        2021年7月19日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">实验总结</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月26日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h1><h2 id="实验一-搭建基础IP网络"><a href="#实验一-搭建基础IP网络" class="headerlink" title="实验一 搭建基础IP网络"></a>实验一 搭建基础IP网络</h2><ol>
+<li>首先需要将相关软件安装</li>
+<li>每个具体的设备需要启动</li>
+<li>实验中进入pc端的设置界面设置ip即可</li>
+</ol>
+<h2 id="实验二-设备基础配置"><a href="#实验二-设备基础配置" class="headerlink" title="实验二 设备基础配置"></a>实验二 设备基础配置</h2><p>本节中实验介绍相关的命令</p>
+<ol>
+<li><p>查看系统信息</p>
+<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata"><span class="hljs-keyword">display</span> <span class="hljs-keyword">version</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>修改系统时间</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">clock</span> timezone Local add <span class="hljs-number">08</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br><span class="hljs-attribute">clock</span> datetime <span class="hljs-number">12</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> <span class="hljs-number">2021</span>-<span class="hljs-number">7</span>-<span class="hljs-number">7</span><br><br><span class="hljs-attribute">display</span> clock<br></code></pre></div></td></tr></table></figure>
+
+<p>最后命令查看系统时间</p>
+</li>
+<li><p>系统输入命令时，问号是通配符，Tab键是自动补全命令的快捷键</p>
+</li>
+<li><p>进入系统视图</p>
+<figure class="highlight gauss"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gauss"><span class="hljs-keyword">system</span>-<span class="hljs-built_in">view</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>修改设备名称</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">sysname</span> R<span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>设置登录信息</p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute"><span class="hljs-nomarkup">header</span></span> shell information <span class="hljs-string">&quot;welcome&quot;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>配置Console口参数</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入对应端口<br>user-interface console <span class="hljs-number">0</span><br># 设置密码<br>authentication-<span class="hljs-built_in">mode</span> password<br><span class="hljs-built_in">set</span> authentication password cipher<br># 设置未操作退出时间<br>idle-timeout <span class="hljs-number">20</span> <span class="hljs-number">0</span><br># 查看配置结果<br>display this<br></code></pre></div></td></tr></table></figure></li>
+<li><p>退出</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 退出系统<br>return<br># 返回上一级<br>quit<br></code></pre></div></td></tr></table></figure></li>
+<li><p>配置接口地址和描述信息</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入对应端口<br>interface GigabitEthernet <span class="hljs-number">0</span>/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 设置IP地址和描述信息<br>ip address <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">13</span>.<span class="hljs-number">1</span> <span class="hljs-number">24</span><br># 当前界面下查看配置结果<br>display this<br></code></pre></div></td></tr></table></figure></li>
+<li><p>查看接口信息</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">display interface G0/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>查看当前设备上存储的文件列表</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 查看当前目录下文件列表<br><span class="hljs-built_in">dir</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>管理设备配置文件</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 查看保存的配置文件<br>display saved-configuration<br># 保存<br>save<br># 查看当前配置信息<br>display current-configuration<br># 查看下次启动使用的配置文件<br>display startup<br># 删除闪存中的配置文件<br>reset saved-configuration<br></code></pre></div></td></tr></table></figure></li>
+<li><p>重启设备</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">reboot<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="实验三-STP和RSTP"><a href="#实验三-STP和RSTP" class="headerlink" title="实验三 STP和RSTP"></a>实验三 STP和RSTP</h2><h3 id="3-1-STP配置"><a href="#3-1-STP配置" class="headerlink" title="3.1 STP配置"></a>3.1 STP配置</h3><p>实验拓扑图</p>
+<p><img src="https://pic.imgdb.cn/item/60f538355132923bf8b5a6d8.png" srcset="/img/loading.gif" lazyload></p>
+<p>为保证结果的准确性需要关闭无关的端口</p>
+<p>S1上的1,2,3,13,14</p>
+<p>S2上的1,2,3,6,7</p>
+<h4 id="3-1-1-基础配置"><a href="#3-1-1-基础配置" class="headerlink" title="3.1.1 基础配置"></a>3.1.1 基础配置</h4><p>启用STP</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">stp enable<br></code></pre></div></td></tr></table></figure>
+
+<p>在S1，S2启用STP并将S1配置为根桥</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 设备启用stp<br>stp <span class="hljs-built_in">mode</span> stp<br># 设置为根桥<br>stp root primary<br># 其他<br>stp root secondary<br># 查看STP信息<br>dispaly stp brief<br># 查看端口的STP状态<br>display stp interface G0/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="3-1-2-控制根桥选举"><a href="#3-1-2-控制根桥选举" class="headerlink" title="3.1.2 控制根桥选举"></a>3.1.2 控制根桥选举</h4><p>查看根桥信息</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">display stp<br></code></pre></div></td></tr></table></figure>
+
+<p>查看本机mac</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">display bridge mac-address<br></code></pre></div></td></tr></table></figure>
+
+<p>分别进入两个交换机中</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 首先不设置root<br>undo stp root<br># 设置优先级<br>stp priority <span class="hljs-number">8192</span> # S1<br>stp priority <span class="hljs-number">4096</span> # S2<br></code></pre></div></td></tr></table></figure>
+
+<p>注：桥优先级值越低，优先级越高</p>
+<p>故此时S2为根桥</p>
+<p>当S2故障时，S1转变为根桥</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 设置S2接口关闭，模拟故障<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">9</span><br>shutdown # 关闭<br><br><br>undo shutdown #开启，此处不用<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="3-1-3-控制根端口选举"><a href="#3-1-3-控制根端口选举" class="headerlink" title="3.1.3 控制根端口选举"></a>3.1.3 控制根端口选举</h4><p>使用命令<code>display stp brief</code>查看端口角色</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 首先进入对应的端口<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">9</span><br># 设置优先级<br>stp port priority <span class="hljs-number">32</span> # 数值越小优先级越高<br></code></pre></div></td></tr></table></figure>
+
+<p>修改完成后，端口角色会按照修改的优先级大小选择根端口</p>
+<h3 id="3-2-RSTP配置"><a href="#3-2-RSTP配置" class="headerlink" title="3.2 RSTP配置"></a>3.2 RSTP配置</h3><p>实验拓扑图</p>
+<p><img src="https://pic.imgdb.cn/item/60f53dbe5132923bf8d48c34.png" srcset="/img/loading.gif" lazyload></p>
+<p>首先依旧是关闭无关的端口</p>
+<p>S1上的1,2,3,13,14</p>
+<p>S2上的1,2,3,6,7</p>
+<p>设置为RSTP模式</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">stp <span class="hljs-built_in">mode</span> rstp<br></code></pre></div></td></tr></table></figure>
+
+<p>配置边缘端口</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入对应端口<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">1</span><br># 打开端口<br>undo shutdown <br># 设置为边缘端口<br>stp edged-port enable<br></code></pre></div></td></tr></table></figure>
+
+<p>配置BPDU保护功能</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">stp bpdu-protection<br></code></pre></div></td></tr></table></figure>
+
+<p>配置环路保护功能</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入对应端口<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">9</span><br># 配置环路保护<br>stp loop-protection<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="实验四-路由配置"><a href="#实验四-路由配置" class="headerlink" title="实验四 路由配置"></a>实验四 路由配置</h2><h3 id="4-1-配置静态路由和缺省路由"><a href="#4-1-配置静态路由和缺省路由" class="headerlink" title="4.1 配置静态路由和缺省路由"></a>4.1 配置静态路由和缺省路由</h3><p><img src="https://pic.imgdb.cn/item/60f53f5b5132923bf8dd460a.png" srcset="/img/loading.gif" lazyload></p>
+<p>配置路由名和对应端口的ip</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 对应G0/<span class="hljs-number">0</span>/端口配置:略<br># 进入端口<br>interface LoopBack0<br>ip address <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>.<span class="hljs-number">1</span> <span class="hljs-number">24</span><br></code></pre></div></td></tr></table></figure>
+
+<p>查看端口ip情况</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">display ip interface brief<br></code></pre></div></td></tr></table></figure>
+
+<p>查看路由表</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">display ip routing-table<br></code></pre></div></td></tr></table></figure>
+
+<p>配置静态路由</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 设置静态路由<br>ip route-static <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">13</span>.<span class="hljs-number">0</span> <span class="hljs-number">24</span> <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">23</span>.<span class="hljs-number">3</span> # 前一个地址为需要跳转的地址，后一个为下一跳地址<br><br># 设置静态路由优先级<br>ip route-static <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">13</span>.<span class="hljs-number">0</span> <span class="hljs-number">24</span> <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">1</span> preference <span class="hljs-number">80</span> # 越大优先级越低<br></code></pre></div></td></tr></table></figure>
+
+<p>配置缺省</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 整体类似静态路由设置，只是设置的优先级较低最后执行，且所有未找到的地址都执行<br>ip route-static <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">2</span> preference <span class="hljs-number">80</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-2-OSPF-单区域配置"><a href="#4-2-OSPF-单区域配置" class="headerlink" title="4.2 OSPF 单区域配置"></a>4.2 OSPF 单区域配置</h3><p>实验拓扑图</p>
+<p><img src="https://pic.imgdb.cn/item/60f541915132923bf8e95ac2.png" srcset="/img/loading.gif" lazyload></p>
+<p>配置OSPF</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 设置Router ID 开启OSPF进程<span class="hljs-number">1</span><br>ospf <span class="hljs-number">1</span> router-id <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>.<span class="hljs-number">1</span><br># 进入OSPF区域<br>area <span class="hljs-number">0</span><br># 发布网段到OSPF区域<span class="hljs-number">0</span><br>network <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">255</span><br>network <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">13</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">255</span><br>network <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">255</span><br></code></pre></div></td></tr></table></figure>
+
+<p>注意：同一个路由器可以开启多个OSPF进程，默认进程号为1，由于进程号只具有本地意义，所以同一路由域的不同路由器可以使用相同或不同的OSPF进程号。另外network命令后面需使用反掩码</p>
+<p>在配置完成后需要等待一段时间</p>
+<p>使用<code>display ip routing-table</code>查看配置情况</p>
+<p>查看OSPF邻居状态</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 详细信息<br>display ospf peer # 可查看邻居状态和DR BDR<br># 简略点<br>display ospf peer brief # 查看邻居状态<br></code></pre></div></td></tr></table></figure>
+
+<p>修改OSPF hello 和 dead时间参数</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 首先查看对应端口的OSPF内容<br>display ospf interface G0/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 进入端口修改内容<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br>ospf timer hello <span class="hljs-number">15</span><br>ospf timer dead <span class="hljs-number">60</span><br></code></pre></div></td></tr></table></figure>
+
+<p>此时由于端口对应的参数不一致，所以邻居减少一个</p>
+<p>此时进入S3进行对应端口的修改后，等待小段时间后重新建立邻居关系</p>
+<p>OSPF缺省路由发布及验证</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 配置缺省路由并发布到OSPF域内<br>ip route-static <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> LoopBack2<br>ospf <span class="hljs-number">1</span><br>default-route-advertise<br></code></pre></div></td></tr></table></figure>
+
+<p>之后其他路由均会学习到该缺省路由</p>
+<h4 id="4-2-1-控制OSPF-DR-BDR的选举"><a href="#4-2-1-控制OSPF-DR-BDR的选举" class="headerlink" title="4.2.1 控制OSPF DR/BDR的选举"></a>4.2.1 控制OSPF DR/BDR的选举</h4><p>查看对应地址的角色</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">display ospf peer <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">3</span>.<span class="hljs-number">3</span><br></code></pre></div></td></tr></table></figure>
+
+<p>修改对应端口的优先级</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入对应端口<br>int G <span class="hljs-number">0</span>/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 设置ospf的优先级<br>ospf dr-priority <span class="hljs-number">200</span> # 数值越大优先级越高<br></code></pre></div></td></tr></table></figure>
+
+<p>由于DR/BDR采用的是非抢占模式，需要重置R1,R3的邻居关系(关闭对应端口)，才能重新得到想要的DR/BDR关系</p>
+<h2 id="实验五-FTP和DHCP"><a href="#实验五-FTP和DHCP" class="headerlink" title="实验五 FTP和DHCP"></a>实验五 FTP和DHCP</h2><h3 id="5-1-FTP配置"><a href="#5-1-FTP配置" class="headerlink" title="5.1 FTP配置"></a>5.1 FTP配置</h3><p>实验拓扑图</p>
+<p><img src="https://pic.imgdb.cn/item/60f692eb5132923bf849321c.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-1-1-实验准备"><a href="#5-1-1-实验准备" class="headerlink" title="5.1.1 实验准备"></a>5.1.1 实验准备</h4><p>将R1，R2的名称和对应端口修改为上图(ip:最后为1，2)</p>
+<h4 id="5-1-2-启用FTP业务"><a href="#5-1-2-启用FTP业务" class="headerlink" title="5.1.2 启用FTP业务"></a>5.1.2 启用FTP业务</h4><p>默认情况下未启动FTP功能，需要手动启动，设置R1为服务器</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 启动FTP功能<br>ftp server enable<br># 设置默认目录<br><span class="hljs-built_in">set</span> default ftp-directory flash:/<br></code></pre></div></td></tr></table></figure>
+
+<p>在AAA中设置用户密码，授权合法的用户连接</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入用户设置<br>aaa<br># 添加用户<br>local-user huawei(用户名) password cipher <span class="hljs-number">123</span>(密码)<br># 添加用户信息到ftp中<br>local-user huawei service-<span class="hljs-built_in">type</span> ftp<br># 更改用户的权限<br>local-user huawei privilege level <span class="hljs-number">15</span><br>local-user huawei ftp-directory flash:<br><br><br># 展示ftp相关信息<br>display ftp-server<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="5-1-3-建立FTP客户端与服务端的连接"><a href="#5-1-3-建立FTP客户端与服务端的连接" class="headerlink" title="5.1.3 建立FTP客户端与服务端的连接"></a>5.1.3 建立FTP客户端与服务端的连接</h4><p>return后进行连接</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 连接客户端<br>ftp ip<br># 输入用户名和密码<br># 下载内容<br>get 文件名<br># 上传内容<br>put 文件 新文件名<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="5-2-配置DHCP"><a href="#5-2-配置DHCP" class="headerlink" title="5.2 配置DHCP"></a>5.2 配置DHCP</h3><p>实验拓扑图：</p>
+<p><img src="https://pic.imgdb.cn/item/60f695975132923bf852d443.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="5-2-1-实验环境准备"><a href="#5-2-1-实验环境准备" class="headerlink" title="5.2.1 实验环境准备"></a>5.2.1 实验环境准备</h4><p>设置路由器和交换机的接口ip和名称</p>
+<p>关闭无关的端口</p>
+<h4 id="5-2-2-启用DHCP功能和创建IP池"><a href="#5-2-2-启用DHCP功能和创建IP池" class="headerlink" title="5.2.2 启用DHCP功能和创建IP池"></a>5.2.2 启用DHCP功能和创建IP池</h4><p>启用DHCP功能</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 启用DHCP功能<br>dhcp enable<br></code></pre></div></td></tr></table></figure>
+
+<p>在路由器上创建IP池</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 创建IP池<br>ip pool pool1<br># 进入IP池后设置地址范围<br>network <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">0</span> mask <span class="hljs-number">24</span><br># 设置网关<br>gateway-list <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">1</span><br># 设置租期<br>lease day <span class="hljs-number">1</span> hour <span class="hljs-number">12</span><br><br><br># 进入接口设置<br>int G <span class="hljs-number">0</span>/<span class="hljs-number">0</span>/<span class="hljs-number">1</span><br>dhcp select global<br><br><br># 查看IP池参数<br>display ip pool name (IP池名)<br></code></pre></div></td></tr></table></figure>
+
+<p>配置交换机通过缺省管理端口VLANIF1向DHCP服务器申请IP地址</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 开启DHCP服务<br>dhcp enable<br># 进入端口<br>interface Vlanif <span class="hljs-number">1</span><br># 设置地址通过DHCP获取<br>ip address dhcp-alloc<br><br># 通过查看接口地址可了解设置<br>display ip interface brief<br><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="5-2-3-创建接口地址池"><a href="#5-2-3-创建接口地址池" class="headerlink" title="5.2.3 创建接口地址池"></a>5.2.3 创建接口地址池</h4><p>执行<code>dhcp select interface</code> 命令开启接口的DHCP服务，指定路由器从接口地址池分配地址</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 首先进入接口<br>int G <span class="hljs-number">0</span>/<span class="hljs-number">0</span>/<span class="hljs-number">2</span><br># 设置接口开启DHCP服务<br>dhcp select interface<br># 设置具体内容 <br>dhcp server dns-list <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">23</span>.<span class="hljs-number">254</span><br>dhcp server excluded-ip-address <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">23</span>.<span class="hljs-number">254</span><br># 设置租期<br>dhcp server lease day <span class="hljs-number">1</span> hour <span class="hljs-number">12</span><br><br># 路由器执行查看接口地址池参数<br>display ip pool interface<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="实验六-以太网与VLAN"><a href="#实验六-以太网与VLAN" class="headerlink" title="实验六 以太网与VLAN"></a>实验六 以太网与VLAN</h2><h3 id="6-1-VLAN配置"><a href="#6-1-VLAN配置" class="headerlink" title="6.1 VLAN配置"></a>6.1 VLAN配置</h3><p>实验拓扑图</p>
+<p><img src="https://pic.imgdb.cn/item/60f6ba6e5132923bf8c85b58.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="6-1-1-实验环境准备"><a href="#6-1-1-实验环境准备" class="headerlink" title="6.1.1 实验环境准备"></a>6.1.1 实验环境准备</h4><p>在S1和S2上创建Eth-Trunk 1并配置为静态LACP模式，再将接口9/10加入Eth-Trunk1</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 创建链路聚合的负债分担<br>interface Eth-trunk <span class="hljs-number">1</span><br># 设置为LACP模式<br><span class="hljs-built_in">mode</span> lacp<br># 进入端口添加进入Eth-Trunk1<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">9</span><br>eth-trunk1<br><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="6-1-2-关闭不相关接口，并配置Trunk"><a href="#6-1-2-关闭不相关接口，并配置Trunk" class="headerlink" title="6.1.2 关闭不相关接口，并配置Trunk"></a>6.1.2 关闭不相关接口，并配置Trunk</h4><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入链路聚合<br>int Eth-trunk1<br># 设置端口类型为Trunk<br>port link-<span class="hljs-built_in">type</span> trunk<br># 允许所有vlan通过<br>port trunk allow-pass vlan all<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="6-1-3-创建VLAN"><a href="#6-1-3-创建VLAN" class="headerlink" title="6.1.3 创建VLAN"></a>6.1.3 创建VLAN</h4><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入接口<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">13</span><br># 设置接口类型<br>port link-<span class="hljs-built_in">type</span> access<br># 创建VLAN<br>vlan <span class="hljs-number">2</span><br># 创建VLAN多<br>vlan batch <span class="hljs-number">2</span> to <span class="hljs-number">4</span><br># 设置端口对应的vlan<br>int 接口<br># 设置接口类型<br>port link-<span class="hljs-built_in">type</span> access<br># 设置vlan<br>port default vlan <span class="hljs-number">2</span><br><br># 查看vlan信息<br>display vlan<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="6-1-4-客户端配置IP地址"><a href="#6-1-4-客户端配置IP地址" class="headerlink" title="6.1.4 客户端配置IP地址"></a>6.1.4 客户端配置IP地址</h4><p>由于无法为交换机的网络接口配置IP地址，所有使用本地管理接口VLANIF1 作为用户接口，并配置IP地址</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 交换机中进入vlanif1<br>int vlanif1<br>ip add <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4</span>.<span class="hljs-number">1</span> <span class="hljs-number">24</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="6-1-5-配置Hybrid端口"><a href="#6-1-5-配置Hybrid端口" class="headerlink" title="6.1.5 配置Hybrid端口"></a>6.1.5 配置Hybrid端口</h4><p>在S1的0/0/1端口配置类型为Hybrid端口并转发时去掉VLAN2，VLAN 4的标签</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入接口<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">1</span><br># 取消之前设置<br>undo port default vlan<br># 设置端口hybrid类型<br>port link-<span class="hljs-built_in">type</span> hybrid <br># 设置数据帧的去除标签<br>port hybrid untagged vlan <span class="hljs-number">2</span> <span class="hljs-number">4</span><br># 配置端口收到数据帧时需要给数据帧添加的VLAN标签<br>port hybrid pvid vlan <span class="hljs-number">4</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="6-2-VLAN间路由配置"><a href="#6-2-VLAN间路由配置" class="headerlink" title="6.2 VLAN间路由配置"></a>6.2 VLAN间路由配置</h3><p>实验拓扑图：</p>
+<p><img src="https://pic.imgdb.cn/item/60f6c0375132923bf8dd8d87.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="6-2-1-实验环境准备"><a href="#6-2-1-实验环境准备" class="headerlink" title="6.2.1 实验环境准备"></a>6.2.1 实验环境准备</h4><p>设置设备名和对应接口地址</p>
+<p>创建VLAN</p>
+<p>在S1上创建vlan4，8，G0/0/1<del>4 G0/0/3\</del>8</p>
+<p>将S1的G0/0/2设置为Trunk接口并允许vlan4，8通过</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入接口设置trunk<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">2</span><br>port link-<span class="hljs-built_in">type</span> trunk<br># 允许通过的vlan<br>port trunk allow-pass vlan <span class="hljs-number">4</span> <span class="hljs-number">8</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="6-2-2-路由实现VLAN间路由"><a href="#6-2-2-路由实现VLAN间路由" class="headerlink" title="6.2.2 路由实现VLAN间路由"></a>6.2.2 路由实现VLAN间路由</h4><p>在R2上的子接口实现VLAN间路由</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入R2的子接口<br>int G <span class="hljs-number">0</span>/<span class="hljs-number">0</span>/<span class="hljs-number">1</span>.<span class="hljs-number">1</span><br># 设置IP地址<br>ip address <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4</span>.<span class="hljs-number">254</span> <span class="hljs-number">24</span><br># 配置子接口封装VLAN ID<br>dotlq termination vid <span class="hljs-number">4</span><br># 开启接收子接口的ARP广播功能<br>arp broadcast enable<br># 另一个<span class="hljs-number">1</span>.<span class="hljs-number">3</span>类似<br></code></pre></div></td></tr></table></figure>
+
+<p>在R1，R3上配置默认路由指向网关</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 配置默认路由<br>ip route-static <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4</span>.<span class="hljs-number">254</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="实验七-企业广域网配置"><a href="#实验七-企业广域网配置" class="headerlink" title="实验七 企业广域网配置"></a>实验七 企业广域网配置</h2><h3 id="7-1-HDLC和PPP配置"><a href="#7-1-HDLC和PPP配置" class="headerlink" title="7.1 HDLC和PPP配置"></a>7.1 HDLC和PPP配置</h3><p>实验拓扑图：</p>
+<p><img src="https://pic.imgdb.cn/item/60f6c2b55132923bf8e6993d.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="7-1-1-实验环境准备"><a href="#7-1-1-实验环境准备" class="headerlink" title="7.1.1 实验环境准备"></a>7.1.1 实验环境准备</h4><p>配置设备名称</p>
+<p>给各个接口配置地址</p>
+<h4 id="7-1-2-串行接口上启用HDLC协议"><a href="#7-1-2-串行接口上启用HDLC协议" class="headerlink" title="7.1.2 串行接口上启用HDLC协议"></a>7.1.2 串行接口上启用HDLC协议</h4><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入接口<br>int S1/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 启用HDLC协议<br>link-protocol hdlc<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="7-1-3-配置OSPF"><a href="#7-1-3-配置OSPF" class="headerlink" title="7.1.3 配置OSPF"></a>7.1.3 配置OSPF</h4><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 开启OSPF<br>ospf <span class="hljs-number">1</span><br># 增加空间添加网段<br>area <span class="hljs-number">0</span><br>network <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">12</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">255</span><br><br># 其他类似设置<br># 查看配置结果<br>display ip routing-table<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="7-1-4-修改串行接口封装类型"><a href="#7-1-4-修改串行接口封装类型" class="headerlink" title="7.1.4 修改串行接口封装类型"></a>7.1.4 修改串行接口封装类型</h4><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入串口<br>int S <span class="hljs-number">1</span>/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 使用ppp封装<br>link-protocol ppp<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="7-1-5-在R1和R2启用PAP认证，R2和R3启用CHAP认证功能"><a href="#7-1-5-在R1和R2启用PAP认证，R2和R3启用CHAP认证功能" class="headerlink" title="7.1.5 在R1和R2启用PAP认证，R2和R3启用CHAP认证功能"></a>7.1.5 在R1和R2启用PAP认证，R2和R3启用CHAP认证功能</h4><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># R1作为认证方<br># 进入对应端口<br>int s <span class="hljs-number">1</span>/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 设置认证模式<br>ppp authentication-<span class="hljs-built_in">mode</span> pap<br># 退出 创建用户<br>aaa<br>loacl-user huawei password cipher <span class="hljs-number">123</span><br># 添加到对应服务中<br>local-user huawei service-<span class="hljs-built_in">type</span> ppp<br># R2配置被认证方<br># 进入对应端口<br>int s <span class="hljs-number">1</span>/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 配置认证信息<br>ppp pap local-user huawei password cipher <span class="hljs-number">123</span><br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># R3作为CHAP认证方<br># 进入端口<br>int s2/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 配置认证模式<br>ppp authentication-<span class="hljs-built_in">mode</span> chap<br># 其余完全同上 只是将pap改为chap<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="7-2-配置PPPoE客户端"><a href="#7-2-配置PPPoE客户端" class="headerlink" title="7.2 配置PPPoE客户端"></a>7.2 配置PPPoE客户端</h3><p>实验拓扑图：</p>
+<p><img src="https://pic.imgdb.cn/item/60f6c5ae5132923bf8f1db10.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="7-2-1-实验环境准备"><a href="#7-2-1-实验环境准备" class="headerlink" title="7.2.1 实验环境准备"></a>7.2.1 实验环境准备</h4><p>配置各个设备的名称</p>
+<h4 id="7-2-2-配置PPPoE服务器"><a href="#7-2-2-配置PPPoE服务器" class="headerlink" title="7.2.2 配置PPPoE服务器"></a>7.2.2 配置PPPoE服务器</h4><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 设置地址池<br>ip pool pool1<br># 设置网络端和网关<br>network <span class="hljs-number">199</span>.<span class="hljs-number">84</span>.<span class="hljs-number">111</span>.<span class="hljs-number">0</span> mask <span class="hljs-number">24</span><br>gateway-list <span class="hljs-number">119</span>.<span class="hljs-number">84</span>.<span class="hljs-number">111</span>.<span class="hljs-number">254</span><br># 设置虚拟模块<br>int Virtual-template <span class="hljs-number">1</span><br># 设置chap认证<br>ppp authentication-<span class="hljs-built_in">mode</span> chap<br># 设置ip地址<br>ip address <span class="hljs-number">119</span>.<span class="hljs-number">84</span>.<span class="hljs-number">111</span>.<span class="hljs-number">254</span> <span class="hljs-number">255</span>.<span class="hljs-number">255</span>.<span class="hljs-number">255</span>.<span class="hljs-number">0</span><br># 移除地址池<br>remote address pool pool1<br></code></pre></div></td></tr></table></figure>
+
+<p>在服务器的G0/0/0接口绑定虚拟模块</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">int G <span class="hljs-number">0</span>/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 绑定虚拟模块<br>pppoe-server bind Virtual-template <span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<p>之后的创建账号不在赘述</p>
+<h4 id="7-2-3-配置PPPoE客户端"><a href="#7-2-3-配置PPPoE客户端" class="headerlink" title="7.2.3 配置PPPoE客户端"></a>7.2.3 配置PPPoE客户端</h4><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入对应的拨号接口视图<br>dialer-rule<br># 创建对应的拨号id<br>dialer-rule <span class="hljs-number">1</span> ip permit<br># 退出 进入对应接口<br>int dialer <span class="hljs-number">1</span><br># 配置用户名<br>dialer user 用户名<br># 将接口置于一个拨号服务组<br>dialer-group <span class="hljs-number">1</span><br># 指定接口使用的Dialer bundle<br>dialer bundle <span class="hljs-number">1</span><br># 设置认证的用户<br>ppp chap user huawei<br>ppp chap password cipher <span class="hljs-number">123</span><br># 设置具体参数<br>dialer timer idle <span class="hljs-number">300</span><br>dialer queue-length <span class="hljs-number">8</span><br>ip address ppp-negotiate<br></code></pre></div></td></tr></table></figure>
+
+<p>将PPPoE接口绑定出接口</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入接口<br>int 接口<br>pppoe-client dial-bundle-number <span class="hljs-number">1</span><br># 配置缺省路由<br>ip route-static <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> Dialer <span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="实验八-IP安全配置"><a href="#实验八-IP安全配置" class="headerlink" title="实验八 IP安全配置"></a>实验八 IP安全配置</h2><h3 id="8-1-配置ACL过滤企业数据"><a href="#8-1-配置ACL过滤企业数据" class="headerlink" title="8.1 配置ACL过滤企业数据"></a>8.1 配置ACL过滤企业数据</h3><p>实验拓扑图：</p>
+<p><img src="https://pic.imgdb.cn/item/60f7df405132923bf8dd9468.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="8-1-1-实验环境配置"><a href="#8-1-1-实验环境配置" class="headerlink" title="8.1.1 实验环境配置"></a>8.1.1 实验环境配置</h4><p>设置设备名，并设置交换机vlan ip地址</p>
+<p>并配置路由器对应IP地址和设置交换机的端口为Trunk端口</p>
+<p>配置OSPF使网络互通</p>
+<p>设置交换机缺省静态路由到下一跳的路由器网关</p>
+<h4 id="8-1-2-配置ACL过滤报文"><a href="#8-1-2-配置ACL过滤报文" class="headerlink" title="8.1.2 配置ACL过滤报文"></a>8.1.2 配置ACL过滤报文</h4><p>将S1设置为Telnet服务器</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 开启telnet<br>telnet server enable<br># 进入控制端<br>user-interface vty <span class="hljs-number">0</span> <span class="hljs-number">4</span><br># telnet默认配置<br>protocol inbound all<br># 设置密码<br>authentication-<span class="hljs-built_in">mode</span> password<br><span class="hljs-built_in">set</span> authentication password cipher <span class="hljs-number">123</span><br></code></pre></div></td></tr></table></figure>
+
+<p>在S2上配置FTP服务器，内容参考5.1</p>
+<p>在R2配置ACL，只允许R1访问Telnet服务器，只允许R3访问FTP服务器</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 创建acl并进入<br>acl <span class="hljs-number">3000</span><br># 设置规则：允许源地址<span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">13</span>.<span class="hljs-number">1</span> 目的地址为<span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4</span>.<span class="hljs-number">254</span> 端口为<span class="hljs-number">23</span>的所有TCP报文<br>rule <span class="hljs-number">5</span> permit tcp source <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">13</span>.<span class="hljs-number">1</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> destination <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4</span>.<span class="hljs-number">254</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> destination-port eq <span class="hljs-number">23</span><br># 设置规则<br>rule <span class="hljs-number">10</span> permit tcp source <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">13</span>.<span class="hljs-number">3</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> destination <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">6</span>.<span class="hljs-number">254</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> destination-port eq <span class="hljs-number">20</span> <span class="hljs-number">21</span><br># 设置规则 允许ospf内容通过<br>rule <span class="hljs-number">15</span> permit ospf<br># 设置规则所有地址不可用通过<br>rule <span class="hljs-number">20</span> deny ip source any<br># 进入对应接口设置acl规则<br>int G <span class="hljs-number">0</span>/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 在进入时判断<br>traffic-filter inbound acl <span class="hljs-number">3000</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="8-2-NAT配置"><a href="#8-2-NAT配置" class="headerlink" title="8.2 NAT配置"></a>8.2 NAT配置</h3><p>实验拓扑图：</p>
+<p><img src="https://pic.imgdb.cn/item/60f7e3bf5132923bf8f02240.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="8-2-1-实验环境配置"><a href="#8-2-1-实验环境配置" class="headerlink" title="8.2.1 实验环境配置"></a>8.2.1 实验环境配置</h4><p>设置设备名，在交换机设置VLANIF和接口类型为trunk，对应接口设置对应IP地址</p>
+<h4 id="8-2-2-配置ACL"><a href="#8-2-2-配置ACL" class="headerlink" title="8.2.2 配置ACL"></a>8.2.2 配置ACL</h4><p>在R1配置高级ACL</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat">acl <span class="hljs-number">3000</span><br># 匹配来自<span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4</span>.<span class="hljs-number">254</span> 目的<span class="hljs-number">119</span>.<span class="hljs-number">84</span>.<span class="hljs-number">111</span>.<span class="hljs-number">3</span> 端口<span class="hljs-number">23</span>的tcp报文<br>rule <span class="hljs-number">5</span> permit tcp source <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4</span>.<span class="hljs-number">254</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> destination <span class="hljs-number">119</span>.<span class="hljs-number">84</span>.<span class="hljs-number">111</span>.<span class="hljs-number">3</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> destination-port eq <span class="hljs-number">23</span><br># 匹配源地址<span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4</span>.<span class="hljs-number">0</span>/<span class="hljs-number">24</span> 目的任何地址的数据<br>rule <span class="hljs-number">10</span> permit ip source <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">4</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">255</span> destinaton any<br>rule <span class="hljs-number">15</span> deny ip<br></code></pre></div></td></tr></table></figure>
+
+<p>R3配置ACL</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入对应acl<br>acl <span class="hljs-number">2000</span><br># 匹配来自<span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">6</span>.<span class="hljs-number">0</span>/<span class="hljs-number">24</span>的数据<br>rule permit source <span class="hljs-number">10</span>.<span class="hljs-number">0</span>.<span class="hljs-number">6</span>.<span class="hljs-number">0</span> <span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">255</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="8-2-3-配置动态NAT"><a href="#8-2-3-配置动态NAT" class="headerlink" title="8.2.3 配置动态NAT"></a>8.2.3 配置动态NAT</h4><p>首先交换机设置缺省静态路由</p>
+<p>R1设置NAT</p>
+<figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 设置动态NAT<br>nat address-group <span class="hljs-number">1</span> <span class="hljs-number">119</span>.<span class="hljs-number">84</span>.<span class="hljs-number">111</span>.<span class="hljs-number">240</span> <span class="hljs-number">119</span>.<span class="hljs-number">84</span>.<span class="hljs-number">111</span>.<span class="hljs-number">243</span><br># 进入接口<br>int G0/<span class="hljs-number">0</span>/<span class="hljs-number">0</span><br># 设置出口时对匹配的内容进行NAT转化<br>nat outbound <span class="hljs-number">3000</span> address-group <span class="hljs-number">1</span><br># easy NAT配置<br>nat outbound <span class="hljs-number">3000</span><br></code></pre></div></td></tr></table></figure>
+
+<p>检查命令 <code>display nat address-group</code>，<code>disaplay acl 3000</code>，<code>display nat session all</code></p>
+<h3 id="8-3-AAA配置"><a href="#8-3-AAA配置" class="headerlink" title="8.3 AAA配置"></a>8.3 AAA配置</h3><p>实验拓扑图：</p>
+<p><img src="https://pic.imgdb.cn/item/60f7e6b95132923bf8fbc03c.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="8-3-1-实验环境配置"><a href="#8-3-1-实验环境配置" class="headerlink" title="8.3.1 实验环境配置"></a>8.3.1 实验环境配置</h4><p>设置对应名称和接口地址</p>
+<h4 id="8-3-2-配置AAA功能"><a href="#8-3-2-配置AAA功能" class="headerlink" title="8.3.2 配置AAA功能"></a>8.3.2 配置AAA功能</h4><figure class="highlight bat"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bat"># 进入aaa<br>aaa<br># 配置域的认证方案<br>authentication-scheme auth1<br># 配置认证方式 本地认证<br>authentication-<span class="hljs-built_in">mode</span> local<br>quit<br># 配置域的授权方案<br>authorization-scheme auth2<br># 配置授权方式 本地授权<br>authorization-<span class="hljs-built_in">mode</span> local<br>quit<br># 创建域<br>aaa<br>domain huawei<br># 将认证和授权和域绑定起来<br>authentication-scheme auth1<br>authorization-scheme auth2<br>quit<br># 设置用户 并授权给对应服务@后的内容为创建的域<br>local-user user1@huawei password cipher <span class="hljs-number">123</span><br># 添加具体服务的用户<br>local-user user1@huawei service-<span class="hljs-built_in">type</span> telnet<br># 设置用户权限<br>local-user user1@huawei privilege level <span class="hljs-number">0</span><br># 设置认证模式配置<br>user-interface vty <span class="hljs-number">0</span> <span class="hljs-number">4</span><br>authentication-<span class="hljs-built_in">mode</span> aaa<br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/eNSP/">eNSP</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/eNSP/">eNSP</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

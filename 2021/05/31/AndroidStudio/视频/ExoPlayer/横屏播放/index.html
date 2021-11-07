@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>横屏播放 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="横屏播放">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-31 15:51" pubdate>
+        2021年5月31日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">横屏播放</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月12日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="基本实现横屏播放"><a href="#基本实现横屏播放" class="headerlink" title="基本实现横屏播放"></a>基本实现横屏播放</h1><h1 id="重要配置文件"><a href="#重要配置文件" class="headerlink" title="重要配置文件"></a>重要配置文件</h1><p>AndroidManifest</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"> <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</span>/&gt;</span>       <br><br><span class="hljs-tag">&lt;<span class="hljs-name">activity</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;.Activity.VideoActivity&quot;</span>  <span class="hljs-attr">android:configChanges</span>=<span class="hljs-string">&quot;orientation|screenSize&quot;</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="增加自定义按钮"><a href="#增加自定义按钮" class="headerlink" title="增加自定义按钮"></a>增加自定义按钮</h1><p>layout</p>
+<p>main</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">&quot;http://schemas.android.com/tools&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">tools:context</span>=<span class="hljs-string">&quot;.Activity.EoActivity&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">com.google.android.exoplayer2.ui.PlayerView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/video_view&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">       &lt;!<span class="hljs-attr">--</span> 使用自己定义的按钮 <span class="hljs-attr">--</span>&gt;</span> <br>        app:controller_layout_id=&quot;@layout/my_exo_player_control_view&quot;/&gt;<br><span class="hljs-tag">&lt;/<span class="hljs-name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>my_exo_player_control_view</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/myExoPlayer&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:layout_gravity</span>=<span class="hljs-string">&quot;bottom&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;?attr/colorControlHighlight&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageButton</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@id/exo_prev&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;@style/ExoMediaButton.Previous&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toTopOf</span>=<span class="hljs-string">&quot;@id/exo_position&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toStartOf</span>=<span class="hljs-string">&quot;@+id/exo_rew&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toStartOf</span>=<span class="hljs-string">&quot;parent&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageButton</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@id/exo_rew&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;@style/ExoMediaButton.Rewind&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toTopOf</span>=<span class="hljs-string">&quot;@id/exo_position&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toStartOf</span>=<span class="hljs-string">&quot;@+id/exo_play&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toEndOf</span>=<span class="hljs-string">&quot;@id/exo_prev&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageButton</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@id/exo_play&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;@style/ExoMediaButton.Play&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toTopOf</span>=<span class="hljs-string">&quot;@id/exo_position&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toStartOf</span>=<span class="hljs-string">&quot;@+id/exo_pause&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toEndOf</span>=<span class="hljs-string">&quot;@id/exo_rew&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageButton</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@id/exo_pause&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;@style/ExoMediaButton.Pause&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toTopOf</span>=<span class="hljs-string">&quot;@id/exo_position&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toStartOf</span>=<span class="hljs-string">&quot;@+id/exo_ffwd&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toEndOf</span>=<span class="hljs-string">&quot;@id/exo_play&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageButton</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@id/exo_ffwd&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;@style/ExoMediaButton.FastForward&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toTopOf</span>=<span class="hljs-string">&quot;@id/exo_position&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toStartOf</span>=<span class="hljs-string">&quot;@+id/exo_next&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toEndOf</span>=<span class="hljs-string">&quot;@id/exo_pause&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageButton</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@id/exo_next&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;@style/ExoMediaButton.Next&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toTopOf</span>=<span class="hljs-string">&quot;@id/exo_position&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toEndOf</span>=<span class="hljs-string">&quot;@id/exo_fullscreen_button&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toEndOf</span>=<span class="hljs-string">&quot;@+id/exo_ffwd&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ImageButton</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/exo_fullscreen_button&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;@style/ExoMediaButton.Pause&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:src</span>=<span class="hljs-string">&quot;@drawable/exo_icon_fullscreen_enter&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toTopOf</span>=<span class="hljs-string">&quot;@id/exo_position&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintEnd_toEndOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintStart_toEndOf</span>=<span class="hljs-string">&quot;@id/exo_next&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/exo_position&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintLeft_toLeftOf</span>=<span class="hljs-string">&quot;parent&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">com.google.android.exoplayer2.ui.DefaultTimeBar</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/exo_progress&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintLeft_toRightOf</span>=<span class="hljs-string">&quot;@id/exo_position&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintRight_toLeftOf</span>=<span class="hljs-string">&quot;@+id/exo_duration&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:unplayed_color</span>=<span class="hljs-string">&quot;@android:color/black&quot;</span> /&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/exo_duration&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;wrap_content&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintBottom_toBottomOf</span>=<span class="hljs-string">&quot;parent&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">app:layout_constraintRight_toRightOf</span>=<span class="hljs-string">&quot;parent&quot;</span> /&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h1 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h1><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> android.content.Context;<br><span class="hljs-keyword">import</span> android.content.pm.ActivityInfo;<br><span class="hljs-keyword">import</span> android.content.res.Configuration;<br><span class="hljs-keyword">import</span> android.net.Uri;<br><span class="hljs-keyword">import</span> android.os.Bundle;<br><span class="hljs-keyword">import</span> android.view.Surface;<br><span class="hljs-keyword">import</span> android.view.View;<br><span class="hljs-keyword">import</span> android.view.Window;<br><span class="hljs-keyword">import</span> android.view.WindowManager;<br><span class="hljs-keyword">import</span> android.widget.ImageButton;<br><br><span class="hljs-keyword">import</span> androidx.appcompat.app.AppCompatActivity;<br><br><span class="hljs-keyword">import</span> com.google.android.exoplayer2.SimpleExoPlayer;<br><span class="hljs-keyword">import</span> com.google.android.exoplayer2.source.MediaSource;<br><span class="hljs-keyword">import</span> com.google.android.exoplayer2.source.ProgressiveMediaSource;<br><span class="hljs-keyword">import</span> com.google.android.exoplayer2.ui.PlayerView;<br><span class="hljs-keyword">import</span> com.google.android.exoplayer2.upstream.DataSource;<br><span class="hljs-keyword">import</span> com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;<br><span class="hljs-keyword">import</span> com.google.android.exoplayer2.util.Util;<br><span class="hljs-keyword">import</span> com.lwx.videoapplication.R;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VideoActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> PlayerView playerView;<br>    <span class="hljs-keyword">private</span> SimpleExoPlayer player;<br>    <span class="hljs-keyword">private</span> Context context = VideoActivity.<span class="hljs-keyword">this</span>;<br>    <span class="hljs-keyword">private</span> ImageButton imageButtonFullScreen;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);<br>        requestWindowFeature(Window.FEATURE_NO_TITLE); <span class="hljs-comment">// 隐藏标题 //这行代码一定要在setContentView之前，不然会闪退</span><br>        <span class="hljs-comment">//使用其他的界面</span><br>        setContentView(R.layout.activity_eo);<br>        imageButtonFullScreen = findViewById(R.id.exo_fullscreen_button);<br>        imageButtonFullScreen.setOnClickListener(<span class="hljs-keyword">new</span> View.OnClickListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(View v)</span> </span>&#123;<br>                <span class="hljs-keyword">if</span>(!isHorizontalScreen())&#123;<br>                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);<span class="hljs-comment">//横屏</span><br>                    <span class="hljs-comment">//全屏效果</span><br>                    View decorView = getWindow().getDecorView();<br>                    decorView.setSystemUiVisibility(<br>                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE<br>                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION<br>                                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN<br>                                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION<br>                                    | View.SYSTEM_UI_FLAG_FULLSCREEN<br>                                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);<br>                &#125;<br><br>                <span class="hljs-keyword">else</span> &#123;<br>                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);<span class="hljs-comment">//竖屏</span><br>                &#125;<br>            &#125;<br>        &#125;);<br>        playerView = findViewById(R.id.video_view);<br>        initializePlayer();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initializePlayer</span><span class="hljs-params">()</span> </span>&#123;<br>        player = <span class="hljs-keyword">new</span> SimpleExoPlayer.Builder(context).build();<br>        playerView.setPlayer(player);<br>        DataSource.Factory dataSourceFactory = <span class="hljs-keyword">new</span> DefaultDataSourceFactory(context,<br>                Util.getUserAgent(context, <span class="hljs-string">&quot;myExoPlayer&quot;</span>));<br>        MediaSource mediaSource = <span class="hljs-keyword">new</span> ProgressiveMediaSource.Factory(dataSourceFactory)<br>                .createMediaSource(Uri.parse(<span class="hljs-string">&quot;****************&quot;</span>));<br>        player.prepare(mediaSource);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBackPressed</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.onBackPressed();<br>        player.release();<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isHorizontalScreen</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">int</span> angle = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();<br>        <span class="hljs-keyword">if</span> (angle == Surface.ROTATION_90 || angle == Surface.ROTATION_270)&#123;<br>            <span class="hljs-comment">//如果屏幕旋转90°或者270°是判断为横屏，横屏规避不展示</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.onDestroy();<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onConfigurationChanged</span><span class="hljs-params">(Configuration newConfig)</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>.onConfigurationChanged(newConfig);<br>    &#125;<br>&#125;s<br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Android-Studio-%E8%A7%86%E9%A2%91-ExoPlayer/">Android Studio 视频 ExoPlayer</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/AndroidStudio/">AndroidStudio</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ExoPlayer/">ExoPlayer</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

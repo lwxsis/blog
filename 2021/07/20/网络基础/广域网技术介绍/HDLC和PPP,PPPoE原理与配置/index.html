@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>HDLC和PPP,PPPoE原理与配置 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="HDLC和PPP,PPPoE原理与配置">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-20 13:45" pubdate>
+        2021年7月20日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.3k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">HDLC和PPP,PPPoE原理与配置</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月20日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="HDLC和PPP-PPPoE原理与配置"><a href="#HDLC和PPP-PPPoE原理与配置" class="headerlink" title="HDLC和PPP,PPPoE原理与配置"></a>HDLC和PPP,PPPoE原理与配置</h1><h2 id="1-HDLC和PPP原理与配置"><a href="#1-HDLC和PPP原理与配置" class="headerlink" title="1.HDLC和PPP原理与配置"></a>1.HDLC和PPP原理与配置</h2><h3 id="1-1-串行链路的数据传输方式"><a href="#1-1-串行链路的数据传输方式" class="headerlink" title="1.1 串行链路的数据传输方式"></a>1.1 串行链路的数据传输方式</h3><ul>
+<li>串行链路普遍用于广域网中。串行链路中定义了两种数据传输方式∶异步和同步<ol>
+<li>异步传输是以字节为单位来传输数据，并且需要采用额外的起始位和停止位来标记每个字节的开始和结束。起始位为二进制值0，停止位为二进制值1。在这种传输方式下，开始和停止位占据发送数据的相当大的比例，每个字节的发送都需要额外的开销</li>
+<li>同步传输是以帧为单位来传输数据，在通信时需要使用时钟来同步本端和对端的设备通信。DCE即数据通信设备，它提供了一个用于同步DCE设备和DTE设备之间数据传输的时钟信号。DTE即数据终端设备，它通常使用DCE产生的时钟信号</li>
+</ol>
+</li>
+</ul>
+<h3 id="1-2-HDLC协议应用"><a href="#1-2-HDLC协议应用" class="headerlink" title="1.2 HDLC协议应用"></a>1.2 HDLC协议应用</h3><p>ISO制定的HDLC是一种面向比特的通信规则。HDLC传送的信息单位为帧。作为面向比特的同步数据控制协议的典型，HDLC具有如下特点：</p>
+<ol>
+<li>协议不依赖于任何一种字符编码集</li>
+<li>数据报文可透明传输，用于透明传输的“0比特插入法”易于硬件实现</li>
+<li>全双工通信，不必等待确认可连续发送数据，有较高的数据链路传输效率</li>
+<li>所有帧均采用CRC校验，并对信息帧进行编号，可防止漏收或重收，传输可靠性高</li>
+<li>传输控制功能与处理功能分离，具有较大的灵活性和较完善的控制功能</li>
+</ol>
+<h3 id="1-3-HDLC帧结构"><a href="#1-3-HDLC帧结构" class="headerlink" title="1.3 HDLC帧结构"></a>1.3 HDLC帧结构</h3><p><img src="https://pic.imgdb.cn/item/60f66a865132923bf8a8a5b8.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>完整的HDLC帧由标志字段(F)、地址字段(A)、控制字段(C)、信息字段(I)、帧校验序列字段(FCS)等组成</p>
+<ol>
+<li><p>标志字段为01111110，用以标志帧的开始与结束，也可以作为帧与帧之间的填充字符</p>
+</li>
+<li><p>地址字段携带的是地址信息</p>
+</li>
+<li><p>控制字段用于构成各种命令及响应，以便对链路进行监视与控制。发送方利用控制字段来通知接收方来执行约定的操作;相反，接收方用该字段作为对命令的响应，报告已经完成的操作或状态的变化</p>
+</li>
+<li><p>信息字段可以包含任意长度的二进制数，其上限由FCS字段或通讯节点的缓存容量来决定，目前用得较多的是1000-2000比特，而下限可以是0，即无信息字段。监控帧中不能有信息字段</p>
+</li>
+<li><p>帧检验序列字段可以使用16位CRC对两个标志字段之间的内容进行校验</p>
+</li>
+</ol>
+</li>
+<li><p>HDLC有三种类型的帧：</p>
+<ol>
+<li>信息帧(I帧)用于传送有效信息或数据，通常简称为I帧</li>
+<li>监控帧（S帧）用于差错控制和流量控制，通常称为S帧。S帧的标志是控制字段的前两个比特位为“10”。S帧不带信息字段，只有6个字节即48个比特</li>
+<li>无编号帧(U帧)简称U帧。U帧用于提供对链路的建立、拆除以及多种控制功能</li>
+</ol>
+</li>
+</ul>
+<h3 id="1-4-HDLC基本配置"><a href="#1-4-HDLC基本配置" class="headerlink" title="1.4 HDLC基本配置"></a>1.4 HDLC基本配置</h3><p>用户只需要在串行接口视图下运行<code>link-protocol hdlc</code>命令就可以使能接口的HDLC协议华为设备上的串行接口默认运行PPP协议。用户必须在串行链路两端的端口上配置相同的链路协议，双方才能通信</p>
+<h3 id="1-5-HDLC-接口地址借用"><a href="#1-5-HDLC-接口地址借用" class="headerlink" title="1.5 HDLC 接口地址借用"></a>1.5 HDLC 接口地址借用</h3><ul>
+<li><p>一个接口如果没有IP地址就无法生成路由，也就无法转发报文。IP地址借用允许一个没有IP地址的接口从其它接口借用P地址。这样可以避免一个接口独占IP地址，节省IP地址资源。一般建议借用loopback接口的IP地址，因为这类接口总是处于活跃( active )状态，因而能提供稳定可用的P地址</p>
+</li>
+<li><p>本例中</p>
+<p><img src="https://pic.imgdb.cn/item/60f66b6b5132923bf8ac4ea6.png" srcset="/img/loading.gif" lazyload></p>
+<p>在RTA的S1/0/0接口配置完接口地址借用之后，还需要在RTA上配置静态路由，以使RTA能够转发数据到10.1.1.0/24网络</p>
+</li>
+</ul>
+<h3 id="1-6-配置验证"><a href="#1-6-配置验证" class="headerlink" title="1.6 配置验证"></a>1.6 配置验证</h3><p>执行<code>display ip interface brief</code>命令可以查看路由器接口简要信息。如果有IP地址被借用，该IP地址会显示在多个接口上，说明借用loopback接口的IP地址成功</p>
+<h3 id="1-7-PPP协议应用"><a href="#1-7-PPP协议应用" class="headerlink" title="1.7 PPP协议应用"></a>1.7 PPP协议应用</h3><p>PPP协议是一种点到点链路层协议，主要用于在全双工的同异步链路上进行点到点的数据传输。PPP协议有如下优点：</p>
+<ol>
+<li>PPP既支持同步传输又支持异步传输，而X.25、FR ( Frame Relay)等数据链路层协议仅支持同步传输，SLIP仅支持异步传输</li>
+<li>PPP协议具有很好的扩展性，例如，当需要在以太网链路上承载PPP协议时，PPP可以扩展为PPPoE</li>
+<li>PPP提供了LCP ( Link Control Protocol）协议，用于各种链路层参数的协商</li>
+<li>PPP提供了各种NCP ( Network Control Protocol )协议（如IPCP、IPXCP)，用于各网络层参数的协商，更好地支持了网络层协议</li>
+<li>PPP提供了认证协议：CHAP ( Challenge-Handshake Authentication Protocol ) .PAP ( Password Authentication Protocol)，更好的保证了网络的安全性</li>
+<li>无重传机制，网络开销小，速度快</li>
+</ol>
+<h3 id="1-8-PPP组件"><a href="#1-8-PPP组件" class="headerlink" title="1.8 PPP组件"></a>1.8 PPP组件</h3><ul>
+<li>PPP包含两个组件：链路控制协议LCP和网络层控制协议NCP</li>
+<li>为了能适应多种多样的链路类型，PPP定义了链路控制协议LCP。LCP可以自动检测链路环境，如是否存在环路;协商链路参数，如最大数据包长度，使用何种认证协议等等。与其他数据链路层协议相比，PPP协议的一个重要特点是可以提供认证功能，链路两端可以协商使用何种认证协议来实施认证过程，只有认证成功之后才会建立连接</li>
+<li>PPP定义了一组网络层控制协议NCP，每一个NCP对应了一种网络层协议，用于协商网络层地址等参数，例如IPCP用于协商控制IP协议，IPXCP用于协商控制IPX协议等</li>
+</ul>
+<h3 id="1-9-PPP链路建立过程"><a href="#1-9-PPP链路建立过程" class="headerlink" title="1.9 PPP链路建立过程"></a>1.9 PPP链路建立过程</h3><p>对于PPP链路建立过程的描述如下：</p>
+<ol>
+<li>Dead阶段也称为物理层不可用阶段。当通信双方的两端检测到物理线路激活时，就会从Dead阶段迁移至Establish阶段，即链路建立阶段</li>
+<li>在Establish阶段，PPP链路进行LCP参数协商。协商内容包括最大接收单元MRU、认证方式、魔术字(Magic Number )等选项。LCP参数协商成功后会进入Opened状态，表示底层链路已经建立</li>
+<li>多数情况下,链路两端的设备是需要经过认证阶段(Authenticate )后才能够进入到网络层协议阶段。PPP链路在缺省情况下是不要求进行认证的。如果要求认证，则在链路建立阶段必须指定认证协议。认证方式是在链路建立阶段双方进行协商的。如果在这个阶段再次收到了Configure-Request报文，则又会返回到链路建立阶段</li>
+<li>在Network阶段，PPP链路进行NCP协商。通过NCP协商来选择和配置一个网络层协议并进行网络层参数协商。只有相应的网络层协议协商成功后，该网络层协议才可以通过这条PPP链路发送报文。如果在这个阶段收到了Configure-Request报文，也会返回到链路建立阶段</li>
+<li>NCP协商成功后，PPP链路将保持通信状态。PPP运行过程中，可以随时中断连接，例如物理链路断开、认证失败、超时定时器时间、管理员通过配置关闭连接等动作都可能导致链路进入Terminate阶段</li>
+<li>在Terminate阶段，如果所有的资源都被释放，通信双方将回到Dead阶段，直到通信双方重新建立PPP连接</li>
+</ol>
+<h3 id="1-10-PPP帧格式"><a href="#1-10-PPP帧格式" class="headerlink" title="1.10 PPP帧格式"></a>1.10 PPP帧格式</h3><p><img src="https://pic.imgdb.cn/item/60f66c6b5132923bf8b09cc0.png" srcset="/img/loading.gif" lazyload></p>
+<p>PPP采用了与HDLC协议类似的帧格式：</p>
+<ul>
+<li>Flag域标识一个物理帧的起始和结束，该字节为二进制序列01111110 ( 0X7E)</li>
+<li>PPP帧的地址域跟HDLC帧的地址域有差异，PPP帧的地址域字节固定为11111111(0XFF )，是一个广播地址</li>
+<li>PPP数据帧的控制域默认为00000011(0X03)，表明为无序号帧。帧校验序列(FCS )是个16位的校验和，用于检查PPP帧的完整性</li>
+<li>协议字段用来说明PPP所封装的协议报文类型，典型的字段值有：0XC021代表LCP报文，0XC023代表PAP报文，0XC223代表CHAP报文</li>
+<li>信息字段包含协议字段中指定协议的数据包。数据字段的默认最大长度(不包括协议字段)称为最大接收单元MRU (Maximum Receive Unit ) ，MRU的缺省值为1500字节</li>
+<li>如果协议字段被设为0XC021，则说明通信双方正通过LCP报文进行PPP链路的协商和建立：</li>
+<li>Code字段，主要是用来标识LCP数据报文的类型。典型的报文类型有︰配置信息报文( Configure Packets： 0x01)，配置成功信息报文(Configure-Ack：0X02)，终止请求报文(Terminate-Request ： 0X05)</li>
+<li>Identifier域为1个字节，用来匹配请求和响应。Length域的值就是该LCP报文的总字节数据</li>
+<li>数据字段则承载各种TLV( Type/Length/Nalue )参数用于协商配置选项，包括最大接收单元，认证协议等等</li>
+</ul>
+<h3 id="1-11-LCP-报文"><a href="#1-11-LCP-报文" class="headerlink" title="1.11 LCP 报文"></a>1.11 LCP 报文</h3><table>
+<thead>
+<tr>
+<th>报文类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Configure-Request</td>
+<td>包含发生在试图与对端建立连接时使用的参数列表</td>
+</tr>
+<tr>
+<td>Configure-Ack</td>
+<td>表示完全接收对端发送的Configure-Request的参数取值</td>
+</tr>
+<tr>
+<td>Configure-Nak</td>
+<td>表示对端发送的Configure-Request中的某些参数取值在本端不被认可</td>
+</tr>
+<tr>
+<td>Configure-Reject</td>
+<td>表示对端发送的Configure-Request中的某些参数本端不能识别</td>
+</tr>
+</tbody></table>
+<p>此表格列出了LCP用于链路层参数协商所使用四种报文类型</p>
+<ol>
+<li>Configure-Request(配置请求)：链路层协商过程中发送的第一个报文，该报文表明点对点双方开始进行链路层参数的协商</li>
+<li>Configure-Ack (配置响应)：收到对端发来的Configure-Request报文，如果参数取值完全接受，则以此报文响应</li>
+<li>Configure-Nak(配置不响应)：收到对端发来的Configure-Request报文，如果参数取值不被本端认可，则发送此报文并且携带本端可接受的配置参数</li>
+<li>Configure-Reject(配置拒绝)：收到对端发来的Configure-Request报文，如果本端不能识别对端发送的Configure-Request中的某些参数，则发送此报文并且携带那些本端不能认别的配置参数</li>
+</ol>
+<h3 id="1-12-LCP协商参数"><a href="#1-12-LCP协商参数" class="headerlink" title="1.12 LCP协商参数"></a>1.12 LCP协商参数</h3><ul>
+<li><p>LCP报文携带的一些常见的配置参数有MRU，认证协议，以及魔术字</p>
+<ol>
+<li><p>在VRP平台上，MRU参数使用接口上配置的最大传输单元(MTU)值来表示</p>
+</li>
+<li><p>常用的PPP认证协议有PAP和CHAP，一条PPP链路的两端可以使用不同的认证协议认证对端，但是被认证方必须支持认证方要求使用的认证协议并正确配置用户名和密码等认证信息</p>
+</li>
+<li><p>LCP使用魔术字来检测链路环路和其它异常情况。魔术字为随机产生的一个数字，随机机制需要保证两端产生相同魔术字的可能性几乎为0</p>
+</li>
+</ol>
+</li>
+<li><p> 收到一个Configure-Request报文之后，其包含的魔术字需要和本地产生的魔术字做比较，如果不同，表示链路无环路，则使用Confugure-Ack报文确认（其它参数也协商成功），表示魔术字协商成功。在后续发送的报文中，如果报文含有魔术字字段，则该字段设置为协商成功的魔术字</p>
+</li>
+</ul>
+<h3 id="1-13-LCP链路参数协商"><a href="#1-13-LCP链路参数协商" class="headerlink" title="1.13 LCP链路参数协商"></a>1.13 LCP链路参数协商</h3><p><img src="https://pic.imgdb.cn/item/60f66e4f5132923bf8b84374.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>如图所示，RTA和RTB使用串行链路相连，运行PPP。当物理层链路变为可用状态之后，RTA和RTB使用LCP协商链路参数</li>
+<li>本例中，RTA首先发送一个Configure-Request报文，此报文中包含RTA上配置的链路层参数。当RTB收到此Configure-Request报文之后，如果RTB能识别并接受此报文中的所有链路层参数，则向RTA回应一个Configure-Ack报文</li>
+<li>RTA在没有收到Configure-Ack报文的情况下，会每隔3秒重传一次Configure-Request报文，如果连续10次发送Configure-Request报文仍然没有收到Configure-Ack报文，则认为对端不可用，停止发送Configure-Request报文</li>
+<li>注∶完成上述过程只是表明RTB认为RTA上的链路参数配置是可接受的。RTB也需要向RTA发送Configure-Request报文，使RTA检测RTB上的链路参数是不是可接受的</li>
+<li>当RTB收到RTA发送的Configure-Request报文之后，如果RTB能识别此报文中携带的所有链路层参数，但是认为部分或全部参数的取值不能接受，即参数的取值协商不成功，则RTB需要向RTA回应一个Configure-Nak报文</li>
+<li>在这个Configure-Nak报文中，只包含不能接受的链路层参数，并且此报文所包含的链路层参数均被修改为RTB上可以接受的取值（或取值范围)</li>
+<li>在收到Configure-Nak报文之后，RTA需要根据此报文中的链路层参数重新选择本地配置的其它参数，并重新发送一个Configure-Request</li>
+<li>当RTB收到RTA发送的Configure-Request报文之后，如果RTB不能识别此报文中携带的部分或全部链路层参数，则RTB需要向RTA回应一个Configure-Reject报文。在此<br>Configure-Reject报文中，只包含不能被识别的链路层参数</li>
+<li>在收到Configure-Reject报文之后，RTA需要向RTB重新发送一个Configure-Request报文，在新的Configure-Request报文中，不再包含不被对端(RTB)识别的参数</li>
+</ul>
+<h3 id="1-14-PPP基本配置"><a href="#1-14-PPP基本配置" class="headerlink" title="1.14 PPP基本配置"></a>1.14 PPP基本配置</h3><p>建立PPP链路之前，必须先在串行接口上配置链路层协议。华为ARG3系列路由器默认在串行接口上使能PPP协议。如果接口运行的不是PPP协议，需要运行<code>link-protocol ppp</code>命令来使能数据链路层的PPP协议</p>
+<h3 id="1-15-PPP认证模式-PAP"><a href="#1-15-PPP认证模式-PAP" class="headerlink" title="1.15 PPP认证模式-PAP"></a>1.15 PPP认证模式-PAP</h3><ul>
+<li>PAP认证的工作原理较为简单。PAP认证协议为两次握手认证协议，密码以明文方式在链路上发送</li>
+<li>LCP协商完成后，认证方要求被认证方使用PAP进行认证</li>
+<li>被认证方将配置的用户名和密码信息使用Authenticate-Request报文以明文方式发送给认证方</li>
+<li>认证方收到被认证方发送的用户名和密码信息之后，根据本地配置的用户名和密码数据库检查用户名和密码信息是否匹配，如果匹配，则返回Authenticate-Ack报文，表示认证成功。否则，返回Authenticate-Nak报文，表示认证失败</li>
+</ul>
+<h3 id="1-16-PPP认证模式-CHAP"><a href="#1-16-PPP认证模式-CHAP" class="headerlink" title="1.16 PPP认证模式-CHAP"></a>1.16 PPP认证模式-CHAP</h3><ul>
+<li>CHAP认证过程需要三次报文的交互。为了匹配请求报文和回应报文，报文中含有Identifier字段，一次认证过程所使用的报文均使用相同的Identifier信息<ol>
+<li>LCP协商完成后，认证方发送一个Challenge报文给被认证方，报文中含有Identifier信息和一个随机产生的Challenge字符串，此Identifier即为后续报文所使用的Identifier</li>
+<li>被认证方收到此Challenge报文之后，进行一次加密运算，运算公式为MD5{ Identifier+密码+Challenge }，意思是将Identifier、密码和Challenge三部分连成一个字符串，然后对此字符串做MD5运算，得到一个16字节长的摘要信息，然后将此摘要信息和端口上配置的CHAP用户名一起封装在Response报文中发回认证方</li>
+<li>认证方接收到被认证方发送的Response报文之后，按照其中的用户名在本地查找相应的密码信息，得到密码信息之后，进行一次加密运算，运算方式和被认证方的加密运算方式相同，然后将加密运算得到的摘要信息和Response报文中封装的摘要信息做比较，相同则认证成功，不相同则认证失败</li>
+</ol>
+</li>
+<li>使用CHAP认证方式时，被认证方的密码是被加密后才进行传输的，这样就极大的提高了安全性</li>
+</ul>
+<h3 id="1-17-IPCP静态地址协商"><a href="#1-17-IPCP静态地址协商" class="headerlink" title="1.17 IPCP静态地址协商"></a>1.17 IPCP静态地址协商</h3><ul>
+<li><p>IPCP使用和LCP相同的协商机制、报文类型，但IPCP并非调用LCP，只是工作过程、报文等和LCP相同</p>
+</li>
+<li><p>IP地址协商包括两种方式：静态配置协商和动态配置协商</p>
+</li>
+<li><p>如图所示</p>
+<p><img src="https://pic.imgdb.cn/item/60f66f3e5132923bf8bc1e01.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>两端路由器配置的IP地址分别为10.1.1.1/30和10.1.1.2/30</p>
+</li>
+<li><p>静态IP地址的协商过程如下：</p>
+<ol>
+<li>每一端都要发送Configure-Request报文，在此报文中包含本地配置的IP地址</li>
+<li>每一端接收到此Configure-Request报文之后，检查其中的IP地址，如果IP地址是一个合法的单播IP地址，而且和本地配置的IP地址不同（没有IP冲突），则认为对端可以使用该地址，回应一个Configure-Ack报文</li>
+</ol>
+</li>
+<li><p>两端动态协商IP地址的过程如下：</p>
+<p><img src="https://pic.imgdb.cn/item/60f66fa45132923bf8bdb467.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>RTA向RTB发送一个Configure-Request报文，此报文中会包含一个IP地址0.0.0.0，表示向对端请求IP地址</li>
+<li>RTB收到上述Configure-Request报文后，认为其中包含的地址（0.0.0.0)不合法，使用Configure-Nak回应一个新的IP地址10.1.1.1 </li>
+<li>RTA收到此Configure-Nak报文之后，更新本地IP地址，并重新发送一个Configure-<br>Request报文，包含新的IP地址10.1.1.1 </li>
+<li>RTB收到Configure-Request报文后，认为其中包含的IP地址为合法地址，回应一个<br>Configure-Ack报文</li>
+</ol>
+</li>
+<li><p>同时，RTB也要向RTA发送Configure-Request报文请求使用地址10.1.1.2，RTA认为此地址合法，回应Configure-Ack报文</p>
+</li>
+</ul>
+<h3 id="1-18-PAP-认证"><a href="#1-18-PAP-认证" class="headerlink" title="1.18 PAP 认证"></a>1.18 PAP 认证</h3><ul>
+<li><code>local-user huawei password cipher huawei123</code>命令用于创建一个本地用户，用户名为“huawei”，密码为“huawei123”，关键字“cipher”表示密码信息在配置文件中被加密</li>
+<li><code>local-user huawei service-type ppp</code>命令用于设置用户“huawei”为PPP用户</li>
+<li><code>ppp authentication-mode pap</code>命令用于在认证方开启PAP认证的功能，即要求对端使用PAP认证</li>
+<li><code>ppp pap local-user huawei password cipher huawei123</code>命令用于在被认证方配置PAP使用的用户名和密码信息</li>
+</ul>
+<h3 id="1-19-配置验证"><a href="#1-19-配置验证" class="headerlink" title="1.19 配置验证"></a>1.19 配置验证</h3><p>命令<code>debugging ppp pap all</code></p>
+<h3 id="1-20-配置CHAP认证模式"><a href="#1-20-配置CHAP认证模式" class="headerlink" title="1.20 配置CHAP认证模式"></a>1.20 配置CHAP认证模式</h3><ul>
+<li><code>local-user huawei password cipher huawei123</code>命令用于创建一个本地用户，用户名为“huawei”，密码为“huawei123”;关键字“cipher”表示密码信息在配置文件中加密保存</li>
+<li><code>local-user huawei service-type ppp</code>命令用于设置用户“huawei”为PPP用户</li>
+<li><code>ppp authentication-mode chap</code>命令用于在认证方开启CHAP认证的功能，即要求对端使用CHAP认证</li>
+<li><code>ppp chap user huawei</code>命令用于在被认证方设置CHAP使用的用户名为“huawei”</li>
+<li><code>ppp chap password cipher huawei123</code>命令用于在被认证方设置CHAP使用的密码为”huawei123”</li>
+<li>验证使用命令<code>debugging ppp chap all</code></li>
+</ul>
+<h2 id="2-PPPoE原理和配置"><a href="#2-PPPoE原理和配置" class="headerlink" title="2. PPPoE原理和配置"></a>2. PPPoE原理和配置</h2><h3 id="2-1-DSL-应用场景"><a href="#2-1-DSL-应用场景" class="headerlink" title="2.1 DSL 应用场景"></a>2.1 DSL 应用场景</h3><ul>
+<li>DSL是一种利用现有电话网络实现数据通信的宽带技术。在使用DSL接入网络时，用户侧会安装调制解调器，然后通过现有的电话线与数字用户线路接入复用器(DSLAM)相连。DSLAM是各种DSL系统的局端设备，属于最后一公里接入设备</li>
+<li>然后，DSLAM通过高速ATM网络或者以太网将用户的数据流量转发给宽带远程接入服务器(BRAS)。BRAS是面向宽带网络应用的接入网关，位于骨干网的边缘层</li>
+</ul>
+<h3 id="2-2-PPPoE在DSL中的应用"><a href="#2-2-PPPoE在DSL中的应用" class="headerlink" title="2.2 PPPoE在DSL中的应用"></a>2.2 PPPoE在DSL中的应用</h3><ul>
+<li>运营商希望通过同一台接入设备来连接远程的多个主机，同时接入设备能够提供访问控制和计费功能。在众多的接入技术中，把多个主机连接到接入设备的最经济的方法就是以太网，而PPP协议可以提供良好的访问控制和计费功能，于是产生了在以太网上传输PPP报文的技术，即PPPoE</li>
+<li>PPPoE利用以太网将大量主机组成网络，通过一个远端接入设备连入因特网，并运用PPP协议对接入的每个主机进行控制，具有适用范围广、安全性高、计费方便的特点</li>
+<li>PPPoE技术解决了用户上网收费等实际应用问题，得到了宽带接入运营商的认可并被广泛应用</li>
+</ul>
+<h3 id="2-3-PPPoE报文"><a href="#2-3-PPPoE报文" class="headerlink" title="2.3 PPPoE报文"></a>2.3 PPPoE报文</h3><p><img src="https://pic.imgdb.cn/item/60f670e75132923bf8c30a89.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>PPPoE报文是使用Ethernet格式进行封装的，Ethernet中各字段解释如下：<ol>
+<li>DMAC：表示目的设备的MAC地址，通常为以太网单播目的地址或者以太网广播地址(0xFFFFFFFF )</li>
+<li>SMAC：表示源设备的以太网MAC地址</li>
+<li>Type：表示协议类型字段，当值为0x8863时表示承载的是PPPoE发现阶段的报文。当值为0x8864时表示承载的是PPPoE会话阶段的报文</li>
+</ol>
+</li>
+<li>PPPoE字段中的各个字段解释如下︰<ol>
+<li>VER∶表示PPPoE版本号，值为0x01</li>
+<li>Type：表示类型，值为0x01</li>
+<li>Code ：表示PPPoE报文类型，不同取值标识不同的PPPoE报文类型</li>
+<li>PPPoE会话ID，与以太网SMAC和DMAC一起定义了一个PPPoE会话</li>
+<li>Length：表示PPPoE报文的Payload长度，不包括以太网头部和PPPoE头部的长度</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-4-PPPoE会话建立过程"><a href="#2-4-PPPoE会话建立过程" class="headerlink" title="2.4 PPPoE会话建立过程"></a>2.4 PPPoE会话建立过程</h3><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>发现阶段</td>
+<td>获取对方以太网地址，以及确定唯一的PPPoE会话</td>
+</tr>
+<tr>
+<td>会话阶段</td>
+<td>包含两部分：PPP协商阶段和PPP报文传输阶段</td>
+</tr>
+<tr>
+<td>会话结束阶段</td>
+<td>会话建立以后的任意时刻，发送报文结束PPPoE会话</td>
+</tr>
+</tbody></table>
+<h3 id="2-5-PPPoE协议报文"><a href="#2-5-PPPoE协议报文" class="headerlink" title="2.5 PPPoE协议报文"></a>2.5 PPPoE协议报文</h3><ol>
+<li>PADI ( PPPoE Active Discovery Initiation )报文∶用户主机发起的PPPoE服务器探测报文，目的MAC地址为广播地址</li>
+<li>PADO (PPPoE Active Discovery Offer )报文：PPPoE服务器收到PADI报文之后的回应报文，目的MAC地址为客户端主机的MAC地址</li>
+<li>PADR ( PPPoE Active Discovery Request )报文︰用户主机收到PPPoE服务器回应的PADO报文后，单播发起的请求报文，目的地址为此用户选定的那个PPPoE服务器的MAC地址</li>
+<li>PADS ( PPPoE Active Discovery Session Configuration)报文：PPPoE服务器分配一个唯一的会话进程ID，并通过PADS报文发送给主机</li>
+<li>PADT ( PPPoE Active Discovery Terminate )报文︰当用户或者服务器需要终止会话时，可以发送这种PADT报文</li>
+</ol>
+<h3 id="2-6-PPPoE发现阶段"><a href="#2-6-PPPoE发现阶段" class="headerlink" title="2.6 PPPoE发现阶段"></a>2.6 PPPoE发现阶段</h3><ul>
+<li>在发现阶段，PPPoE客户端在本地以太网中广播一个PADI报文，此PADI报文中包含了客户端需要的服务信息。在PADI报文中，目的MAC地址是一个广播地址，Code字段为0x09，Session ID字段为0x0000。所有PPPoE服务器收到PADI报文之后，会将报文中所请求的服务与自己能够提供的服务进行比较</li>
+<li>如果服务器可以提供客户端请求的服务，就会回复一个PADO报文。客户端(RTA)可能会收到多个PPPoE服务器发送的PADO报文。在PADO报文中，目的地址是发送PADI报文的客户端MAC地址，Code字段为0x07，Session ID字段为0x0000</li>
+<li>因为PPPoE客户端是以广播的形式发送PADI报文，所以客户端可能会收到多个PADO报文。在接收到的所有PADO报文中，PPPoE客户端选择最先收到的PADO报文对应的PPPoE服务器，并发送一个PADR报文给这个服务器。在PADR报文中，目的地址是选中的服务器的MAC地址，Code字段为0x19 , Session ID字段为0x0000</li>
+<li>PPPoE服务器收到PADR报文后，会生成一个唯一的Session ID来标识和PPPoE客户端的会话，并通过一个PADS报文把Session ID发送给PPPoE客户端。在PADS报文中，目的地址是PPPoE客户端的MAC地址，Code字段为0x65，Session ID字段是PPPoE服务器为本PPPoE会话产生的Session ID。会话建立成功后，PPPoE客户端和服务器进入PPPoE会话阶段</li>
+</ul>
+<h3 id="2-7-PPPoE会话阶段"><a href="#2-7-PPPoE会话阶段" class="headerlink" title="2.7 PPPoE会话阶段"></a>2.7 PPPoE会话阶段</h3><ul>
+<li>PPPoE会话阶段可分为两部分：PPP协商阶段和PPP报文传输阶段<ol>
+<li>PPPoE Session上的PPP协商和普通的PPP协商方式一致，分为LCP、认证、NCP三个阶段。LCP阶段主要完成建立、配置和检测数据链路连接。LCP协商成功后，开始进行认证，认证协议类型由LCP协商结果决定。认证成功后，PPP进入NCP阶段，NCP是一个协议族，用于配置不同的网络层协议，常用的是IP控制协议(IPCP)，它负责配置用户的IP地址和DNS服务器地址等</li>
+<li>PPPoE Session的PPP协商成功后，就可以承载PPP数据报文。在这一阶段传输的数据包中必须包含在发现阶段确定的Session ID并保持不变</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-8-PPPoE会话终结"><a href="#2-8-PPPoE会话终结" class="headerlink" title="2.8 PPPoE会话终结"></a>2.8 PPPoE会话终结</h3><ul>
+<li>当PPPOE客户端希望关闭连接时，可以向PPPOE服务器端发送一个PADT报文。同样，如果PPPOE服务器端希望关闭连接时，也可以向PPPOE客户端发送一个PADT报文，此报文用于关闭连接</li>
+<li>在PADT报文中，目的MAC地址为单播地址，Session ID为希望关闭的连接的Session ID。一旦收到一个PADT报文之后，连接随即关闭</li>
+</ul>
+<h3 id="2-9-PPPoE会话建立过程"><a href="#2-9-PPPoE会话建立过程" class="headerlink" title="2.9 PPPoE会话建立过程"></a>2.9 PPPoE会话建立过程</h3><p><img src="https://pic.imgdb.cn/item/60f672965132923bf8ca346c.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>用户客户端向服务器发送一个PADI报文，开始PPPOE接入</li>
+<li>服务器向客户端发送PADO报文</li>
+<li>客户端根据回应，发起PADR请求给服务器</li>
+<li>服务器产生一个Session ID，通过PADS发给客户端</li>
+<li>客户端和服务器之间进行PPP的LCP协商，建立链路层通信。同时，协商使用CHAP认证方式</li>
+<li>服务器通过Challenge报文发送给认证客户端，提供一个128bit的Challenge</li>
+<li>客户端收到Challenge报文后，并将密码和Challenge做MD5算法运算后，在Response回应报文中把结果发送给服务器</li>
+<li>服务器根据用户发送的信息判断用户是否合法，然后回应认证成功/失败报文，将认证结果返回给客户端</li>
+<li>进行NCP(如IPCP )协商，通过服务器获取到规划的IP地址等参数</li>
+</ol>
+<h3 id="2-10-PPPoE配置"><a href="#2-10-PPPoE配置" class="headerlink" title="2.10 PPPoE配置"></a>2.10 PPPoE配置</h3><ul>
+<li>PPPoE客户端配置包括三个步骤<ol>
+<li>首先需要配置一个拨号接口<ul>
+<li><code>dialer-rule</code>命令用于进入Dialer-rule视图，在该视图下，可以通过拨号规则来配置发起PPPoE会话的条件</li>
+<li><code>interface dialer number</code>命令用来创建并进入Dialer接口</li>
+<li><code>dialer user user-name</code>命令用于配置对端用户名，这个用户名必须与对端服务器上的PPP用户名相同</li>
+<li><code>dialer-group group-number</code>命令用来将接口置于一个拨号访问组</li>
+<li><code>dialer bundle number</code>命令用来指定Dialer接口使用的Dialer bundle。设备通过Dialerbundle将物理接口与拨号接口关联起来</li>
+</ul>
+</li>
+<li>第二个步骤是在接口上将Dialer Bundle和接口绑定︰<ul>
+<li><code>pppoe-client dial-bundle-number number</code>命令来实现Dialer Bundle和物理接口的绑定，用来指定PPPoE会话对应的Dialer Bundle，其中number是与PPPoE会话相对应的Dialer Bundle编号</li>
+<li><code>on-demand</code>表示PPPoE会话工作在按需拨号模式。AR2200支持报文触发方式的按需拨号。目前ARG3系列路由器支持的按需拨号方式为报文触发方式，即当物理线路Up后，设备不会立即发起PPPoE呼叫，只有当有数据需要传送时，设备才会发起PPPoE呼叫，建立PPPoE会话</li>
+</ul>
+</li>
+<li>第三个步骤是配置一条缺省静态路由，该路由允许在路由表中没有相应匹配表项的流量都能通过拨号接口发起PPPoE会话</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-11-配置验证"><a href="#2-11-配置验证" class="headerlink" title="2.11 配置验证"></a>2.11 配置验证</h3><ul>
+<li><code>display interface dialer</code><em>[ number]</em> 命令用于查看拨号接口的配置，便于定位拨号接口的故障</li>
+<li><code>LCP opened</code>, <code>IPCP opened</code>表示链路的状态完全正常</li>
+<li><code>display pppoe-client session summary</code>命令用于查看PPPoE客户端的PPPoE会话状态和统计信息</li>
+<li><strong>ID</strong>表示PPPoE会话ID，Bundle ID和Dialer ID的值与拨号参数配置有关</li>
+<li><strong>Intf</strong>表示客户端侧协商时的物理接口</li>
+<li><strong>State</strong>表示PPPoE会话的状态，包括以下四种∶<ol>
+<li>IDLE表示当前会话状态为空闲</li>
+<li>PADI表示PPPoE会话处于发现阶段，并已经发送PADI报文</li>
+<li>PADR表示PPPoE会话处于发现阶段，并已经发送PADR报文</li>
+<li>UP表示PPPoE会话建立成功</li>
+</ol>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/">广域网技术介绍</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

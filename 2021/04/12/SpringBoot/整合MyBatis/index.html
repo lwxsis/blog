@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>整合MyBatis ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="整合MyBatis">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-12 11:07" pubdate>
+        2021年4月12日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">整合MyBatis</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月12日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>官方文档：<a target="_blank" rel="noopener" href="http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/">http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/</a></p>
+<p>Maven仓库地址：<a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter/2.1.1">https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter/2.1.1</a></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7KJtP0ZFbTV1gOh8TWzQjj5M0AoJvS3kvTvat9dyzbb71tQicKdTQ31PiaH8nicEx6GpaPgmcA2Qyhxg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<h2 id="整合测试"><a href="#整合测试" class="headerlink" title="整合测试"></a>整合测试</h2><p>1、导入 MyBatis 所需要的依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xaml">&lt;dependency&gt;<br>    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;   <br>    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;    <br>    &lt;version&gt;2.1.1&lt;/version&gt;<br>&lt;/dependency&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>2、配置数据库连接信息（不变）</p>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span> <br>	<span class="hljs-attr">datasource:</span>   <br>    <span class="hljs-attr">username:</span> <span class="hljs-string">root</span>  <br>    <span class="hljs-attr">password:</span> <span class="hljs-number">123456</span>    <br>    <span class="hljs-comment">#?serverTimezone=UTC解决时区的报错    </span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql://localhost:3306/springboot?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8</span>  <br>    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">com.mysql.cj.jdbc.Driver</span> <br>    <span class="hljs-attr">type:</span> <span class="hljs-string">com.alibaba.druid.pool.DruidDataSource</span><br>    <span class="hljs-comment">#Spring Boot 默认是不注入这些属性值的，需要自己绑定  </span><br>    <span class="hljs-comment">#druid 数据源专有配置   </span><br>    <span class="hljs-attr">initialSize:</span> <span class="hljs-number">5</span>    <br>    <span class="hljs-attr">minIdle:</span> <span class="hljs-number">5</span>   <br>    <span class="hljs-attr">maxActive:</span> <span class="hljs-number">20</span>  <br>    <span class="hljs-attr">maxWait:</span> <span class="hljs-number">60000</span>  <br>    <span class="hljs-attr">timeBetweenEvictionRunsMillis:</span> <span class="hljs-number">60000</span>  <br>    <span class="hljs-attr">minEvictableIdleTimeMillis:</span> <span class="hljs-number">300000</span>   <br>    <span class="hljs-attr">validationQuery:</span> <span class="hljs-string">SELECT</span> <span class="hljs-number">1</span> <span class="hljs-string">FROM</span> <span class="hljs-string">DUAL</span>  <br>    <span class="hljs-attr">testWhileIdle:</span> <span class="hljs-literal">true</span>   <br>    <span class="hljs-attr">testOnBorrow:</span> <span class="hljs-literal">false</span>   <br>    <span class="hljs-attr">testOnReturn:</span> <span class="hljs-literal">false</span>  <br>    <span class="hljs-attr">poolPreparedStatements:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-comment">#配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入  </span><br>    <span class="hljs-comment">#如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority  </span><br>    <span class="hljs-comment">#则导入 log4j 依赖即可，Maven 地址：https://mvnrepository.com/artifact/log4j/log4j    </span><br>    <span class="hljs-attr">filters:</span> <span class="hljs-string">stat,wall,log4j</span>   <br>    <span class="hljs-attr">maxPoolPreparedStatementPerConnectionSize:</span> <span class="hljs-number">20</span>  <br>    <span class="hljs-attr">useGlobalDataSourceStat:</span> <span class="hljs-literal">true</span>  <br>    <span class="hljs-attr">connectionProperties:</span> <span class="hljs-string">druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500</span><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>3、测试数据库是否连接成功！</strong></p>
+<p><strong>4、创建实体类，导入 Lombok！</strong></p>
+<p>Department.java</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.kuang.pojo;<br><span class="hljs-keyword">import</span> lombok.AllArgsConstructor;<br><span class="hljs-keyword">import</span> lombok.Data;<br><span class="hljs-keyword">import</span> lombok.NoArgsConstructor;<br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@NoArgsConstructor</span><br><span class="hljs-meta">@AllArgsConstructorpublic</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Department</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> Integer id; <br>    <span class="hljs-keyword">private</span> String departmentName;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>5、创建mapper目录以及对应的 Mapper 接口</strong></p>
+<p>DepartmentMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//@Mapper : 表示本类是一个 MyBatis 的 Mapper</span><br><span class="hljs-meta">@Mapper</span><br><span class="hljs-meta">@Repositorypublic</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">DepartmentMapper</span> </span>&#123;<br>    <span class="hljs-comment">// 获取所有部门信息   </span><br>    <span class="hljs-function">List&lt;Department&gt; <span class="hljs-title">getDepartments</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-comment">// 通过id获得部门    </span><br>    <span class="hljs-function">Department <span class="hljs-title">getDepartment</span><span class="hljs-params">(Integer id)</span></span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>6、对应的Mapper映射文件</strong></p>
+<p>DepartmentMapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">mapper</span>        <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span>        <span class="hljs-meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.kuang.mapper.DepartmentMapper&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getDepartments&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;Department&quot;</span>&gt;</span>       <br>        select * from department;  <br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getDepartment&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;Department&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;int&quot;</span>&gt;</span> <br>        select * from department where id = #&#123;id&#125;;  <br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>7、maven配置资源过滤问题</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span>   <br>    <span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span>   <br>        <span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>src/main/java<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span>     <br>        <span class="hljs-tag">&lt;<span class="hljs-name">includes</span>&gt;</span>     <br>            <span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>**/*.xml<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span>    <br>        <span class="hljs-tag">&lt;/<span class="hljs-name">includes</span>&gt;</span>    <br>        <span class="hljs-tag">&lt;<span class="hljs-name">filtering</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">filtering</span>&gt;</span>  <br>    <span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>8、编写部门的 DepartmentController 进行测试！</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@RestControllerpublic</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DepartmentController</span> </span>&#123;     <br>    <span class="hljs-meta">@Autowired</span>  <br>    DepartmentMapper departmentMapper;     <br>    <span class="hljs-comment">// 查询全部部门    </span><br>    <span class="hljs-meta">@GetMapping(&quot;/getDepartments&quot;)</span>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Department&gt; <span class="hljs-title">getDepartments</span><span class="hljs-params">()</span></span>&#123;     <br>        <span class="hljs-keyword">return</span> departmentMapper.getDepartments(); <br>    &#125;<br>    <span class="hljs-comment">// 查询全部部门 </span><br>    <span class="hljs-meta">@GetMapping(&quot;/getDepartment/&#123;id&#125;&quot;)</span>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Department <span class="hljs-title">getDepartment</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>&#123;   <br>        <span class="hljs-keyword">return</span> departmentMapper.getDepartment(id);   <br>    &#125; <br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>启动项目访问进行测试！</strong></p>
+<h2 id="我们增加一个员工类再测试下，为之后做准备"><a href="#我们增加一个员工类再测试下，为之后做准备" class="headerlink" title="我们增加一个员工类再测试下，为之后做准备"></a>我们增加一个员工类再测试下，为之后做准备</h2><p>1、新建一个pojo类 Employee ；</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@AllArgsConstructor</span><br><span class="hljs-meta">@NoArgsConstructorpublic</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> Integer id;   <br>    <span class="hljs-keyword">private</span> String lastName;  <br>    <span class="hljs-keyword">private</span> String email;   <br>    <span class="hljs-comment">//1 male, 0 female   </span><br>    <span class="hljs-keyword">private</span> Integer gender;  <br>    <span class="hljs-keyword">private</span> Integer department;    <br>    <span class="hljs-keyword">private</span> Date birth;<br>    <span class="hljs-keyword">private</span> Department eDepartment; <span class="hljs-comment">// 冗余设计</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>2、新建一个 EmployeeMapper 接口</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//@Mapper : 表示本类是一个 MyBatis 的 Mapper</span><br><span class="hljs-meta">@Mapper</span><br><span class="hljs-meta">@Repositorypublic</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">EmployeeMapper</span> </span>&#123;<br>    <span class="hljs-comment">// 获取所有员工信息  </span><br>    <span class="hljs-function">List&lt;Employee&gt; <span class="hljs-title">getEmployees</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-comment">// 新增一个员工   </span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">save</span><span class="hljs-params">(Employee employee)</span></span>;<br>    <span class="hljs-comment">// 通过id获得员工信息 </span><br>    <span class="hljs-function">Employee <span class="hljs-title">get</span><span class="hljs-params">(Integer id)</span></span>;<br>    <span class="hljs-comment">// 通过id删除员工 </span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">delete</span><span class="hljs-params">(Integer id)</span></span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>3、编写 EmployeeMapper.xml 配置文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">mapper</span>        <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span>        <span class="hljs-meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.kuang.mapper.EmployeeMapper&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">resultMap</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;EmployeeMap&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;Employee&quot;</span>&gt;</span>       <br>        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;eid&quot;</span>/&gt;</span>     <br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;lastName&quot;</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;last_name&quot;</span>/&gt;</span>   <br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;email&quot;</span>/&gt;</span>     <br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;gender&quot;</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;gender&quot;</span>/&gt;</span>    <br>        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;birth&quot;</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;birth&quot;</span>/&gt;</span>       <br>        <span class="hljs-tag">&lt;<span class="hljs-name">association</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;eDepartment&quot;</span>  <span class="hljs-attr">javaType</span>=<span class="hljs-string">&quot;Department&quot;</span>&gt;</span>     <br>            <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;did&quot;</span>/&gt;</span>        <br>            <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;departmentName&quot;</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;dname&quot;</span>/&gt;</span>      <br>        <span class="hljs-tag">&lt;/<span class="hljs-name">association</span>&gt;</span>   <br>    <span class="hljs-tag">&lt;/<span class="hljs-name">resultMap</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getEmployees&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;EmployeeMap&quot;</span>&gt;</span>   <br>        select e.id as eid,last_name,email,gender,birth,d.id as did,d.department_name as dname        <br>        from department d,employee e       <br>        where d.id = e.department  <br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;save&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;Employee&quot;</span>&gt;</span>      <br>        insert into employee (last_name,email,gender,department,birth)   <br>        values (#&#123;lastName&#125;,#&#123;email&#125;,#&#123;gender&#125;,#&#123;department&#125;,#&#123;birth&#125;);  <br>    <span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;get&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;Employee&quot;</span>&gt;</span>      <br>        select * from employee where id = #&#123;id&#125;   <br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;delete&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;int&quot;</span>&gt;</span>    <br>        delete from employee where id = #&#123;id&#125;   <br>    <span class="hljs-tag">&lt;/<span class="hljs-name">delete</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>4、编写EmployeeController类进行测试</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@RestControllerpublic</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmployeeController</span> </span>&#123;<br>    <span class="hljs-meta">@Autowired</span>  <br>    EmployeeMapper employeeMapper;<br>    <span class="hljs-comment">// 获取所有员工信息 </span><br>    <span class="hljs-meta">@GetMapping(&quot;/getEmployees&quot;)</span>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Employee&gt; <span class="hljs-title">getEmployees</span><span class="hljs-params">()</span></span>&#123;  <br>        <span class="hljs-keyword">return</span> employeeMapper.getEmployees();  <br>    &#125;<br>    <span class="hljs-meta">@GetMapping(&quot;/save&quot;)</span>   <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">save</span><span class="hljs-params">()</span></span>&#123;       <br>        Employee employee = <span class="hljs-keyword">new</span> Employee();    <br>        employee.setLastName(<span class="hljs-string">&quot;kuangshen&quot;</span>);      <br>        employee.setEmail(<span class="hljs-string">&quot;qinjiang@qq.com&quot;</span>);    <br>        employee.setGender(<span class="hljs-number">1</span>);    <br>        employee.setDepartment(<span class="hljs-number">101</span>);    <br>        employee.setBirth(<span class="hljs-keyword">new</span> Date());       <br>        <span class="hljs-keyword">return</span> employeeMapper.save(employee);  <br>    &#125;<br>    <span class="hljs-comment">// 通过id获得员工信息  </span><br>    <span class="hljs-meta">@GetMapping(&quot;/get/&#123;id&#125;&quot;)</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Employee <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>&#123;     <br>        <span class="hljs-keyword">return</span> employeeMapper.get(id);   <br>    &#125;<br>    <span class="hljs-comment">// 通过id删除员工  </span><br>    <span class="hljs-meta">@GetMapping(&quot;/delete/&#123;id&#125;&quot;)</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">delete</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>&#123;    <br>        <span class="hljs-keyword">return</span> employeeMapper.delete(id); <br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>测试结果完成，搞定收工！</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Spring-Boot/">Spring Boot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Springboot/">Springboot</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MyBatis/">MyBatis</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

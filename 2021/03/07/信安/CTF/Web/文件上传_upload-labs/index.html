@@ -1,0 +1,477 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>文件上传靶场——Upload-labs ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="文件上传靶场——Upload-labs">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-07 16:35" pubdate>
+        2021年3月7日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">文件上传靶场——Upload-labs</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月16日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="upload-labs靶场记录"><a href="#upload-labs靶场记录" class="headerlink" title="upload-labs靶场记录"></a>upload-labs靶场记录</h1><h1 id="php上传部分"><a href="#php上传部分" class="headerlink" title="php上传部分"></a>php上传部分</h1><h2 id="Pass-01"><a href="#Pass-01" class="headerlink" title="Pass-01"></a>Pass-01</h2><p>根据提示为前端js进行检查<br>1.直接利用F12进行检查将检查部分 checkFile()删除后直接上传php文件即可<br>2.先将文件后缀改为白名单中的文件类型，之后抓包进行修改为php。直接将图中部分改为php上传即可。<br><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211016002516.jpg" srcset="/img/loading.gif" lazyload alt="演示信息"></p>
+<h2 id="Pass-02"><a href="#Pass-02" class="headerlink" title="Pass-02"></a>Pass-02</h2><p>根据源码提示</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"> <span class="hljs-keyword">if</span> ((<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;image/jpeg&#x27;</span>)<br>|| (<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;image/png&#x27;</span>) <br>|| (<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;type&#x27;</span>] == <span class="hljs-string">&#x27;image/gif&#x27;</span>)) &#123;<br></code></pre></div></td></tr></table></figure>
+<p>是根据content-type进行过滤，在上传过程中将该部分改为image/jpeg即可<img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211016002555.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Pass-03"><a href="#Pass-03" class="headerlink" title="Pass-03"></a>Pass-03</h2><p>根据源码提示过滤了常见的文件类型</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$deny_ext</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;.asp&#x27;</span>,<span class="hljs-string">&#x27;.aspx&#x27;</span>,<span class="hljs-string">&#x27;.php&#x27;</span>,<span class="hljs-string">&#x27;.jsp&#x27;</span>);<br><span class="hljs-keyword">if</span>(!in_array(<span class="hljs-variable">$file_ext</span>, <span class="hljs-variable">$deny_ext</span>))<br></code></pre></div></td></tr></table></figure>
+<p>将文件类型改为其他常见的php后缀 .phtml .phps .php3 .php5 .pht等</p>
+<h2 id="Pass-04"><a href="#Pass-04" class="headerlink" title="Pass-04"></a>Pass-04</h2><p>根据源码提示过滤了大部分的的文件类型</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$deny_ext</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;.php&quot;</span>,<span class="hljs-string">&quot;.php5&quot;</span>,<span class="hljs-string">&quot;.php4&quot;</span>,<span class="hljs-string">&quot;.php3&quot;</span>,<span class="hljs-string">&quot;.php2&quot;</span>,<span class="hljs-string">&quot;.php1&quot;</span>,<span class="hljs-string">&quot;.html&quot;</span>,<span class="hljs-string">&quot;.htm&quot;</span>,<span class="hljs-string">&quot;.phtml&quot;</span>,<span class="hljs-string">&quot;.pht&quot;</span>,<span class="hljs-string">&quot;.pHp&quot;</span>,<span class="hljs-string">&quot;.pHp5&quot;</span>,<span class="hljs-string">&quot;.pHp4&quot;</span>,<span class="hljs-string">&quot;.pHp3&quot;</span>,<span class="hljs-string">&quot;.pHp2&quot;</span>,<span class="hljs-string">&quot;.pHp1&quot;</span>,<span class="hljs-string">&quot;.Html&quot;</span>,<span class="hljs-string">&quot;.Htm&quot;</span>,<span class="hljs-string">&quot;.pHtml&quot;</span>,<span class="hljs-string">&quot;.jsp&quot;</span>,<span class="hljs-string">&quot;.jspa&quot;</span>,<span class="hljs-string">&quot;.jspx&quot;</span>,<span class="hljs-string">&quot;.jsw&quot;</span>,<span class="hljs-string">&quot;.jsv&quot;</span>,<span class="hljs-string">&quot;.jspf&quot;</span>,<span class="hljs-string">&quot;.jtml&quot;</span>,<span class="hljs-string">&quot;.jSp&quot;</span>,<span class="hljs-string">&quot;.jSpx&quot;</span>,<span class="hljs-string">&quot;.jSpa&quot;</span>,<span class="hljs-string">&quot;.jSw&quot;</span>,<span class="hljs-string">&quot;.jSv&quot;</span>,<span class="hljs-string">&quot;.jSpf&quot;</span>,<span class="hljs-string">&quot;.jHtml&quot;</span>,<span class="hljs-string">&quot;.asp&quot;</span>,<span class="hljs-string">&quot;.aspx&quot;</span>,<span class="hljs-string">&quot;.asa&quot;</span>,<span class="hljs-string">&quot;.asax&quot;</span>,<span class="hljs-string">&quot;.ascx&quot;</span>,<span class="hljs-string">&quot;.ashx&quot;</span>,<span class="hljs-string">&quot;.asmx&quot;</span>,<span class="hljs-string">&quot;.cer&quot;</span>,<span class="hljs-string">&quot;.aSp&quot;</span>,<span class="hljs-string">&quot;.aSpx&quot;</span>,<span class="hljs-string">&quot;.aSa&quot;</span>,<span class="hljs-string">&quot;.aSax&quot;</span>,<span class="hljs-string">&quot;.aScx&quot;</span>,<span class="hljs-string">&quot;.aShx&quot;</span>,<span class="hljs-string">&quot;.aSmx&quot;</span>,<span class="hljs-string">&quot;.cEr&quot;</span>,<span class="hljs-string">&quot;.sWf&quot;</span>,<span class="hljs-string">&quot;.swf&quot;</span>,<span class="hljs-string">&quot;.ini&quot;</span>);<br></code></pre></div></td></tr></table></figure>
+<p>但是没有过滤 .htaccess，将.htaccess文件内容修改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">AddType application/x-httpd-php .abc<br></code></pre></div></td></tr></table></figure>
+<p>上传后服务器可以将后缀为abc的解析为php文件，结果如图：<img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211016002609.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Pass-05"><a href="#Pass-05" class="headerlink" title="Pass-05"></a>Pass-05</h2><p>根据源码提示过滤了大部分的的文件类型，包括.htaccess<br>但是.ini没有在黑名单中了，参照第四关方法先设置后上传ini文件及abc文件即可</p>
+<h2 id="Pass-06"><a href="#Pass-06" class="headerlink" title="Pass-06"></a>Pass-06</h2><p>根据源码提示，该关没有了统一小写字母的代码，将文件名后缀进行大小写的组合来进行绕过。</p>
+<h2 id="Pass-07"><a href="#Pass-07" class="headerlink" title="Pass-07"></a>Pass-07</h2><p>根据源码提示，该关没有了去除空格的检测，直接抓包后在文件后缀最后加上空格即可绕过。<br>相关知识：Windows系统下，对于文件名中空格会被作为空处理，程序中的检测代码却不能自动删除空格。从而绕过黑名单。即必须在抓包情况下增加空格。</p>
+<h2 id="Pass-08"><a href="#Pass-08" class="headerlink" title="Pass-08"></a>Pass-08</h2><p>根据源码提示，该关没有了去除末尾小数点的代码，直接抓包后在文件后缀最后加上 . 即可绕过。<br>相关知识：Windows系统下，文件后缀名最后一个点会被自动去除。</p>
+<h2 id="Pass-09"><a href="#Pass-09" class="headerlink" title="Pass-09"></a>Pass-09</h2><p>根据源码提示，该关没有了去除末尾::$DATA的代码，直接抓包后在文件后缀最后加上::$DATA即可绕过。<br>相关知识：php在windows下如果文件名+”::$DATA”会把::$DATA之后的数据当成文件流处理,不会检测后缀名.且保持”::$DATA”之前的文件名不变</p>
+<h2 id="Pass-10"><a href="#Pass-10" class="headerlink" title="Pass-10"></a>Pass-10</h2><p>根据源码提示，前面的方法都不可行。根据显示的代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$file_name</span> = deldot(<span class="hljs-variable">$file_name</span>);<span class="hljs-comment">//删除文件名末尾的点</span><br> <span class="hljs-variable">$file_ext</span> = strrchr(<span class="hljs-variable">$file_name</span>, <span class="hljs-string">&#x27;.&#x27;</span>);<br> <span class="hljs-variable">$file_ext</span> = strtolower(<span class="hljs-variable">$file_ext</span>); <span class="hljs-comment">//转换为小写</span><br> <span class="hljs-variable">$file_ext</span> = str_ireplace(<span class="hljs-string">&#x27;::$DATA&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-variable">$file_ext</span>);<span class="hljs-comment">//去除字符串::$DATA</span><br><span class="hljs-variable">$file_ext</span> = trim(<span class="hljs-variable">$file_ext</span>); <span class="hljs-comment">//首尾去空</span><br></code></pre></div></td></tr></table></figure>
+<p>在后缀加上 . . 可以直接进行绕过，该方法基本适用于前面的关卡。</p>
+<h2 id="Pass-11"><a href="#Pass-11" class="headerlink" title="Pass-11"></a>Pass-11</h2><p>根据根据源码提示</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$deny_ext</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;php&quot;</span>,<span class="hljs-string">&quot;php5&quot;</span>,<span class="hljs-string">&quot;php4&quot;</span>,<span class="hljs-string">&quot;php3&quot;</span>,<span class="hljs-string">&quot;php2&quot;</span>,<span class="hljs-string">&quot;html&quot;</span>,<span class="hljs-string">&quot;htm&quot;</span>,<span class="hljs-string">&quot;phtml&quot;</span>,<span class="hljs-string">&quot;pht&quot;</span>,<span class="hljs-string">&quot;jsp&quot;</span>,<span class="hljs-string">&quot;jspa&quot;</span>,<span class="hljs-string">&quot;jspx&quot;</span>,<span class="hljs-string">&quot;jsw&quot;</span>,<span class="hljs-string">&quot;jsv&quot;</span>,<span class="hljs-string">&quot;jspf&quot;</span>,<span class="hljs-string">&quot;jtml&quot;</span>,<span class="hljs-string">&quot;asp&quot;</span>,<span class="hljs-string">&quot;aspx&quot;</span>,<span class="hljs-string">&quot;asa&quot;</span>,<span class="hljs-string">&quot;asax&quot;</span>,<span class="hljs-string">&quot;ascx&quot;</span>,<span class="hljs-string">&quot;ashx&quot;</span>,<span class="hljs-string">&quot;asmx&quot;</span>,<span class="hljs-string">&quot;cer&quot;</span>,<span class="hljs-string">&quot;swf&quot;</span>,<span class="hljs-string">&quot;htaccess&quot;</span>,<span class="hljs-string">&quot;ini&quot;</span>);<br><span class="hljs-variable">$file_name</span> = str_ireplace(<span class="hljs-variable">$deny_ext</span>,<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-variable">$file_name</span>);<br></code></pre></div></td></tr></table></figure>
+<p>是将黑名单中的后缀替换为空，将后缀名改为pphphp可以绕过</p>
+<h2 id="Pass-12"><a href="#Pass-12" class="headerlink" title="Pass-12"></a>Pass-12</h2><p>前提要求：PHP %00截断（php版本 &lt; 5.3.4且magic_quotes_gpc=Off）<br>根据代码提示：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$img_path</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;save_path&#x27;</span>].<span class="hljs-string">&quot;/&quot;</span>.rand(<span class="hljs-number">10</span>, <span class="hljs-number">99</span>).date(<span class="hljs-string">&quot;YmdHis&quot;</span>).<span class="hljs-string">&quot;.&quot;</span>.<span class="hljs-variable">$file_ext</span>;<br></code></pre></div></td></tr></table></figure>
+<p>可以利用$_GET[‘save_path’]进行存储路径的设置<br>进行抓包，将路径设置为：../upload/tmp.php%00<br><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211016002629.jpg" srcset="/img/loading.gif" lazyload><br>注意此时上传后，直接显示的图片路径需要删除后面部分才可以进行访问。</p>
+<p>相关知识：在url中%00表示ascll码中的0 ，而ascii中0作为特殊字符保留，表示字符串结束，所以当url中出现%00时就会认为读取已结束</p>
+<h2 id="Pass-13"><a href="#Pass-13" class="headerlink" title="Pass-13"></a>Pass-13</h2><p>根据代码提示：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$img_path</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;save_path&#x27;</span>].<span class="hljs-string">&quot;/&quot;</span>.rand(<span class="hljs-number">10</span>, <span class="hljs-number">99</span>).date(<span class="hljs-string">&quot;YmdHis&quot;</span>).<span class="hljs-string">&quot;.&quot;</span>.<span class="hljs-variable">$file_ext</span>;<br></code></pre></div></td></tr></table></figure>
+<p>可以利用$_POST[‘save_path’]进行存储路径的设置<br>进行抓包，将路径设置为：../upload/tmp.php%00 </p>
+<p>由于post不会对%00进行自动解码，因此需要手动修改二进制</p>
+<p>先在抓包文件添加/tmp.php之后在二进制中修改较为轻松。</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211016002647.jpg" srcset="/img/loading.gif" lazyload><br>之后在二进制中修改将0d改为00</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211016002659.jpg" srcset="/img/loading.gif" lazyload></p>
+<h1 id="图片木马上传"><a href="#图片木马上传" class="headerlink" title="图片木马上传"></a>图片木马上传</h1><h2 id="Pass-14"><a href="#Pass-14" class="headerlink" title="Pass-14"></a>Pass-14</h2><p>根据代码提示：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$bin</span> = fread(<span class="hljs-variable">$file</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">//只读2字节</span><br><span class="hljs-variable">$strInfo</span> = @unpack(<span class="hljs-string">&quot;C2chars&quot;</span>, <span class="hljs-variable">$bin</span>);    <br><span class="hljs-variable">$typeCode</span> = intval(<span class="hljs-variable">$strInfo</span>[<span class="hljs-string">&#x27;chars1&#x27;</span>].<span class="hljs-variable">$strInfo</span>[<span class="hljs-string">&#x27;chars2&#x27;</span>]);      <br></code></pre></div></td></tr></table></figure>
+<p>只读文件的前面两个字节，利用winhex在文件前面增加两个字节。</p>
+<p>jpg为：FF D8<br>png为：89 50<br>gif为：47 49</p>
+<p>上传成功后利用upload-labs本身设置的文件包含漏洞进行测试。</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-comment">//include.php</span><br>header(<span class="hljs-string">&quot;Content-Type:text/html;charset=utf-8&quot;</span>);<br><span class="hljs-variable">$file</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;file&#x27;</span>];<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$file</span>))&#123;<br>    <span class="hljs-keyword">include</span> <span class="hljs-variable">$file</span>;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    show_source(<span class="hljs-keyword">__file__</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<p>使用方法：include.php?file=upload/***(上传的图片木马路径)</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211016002717.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Pass-15"><a href="#Pass-15" class="headerlink" title="Pass-15"></a>Pass-15</h2><p>根据源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$info</span> = getimagesize(<span class="hljs-variable">$filename</span>);<br><span class="hljs-variable">$ext</span> = image_type_to_extension(<span class="hljs-variable">$info</span>[<span class="hljs-number">2</span>]);<br></code></pre></div></td></tr></table></figure>
+<p>相关知识：</p>
+<p>getimagesize() 函数用于获取图像大小及相关信息，成功返回一个数组，失败则返回 FALSE 并产生一条 E_WARNING 级的错误信息。<br>image_type_to_extension — 根据指定的图像类型返回对应的后缀名。<br>利用winhex在原本的图片文件下增加php代码，再利用文件包含进行测试。</p>
+<p><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211016002731.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Pass-16"><a href="#Pass-16" class="headerlink" title="Pass-16"></a>Pass-16</h2><p>前提条件：PHP要开启exif模块<br>根据代码，和15关相似也是在图片文件后面进行添加，之后利用文件包含漏洞进行测试。</p>
+<p>相关知识：exif_imagetype()函数是PHP中的内置函数，用于确定图像的类型。</p>
+<h2 id="Pass-17"><a href="#Pass-17" class="headerlink" title="Pass-17"></a>Pass-17</h2><p>根据代码提示：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-comment">//jpeg</span><br><span class="hljs-variable">$im</span> = imagecreatefromjpeg(<span class="hljs-variable">$target_path</span>);<br>imagejpeg(<span class="hljs-variable">$im</span>,<span class="hljs-variable">$img_path</span>);<br><span class="hljs-comment">//png及gif类似代码</span><br></code></pre></div></td></tr></table></figure>
+<p>先尝试随意上传一张图片，再将上传后的图片下载下来，将原来的图片和上传后的图片进行对比，找到没有改变的地方进行插入php语句。</p>
+<p>相关知识：</p>
+<p>imagecreatefromjpeg — 由文件或 URL 创建一个新图象。<br>imagejpeg() 从 image 图像以 filename 为文件名创建一个 JPEG 图像</p>
+<h2 id="Pass-18"><a href="#Pass-18" class="headerlink" title="Pass-18"></a>Pass-18</h2><p>根据网上的提示，该关卡考察条件竞争，再根据源代码可以了解到，文件会先上传服务器，再进行类型判断若在白名单则重命名，否则就进行删除。</p>
+<p>此时利用brupsuite的intrude功能，设置上传文件和访问文件的两个攻击不断重复，直到可以访问出现的新文件。</p>
+<p>上传文件的代码</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-comment">//访问后会新生成一个php文件</span><br>fputs(fopen(<span class="hljs-string">&quot;tmp.php&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>),<span class="hljs-string">&quot;&lt;?php phpinfo();?&gt;&quot;</span>);<br></code></pre></div></td></tr></table></figure>
+<h2 id="Pass-19"><a href="#Pass-19" class="headerlink" title="Pass-19"></a>Pass-19</h2><p>根据源代码，可以知晓对于上传的文件先进行判断再进行上传，所以还是利用前面关卡的漏洞直接再图片文件后面增加php代码即可。</p>
+<h2 id="Pass-20"><a href="#Pass-20" class="headerlink" title="Pass-20"></a>Pass-20</h2><p>根据代码，该关卡我们可以自己定义文件名，并且没有详细的检测代码。<br>可以使用后缀大小写绕过，后缀加.，和抓包后加空格等等前面的方式进行上传。</p>
+<h2 id="Pass-21"><a href="#Pass-21" class="headerlink" title="Pass-21"></a>Pass-21</h2><p>根据代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-comment">//首先进行content-type检测</span><br><span class="hljs-variable">$allow_type</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;image/jpeg&#x27;</span>,<span class="hljs-string">&#x27;image/png&#x27;</span>,<span class="hljs-string">&#x27;image/gif&#x27;</span>);<br> <span class="hljs-keyword">if</span>(!in_array(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;type&#x27;</span>],<span class="hljs-variable">$allow_type</span>))&#123;<br>     <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;禁止上传该类型文件!&quot;</span>;<br> &#125;<br> <span class="hljs-comment">//再对post上传的save_name进行判断</span><br> <span class="hljs-variable">$file</span> = <span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;save_name&#x27;</span>]) ? <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;upload_file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>] : <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;save_name&#x27;</span>];<br> <span class="hljs-keyword">if</span> (!is_array(<span class="hljs-variable">$file</span>)) &#123;<br>     <span class="hljs-variable">$file</span> = explode(<span class="hljs-string">&#x27;.&#x27;</span>, strtolower(<span class="hljs-variable">$file</span>));<br> &#125;<br><br> <span class="hljs-variable">$ext</span> = end(<span class="hljs-variable">$file</span>);<br> <span class="hljs-variable">$allow_suffix</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;jpg&#x27;</span>,<span class="hljs-string">&#x27;png&#x27;</span>,<span class="hljs-string">&#x27;gif&#x27;</span>);<br> <span class="hljs-keyword">if</span> (!in_array(<span class="hljs-variable">$ext</span>, <span class="hljs-variable">$allow_suffix</span>)) &#123;<br>     <span class="hljs-variable">$msg</span> = <span class="hljs-string">&quot;禁止上传该后缀文件!&quot;</span>;<br>&#125;<br> <span class="hljs-comment">//最后路径命名代码</span><br> <span class="hljs-variable">$file_name</span> = reset(<span class="hljs-variable">$file</span>) . <span class="hljs-string">&#x27;.&#x27;</span> . <span class="hljs-variable">$file</span>[count(<span class="hljs-variable">$file</span>) - <span class="hljs-number">1</span>];<br></code></pre></div></td></tr></table></figure>
+<p>首先对于conten-type的绕过直接在抓包中修改即可。<br>根据代码，将save_name上传时修改为数组较为方便。<br>相关知识：<br>reset() 输出数组中的当前元素和下一个元素的值，然后把数组的内部指针重置到数组中的第一个元素：</p>
+<p>最后根据命名代码，更改save_name数组如下<br>save_name[0]:tmp.php<br>save_name[2]:jpg</p>
+<p>最后拼接为<br>tmp.php.(由于$file[count(file)-1]为sava_name[1]为空)<br><img src="https://gitee.com/bsmslwx/BlogImg/raw/master/blog/20211016002748.jpg" srcset="/img/loading.gif" lazyload></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%B6%E5%9C%BA/">靶场</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

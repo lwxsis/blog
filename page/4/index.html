@@ -1,0 +1,917 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg2.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="热爱生活的一切！">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/23/eNSP/%E6%B5%8B%E8%AF%95%E6%80%BB%E7%BB%93/" target="_self">
+          测试总结
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/23/eNSP/%E6%B5%8B%E8%AF%95%E6%80%BB%E7%BB%93/" target="_self">
+          
+          
+            
+          
+          考核总结实验拓扑图：
+
+1. 对于拓扑图的理解首先看到拓扑图的时候的感受不深，只是认为简单的在财务部和技术部进行dhcp配置
+在网关路由器进行nat转换
+和在最后需要进行限制的地方进行acl过滤
+2. 实验中的具体操作在一天的实验中
+
+首先在汇聚/接入交换机设置了接口的dhcp，并限制了最后的200到254的分配
+在汇聚/接入交换机设置acl过滤，不允许两个部分互相通讯
+设置两台交换机之间的双链路
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-23 17:25" pubdate>
+              2021-07-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/eNSP/">eNSP</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/eNSP/">eNSP</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/21/Git/Gitee%E5%BB%BA%E7%AB%8B%E5%9B%BE%E5%BA%93/" target="_self">
+          Gitee建立图库
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/21/Git/Gitee%E5%BB%BA%E7%AB%8B%E5%9B%BE%E5%BA%93/" target="_self">
+          
+          
+            
+          
+          Gitee建立图库1. 准备工作
+创建一个在gitee上的库并获取对应的Token
+下载PicGo并安装 下载地址
+
+2. PicGo在PicGo中下载gitee对应的插件，直接点击下载即可
+
+之后进入对应插件进行设置，按照下载的Gitee插件介绍进行设置
+
+最后按照PicGo进行相关设置进行个人的设置，比如将文件名重命名！
+总结
+创建库的时候需要建立对应的Readme，不然无法上传成功
+这个图库
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-21 21:49" pubdate>
+              2021-07-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Git/">Git</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Gitee/">Gitee</a>
+            
+              <a href="/tags/%E5%9B%BE%E5%BA%93/">图库</a>
+            
+              <a href="/tags/PicGo/">PicGo</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/21/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/MPLS,SR%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" target="_self">
+          MPLS,SR基本原理
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/21/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/MPLS,SR%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" target="_self">
+          
+          
+            
+          
+          MPLS/SR基本原理1.MPLS基本原理1.1 MPLS 概述1.1.1 转发模式
+传统IP转发
+
+
+ATM信元转发
+
+
+MPLS标签转发
+
+传统的IP技术简单，且部署成本低，但由于硬件技术存在限制，基于最长匹配算法的IP技术必须使用软件查找路由，转发性能低下。为了适应网络的发展，ATM(AsynchronousTransfer Mode）技术应运而生。ATM采用定长标签(即信元)，并且只需要维
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-21 10:52" pubdate>
+              2021-07-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+              <a href="/tags/MPLS-SR%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">MPLS/SR基本原理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/21/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/IPv6%E4%BB%8B%E7%BB%8D/IPv6%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D,%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80,DHCPv6%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          IPv6基础介绍,路由基础,DHCPv6原理与配置
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/21/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/IPv6%E4%BB%8B%E7%BB%8D/IPv6%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D,%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80,DHCPv6%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          
+          
+            
+          
+          IPv6基础介绍、路由基础,DHCPv6原理与配置1. IPv6基础介绍1.1 IPv6地址
+
+
+版本
+长度
+地址数量
+
+
+
+IPv4
+32 bit
+4,294,967,296
+
+
+IPv6
+128 bit
+340,282,366,920,938,463,463,374,607,431,768,211,456
+
+
+
+在因特网发展初期，IPv4以其协议简单、易于实现、互操作性好的优势而得到快速发展。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-21 10:06" pubdate>
+              2021-07-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+              <a href="/tags/IPv6%E4%BB%8B%E7%BB%8D/">IPv6介绍</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/21/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/SNMP%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          SNMP原理与配置
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/21/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/SNMP%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          
+          
+            
+          
+          SNMP原理与配置1. SNMP应用场景
+SNMP是广泛应用于TCP/IP网络的一种网络管理协议。SNMP提供了一种通过运行网络管理软件NMS ( Network Management System )的网络管理工作站来管理网络设备的方法
+SNMP支持以下几种操作∶
+NMS通过SNMP协议给网络设备发送配置信息
+NMS通过SNMP来查询和获取网络中的资源信息
+网络设备主动向NMS上报告警消息，使得
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-21 09:57" pubdate>
+              2021-07-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E4%BB%8B%E7%BB%8D/">网络管理介绍</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/21/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/IPsec%20VPN,GRE%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          IPsec VPN,GRE原理与配置
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/21/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/IPsec%20VPN,GRE%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          
+          
+            
+          
+          IPsec VPN,GRE原理与配置1. IPsec VPN原理与配置1.1 IPsec VPN应用场景
+IPSec是IETF定义的一个协议组。通信双方在IP层通过加密、完整性校验、数据源认证等方式，保证了IP数据报文在网络上传输的机密性、完整性和防重放
+机密性(Confidentiality )指对数据进行加密保护，用密文的形式传送数据
+完整性(Data integrity )指对接收的数据进行
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-21 09:29" pubdate>
+              2021-07-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+              <a href="/tags/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/">访问控制介绍</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/20/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2,%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8,AAA%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          网络地址转换,访问控制列表,AAA原理与配置
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/20/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2,%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8,AAA%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          
+          
+            
+          
+          网络地址转换,访问控制列表,AAA原理与配置1. 网络地址转换1.1 NAT应用场景
+随着网络设备的数量不断增长，对IPv4地址的需求也不断增加，导致可用IPv4地址空间逐渐耗尽。解决IPv4地址枯竭问题的权宜之计是分配可重复使用的各类私网地址段给企业内部或家庭使用。但是，私有地址不能在公网中路由，即私网主机不能与公网通信，也不能通过公网与另外一个私网通信
+NAT是将IP数据报文头部中的IP地址转
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-20 23:05" pubdate>
+              2021-07-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+              <a href="/tags/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/">访问控制介绍</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/20/%E4%BF%A1%E5%AE%89/CTF/Web/Web%E7%BB%83%E4%B9%A0%E9%A2%981/" target="_self">
+          Web练习题1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/20/%E4%BF%A1%E5%AE%89/CTF/Web/Web%E7%BB%83%E4%B9%A0%E9%A2%981/" target="_self">
+          
+          
+            
+          
+          1. Robots题目地址http://host:port/web/robots/index.php
+访问地址后显示内容
+
+需要找到admin界面，参考题目中的robots，访问robots.txt
+显示内容有/11111111目录，访问该目录
+显示内容
+
+you find me,but I am not the login page. keep search.
+
+此时根据显示的提示，访问该目录下
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-20 21:10" pubdate>
+              2021-07-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/rce/">rce</a>
+            
+              <a href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">伪协议</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/20/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/HDLC%E5%92%8CPPP,PPPoE%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          HDLC和PPP,PPPoE原理与配置
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/20/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/HDLC%E5%92%8CPPP,PPPoE%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          
+          
+            
+          
+          HDLC和PPP,PPPoE原理与配置1.HDLC和PPP原理与配置1.1 串行链路的数据传输方式
+串行链路普遍用于广域网中。串行链路中定义了两种数据传输方式∶异步和同步
+异步传输是以字节为单位来传输数据，并且需要采用额外的起始位和停止位来标记每个字节的开始和结束。起始位为二进制值0，停止位为二进制值1。在这种传输方式下，开始和停止位占据发送数据的相当大的比例，每个字节的发送都需要额外的开销
+同步
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-20 13:45" pubdate>
+              2021-07-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+              <a href="/tags/%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D/">广域网技术介绍</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/20/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF%E7%9A%84%E8%BF%9B%E9%98%B6/%E9%93%BE%E8%B7%AF%E8%81%9A%E5%90%88,VLAN%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE,VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/" target="_self">
+          链路聚合,VLAN原理与配置,VLAN间路由
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/20/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF%E7%9A%84%E8%BF%9B%E9%98%B6/%E9%93%BE%E8%B7%AF%E8%81%9A%E5%90%88,VLAN%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE,VLAN%E9%97%B4%E8%B7%AF%E7%94%B1/" target="_self">
+          
+          
+            
+          
+          链路聚合,VLAN原理与配置,VLAN间路由1. 链路聚合1.1 链路聚合的应用场景
+在企业网络中，所有设备的流量在转发到其他网络前都会汇聚到核心层，再由核心区设备转发到其他网络，或者转发到外网。因此，在核心层设备负责数据的高速交换时，容易发生拥塞。在核心层部署链路聚合，可以提升整个网络的数据吞吐量，解决拥塞问题
+本示例中，两台核心交换机SWA和SWB之间通过两条成员链路互相连接，通过部署链路聚合
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-20 09:24" pubdate>
+              2021-07-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+              <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF%E7%9A%84%E8%BF%9B%E9%98%B6/">交换技术的进阶</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

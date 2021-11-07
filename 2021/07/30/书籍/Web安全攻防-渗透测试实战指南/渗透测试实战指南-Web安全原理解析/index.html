@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>渗透测试实战指南-Web安全原理解析 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="渗透测试实战指南-Web安全原理解析">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-30 16:13" pubdate>
+        2021年7月30日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">渗透测试实战指南-Web安全原理解析</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年8月4日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="Web安全原理解析"><a href="#Web安全原理解析" class="headerlink" title="Web安全原理解析"></a>Web安全原理解析</h1><p>部分实际操作内容与<code>代码审计：企业级Web代码安全架构</code>书籍部分重复，只记录原理</p>
+<h1 id="1-SQL注入"><a href="#1-SQL注入" class="headerlink" title="1. SQL注入"></a>1. SQL注入</h1><p>SQL注入产生条件</p>
+<ul>
+<li>参数用户可控：前端传给后端的参数内容是用户可以控制的</li>
+<li>参数带入数据库查询：传入的参数拼接到SQL语句，且带入数据库查询</li>
+</ul>
+<h1 id="2-XSS漏洞"><a href="#2-XSS漏洞" class="headerlink" title="2. XSS漏洞"></a>2. XSS漏洞</h1><p>是一种针对网站应用程序的安全漏洞攻击技术，是代码注入的一种</p>
+<p>原理是允许恶意用户将代码注入网页，恶意用户可以利用XSS代码获取到很高的权限(如执行一些操作)、私密网页内容、会话和cookie等各种内容</p>
+<p>XSS攻击可以分为三种：反射型、存储型和DOM型</p>
+<ol>
+<li><p>反射型XSS</p>
+<p>通常是攻击者写好XSS代码后诱使目标用户点击</p>
+</li>
+<li><p>存储型XSS</p>
+<p>攻击脚本将被永久地存放在目标服务器的数据库或文件中，通常在有内容存储的服务中</p>
+</li>
+<li><p>DOM型XSS</p>
+<p>DOM型XSS是特殊类型的反射性XSS，相当于对HTML DOM进行修改而生成的XSS代码</p>
+</li>
+</ol>
+<h1 id="3-CSRF-漏洞"><a href="#3-CSRF-漏洞" class="headerlink" title="3. CSRF 漏洞"></a>3. CSRF 漏洞</h1><p>原理：攻击者利用目标用户的身份，以目标用户的名义进行某些非法操作，包括但不限于，以目标用户的名义发邮件，消息，修改密码，虚拟货币转账</p>
+<p>两个重点：</p>
+<ol>
+<li>目标用户已经登录对应网站，且对网站能够执行对应功能</li>
+<li>目标用户访问了攻击者构造的URL</li>
+</ol>
+<p>如：诱使已登录对应网站的用户点击<a href="http://host:port/pay.php?user=admin&amp;money=100">http://host:port/pay.php?user=admin&amp;money=100</a></p>
+<p>则目标用户可能会向用户admin转账100</p>
+<h1 id="4-SSRF-漏洞"><a href="#4-SSRF-漏洞" class="headerlink" title="4. SSRF 漏洞"></a>4. SSRF 漏洞</h1><p>原理：服务端提供了从服务器应用获取数据的功能，且没有对目标地址进行严格的过滤与限制。</p>
+<p>利用方式：</p>
+<ol>
+<li>对外网、服务器所在内网、本地端口进行扫描</li>
+<li>攻击运行在内网或本地的应用程序</li>
+<li>对内网Web应用进行指纹识别</li>
+<li>利用file协议读取本地文件</li>
+</ol>
+<h1 id="5-文件上传"><a href="#5-文件上传" class="headerlink" title="5.文件上传"></a>5.文件上传</h1><p>原理：在上传文件时，如果服务端代码未对客户端上传的文件进行严格的验证和过滤</p>
+<h1 id="6-命令执行"><a href="#6-命令执行" class="headerlink" title="6. 命令执行"></a>6. 命令执行</h1><p>原理：服务端使用了可执行系统命令的函数，且函数内容攻击者可控</p>
+<h1 id="7-逻辑漏洞点"><a href="#7-逻辑漏洞点" class="headerlink" title="7. 逻辑漏洞点"></a>7. 逻辑漏洞点</h1><p>经常出现逻辑漏洞的几类</p>
+<ol>
+<li>支付订单：可在客户端修改金额，数量且后端无验证</li>
+<li>越权访问：未对用户的访问权限进行严格的限制</li>
+<li>重置密码</li>
+<li>竞争条件：同时进行购买，可能会两件都购买成功(但是只扣除一份的钱，或只有账户只有一件的钱现在扣为负数，或只购买了一件)</li>
+</ol>
+<h1 id="8-XXE漏洞"><a href="#8-XXE漏洞" class="headerlink" title="8. XXE漏洞"></a>8. XXE漏洞</h1><p>由于服务端读取了用户可控的传入的XML</p>
+<h1 id="9-WAF"><a href="#9-WAF" class="headerlink" title="9. WAF"></a>9. WAF</h1><h2 id="9-1-介绍WAF"><a href="#9-1-介绍WAF" class="headerlink" title="9.1 介绍WAF"></a>9.1 介绍WAF</h2><p>Web应用防火墙是通过执行一系列针对HTTP/HTTPS的安全策略来专门为Web应用提供保护的一款产品</p>
+<p>一般可分为以下几类</p>
+<ol>
+<li><p>软件型WAF<br>以软件形式装在所保护的服务器上的WAF，由于安装在服务器上，所以可以接触到服务器上的文件，直接检测服务器上是否存在WebShell、是否有文件被创建等</p>
+</li>
+<li><p>硬件型WAF<br>以硬件形式部署在链路中，支持多种部署方式，当串联到链路中时可以拦截恶意流量，在旁路监听模式时只记录攻击不进行拦截</p>
+</li>
+<li><p>云WAF<br>一般以反向代理的形式工作，通过配置NS记录或CNAME记录，使对网站的请求报文优先经过WAF主机，经过WAF主机过滤后，将认为无害的请求报文再发送给实际网站服务器进行请求，可以说是带防护功能的CDN</p>
+</li>
+<li><p>网站系统内置的WAF<br>网站系统内置的WAF也可以说是网站系统中内置的过滤，直接镶嵌在代码中，相对来说自由度高，一般有以下这几种情况</p>
+<ul>
+<li>输入参数强制类型转换(intval等)</li>
+<li>输入参数合法性检测</li>
+<li>关键函数执行(SQL执行、页面显示、命令执行等)前，对经过代码流程的输入进行检测</li>
+<li>对输入的数据进行替换过滤后再继续执行代码流程(转义/替换掉特殊字符等)</li>
+</ul>
+</li>
+</ol>
+<p>网站系统内置的WAF与业务更加契合，在对安全与业务都比较了解的情况下，可以更少地收到误报与漏报</p>
+<h2 id="9-2-WAF-判断"><a href="#9-2-WAF-判断" class="headerlink" title="9.2 WAF 判断"></a>9.2 WAF 判断</h2><ol>
+<li><p>SQLMap判断</p>
+<p>以下命令进行判断</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sqlmap -u <span class="hljs-string">&quot;http://host:port&quot;</span> --identify-waf --batch<br></code></pre></div></td></tr></table></figure></li>
+<li><p>手工判断</p>
+<p>查看返回界面，以及响应内容</p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%B9%A6%E7%B1%8D-Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/">书籍 Web安全攻防-渗透测试实战指南</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%89%E5%85%A8%E5%8E%9F%E7%90%86/">安全原理</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
