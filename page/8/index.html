@@ -182,6 +182,126 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          XVWA练习
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          
+          
+            
+          
+          XVWA练习SQL Injection整体界面如下:
+
+在进行尝试之后发现，界面有两个查询点，首先是选择的code，其次是自由输入的查询。
+使用bp抓取选择code后的包，具体如图：
+
+item在对post的item内容尝试进行注入后，发现注入的类型是整型注入。之后查看回显字段个数。
+sql：1 order by *;#
+经过尝试回显是7，使用联合注入查看回显的位置。sql：0 union sel
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-06 17:25" pubdate>
+              2021-07-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          DVWA练习
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          
+          
+            
+          
+          DVWA靶机练习Brute Force暴力破解
+首先根据提示可以得知应该使用暴力破解，用户先尝试常用的admin,之后使用bp抓包
+
+之后使用常用字典进行暴力破解
+
+经过长度判断密码为password
+
+high模式由于有token检测，所以需要先访问界面获取token之后进行爆破
+需要编写程序获取内容后进行爆破。程序如下：
+123456789101112131415161718192021222
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-05 09:43" pubdate>
+              2021-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/06/28/PHP/api%E4%BD%BF%E7%94%A8/" target="_self">
           api使用
         </a>
@@ -629,117 +749,11 @@ package.json 项目依赖文件
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/30/AndroidStudio/%E8%A7%86%E9%A2%91/ExoPlayer/%E7%BB%A7%E7%BB%AD%E6%92%AD%E6%94%BE/" target="_self">
-          继续播放
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/30/AndroidStudio/%E8%A7%86%E9%A2%91/ExoPlayer/%E7%BB%A7%E7%BB%AD%E6%92%AD%E6%94%BE/" target="_self">
-          
-          
-            
-          
-          
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-30 20:39" pubdate>
-              2021-05-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Android-Studio-%E8%A7%86%E9%A2%91-ExoPlayer/">Android Studio 视频 ExoPlayer</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AndroidStudio/">AndroidStudio</a>
-            
-              <a href="/tags/ExoPlayer/">ExoPlayer</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/30/AndroidStudio/RecycleView/RecycleView%E5%9F%BA%E7%A1%80/" target="_self">
-          RecycleView基础
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/30/AndroidStudio/RecycleView/RecycleView%E5%9F%BA%E7%A1%80/" target="_self">
-          
-          
-            
-          
-          添加依赖在build.gradle文件中添加相关依赖
-1implementation &#x27;androidx.recyclerview:recyclerview:1.1.0&#x27;
-
-设置布局文件展示我写的 activity_list.xml文件，里面包含了RecycleView控件
-123456789101112131415&lt;?xml version=&quot;1.0&quot
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-30 01:37" pubdate>
-              2021-05-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/AndroidStudio-RecycleView/">AndroidStudio RecycleView</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AndroidStudio-RecycleView/">AndroidStudio RecycleView</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#board">18</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

