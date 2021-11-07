@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.4k 字
     </span>
   
 
@@ -270,6 +270,12 @@
 <blockquote>
 <p>开始点名~<br>老师：小明来了没？<br>小明：到！<br>老师：小亮来了没？<br>小亮：到！<br>点名结束，开始上课..</p>
 </blockquote>
+<p>queue 还有一个很重要的方法，Queue.task_done()</p>
+<p>当我们使用 Queue.get() 从队列取出数据后，这个数据有没有被正常消费，是很重要的。</p>
+<p>如果数据没有被正常消费，那么Queue会认为这个任务还在执行中，此时使用 Queue.join() 会一直阻塞，即使此时队列里已经没有消息了。</p>
+<p>为了解决这种一直阻塞的问题</p>
+<p>在正常消费完数据后，调用一下 Queue.task_done()，说明队列这个任务已经结束了</p>
+<p>当队列内部的任务计数器归于零时，调用 Queue.join() 就不会再阻塞了</p>
 
             </div>
             <hr>
