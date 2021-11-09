@@ -182,6 +182,60 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/07/20/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2,%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8,AAA%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          网络地址转换,访问控制列表,AAA原理与配置
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/20/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2,%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8,AAA%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE/" target="_self">
+          
+          
+            
+          
+          网络地址转换,访问控制列表,AAA原理与配置1. 网络地址转换1.1 NAT应用场景
+随着网络设备的数量不断增长，对IPv4地址的需求也不断增加，导致可用IPv4地址空间逐渐耗尽。解决IPv4地址枯竭问题的权宜之计是分配可重复使用的各类私网地址段给企业内部或家庭使用。但是，私有地址不能在公网中路由，即私网主机不能与公网通信，也不能通过公网与另外一个私网通信
+NAT是将IP数据报文头部中的IP地址转
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-20 23:05" pubdate>
+              2021-07-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+            
+              <a href="/tags/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/">访问控制介绍</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/07/20/%E4%BF%A1%E5%AE%89/CTF/Web/Web%E7%BB%83%E4%B9%A0%E9%A2%981/" target="_self">
           Web练习题1
         </a>
@@ -675,67 +729,6 @@ DHCP可以为网络终端动态分配IP地址，解决了手工配置IP地址时
               <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
             
               <a href="/tags/VRP%E5%9F%BA%E7%A1%80/">VRP基础</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/16/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP,IP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8F%91%E8%BF%87%E7%A8%8B/" target="_self">
-          数据转发过程
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/16/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/TCP,IP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8F%91%E8%BF%87%E7%A8%8B/" target="_self">
-          
-          
-            
-          
-          数据转发过程转发过程概述
-
-
-数据可以在同一网络内或者不同网络间传输，数据转发过程也分为本地转发和远程转发，但两者的数据转发原理是基本一样的，都是遵循TCP/IP协议簇
-
-本示例中，主机A需要访问服务器A的Web服务，并且假定两者之间已经建立了TCP连接。接下来会以此示例来讲解数据在不同网络间的传输过程
-
-TCP封装
-主机A会对待发送的应用数据首先执行加密和压缩等相关操作，之后进行传输层封装
-We
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-16 13:37" pubdate>
-              2021-07-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
-            
-              <a href="/tags/TCP-IP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">TCP/IP基础知识</a>
             
           </div>
         
