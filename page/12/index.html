@@ -182,6 +182,68 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/04/20/%E4%BF%A1%E5%AE%89/CTF/Web/%5BCISCN2019%20%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA%20Day2%20Web1%5DHack%20World%201/" target="_self">
+          CISCN2019 华北赛区 Day2 Web1_Hack World 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/20/%E4%BF%A1%E5%AE%89/CTF/Web/%5BCISCN2019%20%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA%20Day2%20Web1%5DHack%20World%201/" target="_self">
+          
+          
+            
+          
+          [CISCN2019 华北赛区 Day2 Web1]Hack World 1进入网站之后发现输入框，且已有flag的提示信息，应当为sql注入
+尝试输入1，1‘，1’ or 1=1发现部分被过滤
+利用1=()=1及bp进行查看具体过滤信息
+
+其中482的为被过滤的部分
+因为回显固定所以应当使用盲注
+发现or被过滤了但是ascii没有被过滤所以尝试通过ascii进行盲注
+构建payload
+11=(
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-20 13:22" pubdate>
+              2021-04-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/sqli/">sqli</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/04/19/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A/" target="_self">
           目录穿越
         </a>
@@ -706,66 +768,6 @@ post参数password进去:
               <a href="/tags/ctf/">ctf</a>
             
               <a href="/tags/sqli/">sqli</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/dirsearch/" target="_self">
-          dirsearch
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/dirsearch/" target="_self">
-          
-          
-            
-          
-          目录扫描器git地址
-使用方法
-相关题目[极客大挑战 2019]PHP1.网站的备份文件：www.zip 2.Php 反序列化漏洞：当反序列化字符串时，如果表示属性个数的值大于真实属性个数，就会跳过_wakeup函数的执行
-下载www.zip文件之后阅读原代码
-集中在class.php文件中
-class.php
-1234567891011121314151617181920212223242526
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-18 14:42" pubdate>
-              2021-04-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
-            
-              <a href="/tags/web/">web</a>
-            
-              <a href="/tags/ctf/">ctf</a>
             
           </div>
         
