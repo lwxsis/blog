@@ -182,6 +182,59 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/11/10/Go/Go-Base/GoBase%20-%203/" target="_self">
+          GoBase - 3
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/10/Go/Go-Base/GoBase%20-%203/" target="_self">
+          
+          
+            
+          
+          GoBase - 31. 函数直接示例展示一下
+123456789101112131415161718192021222324252627282930313233package mainimport (	&quot;fmt&quot;)func main() &#123;	var (		a = 2		b = 3	)	re := max(a, b)	fmt.Println(re)	fmt.Print
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-10 16:11" pubdate>
+              2021-11-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+              <a href="/tags/base/">base</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/09/Go/Go-Base/GoBase%20-%202/" target="_self">
           GoBase - 2
         </a>
@@ -193,7 +246,9 @@
           
             
           
-          GoBase - 2
+          GoBase - 21. 基础部分末尾不需要添加;同行多个内容时需要添加
+格式化字符串
+123456789101112package mainimport (	&quot;fmt&quot;)func main()&#123;    // %d 整型数字，%s 表示字符串    var stockcode=123    var enddate=&quot;2020-12-31&quot;    v
         </a>
       </p>
 
@@ -676,56 +731,6 @@ Envent的使用很简单，总共三个函数
               <a href="/tags/ctf/">ctf</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/11/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E6%9C%B1%E9%9B%80%E7%BB%84%5Dphpweb-1/" target="_self">
-          网鼎杯 2020 朱雀组_phpweb 1
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/11/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E6%9C%B1%E9%9B%80%E7%BB%84%5Dphpweb-1/" target="_self">
-          
-          
-            
-          
-          [网鼎杯 2020 朱雀组]phpweb 1 访问对应的网址后，直接查看源码
-发现有一个Post请求，抓包自己修改发送后报错，发现是利用call_user_func函数，并且可控其中的参数
-
-此时尝试将data换为system 参数为ls
-返回内容显示为hack，应该是被过滤了，尝试了常见的执行函数，均无法使用。
-此时尝试file_get_contents读取index.php文件
-获得源码
-12
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-11 16:18" pubdate>
-              2021-10-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
-            
-          </div>
-        
         
       </div>
     </article>

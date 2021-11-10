@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2 字
+      920 字
     </span>
   
 
@@ -224,12 +224,86 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年11月10日 凌晨
+                  本文最后更新于：2021年11月10日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="GoBase-2"><a href="#GoBase-2" class="headerlink" title="GoBase - 2"></a>GoBase - 2</h1>
+              <h1 id="GoBase-2"><a href="#GoBase-2" class="headerlink" title="GoBase - 2"></a>GoBase - 2</h1><h1 id="1-基础部分"><a href="#1-基础部分" class="headerlink" title="1. 基础部分"></a>1. 基础部分</h1><p>末尾不需要添加;同行多个内容时需要添加</p>
+<p>格式化字符串</p>
+<figure class="highlight go"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">// %d 整型数字，%s 表示字符串</span><br>    <span class="hljs-keyword">var</span> stockcode=<span class="hljs-number">123</span><br>    <span class="hljs-keyword">var</span> enddate=<span class="hljs-string">&quot;2020-12-31&quot;</span><br>    <span class="hljs-keyword">var</span> url=<span class="hljs-string">&quot;Code=%d&amp;endDate=%s&quot;</span><br>    <span class="hljs-keyword">var</span> target_url=fmt.Sprintf(url,stockcode,enddate)<br>    fmt.Println(target_url)<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>Code=123&amp;endDate=2020-12-31</p>
+</blockquote>
+<h2 id="1-1-Go的数据类型"><a href="#1-1-Go的数据类型" class="headerlink" title="1.1 Go的数据类型"></a>1.1 Go的数据类型</h2><ol>
+<li><p>布尔型</p>
+</li>
+<li><p>数字类型</p>
+<p>整型 int 和浮点型 float32、float64，Go 语言支持整型和浮点型数字，并且支持复数，其中位的运算采用补码</p>
+</li>
+<li><p>字符串类型</p>
+</li>
+<li><p>派生类型</p>
+<p>包括：</p>
+<ul>
+<li> (a) 指针类型（Pointer）</li>
+<li>(b) 数组类型</li>
+<li> (c) 结构化类型(struct)</li>
+<li> (d) Channel 类型</li>
+<li> (e) 函数类型 </li>
+<li>(f) 切片类型 </li>
+<li>(g) 接口类型（interface）</li>
+<li> (h) Map 类型 </li>
+</ul>
+</li>
+</ol>
+<h2 id="1-2-Go-变量声明"><a href="#1-2-Go-变量声明" class="headerlink" title="1.2 Go 变量声明"></a>1.2 Go 变量声明</h2><figure class="highlight go"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-comment">// 直接声明并赋值</span><br>	<span class="hljs-keyword">var</span> one = <span class="hljs-number">100</span><br>    <span class="hljs-comment">// := 声明变量</span><br>	two := <span class="hljs-string">&quot;two&quot;</span><br>	<span class="hljs-keyword">var</span> re = fmt.Sprintf(<span class="hljs-string">&quot;one=%d&amp;two=%s&quot;</span>, one, two)<br>	<span class="hljs-comment">// 注意声明后的变量必须使用，否则会报错</span><br>    fmt.Println(re)<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+<p>结果</p>
+<blockquote>
+<p>one=100&amp;two=two</p>
+</blockquote>
+<h2 id="1-3-Go常量"><a href="#1-3-Go常量" class="headerlink" title="1.3 Go常量"></a>1.3 Go常量</h2><p>常量定义的格式：</p>
+<figure class="highlight go"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">const</span> identifier [<span class="hljs-keyword">type</span>] = value<br><span class="hljs-comment">// 例如</span><br><span class="hljs-comment">// 隐形</span><br><span class="hljs-keyword">const</span> Pi = <span class="hljs-number">3.14</span><br><span class="hljs-comment">// 显性</span><br><span class="hljs-keyword">const</span> Pi <span class="hljs-keyword">float64</span> =<span class="hljs-number">3.14</span><br></code></pre></div></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">const</span> LENGTH <span class="hljs-keyword">int</span> = <span class="hljs-number">10</span><br>	<span class="hljs-keyword">const</span> WIDTH <span class="hljs-keyword">int</span> = <span class="hljs-number">5</span><br>	<span class="hljs-keyword">var</span> area <span class="hljs-keyword">int</span><br>	<span class="hljs-comment">// 多重赋值</span><br>	<span class="hljs-keyword">const</span> a, b, c = <span class="hljs-number">1</span>, <span class="hljs-literal">false</span>, <span class="hljs-string">&quot;string&quot;</span><br>    <span class="hljs-comment">// 类似变量，也可以使用枚举赋值</span><br>    <span class="hljs-keyword">const</span> (<br>    	one = <span class="hljs-string">&quot;one&quot;</span><br>        two = <span class="hljs-number">2</span><br>    )<br><br>	area = LENGTH * WIDTH<br>	fmt.Printf(<span class="hljs-string">&quot;面积为： %d&quot;</span>, area)<br>	<span class="hljs-built_in">println</span>()<br>	<span class="hljs-built_in">println</span>(a, b, c, one, two)<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>结果:</p>
+<blockquote>
+<p>面积为： 50</p>
+<p>1 false string one 2</p>
+</blockquote>
+<p>较为特殊的常量 iota</p>
+<p>可以认为是一个可以被编译器修改的常量，iota 在 const关键字出现时将被重置为 0(const 内部的第一行之前)，const 中每新增一行常量声明将使 iota 计数一次(iota 可理解为 const 语句块中的行索引)</p>
+<p>示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-comment">// iota理解</span><br>	<span class="hljs-comment">// 简单使用</span><br>	<span class="hljs-keyword">const</span> (<br>		a1 = <span class="hljs-literal">iota</span><br>		b1 = <span class="hljs-literal">iota</span><br>		c1 = <span class="hljs-literal">iota</span><br>	)<br>	fmt.Println(a1, b1, c1)<br>	<span class="hljs-comment">// 简写形式</span><br>	<span class="hljs-keyword">const</span> (<br>		a2 = <span class="hljs-literal">iota</span><br>		b2<br>		c2<br>	)<br>	fmt.Println(a2, b2, c2)<br><br>	<span class="hljs-comment">// 继续使用</span><br>	<span class="hljs-keyword">const</span> (<br>		a  = <span class="hljs-literal">iota</span> <span class="hljs-comment">//0</span><br>		b         <span class="hljs-comment">//1</span><br>		c         <span class="hljs-comment">//2</span><br>		d  = <span class="hljs-string">&quot;ha&quot;</span> <span class="hljs-comment">//独立值，iota += 1</span><br>		e         <span class="hljs-comment">//&quot;ha&quot;   iota += 1</span><br>		f  = <span class="hljs-number">100</span>  <span class="hljs-comment">//iota +=1</span><br>		g         <span class="hljs-comment">//100  iota +=1</span><br>		h  = <span class="hljs-literal">iota</span> <span class="hljs-comment">//7,恢复计数</span><br>		i1        <span class="hljs-comment">//8</span><br>	)<br>	fmt.Println(a, b, c, d, e, f, g, h, i1)<br><br>	<span class="hljs-comment">// 继续使用</span><br>	<span class="hljs-keyword">const</span> (<br>		i = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-literal">iota</span> <span class="hljs-comment">// 1</span><br>		j = <span class="hljs-number">3</span> &lt;&lt; <span class="hljs-literal">iota</span> <span class="hljs-comment">// 3&lt;&lt;1 即向左移一位 11(3), 110(6) 等价与 3*(2^1)</span><br>		k             <span class="hljs-comment">// 3&lt;&lt;2</span><br>		l             <span class="hljs-comment">// 3&lt;&lt;3</span><br>	)<br>	fmt.Println(i, j, k, l)<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>结果</p>
+<blockquote>
+<p>0 1 2</p>
+<p>0 1 2</p>
+<p>0 1 2 ha ha 100 100 7 8</p>
+<p>1 6 12 24</p>
+</blockquote>
+<h1 id="1-4-Go语句"><a href="#1-4-Go语句" class="headerlink" title="1.4 Go语句"></a>1.4 Go语句</h1><p>常用的 for,if else,switch其中同样有break，content等</p>
+<p>示例</p>
+<figure class="highlight go"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-keyword">var</span> (<br>		a = <span class="hljs-number">1</span><br>		b <span class="hljs-keyword">interface</span>&#123;&#125;<br>		c = <span class="hljs-number">3</span><br>		h = <span class="hljs-number">1</span><br>	)<br>    <span class="hljs-comment">// if else</span><br>	<span class="hljs-keyword">if</span> a &lt; <span class="hljs-number">10</span> &#123;<br>		fmt.Println(<span class="hljs-string">&quot;a &lt; 10 !&quot;</span>)<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		fmt.Println(<span class="hljs-string">&quot;a &gt;= 10 !&quot;</span>)<br>	&#125;<br>    <span class="hljs-comment">// switch 不需要break</span><br>	<span class="hljs-keyword">switch</span> t := b.(<span class="hljs-keyword">type</span>) &#123;<br>	<span class="hljs-keyword">case</span> <span class="hljs-literal">nil</span>:<br>		fmt.Printf(<span class="hljs-string">&quot;x 的类型 :%T&quot;</span>, t)<br>	<span class="hljs-keyword">case</span> <span class="hljs-keyword">int</span>:<br>		fmt.Printf(<span class="hljs-string">&quot;x 是 int 型&quot;</span>)<br>	<span class="hljs-keyword">case</span> <span class="hljs-keyword">float64</span>:<br>		fmt.Printf(<span class="hljs-string">&quot;x 是 float64 型&quot;</span>)<br>	<span class="hljs-keyword">case</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-title">float64</span>:</span><br>		fmt.Printf(<span class="hljs-string">&quot;x 是 func(int) 型&quot;</span>)<br>	<span class="hljs-keyword">case</span> <span class="hljs-keyword">bool</span>, <span class="hljs-keyword">string</span>:<br>		fmt.Printf(<span class="hljs-string">&quot;x 是 bool 或 string 型&quot;</span>)<br>	<span class="hljs-keyword">default</span>:<br>		fmt.Printf(<span class="hljs-string">&quot;未知型&quot;</span>)<br>	&#125;<br>    <span class="hljs-comment">// for循环</span><br>	<span class="hljs-comment">// 简单for循环</span><br>	<span class="hljs-keyword">for</span> h = <span class="hljs-number">0</span>; h &lt;= c; h++ &#123;<br>		fmt.Printf(<span class="hljs-string">&quot;h：&quot;</span>)<br>		fmt.Println(h)<br>	&#125;<br><br>	<span class="hljs-comment">// 类似while循环</span><br>	<span class="hljs-keyword">var</span> count <span class="hljs-keyword">int</span> = <span class="hljs-number">0</span><br>	<span class="hljs-keyword">for</span> count &lt; <span class="hljs-number">10</span> &#123;<br>		count = count + <span class="hljs-number">1</span><br>	&#125;<br>	fmt.Printf(<span class="hljs-string">&quot;count:%d\n&quot;</span>, count)<br><br>	<span class="hljs-comment">// 对字符串，数组等迭代输出</span><br>	<span class="hljs-keyword">var</span> strs = []<span class="hljs-keyword">string</span>&#123;<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-string">&quot;World&quot;</span>&#125;<br>	<span class="hljs-keyword">for</span> i, s := <span class="hljs-keyword">range</span> strs &#123;<br>		fmt.Printf(<span class="hljs-string">&quot;i表示%d个，s表示内容:%s\n&quot;</span>, i, s)<br>	&#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+<p>结果</p>
+<blockquote>
+<p>a &lt; 10 !</p>
+<p>x 的类型 :<nil>h：0</p>
+<p>h：1</p>
+<p>h：2</p>
+<p>h：3</p>
+<p>count:10</p>
+<p>i表示0个，s表示内容:Hello</p>
+<p>i表示1个，s表示内容:World</p>
+</blockquote>
+
             </div>
             <hr>
             <div>
