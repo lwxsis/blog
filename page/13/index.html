@@ -182,6 +182,73 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DBuyFlag%201/" target="_self">
+          极客大挑战 2019_BuyFlag 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DBuyFlag%201/" target="_self">
+          
+          
+            
+          
+          [极客大挑战 2019]BuyFlag 1点击menu进到payflag页面:
+
+抓包:
+
+显而易见，把user改成1试一下:
+
+post参数password进去:
+
+要付钱。结合网页页面：
+
+盲猜变量是money，传个money进去：
+12password=404&amp;money=100000000
+
+数值太长了。。。试一下科学记数法：
+
+拿到flag，不过看别人的wp，好像还有一个利用st
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 20:47" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BHCTF%202018%5Dadmin%201/" target="_self">
           HCTF 2018_admin 1
         </a>
@@ -694,77 +761,6 @@ file_get_contents()
               <a href="/tags/Java/">Java</a>
             
               <a href="/tags/JVM/">JVM</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/12/SpringBoot/%E9%9B%86%E6%88%90Swagger%E7%BB%88%E6%9E%81%E7%89%88%20/" target="_self">
-          集成Swagger终极版
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/12/SpringBoot/%E9%9B%86%E6%88%90Swagger%E7%BB%88%E6%9E%81%E7%89%88%20/" target="_self">
-          
-          
-            
-          
-          项目集成Swagger
-学习目标：
-
-了解Swagger的概念及作用
-掌握在项目中集成Swagger自动生成API文档
-
-
-Swagger简介
-前后端分离
-
-前端 -&gt; 前端控制层、视图层
-后端 -&gt; 后端控制层、服务层、数据访问层
-前后端通过API进行交互
-前后端相对独立且松耦合
-
-产生的问题
-
-前后端集成，前端或者后端无法做到“及时协商，尽早解决”，最终导致问题集中爆发
-
-解决方案
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-12 13:12" pubdate>
-              2021-04-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Spring-Boot/">Spring Boot</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Springboot/">Springboot</a>
-            
-              <a href="/tags/Swagger/">Swagger</a>
             
           </div>
         
