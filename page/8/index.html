@@ -182,6 +182,65 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-%E5%88%9D%E5%AD%A6Spring/" target="_self">
+          gxyd-初学Spring
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-%E5%88%9D%E5%AD%A6Spring/" target="_self">
+          
+          
+            
+          
+          gxyd-初学Spring自我尝试在拿到题目后首先查看源码，之后发现可用的链接只有两个。
+链接内容如下/PageLoader.action?Page=views/index
+之后利用bp抓包进行重放的尝试
+
+修改参数发现当前应该是WEB-INF目录下，但是后缀被固定为html
+
+此时尝试绕过，一直在找怎么截断找spring的相关知识。。。
+题解查看在查看了题解之后发现是：利用后端采用了路径拼接的方
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-09 16:47" pubdate>
+              2021-07-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/Upload-Labs%E7%BB%83%E4%B9%A0/" target="_self">
           Upload-Labs练习
         </a>
@@ -678,63 +737,6 @@ package.json 项目依赖文件
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/tool/">tool</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/03/Python/%E7%88%86%E7%A0%B4%E5%8E%8B%E7%BC%A9%E7%9A%84%E5%AF%86%E7%A0%81/" target="_self">
-          爆破压缩的密码
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/03/Python/%E7%88%86%E7%A0%B4%E5%8E%8B%E7%BC%A9%E7%9A%84%E5%AF%86%E7%A0%81/" target="_self">
-          
-          
-            
-          
-          爆破压缩密码脚本Python 的标准库提供了 ZIP 文件的提取压缩模块 zipfile，现在让我们试着用这个模块，暴力破解出加密的 ZIP 文件！我们可以用extractall()这个函数抽取文件，密码正确则返回正确，密码错误测抛出异常。
-注意rarfile需要导入pip install rarfile
-另外破解rar需要导入相应的解压包 winrar中的unrar.exe文件
-12345678
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-03 18:21" pubdate>
-              2021-06-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Python/">Python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">python</a>
-            
-              <a href="/tags/%E8%A7%A3%E5%8E%8B/">解压</a>
-            
-              <a href="/tags/%E7%88%86%E7%A0%B4/">爆破</a>
             
           </div>
         

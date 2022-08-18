@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      167 字
+      266 字
     </span>
   
 
@@ -224,7 +224,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年7月18日 晚上
+                  本文最后更新于：2022年3月8日 晚上
                 
               </p>
             
@@ -251,6 +251,17 @@
 <li><p>键盘输入参数，用set /p完成</p>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> /p tmp=请输入:<br><span class="hljs-built_in">echo</span> 输入为%tmp%<br></code></pre></div></td></tr></table></figure></li>
 </ol>
+<h1 id="设置永久环境变量"><a href="#设置永久环境变量" class="headerlink" title="设置永久环境变量"></a>设置永久环境变量</h1><ol>
+<li><p>用户环境变量</p>
+<p><code>setx 变量名 路径</code></p>
+</li>
+<li><p>管理员运行添加到所有环境变量</p>
+<p><code>setx /M 变量名 路径</code></p>
+</li>
+</ol>
+<h1 id="获得当前路径"><a href="#获得当前路径" class="headerlink" title="获得当前路径"></a>获得当前路径</h1><figure class="highlight cmd"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cmd"># 直接获得的命令<br><span class="hljs-built_in">chdir</span><br># 即获得前面部分的内容<br><span class="hljs-built_in">set</span> <span class="hljs-built_in">path</span>=<span class="hljs-variable">%cd%</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">%path%</span><br><br># 进入bat文件位置<br><span class="hljs-built_in">cd</span> /d %~dp0<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="windows命令行查找文件"><a href="#windows命令行查找文件" class="headerlink" title="windows命令行查找文件"></a>windows命令行查找文件</h1><p><code>for /r C:\ %i in (2022-02-25b.j*) do @echo %i</code></p>
 
             </div>
             <hr>

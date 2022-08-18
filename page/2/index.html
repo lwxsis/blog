@@ -182,20 +182,19 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Web/GXUCTF-1%20web/" target="_self">
-          GXUCTF_1-web
+        <a href="/2022/04/11/Go/Go-Base/NewLearn%20-%201/" target="_self">
+          NewLearn - 1
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Web/GXUCTF-1%20web/" target="_self">
+        <a href="/2022/04/11/Go/Go-Base/NewLearn%20-%201/" target="_self">
           
           
             
           
-          GXUCTF_1-web五子棋直接下赢就行了
-反序列化之反序列化访问链接后得到如下源码
-123456789101112131415161718192021222324252627282930313233343536373839404142 &lt;?phphighlight_file(__FILE__);# author: robot mini-ice# flag in flag.phpclass
+          NewLearn - 1一. 与其他语言进行交互1. 与C进行交互在Go程序中使用cgo，需要使用import &quot;C&quot;进行导入
+123456789// 导入时可以在import &quot;C&quot;之前使用注释（单行或多行注释均可）的形式导入 C 语言库（甚至有效的 C 语言代码）// #include &lt;stdio.h&gt;// #include &lt;std
         </a>
       </p>
 
@@ -203,8 +202,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-18 12:54" pubdate>
-              2021-10-18
+            <time datetime="2022-04-11 23:22" pubdate>
+              2022-04-11
             </time>
           </div>
         
@@ -212,7 +211,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
             
           </div>
         
@@ -220,9 +219,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/web/">web</a>
+              <a href="/tags/Go/">Go</a>
             
-              <a href="/tags/ctf/">ctf</a>
+              <a href="/tags/base/">base</a>
             
           </div>
         
@@ -236,25 +235,49 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/10/11/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E6%9C%B1%E9%9B%80%E7%BB%84%5Dphpweb-1/" target="_self">
-          网鼎杯 2020 朱雀组_phpweb 1
+        <a href="/2022/01/06/%E4%BF%A1%E5%AE%89/Tools/Dnslog%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/" target="_self">
+          Dnslog平台搭建
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/10/11/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E6%9C%B1%E9%9B%80%E7%BB%84%5Dphpweb-1/" target="_self">
+        <a href="/2022/01/06/%E4%BF%A1%E5%AE%89/Tools/Dnslog%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/" target="_self">
           
           
             
           
-          [网鼎杯 2020 朱雀组]phpweb 1 访问对应的网址后，直接查看源码
-发现有一个Post请求，抓包自己修改发送后报错，发现是利用call_user_func函数，并且可控其中的参数
+          Dnslog平台搭建Dnslog平台的搭建需要有一个域名以及一台vps
+1. 设置域名解析简要介绍域名解析的常见类型
 
-此时尝试将data换为system 参数为ls
-返回内容显示为hack，应该是被过滤了，尝试了常见的执行函数，均无法使用。
-此时尝试file_get_contents读取index.php文件
-获得源码
-12
+
+
+类型
+意义
+
+
+
+A
+指定域名对应的IPv4地址
+
+
+CNAME
+将域名指向另一个域名
+
+
+MX
+设置邮箱,让邮箱能收到邮件
+
+
+NS
+域名服务器记录,需要将子域名交给其他DNS服务商解析时添加
+
+
+AAAA
+指定域名对应的IPv6地址
+
+
+SRV
+记录哪台计算机提供了哪个服
         </a>
       </p>
 
@@ -262,8 +285,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-11 16:18" pubdate>
-              2021-10-11
+            <time datetime="2022-01-06 13:36" pubdate>
+              2022-01-06
             </time>
           </div>
         
@@ -271,57 +294,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/08/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%A9%E7%94%A8/" target="_self">
-          客户端利用
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/08/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%A9%E7%94%A8/" target="_self">
-          
-          
-            
-          
-          客户端利用本章学习针对客户端应用程序的攻击策略。
-客户端攻击的目标系统通常是缺乏安全控制装置（尤其是防火墙和入侵检测系统）的企业系统
-本章将学习如何使用一下的方法(工具)攻击客户端应用程序
-
-后门可执行文件
-执行恶意脚本攻击(CScript、VBScript和PowerShell)
-利用浏览器开放框架(Browser Exploitation Framework,BeEF)
-在渗透测试期间，配置跨
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-08 22:46" pubdate>
-              2021-10-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+              <a href="/categories/%E4%BF%A1%E5%AE%89-Tools/">信安 Tools</a>
             
           </div>
         
@@ -329,9 +302,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+              <a href="/tags/tool/">tool</a>
             
-              <a href="/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/">客户端</a>
+              <a href="/tags/dnslog/">dnslog</a>
             
           </div>
         
@@ -345,19 +318,20 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/10/08/%E4%BF%A1%E5%AE%89/CTF/Web/%5BBJDCTF2020%5DZJCTF,%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-1/" target="_self">
-          BJDCTF2020 ZJCTF，不过如此 1
+        <a href="/2021/12/25/Windows/DiskPart%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
+          DiskPart常用命令
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/10/08/%E4%BF%A1%E5%AE%89/CTF/Web/%5BBJDCTF2020%5DZJCTF,%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-1/" target="_self">
+        <a href="/2021/12/25/Windows/DiskPart%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_self">
           
           
             
           
-          [BJDCTF2020]ZJCTF，不过如此 1访问题目可以看到源码
-123456789101112131415161718&lt;?phperror_reporting(0);$text = $_GET[&quot;text&quot;];$file = $_GET[&quot;file&quot;];if(isset($text)&amp;&amp;(file_get_contents($te
+          DiskPart常用命令参考网址
+常用命令小记
+1234567891011121314151617181920212223# 显示计算机上所有的磁盘list disk# 显示计算机上所有的卷list volume# 显示磁盘上以计算机为焦点的分区(即需要进入磁盘后执行)list partition# 显示计算机上的所有虚拟磁盘list vdisk# 选择进入的磁盘/卷/分区select disk/
         </a>
       </p>
 
@@ -365,8 +339,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-08 11:38" pubdate>
-              2021-10-08
+            <time datetime="2021-12-25 23:55" pubdate>
+              2021-12-25
             </time>
           </div>
         
@@ -374,7 +348,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+              <a href="/categories/Windows/">Windows</a>
             
           </div>
         
@@ -382,9 +356,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/ctf/">ctf</a>
+              <a href="/tags/diskpart/">diskpart</a>
             
-              <a href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">伪协议</a>
+              <a href="/tags/windows/">windows</a>
             
           </div>
         
@@ -398,32 +372,40 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/10/05/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%9F%BA%E4%BA%8EWeb%E5%BA%94%E7%94%A8%E7%9A%84%E5%88%A9%E7%94%A8/" target="_self">
-          基于Web应用的利用
+        <a href="/2021/12/11/%E4%B8%AA%E4%BA%BA%E7%90%90%E4%BA%8B/%E9%94%AE%E7%9B%98%E5%85%89%E6%95%88/%E9%BB%91%E7%88%B5-AK35i/" target="_self">
+          黑爵-AK35i
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/10/05/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%9F%BA%E4%BA%8EWeb%E5%BA%94%E7%94%A8%E7%9A%84%E5%88%A9%E7%94%A8/" target="_self">
+        <a href="/2021/12/11/%E4%B8%AA%E4%BA%BA%E7%90%90%E4%BA%8B/%E9%94%AE%E7%9B%98%E5%85%89%E6%95%88/%E9%BB%91%E7%88%B5-AK35i/" target="_self">
           
           
             
           
-          基于Web应用的利用本章中学习的内容如下：
+          黑爵-AK35i一 灯光控制
+FN+Del流光溢彩：整体键盘背光按规则动态流动
 
-Web应用程序攻击方法
-黑客攻击思维导图
-漏洞扫描
-特定应用程序的攻击
-利用密码漏洞和Web服务漏洞
-利用网络后门维持对目标系统的访问
+模式一：随波逐流
+模式二：峰回路转
+模式三：涌泉相报
+模式四：波光粼粼
 
-1. Web应用程序攻击方法Web应用程序入侵的方法
 
-攻击方法分为六个阶段，具体解释如下：
+FN+INS水天一色：整体键盘背光颜色同一变化
 
-设定目标(set target)：设置正确的目标，关注特定的脆弱系统，根据杀链方法获得系统级访问
-爬虫与枚举(spide
+模式一：长亮
+模式二：游戏阶梯
+模式三：呼吸
+模式四：暗影前行
+
+
+FN+PgDN光彩夺目：整体键盘背光为多彩动态变化
+
+模式一：星光闪烁
+模式二：微波粼粼
+模式三：流光赶月
+模式四：旗彩飞扬
         </a>
       </p>
 
@@ -431,8 +413,8 @@ Web应用程序攻击方法
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-05 23:32" pubdate>
-              2021-10-05
+            <time datetime="2021-12-11 20:37" pubdate>
+              2021-12-11
             </time>
           </div>
         
@@ -440,7 +422,7 @@ Web应用程序攻击方法
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+              <a href="/categories/%E9%94%AE%E7%9B%98%E5%85%89%E6%95%88/">键盘光效</a>
             
           </div>
         
@@ -448,9 +430,7 @@ Web应用程序攻击方法
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
-            
-              <a href="/tags/web/">web</a>
+              <a href="/tags/%E9%94%AE%E7%9B%98/">键盘</a>
             
           </div>
         
@@ -464,27 +444,18 @@ Web应用程序攻击方法
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/10/05/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E6%97%A0%E7%BA%BF%E6%94%BB%E5%87%BB/" target="_self">
-          无线攻击
+        <a href="/2021/11/19/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/MinIO-SSRF-CVE-2021-21287/" target="_self">
+          MinIO-SSRF-CVE-2021-21287
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/10/05/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E6%97%A0%E7%BA%BF%E6%94%BB%E5%87%BB/" target="_self">
+        <a href="/2021/11/19/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/MinIO-SSRF-CVE-2021-21287/" target="_self">
           
           
             
           
-          无线攻击当前移动设备的地位日渐增高，为提供即时网络连接的需要，无线网络已成为互联网上无处不在的接入点。提供便利性的同时也带来了盗窃访问、盗窃数据，以及网络资源拒绝服务等有效攻击
-在本章中，将介绍以下内容：
-
-配置Kali实现无线攻击
-无线侦察
-绕过隐藏的SSID
-绕过MAC地址认证和开放认证
-破解WAP/WPA2加密和实施中间人攻击
-使用Reaver攻击无线路由
-针对无线通信的拒绝服务(Denia
+          MinIO-SSRF-CVE-2021-21287
         </a>
       </p>
 
@@ -492,8 +463,8 @@ Web应用程序攻击方法
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-05 20:29" pubdate>
-              2021-10-05
+            <time datetime="2021-11-19 13:20" pubdate>
+              2021-11-19
             </time>
           </div>
         
@@ -501,7 +472,7 @@ Web应用程序攻击方法
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E5%A4%8D%E7%8E%B0/">信安 复现</a>
             
           </div>
         
@@ -509,11 +480,11 @@ Web应用程序攻击方法
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+              <a href="/tags/%E5%A4%8D%E7%8E%B0/">复现</a>
             
-              <a href="/tags/%E6%97%A0%E7%BA%BF%E6%94%BB%E5%87%BB/">无线攻击</a>
+              <a href="/tags/ssrf/">ssrf</a>
             
-              <a href="/tags/kali/">kali</a>
+              <a href="/tags/cve/">cve</a>
             
           </div>
         
@@ -527,22 +498,21 @@ Web应用程序攻击方法
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/10/04/Linux/%E9%82%AE%E7%AE%B1%E6%90%AD%E5%BB%BA/" target="_self">
-          邮箱搭建
+        <a href="/2021/11/11/Go/Go-Base/GoBase%20-%204/" target="_self">
+          GoBase - 4
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/10/04/Linux/%E9%82%AE%E7%AE%B1%E6%90%AD%E5%BB%BA/" target="_self">
+        <a href="/2021/11/11/Go/Go-Base/GoBase%20-%204/" target="_self">
           
           
             
           
-          Linux搭建邮箱系统参考博客
-1. 安装软件下载sendmail以及采用工具
-1234567# 安装postfix、mailxapt-get install -y postfix # 设置具体的域名apt-get install -y mailutils # 安装vimapt-get install -y vim# 安装netstatapt install net-tools
-
-2. 测试123
+          GoBase - 4在地铁上大致浏览了go之后的基础部分，准备实际操作大部分，重点注释以理解个人认为较为重要的部分
+1. 切片(动态数组)概念：Go 数组的长度不可改变，在特定场景中这样的集合就不太适用，Go 中提供了一种灵活，功能强悍的内置类型切片(“动态数组”)，与数组相比切片的长度是不固定的，可以追加元素，在追加时可能使切片的容量增大
+定义方式
+1234567// 直接声明var ident
         </a>
       </p>
 
@@ -550,8 +520,8 @@ Web应用程序攻击方法
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-04 23:26" pubdate>
-              2021-10-04
+            <time datetime="2021-11-11 10:52" pubdate>
+              2021-11-11
             </time>
           </div>
         
@@ -559,53 +529,7 @@ Web应用程序攻击方法
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Linux/">Linux</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/04/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%AB%98%E7%BA%A7%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E5%92%8C%E7%89%A9%E7%90%86%E5%AE%89%E5%85%A8%20-%202/" target="_self">
-          高级社会工程学和物理安全 - 2
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/04/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%AB%98%E7%BA%A7%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E5%92%8C%E7%89%A9%E7%90%86%E5%AE%89%E5%85%A8%20-%202/" target="_self">
-          
-          
-            
-          
-          高级社会工程学和物理安全 - 25. 隐藏可执行文件与伪装攻击者的URL在之前的示例中，成功的关键因素有两个，首先是获得一些必要的攻击信息，如用户名、商业信息、网络支持细节、系统，以及应用等。第二方面：吸引目标进入一个位置，打开一个可执行文件，或点击一个链接为目的
-如今用户对执行未知的软件变得越来越谨慎小心。然而，有一些方法可以增加成功执行攻击模块的可能性，主要包括以下几点：
-
-攻击来自受害者信任
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-04 16:17" pubdate>
-              2021-10-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
             
           </div>
         
@@ -613,11 +537,9 @@ Web应用程序攻击方法
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+              <a href="/tags/Go/">Go</a>
             
-              <a href="/tags/kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">kali高级渗透测试</a>
-            
-              <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a>
+              <a href="/tags/base/">base</a>
             
           </div>
         
@@ -631,22 +553,19 @@ Web应用程序攻击方法
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/09/28/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%AB%98%E7%BA%A7%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E5%92%8C%E7%89%A9%E7%90%86%E5%AE%89%E5%85%A8%20-%201/" target="_self">
-          高级社会工程学和物理安全 - 1
+        <a href="/2021/11/10/Go/Go-Base/GoBase%20-%203/" target="_self">
+          GoBase - 3
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/09/28/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%AB%98%E7%BA%A7%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E5%92%8C%E7%89%A9%E7%90%86%E5%AE%89%E5%85%A8%20-%201/" target="_self">
+        <a href="/2021/11/10/Go/Go-Base/GoBase%20-%203/" target="_self">
           
           
             
           
-          高级社会工程学和物理安全 - 1社会工程学是从人出发提取信息的一门艺术。社会工程学攻击可有效用于欺骗用户从而获取目标系统的物理访问
-社会工程学攻击能够成功的关键因素有以下两个：
-
-在侦察阶段获取的信息，攻击者必须知道目标的名称和用户名。更重要的是，攻击者要弄清楚目标网络中用户所关注的东西
-弄清楚如何利用这些信息说服潜在目标，通过角色模仿，用电话与他们交谈，向他们发送请求，劝说可能的目标点击某个链接
+          GoBase - 31. 函数直接示例展示一下
+123456789101112131415161718192021222324252627282930313233package mainimport (	&quot;fmt&quot;)func main() &#123;	var (		a = 2		b = 3	)	re := max(a, b)	fmt.Println(re)	fmt.Print
         </a>
       </p>
 
@@ -654,8 +573,8 @@ Web应用程序攻击方法
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-09-28 11:06" pubdate>
-              2021-09-28
+            <time datetime="2021-11-10 16:11" pubdate>
+              2021-11-10
             </time>
           </div>
         
@@ -663,7 +582,7 @@ Web应用程序攻击方法
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
             
           </div>
         
@@ -671,11 +590,9 @@ Web应用程序攻击方法
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+              <a href="/tags/Go/">Go</a>
             
-              <a href="/tags/kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">kali高级渗透测试</a>
-            
-              <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a>
+              <a href="/tags/base/">base</a>
             
           </div>
         
@@ -689,26 +606,20 @@ Web应用程序攻击方法
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/09/24/%E4%BF%A1%E5%AE%89/%E6%B8%97%E9%80%8F/CobaltStrike%E5%9F%BA%E7%A1%80/" target="_self">
-          CobaltStrike基础
+        <a href="/2021/11/09/Go/Go-Base/GoBase%20-%202/" target="_self">
+          GoBase - 2
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/09/24/%E4%BF%A1%E5%AE%89/%E6%B8%97%E9%80%8F/CobaltStrike%E5%9F%BA%E7%A1%80/" target="_self">
+        <a href="/2021/11/09/Go/Go-Base/GoBase%20-%202/" target="_self">
           
           
             
           
-          CobaltStrike基础重要是熟悉了CobaltStrike基本使用，和在虚拟机中安装服务器，映射到公网IP来获取靶机的办法
-参考博客
-首先按照博客中的内容进行监听端口的设置，此处是准备的两个端口，一个是需要生成木马对应的端口，一个是监听的本地端口
-设置监听端口的具体操作是选择 Cobalt Strike -&gt; Listeners
-显示如下界面
-
-点击Add进行设置
-
-参考博客所说的内容
+          GoBase - 21. 基础部分末尾不需要添加;同行多个内容时需要添加
+格式化字符串
+123456789101112package mainimport (	&quot;fmt&quot;)func main()&#123;    // %d 整型数字，%s 表示字符串    var stockcode=123    var enddate=&quot;2020-12-31&quot;    v
         </a>
       </p>
 
@@ -716,8 +627,8 @@ Web应用程序攻击方法
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-09-24 17:32" pubdate>
-              2021-09-24
+            <time datetime="2021-11-09 18:33" pubdate>
+              2021-11-09
             </time>
           </div>
         
@@ -725,7 +636,7 @@ Web应用程序攻击方法
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E4%BF%A1%E5%AE%89-%E6%B8%97%E9%80%8F/">信安 渗透</a>
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
             
           </div>
         
@@ -733,9 +644,132 @@ Web应用程序攻击方法
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
+              <a href="/tags/Go/">Go</a>
             
-              <a href="/tags/CobaltStrike/">CobaltStrike</a>
+              <a href="/tags/base/">base</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/08/Go/Go-Base/GoBase%20-%201/" target="_self">
+          GoBase - 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/08/Go/Go-Base/GoBase%20-%201/" target="_self">
+          
+          
+            
+          
+           GoBase - 11. 安装及配置本来以为和Python类似一下就搞定的，结果弄了半天，写在前面防止以后踩坑
+具体安装流程如下：
+
+下载go的安装包，直接官网下载即可
+之后在VScode里进行代理设置方便科学上网后进行下载
+在VScode中Ctrl+Shift+p输入go:install 选择update tools的选项全选之后下载
+再在VScode中安装code run就行了
+
+填坑
+当实
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-08 22:31" pubdate>
+              2021-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+              <a href="/tags/base/">base</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/07/Python/%E5%B9%B6%E5%8F%91%E5%88%9D%E5%AD%A6/%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6/" target="_self">
+          线程通信机制
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/07/Python/%E5%B9%B6%E5%8F%91%E5%88%9D%E5%AD%A6/%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6/" target="_self">
+          
+          
+            
+          
+          线程通信机制此处主要介绍的是控制线程的触发执行，线程中通信的方法大致如下
+
+threading.Event
+threading.Condition
+queque.Queue
+
+1. threading.EventPython提供的简单的通信机制，多个线程等待某个事件发生，之后所有的线程都会被激活
+Envent的使用很简单，总共三个函数
+1234567891011event = threading.
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-07 17:20" pubdate>
+              2021-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python-%E5%B9%B6%E5%8F%91%E5%88%9D%E5%AD%A6/">Python 并发初学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+              <a href="/tags/%E5%B9%B6%E5%8F%91/">并发</a>
+            
+              <a href="/tags/%E7%BA%BF%E7%A8%8B/">线程</a>
             
           </div>
         

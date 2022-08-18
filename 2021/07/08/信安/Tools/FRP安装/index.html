@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      362 字
+      560 字
     </span>
   
 
@@ -224,7 +224,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年7月15日 晚上
+                  本文最后更新于：2022年5月13日 晚上
                 
               </p>
             
@@ -254,6 +254,8 @@
 <p>显示成功</p>
 <p><img src="https://pic.imgdb.cn/item/60eac98c5132923bf8c18d5e.png" srcset="/img/loading.gif" lazyload></p>
 <p>此时应能够在服务器上访问到本机的80端口界面，访问界面。</p>
+<h1 id="证书生成"><a href="#证书生成" class="headerlink" title="证书生成"></a>证书生成</h1><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">openssl genrsa -out ca.key 2048<br>openssl req -x509 -new -nodes -key ca.key -subj &quot;/CN=example.ca.com&quot; -days 10000 -out ca.crt<br><br>openssl genrsa -out server.key 2048<br><br>openssl req -new -sha256 -key server.key \<br>    -subj &quot;/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=server.com&quot; \<br>    -reqexts SAN \<br>    -config &lt;(cat my-openssl.cnf &lt;(printf &quot;\n[SAN]\nsubjectAltName=DNS:localhost,IP:127.0.0.1,DNS:example.server.com&quot;)) \<br>    -out server.csr<br><br>openssl x509 -req -days 10000 \<br>	-in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \<br>	-extfile &lt;(printf &quot;subjectAltName=DNS:localhost,IP:127.0.0.1,DNS:example.server.com&quot;) \<br>	-out server.crt<br>	<br>openssl genrsa -out client.key 2048<br>openssl req -new -sha256 -key client.key \<br>    -subj &quot;/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=client.com&quot; \<br>    -reqexts SAN \<br>    -config &lt;(cat my-openssl.cnf &lt;(printf &quot;\n[SAN]\nsubjectAltName=DNS:client.com,DNS:example.client.com&quot;)) \<br>    -out client.csr<br><br>openssl x509 -req -days 10000 \<br>    -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial \<br>	-extfile &lt;(printf &quot;subjectAltName=DNS:client.com,DNS:example.client.com&quot;) \<br>	-out client.crt<br></code></pre></div></td></tr></table></figure>
+
 
             </div>
             <hr>

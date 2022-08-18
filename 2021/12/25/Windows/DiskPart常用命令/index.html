@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Bsmslwx">
+  <meta name="keywords" content="">
+  
+  <title>DiskPart常用命令 ~ BsmslwxBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":".","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Bsmslwx</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg4.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="DiskPart常用命令">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-25 23:55" pubdate>
+        2021年12月25日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      983 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DiskPart常用命令</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年12月26日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="DiskPart常用命令"><a href="#DiskPart常用命令" class="headerlink" title="DiskPart常用命令"></a>DiskPart常用命令</h1><p>参考<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/diskpart">网址</a></p>
+<p>常用命令小记</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 显示计算机上所有的磁盘</span><br>list disk<br><span class="hljs-meta">#</span><span class="bash"> 显示计算机上所有的卷</span><br>list volume<br><span class="hljs-meta">#</span><span class="bash"> 显示磁盘上以计算机为焦点的分区(即需要进入磁盘后执行)</span><br>list partition<br><span class="hljs-meta">#</span><span class="bash"> 显示计算机上的所有虚拟磁盘</span><br>list vdisk<br><span class="hljs-meta">#</span><span class="bash"> 选择进入的磁盘/卷/分区</span><br>select disk/volume/partiton &lt;n&gt;<br><span class="hljs-meta">#</span><span class="bash"> 清除所选磁盘中的所有分区或卷格式</span><br>clean<br><span class="hljs-meta">#</span><span class="bash"> 删除分区或卷</span><br>delete volume/partition<br><span class="hljs-meta">#</span><span class="bash"> 创建efi/msr等(其中primary表示主分区)分区 size表示分区大小</span><br>create partition efi/msr [size=&lt;n&gt;] [offset=&lt;n&gt;] [noerr]<br><span class="hljs-meta">#</span><span class="bash"> 切换磁盘分区等格式</span><br>convert gpt/fat32<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 执行diskpart脚本</span><br>diskpart /s jiaoben.txt<br><span class="hljs-meta">#</span><span class="bash"> 如果遇到 设置强制保护参数，则无法删除受保护的分区 使用如下命令</span><br>delete partition override<br></code></pre></div></td></tr></table></figure>
+
+
+<h2 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/active">active</a></td>
+<td>将具有焦点的磁盘分区标记为活动。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/add">add</a></td>
+<td>将选中的简单卷镜像到指定磁盘。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/assign">assign</a></td>
+<td>给选中的卷分配一个驱动器号或装入点。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/attach-vdisk">附加 vdisk</a></td>
+<td>将 (VHD) 虚拟硬盘) 装载或 (表面) 以便它作为本地硬盘驱动器显示在主计算机上。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/attributes">attributes</a></td>
+<td>显示、设置或清除磁盘或卷的属性。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/automount">automount</a></td>
+<td>启用或禁用自动装载功能。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/break">break</a></td>
+<td>将选中的镜像卷分为两个简单卷。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/clean">clean</a></td>
+<td>从选中的磁盘中删除所有分区或卷格式。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/compact-vdisk">compact vdisk</a></td>
+<td>减少动态扩展虚拟硬盘的物理大小， (VHD) 文件。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/convert">convert</a></td>
+<td>将 FAT (FAT) FAT32 卷的文件分配表转换为 NTFS 文件系统，使现有文件和目录保持不变。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/create">create</a></td>
+<td>在磁盘上创建分区、一个或多个磁盘上的卷，或 VHD (虚拟) 。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/delete">delete</a></td>
+<td>删除分区或卷。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/detach-vdisk">detach vdisk</a></td>
+<td>停止所选虚拟硬盘 (VHD) 在主计算机上显示为本地硬盘驱动器。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/detail">detail</a></td>
+<td>显示有关所选磁盘、分区、卷或虚拟硬盘的信息 (VHD) 。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/exit">exit</a></td>
+<td>退出 diskpart 命令解释器。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/expand-vdisk">expand vdisk</a></td>
+<td>将虚拟硬盘 (VHD) 指定的大小。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/extend">extend</a></td>
+<td>将具有焦点的卷或分区及其文件系统扩展到磁盘上 (释放) 空间。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/filesystems">filesystems</a></td>
+<td>显示有关具有焦点的卷的当前文件系统的信息，并列出支持格式化卷的文件系统。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/format">format</a></td>
+<td>格式化磁盘以接受Windows文件。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/gpt">gpt</a></td>
+<td>将 gpt 属性 () 分区，并重点关注基本 GUID 分区表 () 磁盘。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/help">help</a></td>
+<td>显示可用命令的列表或指定命令的详细帮助信息。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/import_1">import</a></td>
+<td>将一个外磁盘组导入本地计算机的磁盘组。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/inactive">inactive</a></td>
+<td>将具有焦点的系统分区或启动分区标记为非活动状态，在 MBR 磁盘 (主) 记录。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/list">list</a></td>
+<td>显示磁盘、磁盘中的分区、磁盘中的卷或 VHD (虚拟硬盘) 。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/merge-vdisk">merge vdisk</a></td>
+<td>将差异虚拟硬盘与 VHD (VHD) 其对应的父 VHD 合并。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/offline">offline</a></td>
+<td>使联机磁盘或卷处于脱机状态。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/online">online</a></td>
+<td>使脱机磁盘或卷处于联机状态。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/recover">recover</a></td>
+<td>刷新磁盘组中所有磁盘的状态，尝试恢复无效磁盘组中磁盘，并重新同步具有过时数据的镜像卷和 RAID-5 卷。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/rem">rem</a></td>
+<td>提供一种向脚本添加注释的方法。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/remove">remove</a></td>
+<td>从卷中删除驱动器号或装入点。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/repair">repair</a></td>
+<td>将故障磁盘区域替换为指定的动态磁盘，修复具有焦点的 RAID-5 卷。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/rescan">rescan</a></td>
+<td>查找可能已添加到计算机的新磁盘。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/retain">retain</a></td>
+<td>准备要用作启动卷或系统卷的现有动态简单卷。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/san">san</a></td>
+<td>显示或设置操作系统 () 存储区域网络策略。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/select">select</a></td>
+<td>将焦点移到磁盘、分区、卷或虚拟硬盘 (VHD) 。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/set-id">set id</a></td>
+<td>更改具有焦点的分区的 “分区类型” 字段。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/shrink">shrink</a></td>
+<td>按指定的数量减小所选卷的大小。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/uniqueid">uniqueid</a></td>
+<td>显示或设置 GUID 分区表 (GPT) 标识符或主启动记录 (MBR 的主) 签名。</td>
+</tr>
+</tbody></table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Windows/">Windows</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/diskpart/">diskpart</a>
+                    
+                      <a class="hover-with-bg" href="/tags/windows/">windows</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="/" target="_blank" rel="nofollow noopener"><span>MyBlog</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
