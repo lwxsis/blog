@@ -182,167 +182,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Misc/GXUCTF-1%20MISC/" target="_self">
-          GXUCTF-1 MISC
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Misc/GXUCTF-1%20MISC/" target="_self">
-          
-          
-            
-          
-          GXUCTF-1 MISC假的按照提示应该是伪加密，利用winhex修改对应的值后解压即可
-
-改会00 00即可解压，之后获得图片很明显的提示修改图片高度
-修改的时候可以先将本来的高度转化为十六进制后找到直接修改
-签到根据提示拼图，应该是base64存储图片信息。直接利用html的图片输出可以进行拼接
-1&lt;img src=&#x27;data:image/gif;base64,&#x27;&
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-18 15:58" pubdate>
-              2021-10-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Misc/">信安 CTF Misc</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-              <a href="/tags/misc/">misc</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Web/GXUCTF-1%20web/" target="_self">
-          GXUCTF_1-web
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Web/GXUCTF-1%20web/" target="_self">
-          
-          
-            
-          
-          GXUCTF_1-web五子棋直接下赢就行了
-反序列化之反序列化访问链接后得到如下源码
-123456789101112131415161718192021222324252627282930313233343536373839404142 &lt;?phphighlight_file(__FILE__);# author: robot mini-ice# flag in flag.phpclass
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-18 12:54" pubdate>
-              2021-10-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/web/">web</a>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/11/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E6%9C%B1%E9%9B%80%E7%BB%84%5Dphpweb-1/" target="_self">
-          网鼎杯 2020 朱雀组_phpweb 1
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/11/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E6%9C%B1%E9%9B%80%E7%BB%84%5Dphpweb-1/" target="_self">
-          
-          
-            
-          
-          [网鼎杯 2020 朱雀组]phpweb 1 访问对应的网址后，直接查看源码
-发现有一个Post请求，抓包自己修改发送后报错，发现是利用call_user_func函数，并且可控其中的参数
-
-此时尝试将data换为system 参数为ls
-返回内容显示为hack，应该是被过滤了，尝试了常见的执行函数，均无法使用。
-此时尝试file_get_contents读取index.php文件
-获得源码
-12
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-11 16:18" pubdate>
-              2021-10-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2021/10/08/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%A9%E7%94%A8/" target="_self">
           客户端利用
         </a>
@@ -733,6 +572,179 @@ Web应用程序攻击方法
               <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
             
               <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/24/%E4%BF%A1%E5%AE%89/%E6%B8%97%E9%80%8F/CobaltStrike%E5%9F%BA%E7%A1%80/" target="_self">
+          CobaltStrike基础
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/24/%E4%BF%A1%E5%AE%89/%E6%B8%97%E9%80%8F/CobaltStrike%E5%9F%BA%E7%A1%80/" target="_self">
+          
+          
+            
+          
+          CobaltStrike基础重要是熟悉了CobaltStrike基本使用，和在虚拟机中安装服务器，映射到公网IP来获取靶机的办法
+参考博客
+首先按照博客中的内容进行监听端口的设置，此处是准备的两个端口，一个是需要生成木马对应的端口，一个是监听的本地端口
+设置监听端口的具体操作是选择 Cobalt Strike -&gt; Listeners
+显示如下界面
+
+点击Add进行设置
+
+参考博客所说的内容
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-24 17:32" pubdate>
+              2021-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E6%B8%97%E9%80%8F/">信安 渗透</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
+            
+              <a href="/tags/CobaltStrike/">CobaltStrike</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/24/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E6%BC%8F%E6%B4%9E%E8%AF%84%E4%BC%B0/" target="_self">
+          漏洞评估
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/24/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E6%BC%8F%E6%B4%9E%E8%AF%84%E4%BC%B0/" target="_self">
+          
+          
+            
+          
+          漏洞评估漏洞评估的目的是找出最有可能攻击的安全漏洞。在杀链的利用阶段，漏洞评估的重点是创建访问以实现漏洞的目标映射，以排列漏洞和保持对目标的持续访问
+1. 漏洞命名漏洞的扫描采用自动化过程和自动化程序。漏洞扫描会被检测到，隐形几乎不可能的。而且还会收到以下限制：
+
+通常情况下，漏洞扫描器是基于签名的，它只能检测已知的漏洞，仅当有一个已经存在的识别标志才能应用于目标
+扫描器产生的大量输出中通常包含错
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-24 11:06" pubdate>
+              2021-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">kali高级渗透测试</a>
+            
+              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%8E%A2%E6%B5%8B/">漏洞探测</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/14/%E4%BF%A1%E5%AE%89/%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90/OneForAll/OneForAll%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90-4/" target="_self">
+          OneForAll代码分析-4
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/14/%E4%BF%A1%E5%AE%89/%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90/OneForAll/OneForAll%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90-4/" target="_self">
+          
+          
+            
+          
+          OneForAll代码分析-4承接2中的内容对brute模块进行分析
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-14 15:55" pubdate>
+              2021-09-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90-OneForAll/">信安 工具分析 OneForAll</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7%E5%88%86%E6%9E%90/">工具分析</a>
+            
+              <a href="/tags/OneForAll/">OneForAll</a>
             
           </div>
         
