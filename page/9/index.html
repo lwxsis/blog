@@ -182,6 +182,354 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/FRP%E5%AE%89%E8%A3%85/" target="_self">
+          FRP安装
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/FRP%E5%AE%89%E8%A3%85/" target="_self">
+          
+          
+            
+          
+          FRP配置流程下载下载地址查找对应版本进行下载
+安装首先配置分为服务端(后加s)和客户端(后加c)的配置。
+服务端解压后，配置文件frps.ini
+进入后只是显示了配置端口
+
+具体配置如下：
+12345678910111213141516[common]bind_port = 7000# 当代理出来的是web服务时，在外网访问http://vps的IP:7001vhost_https_port =
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-08 10:44" pubdate>
+              2021-07-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-Tools/">信安 Tools</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/tool/">tool</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          XVWA练习
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          
+          
+            
+          
+          XVWA练习SQL Injection整体界面如下:
+
+在进行尝试之后发现，界面有两个查询点，首先是选择的code，其次是自由输入的查询。
+使用bp抓取选择code后的包，具体如图：
+
+item在对post的item内容尝试进行注入后，发现注入的类型是整型注入。之后查看回显字段个数。
+sql：1 order by *;#
+经过尝试回显是7，使用联合注入查看回显的位置。sql：0 union sel
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-06 17:25" pubdate>
+              2021-07-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          DVWA练习
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
+          
+          
+            
+          
+          DVWA靶机练习Brute Force暴力破解
+首先根据提示可以得知应该使用暴力破解，用户先尝试常用的admin,之后使用bp抓包
+
+之后使用常用字典进行暴力破解
+
+经过长度判断密码为password
+
+high模式由于有token检测，所以需要先访问界面获取token之后进行爆破
+需要编写程序获取内容后进行爆破。程序如下：
+123456789101112131415161718192021222
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-05 09:43" pubdate>
+              2021-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/28/PHP/api%E4%BD%BF%E7%94%A8/" target="_self">
+          api使用
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/28/PHP/api%E4%BD%BF%E7%94%A8/" target="_self">
+          
+          
+            
+          
+          设置为API在实际编写过程中遇到了较多的困难
+
+将php编写的api设置可以使用
+
+下面对于该api的设置进行阐述
+1234# 此处设置任意源均可访问header(&quot;Access-Control-Allow-Origin: *&quot;);# 此处应该是设置可以返回的header信息header(&quot;Access-Control-Allow-Headers: Content-T
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-28 01:37" pubdate>
+              2021-06-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/PHP/">PHP</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/PHP/">PHP</a>
+            
+              <a href="/tags/API/">API</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/26/Vue/Vue+Element/%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE%E5%BB%BA%E7%AB%8B/" target="_self">
+          Vue基础项目建立
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/26/Vue/Vue+Element/%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE%E5%BB%BA%E7%AB%8B/" target="_self">
+          
+          
+            
+          
+          下载各种准备工具首先下载node.js进行安装 
+下载 cnpm之后设置path
+安装vue-cli 脚手架工具
+1234cnpm install -g @vue/cli 查看版本vue -V
+
+创建项目名1vue create 项目名
+
+选择安装模式
+安装成功之后进入目录
+node_modules 存放依赖包 不需要提交
+package.json 项目依赖文件
+其中dependencies,依赖
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-26 20:17" pubdate>
+              2021-06-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Vue-Vue-Element/">Vue Vue+Element</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/Vue/">Vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/11/%E4%BF%A1%E5%AE%89/Tools/sqlmap/" target="_self">
+          sqlmap
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/11/%E4%BF%A1%E5%AE%89/Tools/sqlmap/" target="_self">
+          
+          
+            
+          
+          sqlmap基础基础GET使用检查注入点：sqlmap -u http://aa.com/star_photo.php?artist_id＝11
+爆所有数据库信息：sqlmap -u http://aa.com/star_photo.php?artist_id＝11 –dbs
+爆当前数据库信息：sqlmap -u http://aa.com/star_photo.php?artist_id＝11 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-11 20:44" pubdate>
+              2021-06-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-Tools/">信安 Tools</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/tool/">tool</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/06/03/Python/%E7%88%86%E7%A0%B4%E5%8E%8B%E7%BC%A9%E7%9A%84%E5%AF%86%E7%A0%81/" target="_self">
           爆破压缩的密码
         </a>
@@ -397,330 +745,6 @@
               <a href="/tags/ctf/">ctf</a>
             
               <a href="/tags/sqli/">sqli</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/31/AndroidStudio/%E8%A7%86%E9%A2%91/ExoPlayer/%E6%A8%AA%E5%B1%8F%E6%92%AD%E6%94%BE/" target="_self">
-          横屏播放
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/31/AndroidStudio/%E8%A7%86%E9%A2%91/ExoPlayer/%E6%A8%AA%E5%B1%8F%E6%92%AD%E6%94%BE/" target="_self">
-          
-          
-            
-          
-          基本实现横屏播放重要配置文件AndroidManifest
-123 &lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot;/&gt;       &lt;activity android:name=&quot;.Activity.VideoActivity&quot;  androi
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-31 15:51" pubdate>
-              2021-05-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Android-Studio-%E8%A7%86%E9%A2%91-ExoPlayer/">Android Studio 视频 ExoPlayer</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AndroidStudio/">AndroidStudio</a>
-            
-              <a href="/tags/ExoPlayer/">ExoPlayer</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/30/AndroidStudio/%E8%A7%86%E9%A2%91/ExoPlayer/%E7%BB%A7%E7%BB%AD%E6%92%AD%E6%94%BE/" target="_self">
-          继续播放
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/30/AndroidStudio/%E8%A7%86%E9%A2%91/ExoPlayer/%E7%BB%A7%E7%BB%AD%E6%92%AD%E6%94%BE/" target="_self">
-          
-          
-            
-          
-          
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-30 20:39" pubdate>
-              2021-05-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Android-Studio-%E8%A7%86%E9%A2%91-ExoPlayer/">Android Studio 视频 ExoPlayer</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AndroidStudio/">AndroidStudio</a>
-            
-              <a href="/tags/ExoPlayer/">ExoPlayer</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/30/AndroidStudio/RecycleView/RecycleView%E5%9F%BA%E7%A1%80/" target="_self">
-          RecycleView基础
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/30/AndroidStudio/RecycleView/RecycleView%E5%9F%BA%E7%A1%80/" target="_self">
-          
-          
-            
-          
-          添加依赖在build.gradle文件中添加相关依赖
-1implementation &#x27;androidx.recyclerview:recyclerview:1.1.0&#x27;
-
-设置布局文件展示我写的 activity_list.xml文件，里面包含了RecycleView控件
-123456789101112131415&lt;?xml version=&quot;1.0&quot
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-30 01:37" pubdate>
-              2021-05-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/AndroidStudio-RecycleView/">AndroidStudio RecycleView</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AndroidStudio-RecycleView/">AndroidStudio RecycleView</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/29/AndroidStudio/%E4%BA%A4%E4%BA%92%E5%BC%B9%E7%AA%97/MaterialDialogs/" target="_self">
-          MaterialDialogs
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/29/AndroidStudio/%E4%BA%A4%E4%BA%92%E5%BC%B9%E7%AA%97/MaterialDialogs/" target="_self">
-          
-          
-            
-          
-          MaterialDialogs参考链接
-添加依赖core版：可以创建basic, list, single/multi choice, progress, input等弹框。
-1implementation &#x27;com.afollestad.material-dialogs:core:0.9.6.0&#x27;
-
-
-
-common版：可以创建更多拓展的弹框包括ColorChooserDia
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-29 20:00" pubdate>
-              2021-05-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Android-Studio-%E4%BA%A4%E4%BA%92%E5%BC%B9%E7%AA%97/">Android Studio 交互弹窗</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AndroidStudio/">AndroidStudio</a>
-            
-              <a href="/tags/%E5%BC%B9%E7%AA%97/">弹窗</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/28/AndroidStudio/%E8%A7%86%E9%A2%91/ExoPlayer/ExoPlayer%E5%9F%BA%E7%A1%80/" target="_self">
-          基础
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/28/AndroidStudio/%E8%A7%86%E9%A2%91/ExoPlayer/ExoPlayer%E5%9F%BA%E7%A1%80/" target="_self">
-          
-          
-            
-          
-          ExoPlayer 基础官方参考文档
-实例参考
-准备的内容build.gradle 中添加
-1234567891011121314151617implementation &#x27;com.google.android.exoplayer:exoplayer:2.14.0&#x27;implementation &#x27;com.google.android.exoplayer:exoplay
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-28 14:53" pubdate>
-              2021-05-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Android-Studio-%E8%A7%86%E9%A2%91-ExoPlayer/">Android Studio 视频 ExoPlayer</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AndroidStudio/">AndroidStudio</a>
-            
-              <a href="/tags/ExoPlayer/">ExoPlayer</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/27/AndroidStudio/%E8%A7%86%E9%A2%91/Android%20Studio%20%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%8F%8A%E6%A8%AA%E5%B1%8F/" target="_self">
-          Android Studio 视频播放及横屏
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/27/AndroidStudio/%E8%A7%86%E9%A2%91/Android%20Studio%20%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%8F%8A%E6%A8%AA%E5%B1%8F/" target="_self">
-          
-          
-            
-          
-          Android Studio 视频播放及横屏视频播放代码123456789101112131415161718192021222324252627282930313233343536373839404142/**播放 res/raw 目录下的文件         * android.resource:// ：前缀固定         * com.example.administrator.hell
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-27 23:19" pubdate>
-              2021-05-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Android-Studio-%E8%A7%86%E9%A2%91/">Android Studio 视频</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/AndroidStudio/">AndroidStudio</a>
-            
-              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
             
           </div>
         

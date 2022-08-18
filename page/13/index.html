@@ -182,6 +182,359 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/04/19/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%BD%91%E7%AB%99%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6/" target="_self">
+          网站敏感文件
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/19/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%BD%91%E7%AB%99%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6/" target="_self">
+          
+          
+            
+          
+          常用的网站敏感文件敏感文件主要有： 1.gedit备份文件，格式为filename，比如index.php~ 2.vim备份文件，格式为.filename.swp或者*.swo或者*.swn，比 如 .index.php.swp 3.robots.txt
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-19 15:28" pubdate>
+              2021-04-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/19/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202018%5DFakebook%201/" target="_self">
+          网鼎杯 2018_Fakebook 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/19/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202018%5DFakebook%201/" target="_self">
+          
+          
+            
+          
+          [网鼎杯 2018]Fakebook 1进入界面后首先查看源代码及网络
+之后进行注册 再登录后发现sql注入，进行注入后发现屏蔽了union select用union/**/select 进行绕过
+最后得到O:8:”UserInfo”:3:{s:4:”name”;s:3:”123”;s:3:”age”;i:11;s:4:”blog”;s:5:”1.com”;}
+再访问robots.txt
+得到部分
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-19 10:29" pubdate>
+              2021-04-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/sqli/">sqli</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BZJCTF%202019%5DNiZhuanSiWei%20/" target="_self">
+          ZJCTF 2019_NiZhuanSiWei
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BZJCTF%202019%5DNiZhuanSiWei%20/" target="_self">
+          
+          
+            
+          
+          [ZJCTF 2019]NiZhuanSiWei相关知识点
+data伪协议写入文件
+
+php://
+12php://filter用于读取源码php://input用于执行php代码
+反序列化
+
+
+这里需要我们传入一个文件且其内容为welcome to the  zjctf，这样的话往后面看没有其他可以利用的点，我们就无法写入文件再读取，就剩下了一个data伪协议。data协议通常是用来执行PHP代
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 21:20" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BBJDCTF2020%5DEasy%20MD5%201/" target="_self">
+          BJDCTF2020_Easy MD5 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BBJDCTF2020%5DEasy%20MD5%201/" target="_self">
+          
+          
+            
+          
+          [BJDCTF2020]Easy MD5进入界面后查看源码有效的代码如下
+12345678910&lt;/div&gt;&lt;!-- /header end --&gt;&lt;div class=&quot;main&quot;&gt;    &lt;section&gt;        &lt;form class=&quot;upload&quot; action=&quot;leveld
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 21:14" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/md5/">md5</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/php%20md5/" target="_self">
+          php md5
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/php%20md5/" target="_self">
+          
+          
+            
+          
+          PHP MD5CTF中常见php-MD5()函数漏洞1.数字与字符串之间的比较12var_dump( 0 == &quot;a&quot; );var_dump( &quot;0&quot; == &quot;a&quot; );
+
+第一个返回的是 true ，第二个返回的是 false因为php把字母开头的转化为整型时，转化为0， 前面数字后面字母的话就只取到第一个字母出现的位置之前（如intv
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 20:47" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DBuyFlag%201/" target="_self">
+          极客大挑战 2019_BuyFlag 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DBuyFlag%201/" target="_self">
+          
+          
+            
+          
+          [极客大挑战 2019]BuyFlag 1点击menu进到payflag页面:
+
+抓包:
+
+显而易见，把user改成1试一下:
+
+post参数password进去:
+
+要付钱。结合网页页面：
+
+盲猜变量是money，传个money进去：
+12password=404&amp;money=100000000
+
+数值太长了。。。试一下科学记数法：
+
+拿到flag，不过看别人的wp，好像还有一个利用st
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-18 20:47" pubdate>
+              2021-04-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/Web/%5BHCTF%202018%5Dadmin%201/" target="_self">
           HCTF 2018_admin 1
         </a>
@@ -406,365 +759,6 @@ class.php
               <a href="/tags/web/">web</a>
             
               <a href="/tags/ctf/">ctf</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/php%E5%9F%BA%E6%9C%AC/" target="_self">
-          php基本
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/18/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/php%E5%9F%BA%E6%9C%AC/" target="_self">
-          
-          
-            
-          
-          php常见绕过123&lt;?&lt;script language=&quot;php&quot;&gt;&lt;/script&gt;
-
-
-
-PHP读取文件scandir()
-file_get_contents()
-将string转换为chr使用函数ord()
-123456789&lt;?php$tmp=$_GET[&#x27;tmp&#x27;];for($i=0;$i&lt;strlen(
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-18 13:32" pubdate>
-              2021-04-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
-            
-              <a href="/tags/web/">web</a>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/17/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/CTF-RCE%20%E6%80%BB%E7%BB%93/" target="_self">
-          CTF-RCE 总结
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/17/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/CTF-RCE%20%E6%80%BB%E7%BB%93/" target="_self">
-          
-          
-            
-          
-          CTF-RCE总结1. 命令执行1.1 过滤cat，flag等关键词1.1.1 代替12345678910111213more:一页一页的显示档案内容less:与 more 类似head:查看头几行tac:从最后一行开始显示，可以看出 tac 是 cat 的反向显示tail:查看尾几行nl：显示的时候，顺便输出行号od:以二进制的方式读取档案内容vi:一种编辑器，这个也可以查看vim:一种编辑器，
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-17 17:48" pubdate>
-              2021-04-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/web/">web</a>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-              <a href="/tags/rce/">rce</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/17/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F%E5%B8%B8%E7%94%A8/" target="_self">
-          文件隐藏常用
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/17/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F%E5%B8%B8%E7%94%A8/" target="_self">
-          
-          
-            
-          
-          [ACTF2020 新生赛]Include 1【文件包含】及[极客大挑战 2019]Secret File 1均使用如下代码进行文件的完整读取
-1php://filter/read=convert.base64-encode/resource=***.php
-
-
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-17 15:57" pubdate>
-              2021-04-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
-            
-              <a href="/tags/web/">web</a>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/12/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E5%BC%BA%E7%BD%91%E6%9D%AF%202019%5D%E9%9A%8F%E4%BE%BF%E6%B3%A8%201/" target="_self">
-          强网杯 2019_随便注 1
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/12/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E5%BC%BA%E7%BD%91%E6%9D%AF%202019%5D%E9%9A%8F%E4%BE%BF%E6%B3%A8%201/" target="_self">
-          
-          
-            
-          
-          [强网杯 2019]随便注 1首先自己尝试注入使用 1’ or 1=1%23没有查到有用的信息，
-下一步查看回显
-​    return preg_match(“/select|update|delete|drop|insert|where|./i”,$inject);
-不能使用
-使用堆叠注入
-0’; show databases;%23
-0’; show tables;%23
-0’;desc 1
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-12 21:31" pubdate>
-              2021-04-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/web/">web</a>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-              <a href="/tags/sqli/">sqli</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/12/Java/JavaBase/java_base_jvm%E8%A7%84%E8%8C%83/" target="_self">
-          java_base_jvm规范
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/12/Java/JavaBase/java_base_jvm%E8%A7%84%E8%8C%83/" target="_self">
-          
-          
-            
-          
-          JVM 规范
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-12 20:22" pubdate>
-              2021-04-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Java-JavaBase/">Java JavaBase</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">Java</a>
-            
-              <a href="/tags/JVM/">JVM</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/12/SpringBoot/%E9%9B%86%E6%88%90Swagger%E7%BB%88%E6%9E%81%E7%89%88%20/" target="_self">
-          集成Swagger终极版
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/12/SpringBoot/%E9%9B%86%E6%88%90Swagger%E7%BB%88%E6%9E%81%E7%89%88%20/" target="_self">
-          
-          
-            
-          
-          项目集成Swagger
-学习目标：
-
-了解Swagger的概念及作用
-掌握在项目中集成Swagger自动生成API文档
-
-
-Swagger简介
-前后端分离
-
-前端 -&gt; 前端控制层、视图层
-后端 -&gt; 后端控制层、服务层、数据访问层
-前后端通过API进行交互
-前后端相对独立且松耦合
-
-产生的问题
-
-前后端集成，前端或者后端无法做到“及时协商，尽早解决”，最终导致问题集中爆发
-
-解决方案
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-12 13:12" pubdate>
-              2021-04-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Spring-Boot/">Spring Boot</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Springboot/">Springboot</a>
-            
-              <a href="/tags/Swagger/">Swagger</a>
             
           </div>
         

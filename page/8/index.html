@@ -182,6 +182,344 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP-FPM%20Fastcgi%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%89%A9%E5%B1%95/" target="_self">
+          PHP-FPM Fastcgi未授权访问扩展
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP-FPM%20Fastcgi%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%89%A9%E5%B1%95/" target="_self">
+          
+          
+            
+          
+          PHP-FPM Fastcgi未授权访问扩展环境介绍相关漏洞讲解相关工具(py)环境搭建
+cd vulhub/php/fpm
+docker-compose up -d
+
+脚本代码：
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 02:01" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E5%A4%8D%E7%8E%B0/">信安 复现</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP%E7%8E%AF%E5%A2%83XML%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E6%B3%A8%E5%85%A5%E9%98%B2%E5%BE%A1(XXE)/" target="_self">
+          PHP环境XML外部实体注入防御(XXE)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP%E7%8E%AF%E5%A2%83XML%E5%A4%96%E9%83%A8%E5%AE%9E%E4%BD%93%E6%B3%A8%E5%85%A5%E9%98%B2%E5%BE%A1(XXE)/" target="_self">
+          
+          
+            
+          
+          PHP环境XML外部实体注入防御（XXE）环境介绍PHP 7.0.30libxml 2.8.0
+为了演示PHP环境下的XXE漏洞，本例将libxml2.8.0版本编译进PHP中。PHP 版本并不影响XXE利用。
+使用如下命令编译并启动环境：
+cd vulhub/php/php_xxe
+docker-compose up -d
+
+web目录如下
+$ tree .
+.
+├── dom.php # 示例
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 02:00" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E5%A4%8D%E7%8E%B0/">信安 复现</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP%20%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E(CVE-2018-19518)/" target="_self">
+          PHP 远程命令执行漏洞(CVE-2018-19518)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/PHP%20%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E(CVE-2018-19518)/" target="_self">
+          
+          
+            
+          
+          PHP 远程命令执行漏洞（CVE-2018-19518）详细信息   在PHP和其他产品的imap_open（）中使用的UNIX上的华盛顿大学IMAP工具包2007f启动rsh命令（借助于c-client / imap4r1.c中的imap_rimap函数和osdep / unix / tcp_unix中的tcp_aopen函数.c），而不会阻止参数注入，如果IMAP服务器名称是不受信任的输入（例
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 01:59" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E5%A4%8D%E7%8E%B0/">信安 复现</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/Git/GIT%20%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_self">
+          GIT 基本使用
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/Git/GIT%20%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_self">
+          
+          
+            
+          
+          git 安装及常用命令一.本地管理
+安装完成后必要的设置$ git config –global user.name “Your Name”$ git config –global user.email “邮箱地址“
+
+注意：git config命令的–global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
+
+创建版
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 01:54" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Git/">Git</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+            
+              <a href="/tags/git/">git</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/ssti/" target="_self">
+          ssti
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/CTF/%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/ssti/" target="_self">
+          
+          
+            
+          
+          ssti模板注入知识相关知识参考资料：
+CTF SSTI(服务器模板注入)
+浅析SSTI(python沙盒绕过)
+SSTI完全学习
+由于ctf常考的ssti为flask/jinja所以以此为例
+渲染模板flask/jinjaflask SSTI的基本思路就是利用python中的魔术方法找到自己要用的函数
+123456789__dict__ 保存类实例或对象实例的属性变量键值对字典__class__
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 00:51" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">信安 CTF 相关知识</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/ssti/">ssti</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-Ez_python/" target="_self">
+          gxyd-Ez_python
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/10/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-Ez_python/" target="_self">
+          
+          
+            
+          
+          gxyd-Ez_python自我尝试进入后只是看到简单的界面
+
+首先还是查看源码，没有任何有效内容，其次进行目录扫描，发现有很多的的200，经过尝试发现是过滤的内容提示。之后发现其后跟2输出为2。初步判定为ssti注入
+由于没怎么接触相关的知识，所以是一边查看资料一边做题的。
+在查看资料之后使用想使用‘’.__mro__按照流程获取。
+过程中发现&#39;,[被过滤，参考绕过方法进行操作后最后得到
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-10 00:47" pubdate>
+              2021-07-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/web/">web</a>
+            
+              <a href="/tags/ctf/">ctf</a>
+            
+              <a href="/tags/ssti/">ssti</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/07/09/%E4%BF%A1%E5%AE%89/CTF/Web/gxyd-%E5%88%9D%E5%AD%A6Spring/" target="_self">
           gxyd-初学Spring
         </a>
@@ -389,354 +727,6 @@ msfvenom -a x64 –platform linux  -p linux/x64/meterpreter/reverse_tcp  LHOST=1
               <a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
             
               <a href="/tags/%E5%86%85%E7%BD%91/">内网</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/FRP%E5%AE%89%E8%A3%85/" target="_self">
-          FRP安装
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/08/%E4%BF%A1%E5%AE%89/Tools/FRP%E5%AE%89%E8%A3%85/" target="_self">
-          
-          
-            
-          
-          FRP配置流程下载下载地址查找对应版本进行下载
-安装首先配置分为服务端(后加s)和客户端(后加c)的配置。
-服务端解压后，配置文件frps.ini
-进入后只是显示了配置端口
-
-具体配置如下：
-12345678910111213141516[common]bind_port = 7000# 当代理出来的是web服务时，在外网访问http://vps的IP:7001vhost_https_port =
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-08 10:44" pubdate>
-              2021-07-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-Tools/">信安 Tools</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/tool/">tool</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
-          XVWA练习
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/06/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/XVWA%E7%BB%83%E4%B9%A0/" target="_self">
-          
-          
-            
-          
-          XVWA练习SQL Injection整体界面如下:
-
-在进行尝试之后发现，界面有两个查询点，首先是选择的code，其次是自由输入的查询。
-使用bp抓取选择code后的包，具体如图：
-
-item在对post的item内容尝试进行注入后，发现注入的类型是整型注入。之后查看回显字段个数。
-sql：1 order by *;#
-经过尝试回显是7，使用联合注入查看回显的位置。sql：0 union sel
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-06 17:25" pubdate>
-              2021-07-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
-            
-              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
-          DVWA练习
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/05/%E4%BF%A1%E5%AE%89/%E9%9D%B6%E6%9C%BA/DVWA%E7%BB%83%E4%B9%A0/" target="_self">
-          
-          
-            
-          
-          DVWA靶机练习Brute Force暴力破解
-首先根据提示可以得知应该使用暴力破解，用户先尝试常用的admin,之后使用bp抓包
-
-之后使用常用字典进行暴力破解
-
-经过长度判断密码为password
-
-high模式由于有token检测，所以需要先访问界面获取token之后进行爆破
-需要编写程序获取内容后进行爆破。程序如下：
-123456789101112131415161718192021222
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-05 09:43" pubdate>
-              2021-07-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-%E9%9D%B6%E6%9C%BA/">信安 靶机</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%B6%E6%9C%BA/">靶机</a>
-            
-              <a href="/tags/%E6%BC%8F%E6%B4%9Etop10/">漏洞top10</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/28/PHP/api%E4%BD%BF%E7%94%A8/" target="_self">
-          api使用
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/28/PHP/api%E4%BD%BF%E7%94%A8/" target="_self">
-          
-          
-            
-          
-          设置为API在实际编写过程中遇到了较多的困难
-
-将php编写的api设置可以使用
-
-下面对于该api的设置进行阐述
-1234# 此处设置任意源均可访问header(&quot;Access-Control-Allow-Origin: *&quot;);# 此处应该是设置可以返回的header信息header(&quot;Access-Control-Allow-Headers: Content-T
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-28 01:37" pubdate>
-              2021-06-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/PHP/">PHP</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/PHP/">PHP</a>
-            
-              <a href="/tags/API/">API</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/26/Vue/Vue+Element/%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE%E5%BB%BA%E7%AB%8B/" target="_self">
-          Vue基础项目建立
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/26/Vue/Vue+Element/%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE%E5%BB%BA%E7%AB%8B/" target="_self">
-          
-          
-            
-          
-          下载各种准备工具首先下载node.js进行安装 
-下载 cnpm之后设置path
-安装vue-cli 脚手架工具
-1234cnpm install -g @vue/cli 查看版本vue -V
-
-创建项目名1vue create 项目名
-
-选择安装模式
-安装成功之后进入目录
-node_modules 存放依赖包 不需要提交
-package.json 项目依赖文件
-其中dependencies,依赖
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-26 20:17" pubdate>
-              2021-06-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Vue-Vue-Element/">Vue Vue+Element</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
-            
-              <a href="/tags/Vue/">Vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/11/%E4%BF%A1%E5%AE%89/Tools/sqlmap/" target="_self">
-          sqlmap
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/06/11/%E4%BF%A1%E5%AE%89/Tools/sqlmap/" target="_self">
-          
-          
-            
-          
-          sqlmap基础基础GET使用检查注入点：sqlmap -u http://aa.com/star_photo.php?artist_id＝11
-爆所有数据库信息：sqlmap -u http://aa.com/star_photo.php?artist_id＝11 –dbs
-爆当前数据库信息：sqlmap -u http://aa.com/star_photo.php?artist_id＝11 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-11 20:44" pubdate>
-              2021-06-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-Tools/">信安 Tools</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/tool/">tool</a>
             
           </div>
         

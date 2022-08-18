@@ -182,6 +182,345 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/11/19/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/MinIO-SSRF-CVE-2021-21287/" target="_self">
+          MinIO-SSRF-CVE-2021-21287
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/19/%E4%BF%A1%E5%AE%89/%E5%A4%8D%E7%8E%B0/MinIO-SSRF-CVE-2021-21287/" target="_self">
+          
+          
+            
+          
+          MinIO-SSRF-CVE-2021-21287
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-19 13:20" pubdate>
+              2021-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BF%A1%E5%AE%89-%E5%A4%8D%E7%8E%B0/">信安 复现</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ssrf/">ssrf</a>
+            
+              <a href="/tags/cve/">cve</a>
+            
+              <a href="/tags/%E5%A4%8D%E7%8E%B0/">复现</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/11/Go/Go-Base/GoBase%20-%204/" target="_self">
+          GoBase - 4
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/11/Go/Go-Base/GoBase%20-%204/" target="_self">
+          
+          
+            
+          
+          GoBase - 4在地铁上大致浏览了go之后的基础部分，准备实际操作大部分，重点注释以理解个人认为较为重要的部分
+1. 切片(动态数组)概念：Go 数组的长度不可改变，在特定场景中这样的集合就不太适用，Go 中提供了一种灵活，功能强悍的内置类型切片(“动态数组”)，与数组相比切片的长度是不固定的，可以追加元素，在追加时可能使切片的容量增大
+定义方式
+1234567// 直接声明var ident
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-11 10:52" pubdate>
+              2021-11-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+              <a href="/tags/base/">base</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/10/Go/Go-Base/GoBase%20-%203/" target="_self">
+          GoBase - 3
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/10/Go/Go-Base/GoBase%20-%203/" target="_self">
+          
+          
+            
+          
+          GoBase - 31. 函数直接示例展示一下
+123456789101112131415161718192021222324252627282930313233package mainimport (	&quot;fmt&quot;)func main() &#123;	var (		a = 2		b = 3	)	re := max(a, b)	fmt.Println(re)	fmt.Print
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-10 16:11" pubdate>
+              2021-11-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+              <a href="/tags/base/">base</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/09/Go/Go-Base/GoBase%20-%202/" target="_self">
+          GoBase - 2
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/09/Go/Go-Base/GoBase%20-%202/" target="_self">
+          
+          
+            
+          
+          GoBase - 21. 基础部分末尾不需要添加;同行多个内容时需要添加
+格式化字符串
+123456789101112package mainimport (	&quot;fmt&quot;)func main()&#123;    // %d 整型数字，%s 表示字符串    var stockcode=123    var enddate=&quot;2020-12-31&quot;    v
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-09 18:33" pubdate>
+              2021-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+              <a href="/tags/base/">base</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/08/Go/Go-Base/GoBase%20-%201/" target="_self">
+          GoBase - 1
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/08/Go/Go-Base/GoBase%20-%201/" target="_self">
+          
+          
+            
+          
+           GoBase - 11. 安装及配置本来以为和Python类似一下就搞定的，结果弄了半天，写在前面防止以后踩坑
+具体安装流程如下：
+
+下载go的安装包，直接官网下载即可
+之后在VScode里进行代理设置方便科学上网后进行下载
+在VScode中Ctrl+Shift+p输入go:install 选择update tools的选项全选之后下载
+再在VScode中安装code run就行了
+
+填坑
+当实
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-08 22:31" pubdate>
+              2021-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Go-Go-Base/">Go Go-Base</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Go/">Go</a>
+            
+              <a href="/tags/base/">base</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/07/Python/%E5%B9%B6%E5%8F%91%E5%88%9D%E5%AD%A6/%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6/" target="_self">
+          线程通信机制
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/07/Python/%E5%B9%B6%E5%8F%91%E5%88%9D%E5%AD%A6/%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6/" target="_self">
+          
+          
+            
+          
+          线程通信机制此处主要介绍的是控制线程的触发执行，线程中通信的方法大致如下
+
+threading.Event
+threading.Condition
+queque.Queue
+
+1. threading.EventPython提供的简单的通信机制，多个线程等待某个事件发生，之后所有的线程都会被激活
+Envent的使用很简单，总共三个函数
+1234567891011event = threading.
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-07 17:20" pubdate>
+              2021-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Python-%E5%B9%B6%E5%8F%91%E5%88%9D%E5%AD%A6/">Python 并发初学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">Python</a>
+            
+              <a href="/tags/%E5%B9%B6%E5%8F%91/">并发</a>
+            
+              <a href="/tags/%E7%BA%BF%E7%A8%8B/">线程</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/11/07/Python/%E5%B9%B6%E5%8F%91%E5%88%9D%E5%AD%A6/%E5%AF%B9%E6%AF%94%E5%8F%8A%E5%A4%9A%E7%BA%BF%E7%A8%8B/" target="_self">
           对比及多线程
         </a>
@@ -388,345 +727,6 @@
               <a href="/tags/ctf/">ctf</a>
             
               <a href="/tags/reverse/">reverse</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Misc/GXUCTF-1%20MISC/" target="_self">
-          GXUCTF-1 MISC
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Misc/GXUCTF-1%20MISC/" target="_self">
-          
-          
-            
-          
-          GXUCTF-1 MISC假的按照提示应该是伪加密，利用winhex修改对应的值后解压即可
-
-改会00 00即可解压，之后获得图片很明显的提示修改图片高度
-修改的时候可以先将本来的高度转化为十六进制后找到直接修改
-签到根据提示拼图，应该是base64存储图片信息。直接利用html的图片输出可以进行拼接
-1&lt;img src=&#x27;data:image/gif;base64,&#x27;&
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-18 15:58" pubdate>
-              2021-10-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Misc/">信安 CTF Misc</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-              <a href="/tags/misc/">misc</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Web/GXUCTF-1%20web/" target="_self">
-          GXUCTF_1-web
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/18/%E4%BF%A1%E5%AE%89/CTF/Web/GXUCTF-1%20web/" target="_self">
-          
-          
-            
-          
-          GXUCTF_1-web五子棋直接下赢就行了
-反序列化之反序列化访问链接后得到如下源码
-123456789101112131415161718192021222324252627282930313233343536373839404142 &lt;?phphighlight_file(__FILE__);# author: robot mini-ice# flag in flag.phpclass
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-18 12:54" pubdate>
-              2021-10-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/web/">web</a>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/11/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E6%9C%B1%E9%9B%80%E7%BB%84%5Dphpweb-1/" target="_self">
-          网鼎杯 2020 朱雀组_phpweb 1
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/11/%E4%BF%A1%E5%AE%89/CTF/Web/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E6%9C%B1%E9%9B%80%E7%BB%84%5Dphpweb-1/" target="_self">
-          
-          
-            
-          
-          [网鼎杯 2020 朱雀组]phpweb 1 访问对应的网址后，直接查看源码
-发现有一个Post请求，抓包自己修改发送后报错，发现是利用call_user_func函数，并且可控其中的参数
-
-此时尝试将data换为system 参数为ls
-返回内容显示为hack，应该是被过滤了，尝试了常见的执行函数，均无法使用。
-此时尝试file_get_contents读取index.php文件
-获得源码
-12
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-11 16:18" pubdate>
-              2021-10-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
-            
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/08/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%A9%E7%94%A8/" target="_self">
-          客户端利用
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/08/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%88%A9%E7%94%A8/" target="_self">
-          
-          
-            
-          
-          客户端利用本章学习针对客户端应用程序的攻击策略。
-客户端攻击的目标系统通常是缺乏安全控制装置（尤其是防火墙和入侵检测系统）的企业系统
-本章将学习如何使用一下的方法(工具)攻击客户端应用程序
-
-后门可执行文件
-执行恶意脚本攻击(CScript、VBScript和PowerShell)
-利用浏览器开放框架(Browser Exploitation Framework,BeEF)
-在渗透测试期间，配置跨
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-08 22:46" pubdate>
-              2021-10-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
-            
-              <a href="/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/">客户端</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/08/%E4%BF%A1%E5%AE%89/CTF/Web/%5BBJDCTF2020%5DZJCTF,%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-1/" target="_self">
-          BJDCTF2020 ZJCTF，不过如此 1
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/08/%E4%BF%A1%E5%AE%89/CTF/Web/%5BBJDCTF2020%5DZJCTF,%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4-1/" target="_self">
-          
-          
-            
-          
-          [BJDCTF2020]ZJCTF，不过如此 1访问题目可以看到源码
-123456789101112131415161718&lt;?phperror_reporting(0);$text = $_GET[&quot;text&quot;];$file = $_GET[&quot;file&quot;];if(isset($text)&amp;&amp;(file_get_contents($te
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-08 11:38" pubdate>
-              2021-10-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%BF%A1%E5%AE%89-CTF-Web/">信安 CTF Web</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ctf/">ctf</a>
-            
-              <a href="/tags/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">伪协议</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/05/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%9F%BA%E4%BA%8EWeb%E5%BA%94%E7%94%A8%E7%9A%84%E5%88%A9%E7%94%A8/" target="_self">
-          基于Web应用的利用
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/05/%E4%B9%A6%E7%B1%8D/Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E5%9F%BA%E4%BA%8EWeb%E5%BA%94%E7%94%A8%E7%9A%84%E5%88%A9%E7%94%A8/" target="_self">
-          
-          
-            
-          
-          基于Web应用的利用本章中学习的内容如下：
-
-Web应用程序攻击方法
-黑客攻击思维导图
-漏洞扫描
-特定应用程序的攻击
-利用密码漏洞和Web服务漏洞
-利用网络后门维持对目标系统的访问
-
-1. Web应用程序攻击方法Web应用程序入侵的方法
-
-攻击方法分为六个阶段，具体解释如下：
-
-设定目标(set target)：设置正确的目标，关注特定的脆弱系统，根据杀链方法获得系统级访问
-爬虫与枚举(spide
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-05 23:32" pubdate>
-              2021-10-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E4%B9%A6%E7%B1%8D-Kali%E9%AB%98%E7%BA%A7%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">书籍 Kali高级渗透测试</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%B9%A6%E7%B1%8D/">书籍</a>
-            
-              <a href="/tags/web/">web</a>
             
           </div>
         
